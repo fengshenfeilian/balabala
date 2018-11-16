@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.how2java.mapper.AssignmentMapper">
+    <insert id="add" parameterType="Assignment" >
+	        insert into assignment ( id, title, body, introducer ) values ( #{id}, #{title}, #{body}, #{introducer} )
+	    </insert>
+
+    <delete id="delete" parameterType="Assignment" >
+	        delete from assignment where id= #{id}
+	    </delete>
+
+    <select id="get" parameterType="String" resultType="Assignment">
+	        select * from   assignment  where id= #{id}
+	    </select>
+
+    <update id="update" parameterType="Assignment" >
+	        update assignment set title=#{title},body=#{body},introducer=#{introducer} where id=#{id}
+	    </update>
+    <select id="list" resultType="Assignment">
+	        select * from   assignment
+	    </select>
+</mapper>
+

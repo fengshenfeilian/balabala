@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.how2java.mapper.JobMapper">
+    <insert id="add" parameterType="Job" >
+	        insert into job ( id, assign_id, group_id, title, body ) values ( #{id}, #{assign_id}, #{group_id}, #{title}, #{body} )
+	    </insert>
+
+    <delete id="delete" parameterType="Job" >
+	        delete from job where id= #{id}
+	    </delete>
+
+    <select id="get" parameterType="String" resultType="Job">
+	        select * from   job  where id= #{id}
+	    </select>
+
+    <update id="update" parameterType="Job" >
+	        update job set assign_id=#{assign_id},group_id=#{group_id},title=#{title},body=#{body} where id=#{id}
+	    </update>
+    <select id="list" resultType="Job">
+	        select * from   job
+	    </select>
+</mapper>
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.how2java.mapper.UserGroupMapper">
+    <insert id="add" parameterType="UserGroup" >
+	        insert into user_group ( id, user_id, group_id ) values ( #{id}, #{user_id}, #{group_id} )
+	    </insert>
+
+    <delete id="delete" parameterType="UserGroup" >
+	        delete from user_group where id= #{id}
+	    </delete>
+
+    <select id="get" parameterType="String" resultType="UserGroup">
+	        select * from   user_group  where id= #{id}
+	    </select>
+
+    <update id="update" parameterType="UserGroup" >
+	        update user_group set user_id=#{user_id},group_id=#{group_id} where id=#{id}
+	    </update>
+    <select id="list" resultType="UserGroup">
+	        select * from   user_group
+	    </select>
+</mapper>
+
