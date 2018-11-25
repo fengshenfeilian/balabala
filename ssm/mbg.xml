@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"></property>
+        </commentGenerator>
+        <!--配置数据库连接-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/ruangong"
+                        userId="root"
+                        password="">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--指定Javabean生成的位置-->
+        <javaModelGenerator targetPackage="com.managementSystem.pojo" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--指定sql映射文件生成的位置-->
+        <sqlMapGenerator targetPackage="com.managementSystem.mapper"  targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+
+        <!--指定dao接口生成的位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.managementSystem.dao"  targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--table指定每个表的生成策略-->
+        <table tableName="assignment" domainObjectName="Assignment"></table>
+        <table tableName="course" domainObjectName="Course"></table>
+        <table tableName="group_assignment" domainObjectName="Group_Assignment"></table>
+        <table tableName="group_course" domainObjectName="Group"></table>
+        <table tableName="group_student" domainObjectName="Group_Student"></table>
+        <table tableName="privelege" domainObjectName="Privelege"></table>
+        <table tableName="pri_role" domainObjectName="Pri_Role"></table>
+        <table tableName="role" domainObjectName="Role"></table>
+        <table tableName="student_course" domainObjectName="Student_Course"></table>
+        <table tableName="user_role" domainObjectName="User"></table>
+
+    </context>
+</generatorConfiguration>
