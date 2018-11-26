@@ -162,22 +162,25 @@ public class ReadExcel {
             for(int c = 0; c <this.totalCells; c++){
                 Cell cell = row.getCell(c);
                 if (null != cell){
-                    if(c==0){//第一列不读
+                    if(c==0){
+                        User.setUserId(cell.getStringCellValue());
                     }else if(c==1){
-                        User.setcName(cell.getStringCellValue());//客户名称
+                        User.setUserName(cell.getStringCellValue());//客户名称
                     }else if(c==2){
-                        User.setSimpleName(cell.getStringCellValue());//客户简称
+                        User.setDepartment(cell.getStringCellValue());//客户简称
                     }else if(c==3){
-                        User.setTrade(cell.getStringCellValue());//行业
+                        User.setMajor(cell.getStringCellValue());//行业
                     }else if(c==4){
-                        User.setSource(cell.getStringCellValue());//客户来源
+                        User.setGender(cell.getStringCellValue());//客户来源
                     }else if(c==5){
-                        User.setAddress(cell.getStringCellValue());//地址
+                        User.setClassNum(cell.getStringCellValue());//地址
                     }else if(c==6){
-                        User.setRemark(cell.getStringCellValue());//备注信息
+                        User.setEmail(cell.getStringCellValue());//备注信息
                     }
                 }
             }
+            User.setPassword(User.getUserId());
+            User.setRoleId("3");
             //添加客户
             UserList.add(User);
         }

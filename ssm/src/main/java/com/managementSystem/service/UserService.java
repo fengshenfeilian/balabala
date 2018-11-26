@@ -29,10 +29,8 @@ public class UserService {
     }
 
     public void addUserByFile(String name, MultipartFile file) {
-        boolean b = false;
         ReadExcel readExcel = new ReadExcel();
         List<User> users = readExcel.getExcelInfo(name, file);
-
         for(User user : users)
         {
             userMapper.insert(user);

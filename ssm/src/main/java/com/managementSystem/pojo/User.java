@@ -15,6 +15,12 @@ public class User {
 
     private Integer firstLogin;
 
+    private String department;
+
+    private String major;
+
+    private String classNum;
+
     private Role role;
 
     public Role getRole() {
@@ -80,4 +86,16 @@ public class User {
     public void setFirstLogin(Integer firstLogin) {
         this.firstLogin = firstLogin;
     }
+
+    public String getDepartment() { return department; }
+
+    public void setDepartment(String department) { this.department = department; }
+
+    public String getMajor() { return major; }
+
+    public void setMajor(String major) { this.major = major; }
+
+    public String getClassNum() { return classNum; }
+
+    public void setClassNum(String classNum) { this.classNum = classNum; }
 }
