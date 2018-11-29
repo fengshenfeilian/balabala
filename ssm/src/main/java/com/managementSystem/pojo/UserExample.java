@@ -524,63 +524,273 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginIsNull() {
-            addCriterion("FIRST_LOGIN is null");
+        public Criteria andDepartmentIsNull() {
+            addCriterion("DEPARTMENT is null");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginIsNotNull() {
-            addCriterion("FIRST_LOGIN is not null");
+        public Criteria andDepartmentIsNotNull() {
+            addCriterion("DEPARTMENT is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginEqualTo(Integer value) {
-            addCriterion("FIRST_LOGIN =", value, "firstLogin");
+        public Criteria andDepartmentEqualTo(String value) {
+            addCriterion("DEPARTMENT =", value, "department");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginNotEqualTo(Integer value) {
-            addCriterion("FIRST_LOGIN <>", value, "firstLogin");
+        public Criteria andDepartmentNotEqualTo(String value) {
+            addCriterion("DEPARTMENT <>", value, "department");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginGreaterThan(Integer value) {
-            addCriterion("FIRST_LOGIN >", value, "firstLogin");
+        public Criteria andDepartmentGreaterThan(String value) {
+            addCriterion("DEPARTMENT >", value, "department");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginGreaterThanOrEqualTo(Integer value) {
-            addCriterion("FIRST_LOGIN >=", value, "firstLogin");
+        public Criteria andDepartmentGreaterThanOrEqualTo(String value) {
+            addCriterion("DEPARTMENT >=", value, "department");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginLessThan(Integer value) {
-            addCriterion("FIRST_LOGIN <", value, "firstLogin");
+        public Criteria andDepartmentLessThan(String value) {
+            addCriterion("DEPARTMENT <", value, "department");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginLessThanOrEqualTo(Integer value) {
-            addCriterion("FIRST_LOGIN <=", value, "firstLogin");
+        public Criteria andDepartmentLessThanOrEqualTo(String value) {
+            addCriterion("DEPARTMENT <=", value, "department");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginIn(List<Integer> values) {
-            addCriterion("FIRST_LOGIN in", values, "firstLogin");
+        public Criteria andDepartmentLike(String value) {
+            addCriterion("DEPARTMENT like", value, "department");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginNotIn(List<Integer> values) {
-            addCriterion("FIRST_LOGIN not in", values, "firstLogin");
+        public Criteria andDepartmentNotLike(String value) {
+            addCriterion("DEPARTMENT not like", value, "department");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginBetween(Integer value1, Integer value2) {
-            addCriterion("FIRST_LOGIN between", value1, value2, "firstLogin");
+        public Criteria andDepartmentIn(List<String> values) {
+            addCriterion("DEPARTMENT in", values, "department");
             return (Criteria) this;
         }
 
-        public Criteria andFirstLoginNotBetween(Integer value1, Integer value2) {
-            addCriterion("FIRST_LOGIN not between", value1, value2, "firstLogin");
+        public Criteria andDepartmentNotIn(List<String> values) {
+            addCriterion("DEPARTMENT not in", values, "department");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartmentBetween(String value1, String value2) {
+            addCriterion("DEPARTMENT between", value1, value2, "department");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartmentNotBetween(String value1, String value2) {
+            addCriterion("DEPARTMENT not between", value1, value2, "department");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorIsNull() {
+            addCriterion("MAJOR is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorIsNotNull() {
+            addCriterion("MAJOR is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorEqualTo(String value) {
+            addCriterion("MAJOR =", value, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorNotEqualTo(String value) {
+            addCriterion("MAJOR <>", value, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorGreaterThan(String value) {
+            addCriterion("MAJOR >", value, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorGreaterThanOrEqualTo(String value) {
+            addCriterion("MAJOR >=", value, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorLessThan(String value) {
+            addCriterion("MAJOR <", value, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorLessThanOrEqualTo(String value) {
+            addCriterion("MAJOR <=", value, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorLike(String value) {
+            addCriterion("MAJOR like", value, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorNotLike(String value) {
+            addCriterion("MAJOR not like", value, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorIn(List<String> values) {
+            addCriterion("MAJOR in", values, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorNotIn(List<String> values) {
+            addCriterion("MAJOR not in", values, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorBetween(String value1, String value2) {
+            addCriterion("MAJOR between", value1, value2, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andMajorNotBetween(String value1, String value2) {
+            addCriterion("MAJOR not between", value1, value2, "major");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesIsNull() {
+            addCriterion("CLASSES is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesIsNotNull() {
+            addCriterion("CLASSES is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesEqualTo(String value) {
+            addCriterion("CLASSES =", value, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesNotEqualTo(String value) {
+            addCriterion("CLASSES <>", value, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesGreaterThan(String value) {
+            addCriterion("CLASSES >", value, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesGreaterThanOrEqualTo(String value) {
+            addCriterion("CLASSES >=", value, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesLessThan(String value) {
+            addCriterion("CLASSES <", value, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesLessThanOrEqualTo(String value) {
+            addCriterion("CLASSES <=", value, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesLike(String value) {
+            addCriterion("CLASSES like", value, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesNotLike(String value) {
+            addCriterion("CLASSES not like", value, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesIn(List<String> values) {
+            addCriterion("CLASSES in", values, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesNotIn(List<String> values) {
+            addCriterion("CLASSES not in", values, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesBetween(String value1, String value2) {
+            addCriterion("CLASSES between", value1, value2, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassesNotBetween(String value1, String value2) {
+            addCriterion("CLASSES not between", value1, value2, "classes");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultIsNull() {
+            addCriterion("PWD_DEFAULT is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultIsNotNull() {
+            addCriterion("PWD_DEFAULT is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultEqualTo(Integer value) {
+            addCriterion("PWD_DEFAULT =", value, "pwdDefault");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultNotEqualTo(Integer value) {
+            addCriterion("PWD_DEFAULT <>", value, "pwdDefault");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultGreaterThan(Integer value) {
+            addCriterion("PWD_DEFAULT >", value, "pwdDefault");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultGreaterThanOrEqualTo(Integer value) {
+            addCriterion("PWD_DEFAULT >=", value, "pwdDefault");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultLessThan(Integer value) {
+            addCriterion("PWD_DEFAULT <", value, "pwdDefault");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultLessThanOrEqualTo(Integer value) {
+            addCriterion("PWD_DEFAULT <=", value, "pwdDefault");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultIn(List<Integer> values) {
+            addCriterion("PWD_DEFAULT in", values, "pwdDefault");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultNotIn(List<Integer> values) {
+            addCriterion("PWD_DEFAULT not in", values, "pwdDefault");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultBetween(Integer value1, Integer value2) {
+            addCriterion("PWD_DEFAULT between", value1, value2, "pwdDefault");
+            return (Criteria) this;
+        }
+
+        public Criteria andPwdDefaultNotBetween(Integer value1, Integer value2) {
+            addCriterion("PWD_DEFAULT not between", value1, value2, "pwdDefault");
             return (Criteria) this;
         }
     }

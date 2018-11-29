@@ -40,6 +40,14 @@
           <element id="library" level="project" name="Maven: org.mybatis.generator:mybatis-generator-core:1.3.5" />
           <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.2" />
           <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi:4.0.0" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-collections4:4.2" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml:4.0.0" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml-schemas:4.0.0" />
+          <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:3.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-compress:1.18" />
+          <element id="library" level="project" name="Maven: com.github.virtuald:curvesapi:1.04" />
         </element>
       </element>
       <element id="directory" name="META-INF">

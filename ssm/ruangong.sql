@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018-11-22 19:12:47
+-- Generation Time: 2018-11-26 10:49:07
 -- 服务器版本： 10.1.16-MariaDB
 -- PHP Version: 5.3.29-upupw
 
@@ -160,20 +160,20 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `ROLE_ID` varchar(11) DEFAULT NULL,
   `PASSWORD` varchar(40) NOT NULL DEFAULT 'ruangong',
   `USER_NAME` varchar(10) NOT NULL,
-  `GENDER` varchar(1) NOT NULL,
+  `GENDER` varchar(2) NOT NULL,
   `EMAIL` varchar(20) DEFAULT NULL,
-  `FIRST_LOGIN` int(1) NOT NULL DEFAULT '0'
+  `DEPARTMENT` varchar(30) DEFAULT NULL,
+  `MAJOR` varchar(30) DEFAULT NULL,
+  `CLASSES` varchar(30) DEFAULT NULL,
+  `PWD_DEFAULT` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `user_role`
 --
 
-INSERT INTO `user_role` (`USER_ID`, `ROLE_ID`, `PASSWORD`, `USER_NAME`, `GENDER`, `EMAIL`, `FIRST_LOGIN`) VALUES
-('1', '1', '111', 'root', '', '', 0),
-('2', '2', '222', 'laoshi', '', '', 0),
-('3', '3', '333', 'xiaoming', '', 'bbb', 0),
-('4', '2', '444', 'test', '', 'bbb', 0);
+INSERT INTO `user_role` (`USER_ID`, `ROLE_ID`, `PASSWORD`, `USER_NAME`, `GENDER`, `EMAIL`, `DEPARTMENT`, `MAJOR`, `CLASSES`, `PWD_DEFAULT`) VALUES
+('4', '3', '444', 'test', '男', 'bbb', NULL, NULL, '2015211304', 1);
 
 --
 -- Indexes for dumped tables
@@ -322,5 +322,3 @@ ALTER TABLE `user_role`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-alter table user_role add department varchar(30),add major varchar(30),add class varchar(30);

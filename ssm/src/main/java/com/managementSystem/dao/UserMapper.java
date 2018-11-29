@@ -20,10 +20,6 @@ public interface UserMapper {
 
     User selectByPrimaryKey(String userId);
 
-    List<User> selectByExampleWithRole(UserExample example);
-
-    User selectByPrimaryKeyWithRole(String userId);
-
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
     int updateByExample(@Param("record") User record, @Param("example") UserExample example);
@@ -31,4 +27,8 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    List<User> selectByExampleWithRole(UserExample example);
+
+    User selectByPrimaryKeyWithRole(String userId);
 }

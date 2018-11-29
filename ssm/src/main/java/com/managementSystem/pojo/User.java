@@ -13,14 +13,15 @@ public class User {
 
     private String email;
 
-    private Integer firstLogin;
-
     private String department;
 
     private String major;
 
-    private String classNum;
+    private String classes;
 
+    private Integer pwdDefault;
+
+    //联表查询用
     private Role role;
 
     public Role getRole() {
@@ -79,23 +80,35 @@ public class User {
         this.email = email == null ? null : email.trim();
     }
 
-    public Integer getFirstLogin() {
-        return firstLogin;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setFirstLogin(Integer firstLogin) {
-        this.firstLogin = firstLogin;
+    public void setDepartment(String department) {
+        this.department = department == null ? null : department.trim();
     }
 
-    public String getDepartment() { return department; }
+    public String getMajor() {
+        return major;
+    }
 
-    public void setDepartment(String department) { this.department = department; }
+    public void setMajor(String major) {
+        this.major = major == null ? null : major.trim();
+    }
 
-    public String getMajor() { return major; }
+    public String getClasses() {
+        return classes;
+    }
 
-    public void setMajor(String major) { this.major = major; }
+    public void setClasses(String classes) {
+        this.classes = classes == null ? null : classes.trim();
+    }
 
-    public String getClassNum() { return classNum; }
+    public Integer getPwdDefault() {
+        return pwdDefault;
+    }
 
-    public void setClassNum(String classNum) { this.classNum = classNum; }
+    public void setPwdDefault(Integer pwdDefault) {
+        this.pwdDefault = pwdDefault;
+    }
 }

@@ -60,6 +60,7 @@ com\managementSystem\test\MVCtest.class
 com\managementSystem\pojo\CourseExample$GeneratedCriteria.class
 com\managementSystem\pojo\Pri_RoleExample$GeneratedCriteria.class
 com\managementSystem\pojo\CourseExample$Criterion.class
+com\managementSystem\util\ReadExcel.class
 com\managementSystem\controller\UserController.class
 com\managementSystem\pojo\Pri_RoleExample$Criterion.class
 com\managementSystem\pojo\PrivelegeExample$GeneratedCriteria.class

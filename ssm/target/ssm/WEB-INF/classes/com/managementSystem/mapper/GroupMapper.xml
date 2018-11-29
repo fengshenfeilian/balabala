@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.managementSystem.dao.GroupMapper">
+  <resultMap id="BaseResultMap" type="com.managementSystem.pojo.Group">
+    <id column="GROUP_ID" jdbcType="INTEGER" property="groupId" />
+    <result column="COURSE_ID" jdbcType="INTEGER" property="courseId" />
+    <result column="CAPACITY_MIN" jdbcType="INTEGER" property="capacityMin" />
+    <result column="CAPACITY_MAX" jdbcType="INTEGER" property="capacityMax" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="LEADER_ID" jdbcType="VARCHAR" property="leaderId" />
+    <result column="IS_CREATED" jdbcType="BIT" property="isCreated" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    GROUP_ID, COURSE_ID, CAPACITY_MIN, CAPACITY_MAX, NAME, LEADER_ID, IS_CREATED
+  </sql>
+  <select id="selectByExample" parameterType="com.managementSystem.pojo.GroupExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from group_course
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from group_course
+    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from group_course
+    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.managementSystem.pojo.GroupExample">
+    delete from group_course
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.managementSystem.pojo.Group">
+    insert into group_course (GROUP_ID, COURSE_ID, CAPACITY_MIN, 
+      CAPACITY_MAX, NAME, LEADER_ID, 
+      IS_CREATED)
+    values (#{groupId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{capacityMin,jdbcType=INTEGER}, 
+      #{capacityMax,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{leaderId,jdbcType=VARCHAR}, 
+      #{isCreated,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.managementSystem.pojo.Group">
+    insert into group_course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        GROUP_ID,
+      </if>
+      <if test="courseId != null">
+        COURSE_ID,
+      </if>
+      <if test="capacityMin != null">
+        CAPACITY_MIN,
+      </if>
+      <if test="capacityMax != null">
+        CAPACITY_MAX,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="leaderId != null">
+        LEADER_ID,
+      </if>
+      <if test="isCreated != null">
+        IS_CREATED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="capacityMin != null">
+        #{capacityMin,jdbcType=INTEGER},
+      </if>
+      <if test="capacityMax != null">
+        #{capacityMax,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="isCreated != null">
+        #{isCreated,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.managementSystem.pojo.GroupExample" resultType="java.lang.Long">
+    select count(*) from group_course
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update group_course
+    <set>
+      <if test="record.groupId != null">
+        GROUP_ID = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseId != null">
+        COURSE_ID = #{record.courseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.capacityMin != null">
+        CAPACITY_MIN = #{record.capacityMin,jdbcType=INTEGER},
+      </if>
+      <if test="record.capacityMax != null">
+        CAPACITY_MAX = #{record.capacityMax,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leaderId != null">
+        LEADER_ID = #{record.leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isCreated != null">
+        IS_CREATED = #{record.isCreated,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update group_course
+    set GROUP_ID = #{record.groupId,jdbcType=INTEGER},
+      COURSE_ID = #{record.courseId,jdbcType=INTEGER},
+      CAPACITY_MIN = #{record.capacityMin,jdbcType=INTEGER},
+      CAPACITY_MAX = #{record.capacityMax,jdbcType=INTEGER},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      LEADER_ID = #{record.leaderId,jdbcType=VARCHAR},
+      IS_CREATED = #{record.isCreated,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.managementSystem.pojo.Group">
+    update group_course
+    <set>
+      <if test="courseId != null">
+        COURSE_ID = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="capacityMin != null">
+        CAPACITY_MIN = #{capacityMin,jdbcType=INTEGER},
+      </if>
+      <if test="capacityMax != null">
+        CAPACITY_MAX = #{capacityMax,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        LEADER_ID = #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="isCreated != null">
+        IS_CREATED = #{isCreated,jdbcType=BIT},
+      </if>
+    </set>
+    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.managementSystem.pojo.Group">
+    update group_course
+    set COURSE_ID = #{courseId,jdbcType=INTEGER},
+      CAPACITY_MIN = #{capacityMin,jdbcType=INTEGER},
+      CAPACITY_MAX = #{capacityMax,jdbcType=INTEGER},
+      NAME = #{name,jdbcType=VARCHAR},
+      LEADER_ID = #{leaderId,jdbcType=VARCHAR},
+      IS_CREATED = #{isCreated,jdbcType=BIT}
+    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+  </update>
+</mapper>

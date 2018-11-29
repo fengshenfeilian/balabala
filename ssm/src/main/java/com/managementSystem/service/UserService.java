@@ -21,6 +21,17 @@ public class UserService {
         return userMapper.selectByExampleWithRole(null);
     }
 
+    public List<User> getUsers(String role_id) {
+
+        //带角色的查询
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andRoleIdEqualTo(role_id);
+        List<User> users = userMapper.selectByExample(userExample);
+//        System.out.println("users size="+users.size());
+        return users;
+    }
+
     public void getUserWithRoleByExample() {
     }
 

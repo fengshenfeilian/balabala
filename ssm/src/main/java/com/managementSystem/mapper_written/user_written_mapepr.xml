@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.managementSystem.dao.UserMapper">
-<sql id="WithRole_Column_List">
-    u.USER_ID, u.ROLE_ID, u.PASSWORD, u.USER_NAME, u.GENDER, u.EMAIL, u.FIRST_LOGIN, r.ROLE_ID, r.NAME, r.DESCRIPTION
-</sql>
     <resultMap id="WithRoleResultMap" type="com.managementSystem.pojo.User">
         <id column="USER_ID" jdbcType="VARCHAR" property="userId" />
         <result column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
@@ -11,7 +8,10 @@
         <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
         <result column="GENDER" jdbcType="VARCHAR" property="gender" />
         <result column="EMAIL" jdbcType="VARCHAR" property="email" />
-        <result column="FIRST_LOGIN" jdbcType="INTEGER" property="firstLogin" />
+        <result column="DEPARTMENT" jdbcType="VARCHAR" property="department" />
+        <result column="MAJOR" jdbcType="VARCHAR" property="major" />
+        <result column="CLASSES" jdbcType="VARCHAR" property="classes" />
+        <result column="PWD_DEFAULT" jdbcType="INTEGER" property="pwdDefault" />
         <association property="role" javaType="com.managementSystem.pojo.Role">
             <id column="ROLE_ID" property="roleId"/>
             <result column="NAME" property="name"/>
@@ -19,8 +19,8 @@
         </association>
     </resultMap>
     <sql id="WithRole_Column_List">
-        u.USER_ID, u.ROLE_ID, u.PASSWORD, u.USER_NAME, u.GENDER, u.EMAIL, u.FIRST_LOGIN, r.ROLE_ID, r.NAME, r.DESCRIPTION
-    </sql>
+    u.USER_ID, u.ROLE_ID, u.PASSWORD, u.USER_NAME, u.GENDER, u.EMAIL,u.DEPARTMENT, u.MAJOR, u.CLASSES, u.PWD_DEFAULT, r.ROLE_ID, r.NAME, r.DESCRIPTION
+  </sql>
     <select id="selectByExampleWithRole" resultMap="WithRoleResultMap">
         select
         <if test="distinct">

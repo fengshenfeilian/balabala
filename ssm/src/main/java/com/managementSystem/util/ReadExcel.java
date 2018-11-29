@@ -1,18 +1,14 @@
 package com.managementSystem.util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +34,8 @@ public class ReadExcel {
     //获取错误信息
     public String getErrorInfo() { return errorMsg; }
 
+    @Autowired
+    UserService userService;
     /**
      * 验证EXCEL文件
      * @param filePath
@@ -150,6 +148,12 @@ public class ReadExcel {
             this.totalCells=sheet.getRow(0).getPhysicalNumberOfCells();
         }
 
+//        List<User> existUsers = userService.getUsers("3");
+//        List<String> existID = new ArrayList<>();
+//        for(User user : existUsers)
+//        {
+//            existID.add(user.getUserId());
+//        }
         List<User> UserList=new ArrayList<User>();
         User User;
         //循环Excel行数,从第二行开始。标题不入库
@@ -161,11 +165,20 @@ public class ReadExcel {
             //循环Excel的列,添加用户信息
             for(int c = 0; c <this.totalCells; c++){
                 Cell cell = row.getCell(c);
+                cell.setCellType(CellType.STRING);
                 if (null != cell){
                     if(c==0){
-                        User.setUserId(cell.getStringCellValue());
+                        String id = cell.getStringCellValue();
+//                        if(existID.contains(id)) continue;
+                        User.setUserId(id);
                     }else if(c==1){
-                        User.setUserName(cell.getStringCellValue());//客户名称
+                        String name = cell.getStringCellValue();
+                        System.out.println(name);
+                        try {
+                            User.setUserName(new String(name.getBytes("gbk"),"utf-8"));//客户名称
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
                     }else if(c==2){
                         User.setDepartment(cell.getStringCellValue());//客户简称
                     }else if(c==3){
@@ -173,7 +186,7 @@ public class ReadExcel {
                     }else if(c==4){
                         User.setGender(cell.getStringCellValue());//客户来源
                     }else if(c==5){
-                        User.setClassNum(cell.getStringCellValue());//地址
+                        User.setClasses(cell.getStringCellValue());//地址
                     }else if(c==6){
                         User.setEmail(cell.getStringCellValue());//备注信息
                     }
@@ -181,6 +194,7 @@ public class ReadExcel {
             }
             User.setPassword(User.getUserId());
             User.setRoleId("3");
+            User.setPwdDefault(0);
             //添加客户
             UserList.add(User);
         }

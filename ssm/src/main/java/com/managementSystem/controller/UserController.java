@@ -25,6 +25,11 @@ public class UserController {
     UserService userService;
 
     //用户控制器，实现了返回json和返回jsp的两种方法
+    //用户名单导入
+    @RequestMapping(value = "/importUserList", method = RequestMethod.GET)
+   public String importUser(){
+        return "fileUpload";
+    }
 
     //用户登陆，输入用户id和密码
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -32,15 +37,17 @@ public class UserController {
             ,@RequestParam(value = "password")String password,Model model){
         //加入session相关的操作
         User user = userService.checkLogin(userId,password);
-        if(user != null){
+        if(user != null && user.getRoleId().equals("1")){
             model.addAttribute("message","登陆成功");
             model.addAttribute("user",user);
-            return "admin";
+            List<User> users = userService.getUsers("3");
+            model.addAttribute("users", users);
+            return "index";
         }
 
         model.addAttribute("message","用户名或密码错误");
         //此处返回页面待定
-        return "admin";
+        return "loginError";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
@@ -63,6 +70,7 @@ public class UserController {
         //使用pageinfo包装查询后的结果，封装了查询详细信息和页面信息，将pageInfo交给页面
         PageInfo pageInfo = new PageInfo(users,5);//可传入连续显示的页数
         model.addAttribute("pageInfo",pageInfo);
+        model.addAttribute("users", users);
         return "admin";
     }
 
@@ -111,7 +119,7 @@ public class UserController {
 
     //通过文件导入，待完成
     @RequestMapping(value = "/addUsersWithFile", method =RequestMethod.POST)
-    public String addUserByFile(@RequestParam(value="filename") MultipartFile file){
+    public String addUserByFile(@RequestParam(value="filename") MultipartFile file, Model model){
         if(file==null) return null;
         //获取文件名
         String name = file.getOriginalFilename();
@@ -120,7 +128,9 @@ public class UserController {
         if(name==null || ("").equals(name) && size==0) return null;
         //批量导入。参数：文件名，文件。
         userService.addUserByFile(name, file);
-        return "admin";
+        List<User> users = userService.getUsers("3");
+        model.addAttribute("users", users);
+        return "index";
     }
 
 
@@ -179,3 +189,5 @@ public class UserController {
         return Msg.success("删除完成！");
     }
 }
+
+
