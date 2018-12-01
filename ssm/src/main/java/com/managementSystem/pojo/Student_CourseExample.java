@@ -234,63 +234,123 @@ public class Student_CourseExample {
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeIsNull() {
-            addCriterion("TOTAL_GRADE is null");
+        public Criteria andAssignmentGradeIsNull() {
+            addCriterion("ASSIGNMENT_GRADE is null");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeIsNotNull() {
-            addCriterion("TOTAL_GRADE is not null");
+        public Criteria andAssignmentGradeIsNotNull() {
+            addCriterion("ASSIGNMENT_GRADE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeEqualTo(Integer value) {
-            addCriterion("TOTAL_GRADE =", value, "totalGrade");
+        public Criteria andAssignmentGradeEqualTo(Integer value) {
+            addCriterion("ASSIGNMENT_GRADE =", value, "assignmentGrade");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeNotEqualTo(Integer value) {
-            addCriterion("TOTAL_GRADE <>", value, "totalGrade");
+        public Criteria andAssignmentGradeNotEqualTo(Integer value) {
+            addCriterion("ASSIGNMENT_GRADE <>", value, "assignmentGrade");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeGreaterThan(Integer value) {
-            addCriterion("TOTAL_GRADE >", value, "totalGrade");
+        public Criteria andAssignmentGradeGreaterThan(Integer value) {
+            addCriterion("ASSIGNMENT_GRADE >", value, "assignmentGrade");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("TOTAL_GRADE >=", value, "totalGrade");
+        public Criteria andAssignmentGradeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ASSIGNMENT_GRADE >=", value, "assignmentGrade");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeLessThan(Integer value) {
-            addCriterion("TOTAL_GRADE <", value, "totalGrade");
+        public Criteria andAssignmentGradeLessThan(Integer value) {
+            addCriterion("ASSIGNMENT_GRADE <", value, "assignmentGrade");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeLessThanOrEqualTo(Integer value) {
-            addCriterion("TOTAL_GRADE <=", value, "totalGrade");
+        public Criteria andAssignmentGradeLessThanOrEqualTo(Integer value) {
+            addCriterion("ASSIGNMENT_GRADE <=", value, "assignmentGrade");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeIn(List<Integer> values) {
-            addCriterion("TOTAL_GRADE in", values, "totalGrade");
+        public Criteria andAssignmentGradeIn(List<Integer> values) {
+            addCriterion("ASSIGNMENT_GRADE in", values, "assignmentGrade");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeNotIn(List<Integer> values) {
-            addCriterion("TOTAL_GRADE not in", values, "totalGrade");
+        public Criteria andAssignmentGradeNotIn(List<Integer> values) {
+            addCriterion("ASSIGNMENT_GRADE not in", values, "assignmentGrade");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeBetween(Integer value1, Integer value2) {
-            addCriterion("TOTAL_GRADE between", value1, value2, "totalGrade");
+        public Criteria andAssignmentGradeBetween(Integer value1, Integer value2) {
+            addCriterion("ASSIGNMENT_GRADE between", value1, value2, "assignmentGrade");
             return (Criteria) this;
         }
 
-        public Criteria andTotalGradeNotBetween(Integer value1, Integer value2) {
-            addCriterion("TOTAL_GRADE not between", value1, value2, "totalGrade");
+        public Criteria andAssignmentGradeNotBetween(Integer value1, Integer value2) {
+            addCriterion("ASSIGNMENT_GRADE not between", value1, value2, "assignmentGrade");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeIsNull() {
+            addCriterion("DAILY_GRADE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeIsNotNull() {
+            addCriterion("DAILY_GRADE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeEqualTo(Integer value) {
+            addCriterion("DAILY_GRADE =", value, "dailyGrade");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeNotEqualTo(Integer value) {
+            addCriterion("DAILY_GRADE <>", value, "dailyGrade");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeGreaterThan(Integer value) {
+            addCriterion("DAILY_GRADE >", value, "dailyGrade");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("DAILY_GRADE >=", value, "dailyGrade");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeLessThan(Integer value) {
+            addCriterion("DAILY_GRADE <", value, "dailyGrade");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeLessThanOrEqualTo(Integer value) {
+            addCriterion("DAILY_GRADE <=", value, "dailyGrade");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeIn(List<Integer> values) {
+            addCriterion("DAILY_GRADE in", values, "dailyGrade");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeNotIn(List<Integer> values) {
+            addCriterion("DAILY_GRADE not in", values, "dailyGrade");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeBetween(Integer value1, Integer value2) {
+            addCriterion("DAILY_GRADE between", value1, value2, "dailyGrade");
+            return (Criteria) this;
+        }
+
+        public Criteria andDailyGradeNotBetween(Integer value1, Integer value2) {
+            addCriterion("DAILY_GRADE not between", value1, value2, "dailyGrade");
             return (Criteria) this;
         }
     }

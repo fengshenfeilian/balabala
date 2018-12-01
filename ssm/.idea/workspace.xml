@@ -7,15 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5242d435-3b40-4cf3-82ee-fa93ba0624a3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/CourseMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/CourseMapper.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm.war" afterPath="$PROJECT_DIR$/target/ssm.war" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Student_CourseMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/Student_CourseMapper.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/Course.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/Course.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/CourseExample$Criteria.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/CourseExample$Criteria.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/CourseExample$Criterion.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/CourseExample$Criterion.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/CourseExample$GeneratedCriteria.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/CourseExample$GeneratedCriteria.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mbg.xml" afterPath="$PROJECT_DIR$/mbg.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Course.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Course.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/CourseExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/CourseExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/UserMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Student_Course.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Student_Course.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Student_CourseExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Student_CourseExample.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserMapper.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserMapper.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/UserMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="228">
@@ -85,16 +86,6 @@
                 <marker date="1543631316836" expanded="true" signature="11334:11810" ph="update user_... " />
                 <marker date="1543631316836" expanded="true" signature="12318:12474" ph="select from user_role" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mbg.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mbg.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="41" column="83" lean-forward="true" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -480,7 +471,7 @@
       <workItem from="1543474227835" duration="3877000" />
       <workItem from="1543573572034" duration="53000" />
       <workItem from="1543574491493" duration="612000" />
-      <workItem from="1543627967870" duration="5804000" />
+      <workItem from="1543627967870" duration="6503000" />
     </task>
     <task id="LOCAL-00001" summary="update mybatis-generator files">
       <created>1543631931341</created>
@@ -507,7 +498,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12909000" />
+    <option name="totallyTimeSpent" value="13608000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
@@ -637,13 +628,6 @@
         <state relative-caret-position="133">
           <caret line="7" column="73" lean-forward="false" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="73" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/dao/Student_CourseMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -794,6 +778,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/CourseMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="59" lean-forward="true" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
+          <folding>
+            <marker date="1543634531112" expanded="true" signature="4000:4115" ph="select from course" />
+            <marker date="1543634531112" expanded="true" signature="4201:4270" ph="delete from " />
+            <marker date="1543634531112" expanded="true" signature="4375:4393" ph="delete from " />
+            <marker date="1543634531112" expanded="true" signature="4574:5080" ph="insert into course... " />
+            <marker date="1543634531112" expanded="true" signature="6948:6975" ph="select count... course" />
+            <marker date="1543634531112" expanded="true" signature="8443:9016" ph="update cours... " />
+            <marker date="1543634531112" expanded="true" signature="9228:10183" ph="update cours... " />
+            <marker date="1543634531112" expanded="true" signature="10284:10797" ph="update cours... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Student_CourseMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-114">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1543635231891" expanded="true" signature="3563:3739" ph="select from student_course" />
+            <marker date="1543635231891" expanded="true" signature="3851:3981" ph="delete from " />
+            <marker date="1543635231891" expanded="true" signature="4094:4120" ph="delete from " />
+            <marker date="1543635231891" expanded="true" signature="4309:4546" ph="insert into student_course... " />
+            <marker date="1543635231891" expanded="true" signature="5599:5634" ph="select count... student_course" />
+            <marker date="1543635231891" expanded="true" signature="6491:6753" ph="update stude... " />
+            <marker date="1543635231891" expanded="true" signature="6973:7340" ph="update stude... " />
+            <marker date="1543635231891" expanded="true" signature="7449:7689" ph="update stude... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/dao/Student_CourseMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Student_Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mbg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="45" column="86" lean-forward="true" selection-start-line="45" selection-start-column="86" selection-end-line="45" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -828,31 +870,6 @@
             <marker date="1543631316836" expanded="true" signature="11334:11810" ph="update user_... " />
             <marker date="1543631316836" expanded="true" signature="12318:12474" ph="select from user_role" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/CourseMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="59" lean-forward="true" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
-          <folding>
-            <marker date="1543634531112" expanded="true" signature="4000:4115" ph="select from course" />
-            <marker date="1543634531112" expanded="true" signature="4201:4270" ph="delete from " />
-            <marker date="1543634531112" expanded="true" signature="4375:4393" ph="delete from " />
-            <marker date="1543634531112" expanded="true" signature="4574:5080" ph="insert into course... " />
-            <marker date="1543634531112" expanded="true" signature="6948:6975" ph="select count... course" />
-            <marker date="1543634531112" expanded="true" signature="8443:9016" ph="update cours... " />
-            <marker date="1543634531112" expanded="true" signature="9228:10183" ph="update cours... " />
-            <marker date="1543634531112" expanded="true" signature="10284:10797" ph="update cours... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mbg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="41" column="83" lean-forward="true" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
-          <folding />
         </state>
       </provider>
     </entry>
