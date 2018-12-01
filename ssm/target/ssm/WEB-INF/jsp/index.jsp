@@ -63,137 +63,153 @@
 
     <script type="text/javascript" src="/static/js/charts/chart.js"></script>
 
-    <!-- Shared on MafiaShare.net  --><!-- Shared on MafiaShare.net  --></head>
+    <!-- Shared on MafiaShare.net  --><!-- Shared on MafiaShare.net  -->
+</head>
 
 <body>
+    <!-- 左侧菜单栏 -->
+    <div id="leftSide">
+        <div class="logo"><a href="index.html"><img src="/static/images/logo.png" alt="" /></a></div>
 
-<!-- 左侧菜单栏 -->
-<div id="leftSide">
-    <div class="logo"><a href="index.html"><img src="/static/images/logo.png" alt="" /></a></div>
+        <div class="sidebarSep mt0"></div>
 
-    <div class="sidebarSep mt0"></div>
+        <!-- 搜索框 -->
+        <form action="" class="sidebarSearch">
+            <input type="text" name="search" placeholder="search..." id="ac" />
+            <input type="submit" value="" />
+        </form>
 
-    <!-- 搜索框 -->
-    <form action="" class="sidebarSearch">
-        <input type="text" name="search" placeholder="search..." id="ac" />
-        <input type="submit" value="" />
-    </form>
+        <div class="sidebarSep"></div>
 
-    <div class="sidebarSep"></div>
-
-    <!-- 左侧导航栏 -->
-    <ul id="menu" class="nav">
-        <li class="dash"><a href="index.html" title="" class="active"><span>学生管理</span></a></li>
-    </ul>
-</div>
-
-
+        <!-- 左侧导航栏 -->
+        <ul id="menu" class="nav">
+            <li class="dash"><a href="index.html" title="" class="active"><span>学生管理</span></a></li>
+        </ul>
+    </div>
 
 <!-- 右侧区域 -->
-<div id="rightSide">
-    <!-- 顶部导航栏 -->
-    <div class="topNav">
-        <div class="wrapper">
-            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<c:out value="${user.userName}" />使用本系统</span></div>
+    <div id="rightSide">
+        <!-- 顶部导航栏 -->
+        <div class="topNav">
+            <div class="wrapper">
+                <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<c:out value="${user.userName}" />使用本系统</span></div>
 
-            <div class="userNav">
-                <ul>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="login.html" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
-                </ul>
-            </div>
-
-            <div class="clear"></div>
-        </div>
-    </div>
-
-    <!-- 标题区 -->
-    <div class="titleArea">
-        <div class="wrapper">
-            <div class="pageTitle">
-                <h5>当前时间</h5>
-                <!-- 显示时间 -->
-                <span id="time1"></span>
-                <script>
-                    function mytime(){
-                        var a = new Date();
-                        var b = a.toLocaleTimeString();
-                        var c = a.toLocaleDateString();
-                        document.getElementById("time1").innerHTML = c+"&nbsp"+b;
-                    }
-                    setInterval(function() {mytime()},1000);
-                </script>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-    <div class="line"></div>
-
-    <!-- 选项区域 -->
-    <div class="statsRow">
-        <div class="wrapper">
-            <div class="controlB">
-                <!--上传学生名单
-							<form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
-							-->
-                <form action="${pageContext.request.contextPath}/user/addUsersWithFile" method="post" enctype="multipart/form-data">
-                    <input type="file" name="filename" id="" value="" />
-                    <input type="submit" name="" id="" value="上传学生名单" />
-                </form>
+                <div class="userNav">
+                    <ul>
+                        <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
+                        <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
+                        <li><a href="login.html" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                    </ul>
+                </div>
 
                 <div class="clear"></div>
             </div>
         </div>
-    </div>
 
-    <div class="line"></div>
-
-    <!-- 学生名单 ==> 动态数据表 -->
-    <div class="wrapper">
-        <!-- Widgets -->
-        <div class="widgets">
-            <div class="widget">
-                <form action="${pageContext.request.contextPath }/user/selectUsers" method="post">
-                    <div class="title">
-                        <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
-                        <h6>学生名单</h6>
-                    </div>
-                    <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" >
-                        <thead>
-                        <tr>
-                            <td class="sortCol"><div>学生号<span></span></div></td>
-                            <td class="sortCol"><div>学生姓名<span></span></div></td>
-                            <td class="sortCol"><div>学院<span></span></div></td>
-                            <td class="sortCol"><div>专业<span></span></div></td>
-                            <td class="sortCol"><div>班级<span></span></div></td>
-                            <td class="sortCol"><div>操作</div></td>
-                        </tr>
-                        </thead>
-                        <tbody align="center">
-                        <c:forEach items="${users}" var="user">
-                            <tr>
-                                <td>${user.userId}</td>
-                                <td>${user.userName}</td>
-                                <td>${user.department}</td>
-                                <td>${user.major}</td>
-                                <td>${user.classes}</td>
-                                <td><a href="${pageContext.request.contextPath }/user/updateUsers/${user.userId}">修改</a></td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </form>
+        <!-- 标题区 -->
+        <div class="titleArea">
+            <div class="wrapper">
+                <div class="pageTitle">
+                    <h5>当前时间</h5>
+                    <!-- 显示时间 -->
+                    <span id="time1"></span>
+                    <script>
+                        function mytime(){
+                            var a = new Date();
+                            var b = a.toLocaleTimeString();
+                            var c = a.toLocaleDateString();
+                            document.getElementById("time1").innerHTML = c+"&nbsp"+b;
+                        }
+                        setInterval(function() {mytime()},1000);
+                    </script>
+                </div>
+                <div class="clear"></div>
             </div>
         </div>
-    </div>
+        <div class="line"></div>
 
-    <!-- Footer line -->
-    <div id="footer">
-        <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
-    </div>
+        <!-- 选项区域 -->
+        <div class="statsRow">
+            <div class="wrapper">
+                <div class="controlB">
+                    <!--上传学生名单
+                                <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
+                                -->
+                    <form action="${pageContext.request.contextPath}/user/addUsersWithFile" method="post" enctype="multipart/form-data">
+                        <input type="file" name="filename"  value="" />
+                        <input type="submit" name=""  value="上传学生名单" />
+                    </form>
 
-    <div class="clear"></div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
 
+        <div class="line"></div>
+
+        <!-- 学生名单 ==> 动态数据表 -->
+        <div class="wrapper">
+            <!-- Widgets -->
+            <div class="widgets">
+                <div class="widget">
+                    <form action="${pageContext.request.contextPath }/user/deleteUsers" method="post">
+                        <div class="title">
+                            <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
+                            <h6>学生名单</h6>
+                        </div>
+                        <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" >
+                            <thead>
+                            <tr>
+                                <td class="sortCol"><div>学生号<span></span></div></td>
+                                <td class="sortCol"><div>学生姓名<span></span></div></td>
+                                <td class="sortCol"><div>学院<span></span></div></td>
+                                <td class="sortCol"><div>专业<span></span></div></td>
+                                <td class="sortCol"><div>班级<span></span></div></td>
+                                <td class="sortCol"><div>操作</div></td>
+                            </tr>
+                            </thead>
+                            <tbody align="center">
+                            <c:forEach items="${users}" var="user">
+                                <tr>
+                                    <td>${user.userId}</td>
+                                    <td>${user.userName}</td>
+                                    <td>${user.department}</td>
+                                    <td>${user.major}</td>
+                                    <td>${user.classes}</td>
+                                    <td><button class="btn update dblueB">修改</button>
+                                        <button class="btn del dredB" id="delBtn">删除</button></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            //单个删除
+            $(document).on("click",".del",function () {
+                //alert($(this).parents("tr").find("td:eq(0)").text());
+                var userId = $(this).parents("tr").find("td:eq(0)").text();
+                var userName = $(this).parents("tr").find("td:eq(1)").text();
+               // $('#delBtn').attr("delete-id",userId);
+                //发送AJAX请求
+                if(confirm("确认删除【"+userName+"】吗？")){
+                    /*
+                    $.ajax({
+                       url: "${APP_PATH}/user/deleteUsers/" + userId,
+                       type:"DELETE"
+                    });*/
+                }
+            });
+        </script>
+
+        <!-- Footer line -->
+        <div id="footer">
+            <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
+        </div>
+
+        <div class="clear"></div>
 </body>
 </html>

@@ -224,193 +224,133 @@ public class GroupExample {
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinIsNull() {
-            addCriterion("CAPACITY_MIN is null");
+        public Criteria andGroupNameIsNull() {
+            addCriterion("GROUP_NAME is null");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinIsNotNull() {
-            addCriterion("CAPACITY_MIN is not null");
+        public Criteria andGroupNameIsNotNull() {
+            addCriterion("GROUP_NAME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinEqualTo(Integer value) {
-            addCriterion("CAPACITY_MIN =", value, "capacityMin");
+        public Criteria andGroupNameEqualTo(String value) {
+            addCriterion("GROUP_NAME =", value, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinNotEqualTo(Integer value) {
-            addCriterion("CAPACITY_MIN <>", value, "capacityMin");
+        public Criteria andGroupNameNotEqualTo(String value) {
+            addCriterion("GROUP_NAME <>", value, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinGreaterThan(Integer value) {
-            addCriterion("CAPACITY_MIN >", value, "capacityMin");
+        public Criteria andGroupNameGreaterThan(String value) {
+            addCriterion("GROUP_NAME >", value, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinGreaterThanOrEqualTo(Integer value) {
-            addCriterion("CAPACITY_MIN >=", value, "capacityMin");
+        public Criteria andGroupNameGreaterThanOrEqualTo(String value) {
+            addCriterion("GROUP_NAME >=", value, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinLessThan(Integer value) {
-            addCriterion("CAPACITY_MIN <", value, "capacityMin");
+        public Criteria andGroupNameLessThan(String value) {
+            addCriterion("GROUP_NAME <", value, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinLessThanOrEqualTo(Integer value) {
-            addCriterion("CAPACITY_MIN <=", value, "capacityMin");
+        public Criteria andGroupNameLessThanOrEqualTo(String value) {
+            addCriterion("GROUP_NAME <=", value, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinIn(List<Integer> values) {
-            addCriterion("CAPACITY_MIN in", values, "capacityMin");
+        public Criteria andGroupNameLike(String value) {
+            addCriterion("GROUP_NAME like", value, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinNotIn(List<Integer> values) {
-            addCriterion("CAPACITY_MIN not in", values, "capacityMin");
+        public Criteria andGroupNameNotLike(String value) {
+            addCriterion("GROUP_NAME not like", value, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinBetween(Integer value1, Integer value2) {
-            addCriterion("CAPACITY_MIN between", value1, value2, "capacityMin");
+        public Criteria andGroupNameIn(List<String> values) {
+            addCriterion("GROUP_NAME in", values, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMinNotBetween(Integer value1, Integer value2) {
-            addCriterion("CAPACITY_MIN not between", value1, value2, "capacityMin");
+        public Criteria andGroupNameNotIn(List<String> values) {
+            addCriterion("GROUP_NAME not in", values, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxIsNull() {
-            addCriterion("CAPACITY_MAX is null");
+        public Criteria andGroupNameBetween(String value1, String value2) {
+            addCriterion("GROUP_NAME between", value1, value2, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxIsNotNull() {
-            addCriterion("CAPACITY_MAX is not null");
+        public Criteria andGroupNameNotBetween(String value1, String value2) {
+            addCriterion("GROUP_NAME not between", value1, value2, "groupName");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxEqualTo(Integer value) {
-            addCriterion("CAPACITY_MAX =", value, "capacityMax");
+        public Criteria andGroupMemberNumIsNull() {
+            addCriterion("GROUP_MEMBER_NUM is null");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxNotEqualTo(Integer value) {
-            addCriterion("CAPACITY_MAX <>", value, "capacityMax");
+        public Criteria andGroupMemberNumIsNotNull() {
+            addCriterion("GROUP_MEMBER_NUM is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxGreaterThan(Integer value) {
-            addCriterion("CAPACITY_MAX >", value, "capacityMax");
+        public Criteria andGroupMemberNumEqualTo(Integer value) {
+            addCriterion("GROUP_MEMBER_NUM =", value, "groupMemberNum");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxGreaterThanOrEqualTo(Integer value) {
-            addCriterion("CAPACITY_MAX >=", value, "capacityMax");
+        public Criteria andGroupMemberNumNotEqualTo(Integer value) {
+            addCriterion("GROUP_MEMBER_NUM <>", value, "groupMemberNum");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxLessThan(Integer value) {
-            addCriterion("CAPACITY_MAX <", value, "capacityMax");
+        public Criteria andGroupMemberNumGreaterThan(Integer value) {
+            addCriterion("GROUP_MEMBER_NUM >", value, "groupMemberNum");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxLessThanOrEqualTo(Integer value) {
-            addCriterion("CAPACITY_MAX <=", value, "capacityMax");
+        public Criteria andGroupMemberNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("GROUP_MEMBER_NUM >=", value, "groupMemberNum");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxIn(List<Integer> values) {
-            addCriterion("CAPACITY_MAX in", values, "capacityMax");
+        public Criteria andGroupMemberNumLessThan(Integer value) {
+            addCriterion("GROUP_MEMBER_NUM <", value, "groupMemberNum");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxNotIn(List<Integer> values) {
-            addCriterion("CAPACITY_MAX not in", values, "capacityMax");
+        public Criteria andGroupMemberNumLessThanOrEqualTo(Integer value) {
+            addCriterion("GROUP_MEMBER_NUM <=", value, "groupMemberNum");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxBetween(Integer value1, Integer value2) {
-            addCriterion("CAPACITY_MAX between", value1, value2, "capacityMax");
+        public Criteria andGroupMemberNumIn(List<Integer> values) {
+            addCriterion("GROUP_MEMBER_NUM in", values, "groupMemberNum");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityMaxNotBetween(Integer value1, Integer value2) {
-            addCriterion("CAPACITY_MAX not between", value1, value2, "capacityMax");
+        public Criteria andGroupMemberNumNotIn(List<Integer> values) {
+            addCriterion("GROUP_MEMBER_NUM not in", values, "groupMemberNum");
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNull() {
-            addCriterion("NAME is null");
+        public Criteria andGroupMemberNumBetween(Integer value1, Integer value2) {
+            addCriterion("GROUP_MEMBER_NUM between", value1, value2, "groupMemberNum");
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNotNull() {
-            addCriterion("NAME is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameEqualTo(String value) {
-            addCriterion("NAME =", value, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameNotEqualTo(String value) {
-            addCriterion("NAME <>", value, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameGreaterThan(String value) {
-            addCriterion("NAME >", value, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameGreaterThanOrEqualTo(String value) {
-            addCriterion("NAME >=", value, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameLessThan(String value) {
-            addCriterion("NAME <", value, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameLessThanOrEqualTo(String value) {
-            addCriterion("NAME <=", value, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameLike(String value) {
-            addCriterion("NAME like", value, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameNotLike(String value) {
-            addCriterion("NAME not like", value, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameIn(List<String> values) {
-            addCriterion("NAME in", values, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameNotIn(List<String> values) {
-            addCriterion("NAME not in", values, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameBetween(String value1, String value2) {
-            addCriterion("NAME between", value1, value2, "name");
-            return (Criteria) this;
-        }
-
-        public Criteria andNameNotBetween(String value1, String value2) {
-            addCriterion("NAME not between", value1, value2, "name");
+        public Criteria andGroupMemberNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("GROUP_MEMBER_NUM not between", value1, value2, "groupMemberNum");
             return (Criteria) this;
         }
 
@@ -481,66 +421,6 @@ public class GroupExample {
 
         public Criteria andLeaderIdNotBetween(String value1, String value2) {
             addCriterion("LEADER_ID not between", value1, value2, "leaderId");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedIsNull() {
-            addCriterion("IS_CREATED is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedIsNotNull() {
-            addCriterion("IS_CREATED is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedEqualTo(Boolean value) {
-            addCriterion("IS_CREATED =", value, "isCreated");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedNotEqualTo(Boolean value) {
-            addCriterion("IS_CREATED <>", value, "isCreated");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedGreaterThan(Boolean value) {
-            addCriterion("IS_CREATED >", value, "isCreated");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("IS_CREATED >=", value, "isCreated");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedLessThan(Boolean value) {
-            addCriterion("IS_CREATED <", value, "isCreated");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedLessThanOrEqualTo(Boolean value) {
-            addCriterion("IS_CREATED <=", value, "isCreated");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedIn(List<Boolean> values) {
-            addCriterion("IS_CREATED in", values, "isCreated");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedNotIn(List<Boolean> values) {
-            addCriterion("IS_CREATED not in", values, "isCreated");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedBetween(Boolean value1, Boolean value2) {
-            addCriterion("IS_CREATED between", value1, value2, "isCreated");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsCreatedNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("IS_CREATED not between", value1, value2, "isCreated");
             return (Criteria) this;
         }
     }

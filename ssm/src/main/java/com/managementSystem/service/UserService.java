@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,16 +24,16 @@ public class UserService {
 
     public List<User> getUsers(String role_id) {
 
-        //带角色的查询
         UserExample userExample = new UserExample();
         UserExample.Criteria criteria = userExample.createCriteria();
         criteria.andRoleIdEqualTo(role_id);
-        List<User> users = userMapper.selectByExample(userExample);
+        List<User> users = userMapper.selectByExampleWithRole(userExample);
 //        System.out.println("users size="+users.size());
         return users;
     }
 
-    public void getUserWithRoleByExample() {
+    public List<User> getUserWithRoleByExample() {
+        return null;
     }
 
     public void addUserByInput(User user) {
@@ -42,8 +43,11 @@ public class UserService {
     public void addUserByFile(String name, MultipartFile file) {
         ReadExcel readExcel = new ReadExcel();
         List<User> users = readExcel.getExcelInfo(name, file);
+
+
         for(User user : users)
         {
+            if(userMapper.selectByPrimaryKey(user.getUserId())==null)
             userMapper.insert(user);
         }
     }

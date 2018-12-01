@@ -5,15 +5,11 @@ public class Group {
 
     private Integer courseId;
 
-    private Integer capacityMin;
+    private String groupName;
 
-    private Integer capacityMax;
-
-    private String name;
+    private Integer groupMemberNum;
 
     private String leaderId;
-
-    private Boolean isCreated;
 
     public Integer getGroupId() {
         return groupId;
@@ -31,28 +27,20 @@ public class Group {
         this.courseId = courseId;
     }
 
-    public Integer getCapacityMin() {
-        return capacityMin;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setCapacityMin(Integer capacityMin) {
-        this.capacityMin = capacityMin;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName == null ? null : groupName.trim();
     }
 
-    public Integer getCapacityMax() {
-        return capacityMax;
+    public Integer getGroupMemberNum() {
+        return groupMemberNum;
     }
 
-    public void setCapacityMax(Integer capacityMax) {
-        this.capacityMax = capacityMax;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setGroupMemberNum(Integer groupMemberNum) {
+        this.groupMemberNum = groupMemberNum;
     }
 
     public String getLeaderId() {
@@ -61,13 +49,5 @@ public class Group {
 
     public void setLeaderId(String leaderId) {
         this.leaderId = leaderId == null ? null : leaderId.trim();
-    }
-
-    public Boolean getIsCreated() {
-        return isCreated;
-    }
-
-    public void setIsCreated(Boolean isCreated) {
-        this.isCreated = isCreated;
     }
 }

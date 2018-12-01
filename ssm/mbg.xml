@@ -14,7 +14,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/ruangong"
                         userId="root"
-                        password="">
+                        password="root">
         </jdbcConnection>
 
         <javaTypeResolver >
@@ -39,16 +39,16 @@
         </javaClientGenerator>
 
         <!--table指定每个表的生成策略-->
-        <table tableName="assignment" domainObjectName="Assignment"></table>
+       <!-- <table tableName="assignment" domainObjectName="Assignment"></table>-->
         <table tableName="course" domainObjectName="Course"></table>
-        <table tableName="group_assignment" domainObjectName="Group_Assignment"></table>
+        <!--<table tableName="group_assignment" domainObjectName="Group_Assignment"></table>-->
         <table tableName="group_course" domainObjectName="Group"></table>
-        <table tableName="group_student" domainObjectName="Group_Student"></table>
+        <!--<table tableName="group_student" domainObjectName="Group_Student"></table>
         <table tableName="privelege" domainObjectName="Privelege"></table>
         <table tableName="pri_role" domainObjectName="Pri_Role"></table>
         <table tableName="role" domainObjectName="Role"></table>
         <table tableName="student_course" domainObjectName="Student_Course"></table>
-        <table tableName="user_role" domainObjectName="User"></table>
+        <table tableName="user_role" domainObjectName="User"></table>-->
 
     </context>
 </generatorConfiguration>
