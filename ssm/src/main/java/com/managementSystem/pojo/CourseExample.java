@@ -614,6 +614,66 @@ public class CourseExample {
             addCriterion("CREATE_TIME not between", value1, value2, "createTime");
             return (Criteria) this;
         }
+
+        public Criteria andIsEndIsNull() {
+            addCriterion("IS_END is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndIsNotNull() {
+            addCriterion("IS_END is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndEqualTo(Integer value) {
+            addCriterion("IS_END =", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndNotEqualTo(Integer value) {
+            addCriterion("IS_END <>", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndGreaterThan(Integer value) {
+            addCriterion("IS_END >", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndGreaterThanOrEqualTo(Integer value) {
+            addCriterion("IS_END >=", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndLessThan(Integer value) {
+            addCriterion("IS_END <", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndLessThanOrEqualTo(Integer value) {
+            addCriterion("IS_END <=", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndIn(List<Integer> values) {
+            addCriterion("IS_END in", values, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndNotIn(List<Integer> values) {
+            addCriterion("IS_END not in", values, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndBetween(Integer value1, Integer value2) {
+            addCriterion("IS_END between", value1, value2, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndNotBetween(Integer value1, Integer value2) {
+            addCriterion("IS_END not between", value1, value2, "isEnd");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -19,6 +19,8 @@ public class Course {
 
     private Date createTime;
 
+    private Integer isEnd;
+
     public Integer getCourseId() {
         return courseId;
     }
@@ -81,5 +83,13 @@ public class Course {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Integer getIsEnd() {
+        return isEnd;
+    }
+
+    public void setIsEnd(Integer isEnd) {
+        this.isEnd = isEnd;
     }
 }

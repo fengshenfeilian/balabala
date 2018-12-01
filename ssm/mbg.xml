@@ -42,7 +42,7 @@
        <!-- <table tableName="assignment" domainObjectName="Assignment"></table>-->
         <table tableName="course" domainObjectName="Course"></table>
         <!--<table tableName="group_assignment" domainObjectName="Group_Assignment"></table>-->
-        <table tableName="group_course" domainObjectName="Group"></table>
+        <!--<table tableName="group_course" domainObjectName="Group"></table>-->
         <!--<table tableName="group_student" domainObjectName="Group_Student"></table>
         <table tableName="privelege" domainObjectName="Privelege"></table>
         <table tableName="pri_role" domainObjectName="Pri_Role"></table>
