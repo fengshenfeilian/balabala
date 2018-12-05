@@ -173,12 +173,7 @@ public class ReadExcel {
                         User.setUserId(id);
                     }else if(c==1){
                         String name = cell.getStringCellValue();
-                        System.out.println(name);
-                        try {
-                            User.setUserName(new String(name.getBytes("gbk"),"utf-8"));//客户名称
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
-                        }
+                        User.setUserName(name);
                     }else if(c==2){
                         User.setDepartment(cell.getStringCellValue());//客户简称
                     }else if(c==3){

@@ -4,7 +4,8 @@
   <resultMap id="BaseResultMap" type="com.managementSystem.pojo.Student_Course">
     <id column="STUDENT_ID" jdbcType="VARCHAR" property="studentId" />
     <id column="COURSE_ID" jdbcType="INTEGER" property="courseId" />
-    <result column="TOTAL_GRADE" jdbcType="INTEGER" property="totalGrade" />
+    <result column="ASSIGNMENT_GRADE" jdbcType="INTEGER" property="assignmentGrade" />
+    <result column="DAILY_GRADE" jdbcType="INTEGER" property="dailyGrade" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    STUDENT_ID, COURSE_ID, TOTAL_GRADE
+    STUDENT_ID, COURSE_ID, ASSIGNMENT_GRADE, DAILY_GRADE
   </sql>
   <select id="selectByExample" parameterType="com.managementSystem.pojo.Student_CourseExample" resultMap="BaseResultMap">
     select
@@ -100,10 +101,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.managementSystem.pojo.Student_Course">
-    insert into student_course (STUDENT_ID, COURSE_ID, TOTAL_GRADE
-      )
-    values (#{studentId,jdbcType=VARCHAR}, #{courseId,jdbcType=INTEGER}, #{totalGrade,jdbcType=INTEGER}
-      )
+    insert into student_course (STUDENT_ID, COURSE_ID, ASSIGNMENT_GRADE, 
+      DAILY_GRADE)
+    values (#{studentId,jdbcType=VARCHAR}, #{courseId,jdbcType=INTEGER}, #{assignmentGrade,jdbcType=INTEGER}, 
+      #{dailyGrade,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.managementSystem.pojo.Student_Course">
     insert into student_course
@@ -114,8 +115,11 @@
       <if test="courseId != null">
         COURSE_ID,
       </if>
-      <if test="totalGrade != null">
-        TOTAL_GRADE,
+      <if test="assignmentGrade != null">
+        ASSIGNMENT_GRADE,
+      </if>
+      <if test="dailyGrade != null">
+        DAILY_GRADE,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -125,8 +129,11 @@
       <if test="courseId != null">
         #{courseId,jdbcType=INTEGER},
       </if>
-      <if test="totalGrade != null">
-        #{totalGrade,jdbcType=INTEGER},
+      <if test="assignmentGrade != null">
+        #{assignmentGrade,jdbcType=INTEGER},
+      </if>
+      <if test="dailyGrade != null">
+        #{dailyGrade,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -145,8 +152,11 @@
       <if test="record.courseId != null">
         COURSE_ID = #{record.courseId,jdbcType=INTEGER},
       </if>
-      <if test="record.totalGrade != null">
-        TOTAL_GRADE = #{record.totalGrade,jdbcType=INTEGER},
+      <if test="record.assignmentGrade != null">
+        ASSIGNMENT_GRADE = #{record.assignmentGrade,jdbcType=INTEGER},
+      </if>
+      <if test="record.dailyGrade != null">
+        DAILY_GRADE = #{record.dailyGrade,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -157,7 +167,8 @@
     update student_course
     set STUDENT_ID = #{record.studentId,jdbcType=VARCHAR},
       COURSE_ID = #{record.courseId,jdbcType=INTEGER},
-      TOTAL_GRADE = #{record.totalGrade,jdbcType=INTEGER}
+      ASSIGNMENT_GRADE = #{record.assignmentGrade,jdbcType=INTEGER},
+      DAILY_GRADE = #{record.dailyGrade,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -165,8 +176,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.managementSystem.pojo.Student_Course">
     update student_course
     <set>
-      <if test="totalGrade != null">
-        TOTAL_GRADE = #{totalGrade,jdbcType=INTEGER},
+      <if test="assignmentGrade != null">
+        ASSIGNMENT_GRADE = #{assignmentGrade,jdbcType=INTEGER},
+      </if>
+      <if test="dailyGrade != null">
+        DAILY_GRADE = #{dailyGrade,jdbcType=INTEGER},
       </if>
     </set>
     where STUDENT_ID = #{studentId,jdbcType=VARCHAR}
@@ -174,7 +188,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.managementSystem.pojo.Student_Course">
     update student_course
-    set TOTAL_GRADE = #{totalGrade,jdbcType=INTEGER}
+    set ASSIGNMENT_GRADE = #{assignmentGrade,jdbcType=INTEGER},
+      DAILY_GRADE = #{dailyGrade,jdbcType=INTEGER}
     where STUDENT_ID = #{studentId,jdbcType=VARCHAR}
       and COURSE_ID = #{courseId,jdbcType=INTEGER}
   </update>

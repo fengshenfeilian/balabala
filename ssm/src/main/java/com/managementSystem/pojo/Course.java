@@ -7,11 +7,19 @@ public class Course {
 
     private String courseName;
 
+    private String courseDescription;
+
     private String teacherId;
 
-    private Integer capacity;
+    private Integer groupCapacityMin;
+
+    private Integer groupCapacityMax;
+
+    private Integer groupPrefix;
 
     private Date createTime;
+
+    private Integer isEnd;
 
     public Integer getCourseId() {
         return courseId;
@@ -29,6 +37,14 @@ public class Course {
         this.courseName = courseName == null ? null : courseName.trim();
     }
 
+    public String getCourseDescription() {
+        return courseDescription;
+    }
+
+    public void setCourseDescription(String courseDescription) {
+        this.courseDescription = courseDescription == null ? null : courseDescription.trim();
+    }
+
     public String getTeacherId() {
         return teacherId;
     }
@@ -37,12 +53,28 @@ public class Course {
         this.teacherId = teacherId == null ? null : teacherId.trim();
     }
 
-    public Integer getCapacity() {
-        return capacity;
+    public Integer getGroupCapacityMin() {
+        return groupCapacityMin;
     }
 
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
+    public void setGroupCapacityMin(Integer groupCapacityMin) {
+        this.groupCapacityMin = groupCapacityMin;
+    }
+
+    public Integer getGroupCapacityMax() {
+        return groupCapacityMax;
+    }
+
+    public void setGroupCapacityMax(Integer groupCapacityMax) {
+        this.groupCapacityMax = groupCapacityMax;
+    }
+
+    public Integer getGroupPrefix() {
+        return groupPrefix;
+    }
+
+    public void setGroupPrefix(Integer groupPrefix) {
+        this.groupPrefix = groupPrefix;
     }
 
     public Date getCreateTime() {
@@ -51,5 +83,13 @@ public class Course {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Integer getIsEnd() {
+        return isEnd;
+    }
+
+    public void setIsEnd(Integer isEnd) {
+        this.isEnd = isEnd;
     }
 }

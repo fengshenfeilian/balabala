@@ -2,8 +2,10 @@ package com.managementSystem.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.managementSystem.pojo.Course;
 import com.managementSystem.pojo.Msg;
 import com.managementSystem.pojo.User;
+import com.managementSystem.service.TeacherService;
 import com.managementSystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,27 +27,43 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    TeacherService teacherService;
+
+    //登陆，插入，更新时的密码加密
+    //用户搜索优化
+    //前端完善
+
+    //用户输入校验（前后端）
+    //用户操作鉴权
+
+
     //用户控制器，实现了返回json和返回jsp的两种方法
     //用户名单导入
-    @RequestMapping(value = "/importUserList", method = RequestMethod.GET)
-   public String importUser(){
-        return "fileUpload";
-    }
+
 
     //用户登陆，输入用户id和密码
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String UserLogin(@RequestParam(value = "userId")String userId
-            ,@RequestParam(value = "password")String password,Model model){
+            , @RequestParam(value = "password")String password, Model model, HttpServletRequest request){
         //加入session相关的操作
         User user = userService.checkLogin(userId,password);
-        if(user != null && user.getRoleId().equals("1")){
+        if(user != null && user.getRole().getName().equals("admin")){
             model.addAttribute("message","登陆成功");
             model.addAttribute("user",user);
             List<User> users = userService.getUsers("3");
             model.addAttribute("users", users);
             return "index";
         }
-
+        else if(user != null && user.getRoleId().equals("2"))
+        {
+            model.addAttribute("message", "登陆成功");
+            model.addAttribute("user", user);
+            List<Course> courses = teacherService.getAllCourses(userId);
+            model.addAttribute("courses", courses);
+            request.getSession().setAttribute("currentUser", user);
+            return "teacher/index";
+        }
         model.addAttribute("message","用户名或密码错误");
         //此处返回页面待定
         return "loginError";
@@ -90,11 +109,12 @@ public class UserController {
     }
 
 
-    //按条件查询，待完成
-    @RequestMapping(value = "/selectUsers/{example}",method = RequestMethod.GET)
-    public String getUsersWithRoleByExample(){
+    //按条件查询
+    @RequestMapping(value = "/selectUsers",method = RequestMethod.GET)
+    public String getUsersWithRoleByExample(@RequestParam(value = "pn")String a,
+                                            @RequestParam(value = "pn")String b){
 
-        userService.getUserWithRoleByExample();
+        List<User> users = userService.getUserWithRoleByExample();
         return "admin";
     }
 
@@ -117,7 +137,7 @@ public class UserController {
     }
 
 
-    //通过文件导入，待完成
+
     @RequestMapping(value = "/addUsersWithFile", method =RequestMethod.POST)
     public String addUserByFile(@RequestParam(value="filename") MultipartFile file, Model model){
         if(file==null) return null;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018-11-26 10:49:07
+-- Generation Time: 2018-12-01 10:52:49
 -- 服务器版本： 10.1.16-MariaDB
 -- PHP Version: 5.3.29-upupw
 
@@ -45,8 +45,11 @@ CREATE TABLE IF NOT EXISTS `assignment` (
 CREATE TABLE IF NOT EXISTS `course` (
   `COURSE_ID` int(10) NOT NULL,
   `COURSE_NAME` varchar(40) NOT NULL,
+  `COURSE_DESCRIPTION` varchar(80) NOT NULL,
   `TEACHER_ID` varchar(10) NOT NULL,
-  `CAPACITY` int(3) NOT NULL,
+  `GROUP_CAPACITY_MIN` int(3) NOT NULL DEFAULT '1',
+  `GROUP_CAPACITY_MAX` int(3) NOT NULL DEFAULT '5',
+  `GROUP_PREFIX` int(11) DEFAULT NULL,
   `CREATE_TIME` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -59,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `course` (
 CREATE TABLE IF NOT EXISTS `group_assignment` (
   `ASSIGNMENT_ID` varchar(11) NOT NULL,
   `GROUP_ID` int(10) NOT NULL,
-  `TITLE` varchar(50) NOT NULL DEFAULT 'default_title',
-  `BODY` varchar(255) NOT NULL DEFAULT 'default_body',
+  `DESCRIPTION` varchar(255) DEFAULT NULL,
+  `PATH` varchar(255) DEFAULT NULL,
   `SUBMISSION_TIME` datetime DEFAULT NULL,
   `SCORE` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -74,11 +77,9 @@ CREATE TABLE IF NOT EXISTS `group_assignment` (
 CREATE TABLE IF NOT EXISTS `group_course` (
   `GROUP_ID` int(10) NOT NULL,
   `COURSE_ID` int(10) NOT NULL,
-  `CAPACITY_MIN` int(3) NOT NULL DEFAULT '1',
-  `CAPACITY_MAX` int(3) NOT NULL DEFAULT '5',
-  `NAME` varchar(20) DEFAULT NULL,
-  `LEADER_ID` varchar(10) DEFAULT NULL,
-  `IS_CREATED` tinyint(1) NOT NULL DEFAULT '0'
+  `GROUP_NAME` varchar(20) DEFAULT NULL,
+  `GROUP_MEMBER_NUM` int(11) NOT NULL,
+  `LEADER_ID` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -160,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `ROLE_ID` varchar(11) DEFAULT NULL,
   `PASSWORD` varchar(40) NOT NULL DEFAULT 'ruangong',
   `USER_NAME` varchar(10) NOT NULL,
-  `GENDER` varchar(2) NOT NULL,
+  `GENDER` varchar(20) NOT NULL,
   `EMAIL` varchar(20) DEFAULT NULL,
   `DEPARTMENT` varchar(30) DEFAULT NULL,
   `MAJOR` varchar(30) DEFAULT NULL,
@@ -173,7 +174,10 @@ CREATE TABLE IF NOT EXISTS `user_role` (
 --
 
 INSERT INTO `user_role` (`USER_ID`, `ROLE_ID`, `PASSWORD`, `USER_NAME`, `GENDER`, `EMAIL`, `DEPARTMENT`, `MAJOR`, `CLASSES`, `PWD_DEFAULT`) VALUES
-('4', '3', '444', 'test', '男', 'bbb', NULL, NULL, '2015211304', 1);
+('2014211232', '3', '2014211232', '无', '男', '无', '计算机', '计算机科学与技术', '2015211333', 0),
+('2015211232', '3', '2015211232', '郭子晖', '男', '无', '计算机', '计算机科学与技术', '2015211304', 0),
+('4', '3', '444', 'test', '男', 'aaaa', NULL, NULL, '2015211304', 1),
+('5', '1', '555', '111', '男', NULL, NULL, NULL, NULL, 1);
 
 --
 -- Indexes for dumped tables
@@ -257,68 +261,6 @@ ALTER TABLE `user_role`
 --
 ALTER TABLE `course`
   MODIFY `COURSE_ID` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `group_course`
---
-ALTER TABLE `group_course`
-  MODIFY `GROUP_ID` int(10) NOT NULL AUTO_INCREMENT;
---
--- 限制导出的表
---
-
---
--- 限制表 `assignment`
---
-ALTER TABLE `assignment`
-  ADD CONSTRAINT `assignment_ibfk_1` FOREIGN KEY (`COURSE_ID`) REFERENCES `course` (`COURSE_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- 限制表 `course`
---
-ALTER TABLE `course`
-  ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`TEACHER_ID`) REFERENCES `user_role` (`USER_ID`);
-
---
--- 限制表 `group_assignment`
---
-ALTER TABLE `group_assignment`
-  ADD CONSTRAINT `group_assignment_ibfk_1` FOREIGN KEY (`ASSIGNMENT_ID`) REFERENCES `assignment` (`ASSIGNMENT_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `group_assignment_ibfk_2` FOREIGN KEY (`GROUP_ID`) REFERENCES `group_course` (`GROUP_ID`);
-
---
--- 限制表 `group_course`
---
-ALTER TABLE `group_course`
-  ADD CONSTRAINT `group_course_ibfk_1` FOREIGN KEY (`COURSE_ID`) REFERENCES `course` (`COURSE_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `group_course_ibfk_2` FOREIGN KEY (`LEADER_ID`) REFERENCES `user_role` (`USER_ID`);
-
---
--- 限制表 `group_student`
---
-ALTER TABLE `group_student`
-  ADD CONSTRAINT `group_student_ibfk_1` FOREIGN KEY (`GROUP_ID`) REFERENCES `group_course` (`GROUP_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `group_student_ibfk_2` FOREIGN KEY (`STUDENT_ID`) REFERENCES `user_role` (`USER_ID`);
-
---
--- 限制表 `pri_role`
---
-ALTER TABLE `pri_role`
-  ADD CONSTRAINT `pri_role_ibfk_1` FOREIGN KEY (`ROLE_ID`) REFERENCES `role` (`ROLE_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pri_role_ibfk_2` FOREIGN KEY (`PRI_ID`) REFERENCES `privelege` (`PRI_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- 限制表 `student_course`
---
-ALTER TABLE `student_course`
-  ADD CONSTRAINT `student_course_ibfk_2` FOREIGN KEY (`COURSE_ID`) REFERENCES `course` (`COURSE_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_course_ibfk_3` FOREIGN KEY (`STUDENT_ID`) REFERENCES `user_role` (`USER_ID`);
-
---
--- 限制表 `user_role`
---
-ALTER TABLE `user_role`
-  ADD CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`ROLE_ID`) REFERENCES `role` (`ROLE_ID`) ON UPDATE CASCADE;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

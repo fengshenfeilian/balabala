@@ -235,6 +235,76 @@ public class CourseExample {
             return (Criteria) this;
         }
 
+        public Criteria andCourseDescriptionIsNull() {
+            addCriterion("COURSE_DESCRIPTION is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionIsNotNull() {
+            addCriterion("COURSE_DESCRIPTION is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionEqualTo(String value) {
+            addCriterion("COURSE_DESCRIPTION =", value, "courseDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionNotEqualTo(String value) {
+            addCriterion("COURSE_DESCRIPTION <>", value, "courseDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionGreaterThan(String value) {
+            addCriterion("COURSE_DESCRIPTION >", value, "courseDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionGreaterThanOrEqualTo(String value) {
+            addCriterion("COURSE_DESCRIPTION >=", value, "courseDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionLessThan(String value) {
+            addCriterion("COURSE_DESCRIPTION <", value, "courseDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionLessThanOrEqualTo(String value) {
+            addCriterion("COURSE_DESCRIPTION <=", value, "courseDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionLike(String value) {
+            addCriterion("COURSE_DESCRIPTION like", value, "courseDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionNotLike(String value) {
+            addCriterion("COURSE_DESCRIPTION not like", value, "courseDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionIn(List<String> values) {
+            addCriterion("COURSE_DESCRIPTION in", values, "courseDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionNotIn(List<String> values) {
+            addCriterion("COURSE_DESCRIPTION not in", values, "courseDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionBetween(String value1, String value2) {
+            addCriterion("COURSE_DESCRIPTION between", value1, value2, "courseDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseDescriptionNotBetween(String value1, String value2) {
+            addCriterion("COURSE_DESCRIPTION not between", value1, value2, "courseDescription");
+            return (Criteria) this;
+        }
+
         public Criteria andTeacherIdIsNull() {
             addCriterion("TEACHER_ID is null");
             return (Criteria) this;
@@ -305,63 +375,183 @@ public class CourseExample {
             return (Criteria) this;
         }
 
-        public Criteria andCapacityIsNull() {
-            addCriterion("CAPACITY is null");
+        public Criteria andGroupCapacityMinIsNull() {
+            addCriterion("GROUP_CAPACITY_MIN is null");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityIsNotNull() {
-            addCriterion("CAPACITY is not null");
+        public Criteria andGroupCapacityMinIsNotNull() {
+            addCriterion("GROUP_CAPACITY_MIN is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityEqualTo(Integer value) {
-            addCriterion("CAPACITY =", value, "capacity");
+        public Criteria andGroupCapacityMinEqualTo(Integer value) {
+            addCriterion("GROUP_CAPACITY_MIN =", value, "groupCapacityMin");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityNotEqualTo(Integer value) {
-            addCriterion("CAPACITY <>", value, "capacity");
+        public Criteria andGroupCapacityMinNotEqualTo(Integer value) {
+            addCriterion("GROUP_CAPACITY_MIN <>", value, "groupCapacityMin");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityGreaterThan(Integer value) {
-            addCriterion("CAPACITY >", value, "capacity");
+        public Criteria andGroupCapacityMinGreaterThan(Integer value) {
+            addCriterion("GROUP_CAPACITY_MIN >", value, "groupCapacityMin");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityGreaterThanOrEqualTo(Integer value) {
-            addCriterion("CAPACITY >=", value, "capacity");
+        public Criteria andGroupCapacityMinGreaterThanOrEqualTo(Integer value) {
+            addCriterion("GROUP_CAPACITY_MIN >=", value, "groupCapacityMin");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityLessThan(Integer value) {
-            addCriterion("CAPACITY <", value, "capacity");
+        public Criteria andGroupCapacityMinLessThan(Integer value) {
+            addCriterion("GROUP_CAPACITY_MIN <", value, "groupCapacityMin");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityLessThanOrEqualTo(Integer value) {
-            addCriterion("CAPACITY <=", value, "capacity");
+        public Criteria andGroupCapacityMinLessThanOrEqualTo(Integer value) {
+            addCriterion("GROUP_CAPACITY_MIN <=", value, "groupCapacityMin");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityIn(List<Integer> values) {
-            addCriterion("CAPACITY in", values, "capacity");
+        public Criteria andGroupCapacityMinIn(List<Integer> values) {
+            addCriterion("GROUP_CAPACITY_MIN in", values, "groupCapacityMin");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityNotIn(List<Integer> values) {
-            addCriterion("CAPACITY not in", values, "capacity");
+        public Criteria andGroupCapacityMinNotIn(List<Integer> values) {
+            addCriterion("GROUP_CAPACITY_MIN not in", values, "groupCapacityMin");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityBetween(Integer value1, Integer value2) {
-            addCriterion("CAPACITY between", value1, value2, "capacity");
+        public Criteria andGroupCapacityMinBetween(Integer value1, Integer value2) {
+            addCriterion("GROUP_CAPACITY_MIN between", value1, value2, "groupCapacityMin");
             return (Criteria) this;
         }
 
-        public Criteria andCapacityNotBetween(Integer value1, Integer value2) {
-            addCriterion("CAPACITY not between", value1, value2, "capacity");
+        public Criteria andGroupCapacityMinNotBetween(Integer value1, Integer value2) {
+            addCriterion("GROUP_CAPACITY_MIN not between", value1, value2, "groupCapacityMin");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxIsNull() {
+            addCriterion("GROUP_CAPACITY_MAX is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxIsNotNull() {
+            addCriterion("GROUP_CAPACITY_MAX is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxEqualTo(Integer value) {
+            addCriterion("GROUP_CAPACITY_MAX =", value, "groupCapacityMax");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxNotEqualTo(Integer value) {
+            addCriterion("GROUP_CAPACITY_MAX <>", value, "groupCapacityMax");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxGreaterThan(Integer value) {
+            addCriterion("GROUP_CAPACITY_MAX >", value, "groupCapacityMax");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxGreaterThanOrEqualTo(Integer value) {
+            addCriterion("GROUP_CAPACITY_MAX >=", value, "groupCapacityMax");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxLessThan(Integer value) {
+            addCriterion("GROUP_CAPACITY_MAX <", value, "groupCapacityMax");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxLessThanOrEqualTo(Integer value) {
+            addCriterion("GROUP_CAPACITY_MAX <=", value, "groupCapacityMax");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxIn(List<Integer> values) {
+            addCriterion("GROUP_CAPACITY_MAX in", values, "groupCapacityMax");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxNotIn(List<Integer> values) {
+            addCriterion("GROUP_CAPACITY_MAX not in", values, "groupCapacityMax");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxBetween(Integer value1, Integer value2) {
+            addCriterion("GROUP_CAPACITY_MAX between", value1, value2, "groupCapacityMax");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupCapacityMaxNotBetween(Integer value1, Integer value2) {
+            addCriterion("GROUP_CAPACITY_MAX not between", value1, value2, "groupCapacityMax");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixIsNull() {
+            addCriterion("GROUP_PREFIX is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixIsNotNull() {
+            addCriterion("GROUP_PREFIX is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixEqualTo(Integer value) {
+            addCriterion("GROUP_PREFIX =", value, "groupPrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixNotEqualTo(Integer value) {
+            addCriterion("GROUP_PREFIX <>", value, "groupPrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixGreaterThan(Integer value) {
+            addCriterion("GROUP_PREFIX >", value, "groupPrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixGreaterThanOrEqualTo(Integer value) {
+            addCriterion("GROUP_PREFIX >=", value, "groupPrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixLessThan(Integer value) {
+            addCriterion("GROUP_PREFIX <", value, "groupPrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixLessThanOrEqualTo(Integer value) {
+            addCriterion("GROUP_PREFIX <=", value, "groupPrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixIn(List<Integer> values) {
+            addCriterion("GROUP_PREFIX in", values, "groupPrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixNotIn(List<Integer> values) {
+            addCriterion("GROUP_PREFIX not in", values, "groupPrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixBetween(Integer value1, Integer value2) {
+            addCriterion("GROUP_PREFIX between", value1, value2, "groupPrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixNotBetween(Integer value1, Integer value2) {
+            addCriterion("GROUP_PREFIX not between", value1, value2, "groupPrefix");
             return (Criteria) this;
         }
 
@@ -422,6 +612,66 @@ public class CourseExample {
 
         public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
             addCriterion("CREATE_TIME not between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndIsNull() {
+            addCriterion("IS_END is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndIsNotNull() {
+            addCriterion("IS_END is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndEqualTo(Integer value) {
+            addCriterion("IS_END =", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndNotEqualTo(Integer value) {
+            addCriterion("IS_END <>", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndGreaterThan(Integer value) {
+            addCriterion("IS_END >", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndGreaterThanOrEqualTo(Integer value) {
+            addCriterion("IS_END >=", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndLessThan(Integer value) {
+            addCriterion("IS_END <", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndLessThanOrEqualTo(Integer value) {
+            addCriterion("IS_END <=", value, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndIn(List<Integer> values) {
+            addCriterion("IS_END in", values, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndNotIn(List<Integer> values) {
+            addCriterion("IS_END not in", values, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndBetween(Integer value1, Integer value2) {
+            addCriterion("IS_END between", value1, value2, "isEnd");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsEndNotBetween(Integer value1, Integer value2) {
+            addCriterion("IS_END not between", value1, value2, "isEnd");
             return (Criteria) this;
         }
     }

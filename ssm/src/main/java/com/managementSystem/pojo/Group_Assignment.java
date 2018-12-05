@@ -11,6 +11,10 @@ public class Group_Assignment extends Group_AssignmentKey {
 
     private Integer score;
 
+    private String groupName;
+
+    private String studentName;
+
     public String getTitle() {
         return title;
     }
@@ -41,5 +45,21 @@ public class Group_Assignment extends Group_AssignmentKey {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 }

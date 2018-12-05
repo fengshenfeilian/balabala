@@ -4,11 +4,9 @@
   <resultMap id="BaseResultMap" type="com.managementSystem.pojo.Group">
     <id column="GROUP_ID" jdbcType="INTEGER" property="groupId" />
     <result column="COURSE_ID" jdbcType="INTEGER" property="courseId" />
-    <result column="CAPACITY_MIN" jdbcType="INTEGER" property="capacityMin" />
-    <result column="CAPACITY_MAX" jdbcType="INTEGER" property="capacityMax" />
-    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="GROUP_NAME" jdbcType="VARCHAR" property="groupName" />
+    <result column="GROUP_MEMBER_NUM" jdbcType="INTEGER" property="groupMemberNum" />
     <result column="LEADER_ID" jdbcType="VARCHAR" property="leaderId" />
-    <result column="IS_CREATED" jdbcType="BIT" property="isCreated" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    GROUP_ID, COURSE_ID, CAPACITY_MIN, CAPACITY_MAX, NAME, LEADER_ID, IS_CREATED
+    GROUP_ID, COURSE_ID, GROUP_NAME, GROUP_MEMBER_NUM, LEADER_ID
   </sql>
   <select id="selectByExample" parameterType="com.managementSystem.pojo.GroupExample" resultMap="BaseResultMap">
     select
@@ -91,6 +89,15 @@
     from group_course
     where GROUP_ID = #{groupId,jdbcType=INTEGER}
   </select>
+  <select id="selectByUseridCourseid" resultType="java.lang.Integer">
+    select GOURP_ID from group_course gc, group_student gs where gc.GROUP_ID=gs.GROUP_ID and gc.COURSE_ID=#{courseId} and gs.STUDENT_ID=#{studentId}
+  </select>
+  <select id="selectGrade" resultType="java.lang.Integer">
+        select GRADE from group_student gs, group_course gc where gc.GROUP_ID=gs.GROUP_id and gc.COURSE_ID=#{courseId} and gs.STUDENT_ID=#{studentId}
+    </select>
+  <select id="selectId" resultType="java.lang.Integer">
+    select GROUP_ID from group_course where GROUP_NAME=#{groupName}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from group_course
     where GROUP_ID = #{groupId,jdbcType=INTEGER}
@@ -102,12 +109,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.managementSystem.pojo.Group">
-    insert into group_course (GROUP_ID, COURSE_ID, CAPACITY_MIN, 
-      CAPACITY_MAX, NAME, LEADER_ID, 
-      IS_CREATED)
-    values (#{groupId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{capacityMin,jdbcType=INTEGER}, 
-      #{capacityMax,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{leaderId,jdbcType=VARCHAR}, 
-      #{isCreated,jdbcType=BIT})
+    insert into group_course (GROUP_ID, COURSE_ID, GROUP_NAME, 
+      GROUP_MEMBER_NUM, LEADER_ID)
+    values (#{groupId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, 
+      #{groupMemberNum,jdbcType=INTEGER}, #{leaderId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.managementSystem.pojo.Group">
     insert into group_course
@@ -118,20 +123,14 @@
       <if test="courseId != null">
         COURSE_ID,
       </if>
-      <if test="capacityMin != null">
-        CAPACITY_MIN,
+      <if test="groupName != null">
+        GROUP_NAME,
       </if>
-      <if test="capacityMax != null">
-        CAPACITY_MAX,
-      </if>
-      <if test="name != null">
-        NAME,
+      <if test="groupMemberNum != null">
+        GROUP_MEMBER_NUM,
       </if>
       <if test="leaderId != null">
         LEADER_ID,
-      </if>
-      <if test="isCreated != null">
-        IS_CREATED,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -141,20 +140,14 @@
       <if test="courseId != null">
         #{courseId,jdbcType=INTEGER},
       </if>
-      <if test="capacityMin != null">
-        #{capacityMin,jdbcType=INTEGER},
+      <if test="groupName != null">
+        #{groupName,jdbcType=VARCHAR},
       </if>
-      <if test="capacityMax != null">
-        #{capacityMax,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="groupMemberNum != null">
+        #{groupMemberNum,jdbcType=INTEGER},
       </if>
       <if test="leaderId != null">
         #{leaderId,jdbcType=VARCHAR},
-      </if>
-      <if test="isCreated != null">
-        #{isCreated,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -173,20 +166,14 @@
       <if test="record.courseId != null">
         COURSE_ID = #{record.courseId,jdbcType=INTEGER},
       </if>
-      <if test="record.capacityMin != null">
-        CAPACITY_MIN = #{record.capacityMin,jdbcType=INTEGER},
+      <if test="record.groupName != null">
+        GROUP_NAME = #{record.groupName,jdbcType=VARCHAR},
       </if>
-      <if test="record.capacityMax != null">
-        CAPACITY_MAX = #{record.capacityMax,jdbcType=INTEGER},
-      </if>
-      <if test="record.name != null">
-        NAME = #{record.name,jdbcType=VARCHAR},
+      <if test="record.groupMemberNum != null">
+        GROUP_MEMBER_NUM = #{record.groupMemberNum,jdbcType=INTEGER},
       </if>
       <if test="record.leaderId != null">
         LEADER_ID = #{record.leaderId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.isCreated != null">
-        IS_CREATED = #{record.isCreated,jdbcType=BIT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -197,11 +184,9 @@
     update group_course
     set GROUP_ID = #{record.groupId,jdbcType=INTEGER},
       COURSE_ID = #{record.courseId,jdbcType=INTEGER},
-      CAPACITY_MIN = #{record.capacityMin,jdbcType=INTEGER},
-      CAPACITY_MAX = #{record.capacityMax,jdbcType=INTEGER},
-      NAME = #{record.name,jdbcType=VARCHAR},
-      LEADER_ID = #{record.leaderId,jdbcType=VARCHAR},
-      IS_CREATED = #{record.isCreated,jdbcType=BIT}
+      GROUP_NAME = #{record.groupName,jdbcType=VARCHAR},
+      GROUP_MEMBER_NUM = #{record.groupMemberNum,jdbcType=INTEGER},
+      LEADER_ID = #{record.leaderId,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -212,20 +197,14 @@
       <if test="courseId != null">
         COURSE_ID = #{courseId,jdbcType=INTEGER},
       </if>
-      <if test="capacityMin != null">
-        CAPACITY_MIN = #{capacityMin,jdbcType=INTEGER},
+      <if test="groupName != null">
+        GROUP_NAME = #{groupName,jdbcType=VARCHAR},
       </if>
-      <if test="capacityMax != null">
-        CAPACITY_MAX = #{capacityMax,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        NAME = #{name,jdbcType=VARCHAR},
+      <if test="groupMemberNum != null">
+        GROUP_MEMBER_NUM = #{groupMemberNum,jdbcType=INTEGER},
       </if>
       <if test="leaderId != null">
         LEADER_ID = #{leaderId,jdbcType=VARCHAR},
-      </if>
-      <if test="isCreated != null">
-        IS_CREATED = #{isCreated,jdbcType=BIT},
       </if>
     </set>
     where GROUP_ID = #{groupId,jdbcType=INTEGER}
@@ -233,11 +212,9 @@
   <update id="updateByPrimaryKey" parameterType="com.managementSystem.pojo.Group">
     update group_course
     set COURSE_ID = #{courseId,jdbcType=INTEGER},
-      CAPACITY_MIN = #{capacityMin,jdbcType=INTEGER},
-      CAPACITY_MAX = #{capacityMax,jdbcType=INTEGER},
-      NAME = #{name,jdbcType=VARCHAR},
-      LEADER_ID = #{leaderId,jdbcType=VARCHAR},
-      IS_CREATED = #{isCreated,jdbcType=BIT}
+      GROUP_NAME = #{groupName,jdbcType=VARCHAR},
+      GROUP_MEMBER_NUM = #{groupMemberNum,jdbcType=INTEGER},
+      LEADER_ID = #{leaderId,jdbcType=VARCHAR}
     where GROUP_ID = #{groupId,jdbcType=INTEGER}
   </update>
 </mapper>

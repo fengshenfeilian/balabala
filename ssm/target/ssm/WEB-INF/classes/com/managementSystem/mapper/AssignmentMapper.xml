@@ -91,6 +91,9 @@
     from assignment
     where ASSIGNMENT_ID = #{assignmentId,jdbcType=VARCHAR}
   </select>
+  <select id="getPercent" resultType="java.lang.Integer">
+    select PERCENT from assignment where ASSIGNMENT_ID=#{assignmentId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from assignment
     where ASSIGNMENT_ID = #{assignmentId,jdbcType=VARCHAR}

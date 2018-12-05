@@ -27,4 +27,6 @@ public interface AssignmentMapper {
     int updateByPrimaryKeySelective(Assignment record);
 
     int updateByPrimaryKey(Assignment record);
+
+    int getPercent(String assignmentId);
 }
