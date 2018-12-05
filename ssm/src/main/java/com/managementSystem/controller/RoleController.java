@@ -21,4 +21,5 @@ public class RoleController {
         List<Role> list = roleService.getRoles();
         return Msg.success("").add("roles",list);
     }
+
 }

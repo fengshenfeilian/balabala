@@ -22,18 +22,35 @@ public class UserService {
         return userMapper.selectByExampleWithRole(null);
     }
 
-    public List<User> getUsers(String role_id) {
+    public List<User> getUsersByRole(String roleId) {
 
         UserExample userExample = new UserExample();
         UserExample.Criteria criteria = userExample.createCriteria();
-        criteria.andRoleIdEqualTo(role_id);
+        criteria.andRoleIdEqualTo(roleId);
         List<User> users = userMapper.selectByExampleWithRole(userExample);
-//        System.out.println("users size="+users.size());
         return users;
     }
 
-    public List<User> getUserWithRoleByExample() {
-        return null;
+    public User getUserWithRoleById(String userId){
+        if(userId.equals("")||userId==null)return null;
+        return userMapper.selectByPrimaryKeyWithRole(userId);
+    }
+
+    //提供五个可选条件的查询，检索用不到的条件应为""
+    public List<User> getUsersWithRoleByExample(String roleName,String userName,String gender,String department,String classes) {
+        //==比较地址,equals比较值
+        if(roleName.equals("") && userName.equals("") && gender.equals("") && department.equals("") && classes.equals(""))
+            return userMapper.selectByExampleWithRole(null);
+
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        if(!roleName.equals(""))criteria.andNameEqualToWithRole(roleName);
+        if(!userName.equals(""))criteria.andUserNameEqualTo(userName);
+        if(!gender.equals(""))criteria.andGenderEqualTo(gender);
+        if(!department.equals(""))criteria.andDepartmentEqualTo(department);
+        if(!classes.equals("")) criteria.andClassesEqualTo(classes);
+
+        return userMapper.selectByExampleWithRole(userExample);
     }
 
     public void addUserByInput(User user) {

@@ -92,7 +92,8 @@
             </fieldset>
         </form>
     </div>
-</div>    
+</div>
+
 
 <!-- Footer line -->
 <div id="footer">
