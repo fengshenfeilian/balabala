@@ -27,8 +27,9 @@ public class UserService {
         UserExample userExample = new UserExample();
         UserExample.Criteria criteria = userExample.createCriteria();
         criteria.andRoleIdEqualTo(role_id);
-        List<User> users = userMapper.selectByExampleWithRole(userExample);
+//        List<User> users = userMapper.selectByExampleWithRole(userExample);
 //        System.out.println("users size="+users.size());
+        List<User> users = userMapper.selectByExample(userExample);
         return users;
     }
 
@@ -68,7 +69,8 @@ public class UserService {
     }
 
     public User checkLogin(String userId, String password) {
-        User result = userMapper.selectByPrimaryKeyWithRole(userId);
+//        User result = userMapper.selectByPrimaryKeyWithRole(userId);
+        User result = userMapper.selectByPrimaryKey(userId);
         if (result != null && result.getPassword().equals(password)) {
                 return result;
         }

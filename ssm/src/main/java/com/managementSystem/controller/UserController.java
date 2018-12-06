@@ -48,7 +48,7 @@ public class UserController {
             , @RequestParam(value = "password")String password, Model model, HttpServletRequest request){
         //加入session相关的操作
         User user = userService.checkLogin(userId,password);
-        if(user != null && user.getRole().getName().equals("admin")){
+        if(user != null && user.getRoleId().equals("1")){
             model.addAttribute("message","登陆成功");
             model.addAttribute("user",user);
             List<User> users = userService.getUsers("3");
