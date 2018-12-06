@@ -87,6 +87,26 @@ public class TeacherController {
         return "teacher/course";
     }
 
+    @RequestMapping(value = "/addDailyScore", method = RequestMethod.POST)
+    public String addDailyScore(@RequestParam(value="filename") MultipartFile file, Model model, HttpSession session)
+    {
+        if(file==null) return null;
+        //获取文件名
+        String name = file.getOriginalFilename();
+        //进一步判断文件是否为空（即判断其大小是否为0或其名称是否为null）
+        long size=file.getSize();
+        if(name==null || ("").equals(name) && size==0) return null;
+        //批量导入。参数：文件名，文件。
+        User user = (User) session.getAttribute("currentUser");
+        Course course = (Course) session.getAttribute("currentCourse");
+//        Integer courseId = teacherService.getCourseId(course.getCourseName(), user.getUserId());
+        Integer courseId = course.getCourseId();
+        teacherService.addDailyScore(name, file, courseId);
+        model.addAttribute("msg", "导入平时成绩成功");
+        model.addAttribute("course", course);
+        return "teacher/course";
+    }
+
     @RequestMapping(value = "/goCourse")
     public String goCourse(HttpServletRequest request, Model model)
     {
@@ -173,7 +193,7 @@ public class TeacherController {
         return "teacher/assignments";
     }
 
-    @RequestMapping(value = "/goGcore")
+    @RequestMapping(value = "/goScore")
     public String score(HttpServletRequest request, Model model)
     {
         String assignmentId = request.getParameter("assignmentId");
@@ -258,7 +278,10 @@ public class TeacherController {
         User user = (User) httpSession.getAttribute("currentUser");
         Integer courseId = teacherService.getCourseId(course.getCourseName(), user.getUserId());
         List<Student_Course> student_courses = teacherService.getAllStudentsInfo(courseId);
-        model.addAttribute("studentInfo", student_courses);
+        model.addAttribute("student_courses", student_courses);
+        model.addAttribute("course", course);
+        List<User > students = teacherService.getAllUsers(student_courses);
+        model.addAttribute("students", students);
         return "teacher/students";
     }
 }

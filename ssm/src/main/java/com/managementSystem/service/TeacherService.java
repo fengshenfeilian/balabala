@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("teacherService")
@@ -200,5 +201,25 @@ public class TeacherService {
 
     public void updateGroupGrade(Group_Assignment group_assignment) {
         group_assignmentMapper.updateByPrimaryKey(group_assignment);
+    }
+
+    public void addDailyScore(String name, MultipartFile file, Integer courseId) {
+        ReadExcel readExcel = new ReadExcel();
+        List<Student_Course> users = readExcel.getDailyScore(name, file);
+        for(Student_Course student_course : users)
+        {
+            student_course.setCourseId(courseId);
+            student_courseMapper.updateByPrimaryKey(student_course);
+        }
+    }
+
+    public List<User> getAllUsers(List<Student_Course> student_courses) {
+        List<User> users = new ArrayList<>();
+        for (Student_Course student_course : student_courses)
+        {
+            User user = userMapper.selectByPrimaryKey(student_course.getStudentId());
+            users.add(user);
+        }
+        return users;
     }
 }

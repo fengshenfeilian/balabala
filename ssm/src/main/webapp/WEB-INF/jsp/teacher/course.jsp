@@ -142,9 +142,12 @@
                     <input type="file" name="filename"  value="" />
                     <input type="submit" name=""  value="上传学生名单" />
                 </form>
-
+                <form action="${pageContext.request.contextPath}/teacher/addDailyScore" method="post" enctype="multipart/form-data">
+                    <input type="file" name="filename"  value="" />
+                    <input type="submit" name=""  value="上传平时成绩" />
+                </form>
                 <a href="/teacher/goAddAssignment">添加作业</a>
-
+                <a href="/teacher/showAllStudents">查看学生</a>
                 <div class="clear"></div>
             </div>
         </div>
