@@ -67,7 +67,7 @@
     <!-- Shared on MafiaShare.net  --><!-- Shared on MafiaShare.net  -->
 </head>
 
-<body>
+<body onload="Init()">
 
 <!-- 左侧菜单栏 -->
 <div id="leftSide">
@@ -86,12 +86,12 @@
     <!-- 左侧导航栏 -->
     <ul id="menu" class="nav">
         <li class="dash">
-            <a href="#"  onclick="menuClick('${pageContext.request.contextPath}/user/selectUsers?roleName=student')">
+            <a href="#"  id="S">
                 <span>学生管理</span>
             </a>
         </li>
         <li class="dash">
-            <a href="#"  onclick="menuClick('${pageContext.request.contextPath}/user/selectUsers?roleName=teacher')">
+            <a href="#"  id="T">
                 <span>教师管理</span>
             </a>
         </li>
@@ -100,9 +100,25 @@
 </div>
 <!--加载相应页面-->
 <script type="text/javascript">
+    var Init = function () {
+        //alert("onload");
+        $("#S").addClass("active");
+        menuClick('${pageContext.request.contextPath}/user/selectUsers?roleName=student');
+    }
+    $("#S").click(function () {
+        $("#menu > li > a").removeClass("active");
+        $(this).addClass("active");
+        menuClick('${pageContext.request.contextPath}/user/selectUsers?roleName=student');
+    })
+    $("#T").click(function () {
+        $("#menu > li > a").removeClass("active");
+        $(this).addClass("active");
+        menuClick('${pageContext.request.contextPath}/user/selectUsers?roleName=teacher');
+    })
     var menuClick = function(menuUrl) {
         $("#content").load(menuUrl);
     };
+
 
 </script>
 

@@ -3,6 +3,7 @@ package com.managementSystem.service;
 import com.managementSystem.dao.UserMapper;
 import com.managementSystem.pojo.User;
 import com.managementSystem.pojo.UserExample;
+import com.managementSystem.util.MD5Utils;
 import com.managementSystem.util.ReadExcel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,14 +23,7 @@ public class UserService {
         return userMapper.selectByExampleWithRole(null);
     }
 
-    public List<User> getUsersByRole(String roleId) {
 
-        UserExample userExample = new UserExample();
-        UserExample.Criteria criteria = userExample.createCriteria();
-        criteria.andRoleIdEqualTo(roleId);
-        List<User> users = userMapper.selectByExampleWithRole(userExample);
-        return users;
-    }
 
     public User getUserWithRoleById(String userId){
         if(userId.equals("")||userId==null)return null;
@@ -64,6 +58,8 @@ public class UserService {
 
         for(User user : users)
         {
+            //默认用户密码为学号，并对其进行md5加密
+            user.setPassword(MD5Utils.getPwd(user.getUserId()));
             if(userMapper.selectByPrimaryKey(user.getUserId())==null)
             userMapper.insert(user);
         }

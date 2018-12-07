@@ -73,11 +73,17 @@
 <div class="statsRow">
     <div class="wrapper">
         <div class="controlB">
-            <!--上传用户名单-->
-            <form action="${pageContext.request.contextPath}/user/addUsersWithFile" method="post" enctype="multipart/form-data">
-                <input type="file" name="filename"  value="" />
-                <input type="submit" name=""  value="上传用户名单" />
-            </form>
+            <button class="btn dblueB" id="insBtn">新增</button>
+            <button class="btn dredB" id="delBtn">批量删除</button>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+<div class="statsRow" >
+    <div class="wrapper" >
+        <div class="controlB" style="width:5%;">
+            <label>全选<input type = "checkbox" id="check_all" /></label>
             <div class="clear"></div>
         </div>
     </div>
@@ -98,6 +104,7 @@
             <table cellpadding="0" cellspacing="0" width="100%" class="display dTable">
                 <thead>
                 <tr>
+                    <td>#</td>
                     <td class="sortCol"><div>工号<span></span></div></td>
                     <td class="sortCol"><div>老师姓名<span></span></div></td>
                     <td class="sortCol"><div>性别<span></span></div></td>
@@ -107,13 +114,16 @@
                 </tr>
                 </thead>
                 <tbody align="center">
-                <c:forEach items="${users}" var="student">
+                <c:forEach items="${users}" var="teacher">
                     <tr>
-                        <td>${student.userId}</td>
-                        <td>${student.userName}</td>
-                        <td>${student.gender}</td>
-                        <td>${student.department}</td>
-                        <td>${student.email}</td>
+                        <td>
+                            <input type = "checkbox" class = "check_item" />
+                        </td>
+                        <td>${teacher.userId}</td>
+                        <td>${teacher.userName}</td>
+                        <td>${teacher.gender}</td>
+                        <td>${teacher.department}</td>
+                        <td>${teacher.email}</td>
                         <td><button class="btn update dblueB">修改</button>
                             <button class="btn del dredB" >删除</button></td>
                     </tr>
@@ -125,7 +135,78 @@
 </div>
 
 
+<script type="text/javascript">
+    $("#insBtn").click(function(){
+        //alert("insTest");
+        $("#content").load('${pageContext.request.contextPath}/user/toAdminInsertPage?roleName=teacher');
+    });
 
+    $(".update").off("click").on("click",function () {
+        //alert("updateTest");
+        var userId = $(this).parents("tr").find("td:eq(1)").text();
+        //alert('/user/toAdminUpdatePage?roleName=student&userId='+userId)
+        $("#content").load('${pageContext.request.contextPath}/user/toAdminUpdatePage?roleName=teacher&userId='+userId);
+    });
+
+    //单个删除
+    $(".del").off("click").on("click",function(){
+        var userId= $(this).parents("tr").find("td:eq(1)").text();
+        var userName = $(this).parents("tr").find("td:eq(2)").text();
+        if(confirm("确认删除【"+userName+"】吗？")){
+            $.ajax({
+                url:'${pageContext.request.contextPath}/user/deleteUsersWithJson/'+userId,
+                type:"DELETE",
+                success:function(result){
+                    alert(result.message);
+                    $("#content").load('${pageContext.request.contextPath}/user/selectUsers?roleName=teacher');
+                }
+            });
+        }
+    });
+
+    //全选按钮
+    $("#check_all").click(function () {
+        //prop修改和读取dom原生属性的值
+        var flag = $(this).prop("checked");
+        $(".check_item").prop("checked",flag);
+        //样式会在checkbox前自动加上span
+        if(flag == true)
+            $(".check_item").parents("span").addClass("checked");
+        else
+            $(".check_item").parents("span").removeClass("checked");
+    });
+
+    //单选按钮全勾选时自动勾选全选按钮
+    $(".check_item").off("click").on("click",function () {
+        //alert($(this).prop("checked"));
+        var flag = $(".check_item:checked").length==$(".check_item").length;
+        $("#check_all").prop("checked",flag);
+        if(flag==true)
+            $("#check_all").parents("span").addClass("checked");
+        else
+            $("#check_all").parents("span").removeClass("checked");
+    });
+
+    //批量删除
+    $("#delBtn").click(function(){
+        //alert("批量删除测试");
+        var userIds = "";
+        $.each($(".check_item:checked"),function () {
+            userIds += $(this).parents("tr").find("td:eq(1)").text()+"-";
+        });
+        userIds = userIds.substring(0,userIds.length-1);
+        if(confirm("确认删除选中的项目吗？")){
+            $.ajax({
+                url:'${pageContext.request.contextPath}/user/deleteUsersWithJson/'+userIds,
+                type:"DELETE",
+                success:function(result){
+                    alert(result.message);
+                    $("#content").load('${pageContext.request.contextPath}/user/selectUsers?roleName=teacher');
+                }
+            });
+        }
+    });
+</script>
 </body>
 
 </html>

@@ -7,15 +7,21 @@ import com.managementSystem.pojo.Role;
 import com.managementSystem.pojo.User;
 import com.managementSystem.service.RoleService;
 import com.managementSystem.service.UserService;
+import com.managementSystem.util.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -30,8 +36,8 @@ public class UserController {
     RoleService roleService;
 
 
-    //登陆，插入，更新时的密码加密
-    //用户搜索优化
+    //登陆，插入，更新，上传时，密码进行md5加密
+    //md5是单向加密
     //前端完善
 
     //用户输入校验（前后端）
@@ -40,7 +46,6 @@ public class UserController {
     //登陆用户在前后端的保存和传递
 
     //用户控制器，实现了返回json和返回jsp的两种方法
-    //用户名单导入
 
 
     //用户登陆，输入用户id和密码
@@ -48,11 +53,11 @@ public class UserController {
     public String UserLogin(@RequestParam(value = "userId")String userId
             ,@RequestParam(value = "password")String password,Model model){
         //加入session相关的操作
+        //前端传来的密码应该是md5加密后的32位密码
         User user = userService.checkLogin(userId,password);
         if(user != null){
             model.addAttribute("message","登陆成功");
             model.addAttribute("user",user);
-
             //根据不同角色传入不同属性
             if(user.getRole().getName().equals("admin")){
                 //改为传角色名，增强可读性
@@ -60,10 +65,10 @@ public class UserController {
                 model.addAttribute("users",users);
             }
             else if(user.getRole().getName().equals("teacher")){
-
+                //此处应判断密码是否为默认从而跳转到更改密码界面
             }
             else if(user.getRole().getName().equals("student")){
-
+                //此处应判断密码是否为默认从而跳转到更改密码界面
             }
             else{
                 model.addAttribute("message","未知用户");
@@ -179,9 +184,20 @@ public class UserController {
 
     @RequestMapping(value = "/addUsersWithJson",method = RequestMethod.POST)
     @ResponseBody
-    public Msg addUserByInputWithJson(HttpSession session,User user){
+    public Msg addUserByInputWithJson(HttpSession session,@Valid User user,BindingResult result){
+        if(userService.getUserWithRoleById(user.getUserId())!=null){
+            return Msg.fail("用户id重复！");
+        }
+        //数据后端校验
+        if(result.hasErrors()){
+            Map<String,Object> map = new HashMap<>();
+            List<FieldError> errors = result.getFieldErrors();
+            for(FieldError fieldError:errors){
+                map.put(fieldError.getField(),fieldError.getDefaultMessage());
+            }
+            return Msg.fail("处理失败！").add("errorFields",map);
+        }
 
-        //某些数据需要后端校验
         userService.addUserByInput(user);
         return Msg.success("处理成功！");
     }
@@ -190,13 +206,13 @@ public class UserController {
     //通过文件添加用户
     @RequestMapping(value = "/addUsersWithFile", method =RequestMethod.POST)
     @ResponseBody
-    public Msg addUserByFile(@RequestParam(value="filename") MultipartFile file, HttpSession session,Model model){
-        if(file==null) return null;
+    public Msg addUserByFile(@RequestParam(value="filename",required = false) MultipartFile file, HttpSession session,Model model){
+        if(file==null) return Msg.fail("请选择文件！");
         //获取文件名
         String name = file.getOriginalFilename();
         //进一步判断文件是否为空（即判断其大小是否为0或其名称是否为null）
         long size=file.getSize();
-        if(name==null || ("").equals(name) && size==0) return null;
+        if(name==null || ("").equals(name) && size==0) return Msg.fail("文件为空或不存在！");
         //批量导入。参数：文件名，文件。
         userService.addUserByFile(name, file);
 
@@ -209,7 +225,7 @@ public class UserController {
     @RequestMapping(value = "/updateUsers/{userId}",method = RequestMethod.PUT)
     public String updateUser(User user,HttpSession session,Model model){
 
-        //数据可能需要后端校验
+        //数据后端校验
         userService.updateUser(user);
         model.addAttribute("updateResult","complete");
         return "admin";
@@ -217,9 +233,17 @@ public class UserController {
 
     @RequestMapping(value = "/updateUsersWithJson/{userId}",method = RequestMethod.PUT)
     @ResponseBody
-    public Msg updateUserWithJson(HttpSession session,User user){
+    public Msg updateUserWithJson(HttpSession session, @Valid User user, BindingResult result){
 
-        //数据可能需要后端校验
+        //数据后端校验
+        if(result.hasErrors()){
+            Map<String,Object> map = new HashMap<>();
+            List<FieldError> errors = result.getFieldErrors();
+            for(FieldError fieldError:errors){
+                map.put(fieldError.getField(),fieldError.getDefaultMessage());
+            }
+            return Msg.fail("更新失败！").add("errorFields",map);
+        }
         userService.updateUser(user);
         return Msg.success("更新成功！");
     }

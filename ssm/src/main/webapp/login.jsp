@@ -8,6 +8,8 @@
 	<link href="/static/css/main.css" rel="stylesheet" type="text/css" />
 
 	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<!--md5加密插件-->
+	<script type="text/javascript" src="/static/jquery/jquery.md5.js"></script>
 	<script type="text/javascript" src="/static/js/plugins/spinner/ui.spinner.js"></script>
 	<script type="text/javascript" src="/static/js/plugins/spinner/jquery.mousewheel.js"></script>
 	<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
@@ -74,7 +76,7 @@
             <fieldset>
                 <div class="formRow">
                     <label for="login">用户号</label>
-                    <div class="loginInput"><input type="text" name="userId" class="validate[required]" id="login" /></div>
+                    <div class="loginInput"><input type="text" name="userId"  class="validate[required]" id="login" ></div>
                     <div class="clear"></div>
                 </div>
                 
@@ -99,7 +101,18 @@
 <div id="footer">
     <div class="wrapper">All right reserved by Marco</div>
 </div>
-
+<script type="text/javascript">
+	$("#validate").validate();
+	//前端密码加密
+	$("#validate").submit(function(){
+	    //alert("test");
+		var pwd = $("#pass").val();
+		if(pwd != ""){
+            pwd = $.md5(pwd);
+            $("#pass").val(pwd);
+		}
+	});
+</script>
 
 </body>
 </html>

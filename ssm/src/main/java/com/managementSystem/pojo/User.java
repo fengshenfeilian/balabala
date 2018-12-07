@@ -1,16 +1,24 @@
 package com.managementSystem.pojo;
 
+import javax.validation.constraints.Pattern;
+
 public class User {
+    @Pattern(regexp = "^[a-zA-Z0-9_-]{3,16}$",
+            message ="用户id格式错误，应为3到16位的字母数字组合" )
     private String userId;
 
     private String roleId;
 
     private String password;
 
+    @Pattern(regexp = "(^[a-zA-Z_-]{1,10}$)|(^[\\u2E80-\\u9FFF]{2,5})",
+            message = "用户名格式错误，应为1到10位的字母或2到5位的中文")
     private String userName;
 
     private String gender;
 
+    @Pattern(regexp = "(^[a-z\\d]+(\\.[a-z\\d]+)*@([\\da-z](-[\\da-z])?)+(\\.{1,2}[a-z]+)+$)|(^$)",
+            message ="Email格式错误" )
     private String email;
 
     private String department;

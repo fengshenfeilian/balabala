@@ -71,13 +71,29 @@
         <div class="wrapper">
             <div class="controlB">
                 <!--上传学生名单-->
-                <form action="${pageContext.request.contextPath}/user/addUsersWithFile" method="post" enctype="multipart/form-data">
-                    <input type="file" name="filename"  value="" />
-                    <input type="submit" name=""  value="上传学生名单" />
+                <form onsubmit="return false" id="uploadForm" enctype="multipart/form-data">
+                    <input type="file" name = "filename" value="" />
+                    <input type="submit" value="上传学生名单" id="upload" class="btn dblueB"/>
                 </form>
-                <input type = "checkbox" id="check_all" >全选</input>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="statsRow">
+        <div class="wrapper">
+            <div class="controlB">
                 <button class="btn dblueB" id="insBtn">新增</button>
                 <button class="btn dredB" id="delBtn">批量删除</button>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="statsRow" >
+        <div class="wrapper" >
+            <div class="controlB" style="width:5%;">
+                <label>全选<input type = "checkbox" id="check_all" /></label>
                 <div class="clear"></div>
             </div>
         </div>
@@ -134,6 +150,23 @@
 
 
 <script type="text/javascript">
+    $("#upload").click(function () {
+
+        var formData = new FormData($("#uploadForm")[0]);
+        $.ajax({
+            url:'${pageContext.request.contextPath}/user/addUsersWithFile',
+            type:"POST",
+            data:formData,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success:function(result){
+                alert(result.message);
+                if(result.code==100)
+                $("#content").load('${pageContext.request.contextPath}/user/selectUsers?roleName=student');
+            }
+        });
+    });
     $("#insBtn").click(function(){
         //alert("insTest");
         $("#content").load('${pageContext.request.contextPath}/user/toAdminInsertPage?roleName=student');
