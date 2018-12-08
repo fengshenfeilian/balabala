@@ -77,51 +77,44 @@
             <form class="form" onsubmit="return false" id="sForm">
                 <fieldset>
                     <div class="formRow">
-                        <label for="userId">学号</label>
-                        <br>
+                        <label for="userId" style="width:10%">学号</label>
                             <input type="text" name="userId"  id="userId" placeholder = "请输入学号" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label for="userName">姓名</label>
-                        <br>
+                        <label for="userName"  style="width:10%">姓名</label>
                         <input type="text" name="userName" placeholder = "请输入姓名" id="userName" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label >性别</label>
-                        <br>
+                        <label style="width:10%">性别</label>
                         <label><input type="radio" name="gender" id="gender_male" value="男" checked/>男</label>
                         <label><input type="radio" name="gender" id="gender_female" value="女"/>女</label>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label for="department">学院</label>
-                        <br>
+                        <label for="department" style="width:10%">学院</label>
                         <input type="text" name="department"  placeholder = "请输入学院" id="department" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label for="major">专业</label>
-                        <br>
+                        <label for="major" style="width:10%">专业</label>
                         <input type="text" name="major"  placeholder = "请输入专业" id="major" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label for="classes">班级</label>
-                        <br>
+                        <label for="classes" style="width:10%">班级</label>
                         <input type="text" name="classes"  placeholder = "请输入班级" id="classes" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label for="email">Email</label>
-                        <br>
+                        <label for="email" style="width:10%">Email</label>
                         <input type="text" name="email"  placeholder = "请输入电子邮箱" id="email" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
@@ -143,37 +136,32 @@
             <form class="form" onsubmit="return false" id="tForm">
                 <fieldset>
                     <div class="formRow">
-                        <label for="userId">工号</label>
-                        <br>
+                        <label for="userId" style="width:10%">工号</label>
                         <input type="text" name="userId" class="validate[required]" id="userId" placeholder = "请输入工号" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label for="userName">姓名</label>
-                        <br>
+                        <label for="userName" style="width:10%">姓名</label>
                         <input type="text" name="userName" class="validate[required]" placeholder = "请输入姓名" id="userName" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label >性别</label>
-                        <br>
+                        <label style="width:10%">性别</label>
                         <label><input type="radio" name="gender" class="validate[required]"id="gender_male" value="男" checked/>男</label>
                         <label><input type="radio" name="gender" class="validate[required]"id="gender_female" value="女"/>女</label>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label for="department">学院</label>
-                        <br>
+                        <label for="department" style="width:10%">学院</label>
                         <input type="text" name="department" class="validate[required]" placeholder = "请输入学院" id="department" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label for="email">Email</label>
-                        <br>
+                        <label for="email" style="width:10%">Email</label>
                         <input type="text" name="email" class="validate[required]" placeholder = "请输入电子邮箱" id="email" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>

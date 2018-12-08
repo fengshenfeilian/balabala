@@ -9,6 +9,8 @@
 
 
     <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <!--md5加密插件-->
+    <script type="text/javascript" src="/static/jquery/jquery.md5.js"></script>
     <script type="text/javascript" src="/static/js/plugins/spinner/ui.spinner.js"></script>
     <script type="text/javascript" src="/static/js/plugins/spinner/jquery.mousewheel.js"></script>
 
@@ -67,64 +69,57 @@
 <!-- 右侧区域 -->
 
 <!-- 选项区域 -->
-<c:if test="${roleName=='student'}">
+<c:if test="${sessionScope.user.getRole().getName()=='student'}">
     <div class="wrapper">
         <div class="widget" style="width:80%;">
-            <div class="title"><h6>学生信息更新</h6></div>
+            <div class="title"><h6>学生信息修改</h6></div>
             <!-- 表单数据 -->
             <form class="form" onsubmit="return false" id="sForm">
                 <fieldset>
                     <div class="formRow">
                         <label style="width:10%">学号</label>
-                        <input type="text" name="userId" id="userId" disabled = "disabled" value="${updateUser.userId}" style="width:60%"/>
+                        <input type="text" name="userId"  id="userId" disabled = "disabled" value="${sessionScope.user.userId}" style="width:60%"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">姓名</label>
-                        <input type="text" name="userName" value="${updateUser.userName}" id="userName" style="width:60%;"/>
+                        <input type="text" name="userName"  disabled = "disabled" value="${sessionScope.user.userName}" id="userName" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">性别</label>
-                        <c:if test="${updateUser.gender=='男'}">
-                            <label><input type="radio" name="gender" value="男" checked/>男</label>
-                            <label><input type="radio" name="gender" value="女"/>女</label>
-                        </c:if>
-                        <c:if test="${updateUser.gender=='女'}">
-                            <label><input type="radio" name="gender" value="男" />男</label>
-                            <label><input type="radio" name="gender" value="女" checked/>女</label>
-                        </c:if>
+                        <input type="text" name="gender"  disabled = "disabled" value="${sessionScope.user.gender}" id="gender" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">学院</label>
-                        <input type="text" name="department" value="${updateUser.department}" id="department" style="width:60%;"/>
+                        <input type="text" name="department" disabled = "disabled" value="${sessionScope.user.department}" id="department" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">专业</label>
-                        <input type="text" name="major"  value="${updateUser.major}" id="major" style="width:60%;"/>
+                        <input type="text" name="major" disabled = "disabled" value="${sessionScope.user.major}" id="major" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">班级</label>
-                        <input type="text" name="classes" value="${updateUser.classes}" id="classes" style="width:60%;"/>
+                        <input type="text" name="classes"  disabled = "disabled" value="${sessionScope.user.classes}" id="classes" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">Email</label>
-                        <input type="text" name="email" value="${updateUser.email}" id="email" style="width:60%;"/>
+                        <input type="text" name="email"  value="${sessionScope.user.email}" id="email" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formSubmit">
-                        <button class="btn dredB" id = "sUpdate">确认</button>
+                        <button class="btn dredB" id = "sUpdate">设置</button>
                         <button class="btn dblueB" id = "sReturn">返回</button>
                     </div>
                 </fieldset>
@@ -132,53 +127,68 @@
         </div>
     </div>
 </c:if>
-<c:if test="${roleName=='teacher'}">
+<c:if test="${sessionScope.user.getRole().getName()=='teacher'}">
     <div class="wrapper">
         <div class="widget" style="width:80%;">
-            <div class="title"><h6>教师信息更新</h6></div>
+            <div class="title"><h6>教师信息修改</h6></div>
             <!-- 表单数据 -->
             <form class="form" onsubmit="return false" id="tForm">
                 <fieldset>
                     <div class="formRow">
                         <label style="width:10%">工号</label>
-                        <input type="text" name="userId" id="userId" disabled = "disabled" value="${updateUser.userId}" style="width:60%"/>
+                        <input type="text" name="userId" id="userId" disabled = "disabled" value="${sessionScope.user.userId}" style="width:60%"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">姓名</label>
-                        <input type="text" name="userName" value="${updateUser.userName}" id="userName" style="width:60%;"/>
+                        <input type="text" name="userName"  disabled = "disabled" value="${sessionScope.user.userName}" id="userName" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">性别</label>
-                        <c:if test="${updateUser.gender=='男'}">
-                            <label><input type="radio" name="gender" value="男" checked/>男</label>
-                            <label><input type="radio" name="gender" value="女"/>女</label>
-                        </c:if>
-                        <c:if test="${updateUser.gender=='女'}">
-                            <label><input type="radio" name="gender" value="男" />男</label>
-                            <label><input type="radio" name="gender" value="女" checked/>女</label>
-                        </c:if>
+                        <input type="text" name="gender"  disabled = "disabled" value="${sessionScope.user.gender}" id="gender" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">学院</label>
-                        <input type="text" name="department" value="${updateUser.department}" id="department" style="width:60%;"/>
+                        <input type="text" name="department"  disabled = "disabled" value="${sessionScope.user.department}" id="department" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">Email</label>
-                        <input type="text" name="email" value="${updateUser.email}" id="email" style="width:60%;"/>
+                        <input type="text" name="email"  value="${sessionScope.user.email}" id="email" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formSubmit">
-                        <button class="btn dredB" id = "tUpdate">确认</button>
+                        <button class="btn dredB" id = "tUpdate">设置</button>
                         <button class="btn dblueB" id = "tReturn">返回</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</c:if>
+<c:if test="${sessionScope.user.getRole().getName()=='admin'}">
+    <div class="wrapper">
+        <div class="widget" style="width:80%;">
+            <div class="title"><h6>管理员信息</h6></div>
+            <!-- 表单数据 -->
+            <form class="form" onsubmit="return false" id="aForm">
+                <fieldset>
+                    <div class="formRow">
+                        <label style="width:10%">ID</label>
+                        <input type="text" name="userId"  id="userId" disabled = "disabled" value="${sessionScope.user.userId}" style="width:60%"/>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow">
+                        <label style="width:10%">用户名</label>
+                        <input type="text" name="userName"  id="userName" disabled = "disabled" value="${sessionScope.user.userName}" style="width:60%"/>
+                        <div class="clear"></div>
                     </div>
                 </fieldset>
             </form>
@@ -187,14 +197,49 @@
 </c:if>
 
 
+<div class="wrapper">
+        <div class="widget" style="width:80%;">
+            <div class="title"><h6>密码修改</h6></div>
+            <!-- 表单数据 -->
+            <form class="form" onsubmit="return false" id="pwdForm">
+                <fieldset>
+                    <div class="formRow">
+                        <label style="width:10%">当前密码</label>
+                        <input type="password" name="old_password"  id="old_password"  style="width:60%"/>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="formRow">
+                        <label style="width:10%">新密码</label>
+                        <input type="password" name="password"  id="password"  style="width:60%"/>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="formRow">
+                        <label style="width:10%">新密码确认</label>
+                        <input type="password" name="confirm_password"  id="confirm_password"  style="width:60%"/>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="formSubmit">
+                        <button class="btn dredB" id = "pwdUpdate">确定</button>
+                        <button class="btn dblueB" id = "pwdReturn">返回</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+
 
 
 
 <script type="text/javascript">
-    jQuery.validator.addMethod("checkName", function(value, element) {
-        var tel = /(^[a-zA-Z_-]{1,10}$)|(^[\u2E80-\u9FFF]{2,5})/;
+
+    jQuery.validator.addMethod("checkPWD", function(value, element) {
+        var tel = /^[a-zA-Z0-9_-]{6,18}$/;
         return this.optional(element) || (tel.test(value));
-    }, "用户名格式错误，应为1到10位的字母或2到5位的中文");
+    }, "密码格式错误，应为6到18位的字母数字组合");
     jQuery.validator.addMethod("checkEmail", function(value, element) {
         var tel = /^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/;
         return this.optional(element) || (tel.test(value));
@@ -202,17 +247,8 @@
 
     var svalidator = $("#sForm").validate({
         rules:{
-            userName:{
-                required:true,
-                checkName:true,
-            },
             email:{
                 checkEmail:true,
-            }
-        },
-        messages:{
-            userName:{
-                required:"此项必填",
             }
         },
         //提交表单后，（第一个）未通过验证的表单获得焦点
@@ -222,17 +258,8 @@
     });
     var tvalidator = $("#tForm").validate({
         rules:{
-            userName:{
-                required:true,
-                checkName:true,
-            },
             email:{
                 checkEmail:true,
-            }
-        },
-        messages:{
-            userName:{
-                required:"此项必填",
             }
         },
         //提交表单后，（第一个）未通过验证的表单获得焦点
@@ -240,7 +267,35 @@
         //当未通过验证的元素获得焦点时，移除错误提示
         focusCleanup:true,
     });
-
+    var pwdvalidator = $("#pwdForm").validate({
+        rules:{
+            old_password:{
+                required:true,
+            },
+            password:{
+                required:true,
+                checkPWD:true,
+            },
+            confirm_password:{
+                required:true,
+                equalTo:"#password",
+            }
+        },
+        messages:{
+            old_password:{
+                required:"请输入原先的密码",
+            },
+            password:{
+                required:"请输入新密码",
+            },
+            confirm_password:{
+                required:"请再次输入新密码",
+                equalTo:"两次输入不同",
+            }
+        },
+        //提交表单后，（第一个）未通过验证的表单获得焦点
+        focusInvalid:true,
+    });
     $("#sUpdate").click(function () {
         var datas = $("#sForm").serialize();
         //不加单引号会被识别为8进制字符
@@ -286,6 +341,29 @@
     $("#tReturn").click(function(){
         //alert("test");
         $("#content").load('${pageContext.request.contextPath}/user/selectUsers?roleName=teacher');
+    });
+    $("#pwdUpdate").click(function () {
+        //alert("password");
+        var userId = '${sessionScope.user.userId}';
+        var enOldPWD = $.md5($("#old_password").val());
+        var enNewPWD = $.md5($("#password").val());
+        if(pwdvalidator.form()){
+            $.ajax({
+                url:"${pageContext.request.contextPath}/user/updatePasswordWithJson",
+                data:{userId:userId,old_password:enOldPWD,password:enNewPWD},
+                type:"POST",
+                success:function(result){
+                    alert(result.message);
+                    //修改成功跳回登陆页
+                    if(result.code==100);
+                    window.location.href = "${pageContext.request.contextPath}/login.jsp";
+                }
+            });
+        }
+    });
+    $("#pwdReturn").click(function(){
+        //alert("test");
+        $("#content").load('${pageContext.request.contextPath}/user/selectUsers?roleName=student');
     });
 </script>
 

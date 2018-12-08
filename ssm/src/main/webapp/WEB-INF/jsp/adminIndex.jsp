@@ -86,14 +86,10 @@
     <!-- 左侧导航栏 -->
     <ul id="menu" class="nav">
         <li class="dash">
-            <a href="#"  id="S">
-                <span>学生管理</span>
-            </a>
+            <a href="javascript:void(0);"  id="S"><span>学生管理</span></a>
         </li>
         <li class="dash">
-            <a href="#"  id="T">
-                <span>教师管理</span>
-            </a>
+            <a href="javascript:void(0);"  id="T"><span>教师管理</span></a>
         </li>
 
     </ul>
@@ -105,6 +101,7 @@
         $("#S").addClass("active");
         menuClick('${pageContext.request.contextPath}/user/selectUsers?roleName=student');
     }
+
     $("#S").click(function () {
         $("#menu > li > a").removeClass("active");
         $(this).addClass("active");
@@ -128,20 +125,26 @@
     <!-- 顶部导航栏 -->
     <div class="topNav">
         <div class="wrapper">
-            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<c:out value="${sessionScope.user.userName}" />使用本系统</span></div>
+            <div class="welcome"><a href="javascript:void(0);" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<c:out value="${sessionScope.user.userName}" />使用本系统</span></div>
 
             <div class="userNav">
                 <ul>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="loginError.jsp" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                    <li><a href="javascript:void(0);" title="" id="userConfig"><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
+                    <%--<li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>--%>
+                    <li><a href="${pageContext.request.contextPath}/user/logout" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
                 </ul>
             </div>
 
             <div class="clear"></div>
         </div>
     </div>
-
+<script type="text/javascript">
+    $("#userConfig").click(function () {
+        //alert("test");
+        $("#menu > li > a").removeClass("active");
+        $("#content").load('${pageContext.request.contextPath}/user/toConfigPage');
+    })
+</script>
     <!-- 标题区 -->
     <div class="titleArea">
         <div class="wrapper">

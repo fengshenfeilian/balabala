@@ -51,7 +51,7 @@ public class UserController {
     //用户登陆，输入用户id和密码
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String UserLogin(@RequestParam(value = "userId")String userId
-            ,@RequestParam(value = "password")String password,Model model){
+            ,@RequestParam(value = "password")String password,Model model,HttpSession session){
         //加入session相关的操作
         //前端传来的密码应该是md5加密后的32位密码
         User user = userService.checkLogin(userId,password);
@@ -91,7 +91,13 @@ public class UserController {
         return "loginError";
     }
 
-    //用来跳转相应新增和更新页面函数
+    //跳转至账户信息更新
+    @RequestMapping(value = "/toConfigPage")
+    public String toConfigPage(HttpSession session,Model model){
+        //User curUser = (User)session.getAttribute("user");
+        return "userConfig";
+    }
+    //跳转至用户插入
     @RequestMapping(value = "/toAdminInsertPage", method = RequestMethod.GET)
     public String toInsertPage(@RequestParam(value = "roleName")String roleName,HttpSession session,Model model){
         List<Role> roles = roleService.getRoleByName(roleName);
@@ -102,7 +108,7 @@ public class UserController {
         model.addAttribute("roleName",roleName);
         return "userInsert";
     }
-
+    //跳转至用户更新
     @RequestMapping(value = "/toAdminUpdatePage", method = RequestMethod.GET)
     public String toUpdatePage(@RequestParam(value = "roleName")String roleName,@RequestParam(value = "userId")String userId,
                                HttpSession session,Model model){
@@ -135,9 +141,7 @@ public class UserController {
     @ResponseBody
     public Msg getUsersWithJson(HttpSession session){
 
-        //PageHelper.startPage(pn,5);
         List<User> users = userService.getAllUsersWithRole();
-        //PageInfo pageInfo = new PageInfo(users,5);//可传入连续显示的页数
         return Msg.success("查询成功！").add("users",users);
     }
 
@@ -246,6 +250,21 @@ public class UserController {
         }
         userService.updateUser(user);
         return Msg.success("更新成功！");
+    }
+
+    @RequestMapping(value = "/updatePasswordWithJson",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg updatePasswordWithJson(HttpSession session,
+                                      @RequestParam(value = "userId",defaultValue = "")String userId,
+                                      @RequestParam(value = "old_password",defaultValue = "")String oldPassword,
+                                      @RequestParam(value = "password",defaultValue = "")String password){
+        User user = userService.getUserWithRoleById(userId);
+        if(!user.getPassword().equals(oldPassword)){
+            return Msg.fail("当前密码错误！");
+        }
+        user.setPassword(password);
+        userService.updateUser(user);
+        return Msg.success("密码修改成功！");
     }
 
     //单个/批量删除用户，批量需传入以“-”分隔的用户id

@@ -75,58 +75,51 @@
             <form class="form" onsubmit="return false" id="sForm">
                 <fieldset>
                     <div class="formRow">
-                        <label>学号</label>
-                        <br>
-                        <input type="text" name="userId" class="validate[required]" id="userId" disabled = "disabled" value="${updateUser.userId}" style="width:60%"/>
+                        <label style="width:10%">学号</label>
+                        <input type="text" name="userId" id="userId" disabled = "disabled" value="${updateUser.userId}" style="width:60%"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label>姓名</label>
-                        <br>
-                        <input type="text" name="userName" class="validate[required]" value="${updateUser.userName}" id="userName" style="width:60%;"/>
+                        <label style="width:10%">姓名</label>
+                        <input type="text" name="userName" value="${updateUser.userName}" id="userName" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label >性别</label>
-                        <br>
+                        <label style="width:10%">性别</label>
                         <c:if test="${updateUser.gender=='男'}">
-                            <label><input type="radio" name="gender" class="validate[required]" value="男" checked/>男</label>
-                            <label><input type="radio" name="gender" class="validate[required]"value="女"/>女</label>
+                            <label><input type="radio" name="gender" value="男" checked/>男</label>
+                            <label><input type="radio" name="gender" value="女"/>女</label>
                         </c:if>
                         <c:if test="${updateUser.gender=='女'}">
-                            <label><input type="radio" name="gender" class="validate[required]"value="男" />男</label>
-                            <label><input type="radio" name="gender" class="validate[required]" value="女" checked/>女</label>
+                            <label><input type="radio" name="gender" value="男" />男</label>
+                            <label><input type="radio" name="gender" value="女" checked/>女</label>
                         </c:if>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label>学院</label>
-                        <br>
-                        <input type="text" name="department" class="validate[required]" value="${updateUser.department}" id="department" style="width:60%;"/>
+                        <label style="width:10%">学院</label>
+                        <input type="text" name="department" value="${updateUser.department}" id="department" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label>专业</label>
-                        <br>
-                        <input type="text" name="major" class="validate[required]" value="${updateUser.major}" id="major" style="width:60%;"/>
+                        <label style="width:10%">专业</label>
+                        <input type="text" name="major"  value="${updateUser.major}" id="major" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label>班级</label>
-                        <br>
-                        <input type="text" name="classes" class="validate[required]" value="${updateUser.classes}" id="classes" style="width:60%;"/>
+                        <label style="width:10%">班级</label>
+                        <input type="text" name="classes" value="${updateUser.classes}" id="classes" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label>Email</label>
-                        <br>
-                        <input type="text" name="email" class="validate[required]" value="${updateUser.email}" id="email" style="width:60%;"/>
+                        <label style="width:10%">Email</label>
+                        <input type="text" name="email" value="${updateUser.email}" id="email" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
@@ -147,44 +140,39 @@
             <form class="form" onsubmit="return false" id="tForm">
                 <fieldset>
                     <div class="formRow">
-                        <label>工号</label>
-                        <br>
-                        <input type="text" name="userId" class="validate[required]" id="userId" disabled = "disabled" value="${updateUser.userId}" style="width:60%"/>
+                        <label style="width:10%">工号</label>
+                        <input type="text" name="userId" id="userId" disabled = "disabled" value="${updateUser.userId}" style="width:60%"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label>姓名</label>
-                        <br>
-                        <input type="text" name="userName" class="validate[required]" value="${updateUser.userName}" id="userName" style="width:60%;"/>
+                        <label style="width:10%">姓名</label>
+                        <input type="text" name="userName" value="${updateUser.userName}" id="userName" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label >性别</label>
-                        <br>
+                        <label style="width:10%">性别</label>
                         <c:if test="${updateUser.gender=='男'}">
-                            <label><input type="radio" name="gender" class="validate[required]" value="男" checked/>男</label>
-                            <label><input type="radio" name="gender" class="validate[required]"value="女"/>女</label>
+                            <label><input type="radio" name="gender" value="男" checked/>男</label>
+                            <label><input type="radio" name="gender" value="女"/>女</label>
                         </c:if>
                         <c:if test="${updateUser.gender=='女'}">
-                            <label><input type="radio" name="gender" class="validate[required]"value="男" />男</label>
-                            <label><input type="radio" name="gender" class="validate[required]" value="女" checked/>女</label>
+                            <label><input type="radio" name="gender" value="男" />男</label>
+                            <label><input type="radio" name="gender" value="女" checked/>女</label>
                         </c:if>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label>学院</label>
-                        <br>
-                        <input type="text" name="department" class="validate[required]" value="${updateUser.department}" id="department" style="width:60%;"/>
+                        <label style="width:10%">学院</label>
+                        <input type="text" name="department" value="${updateUser.department}" id="department" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
-                        <label>Email</label>
-                        <br>
-                        <input type="text" name="email" class="validate[required]" value="${updateUser.email}" id="email" style="width:60%;"/>
+                        <label style="width:10%">Email</label>
+                        <input type="text" name="email" value="${updateUser.email}" id="email" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 

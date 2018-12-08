@@ -7,34 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5242d435-3b40-4cf3-82ee-fa93ba0624a3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_4_1_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/util/MD5Utils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userConfig.jsp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm.war" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm.war" afterPath="$PROJECT_DIR$/target/ssm.war" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/controller/UserController.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/service/UserService.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/ssm_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/ssm_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/service/UserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/adminIndex.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/adminIndex.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/studentMangement.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/studentMangement.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacherMangement.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teacherMangement.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/loginError.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/loginError.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userInsert.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userInsert.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userUpdate.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userUpdate.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ssm.iml" afterPath="$PROJECT_DIR$/ssm.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/studentMangement.jsp" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/studentMangement.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/teacherMangement.jsp" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/teacherMangement.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/userInsert.jsp" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/userInsert.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/adminIndex.jsp" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/adminIndex.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/loginError.jsp" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/loginError.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/userUpdate.jsp" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/userUpdate.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/login.jsp" afterPath="$PROJECT_DIR$/target/ssm/login.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,10 +34,9 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="214" column="80" lean-forward="false" selection-start-line="214" selection-start-column="80" selection-end-line="214" selection-end-column="80" />
+            <state relative-caret-position="152">
+              <caret line="266" column="32" lean-forward="false" selection-start-line="266" selection-start-column="32" selection-end-line="266" selection-end-column="32" />
               <folding>
-                <element signature="method#toUpdatePage#0;class#UserController#0" expanded="false" />
                 <element signature="method#getUsers#0;class#UserController#0" expanded="false" />
                 <element signature="method#getUsersWithRoleByRoleName#0;class#UserController#0" expanded="false" />
                 <element signature="method#getUsersWithRoleByExampleWithJson#0;class#UserController#0" expanded="false" />
@@ -61,65 +45,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userInsert.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userInsert.jsp">
+      <file leaf-file-name="userConfig.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userConfig.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="204" column="0" lean-forward="true" selection-start-line="192" selection-start-column="4" selection-end-line="231" selection-end-column="7" />
+            <state relative-caret-position="608">
+              <caret line="92" column="148" lean-forward="false" selection-start-line="92" selection-start-column="148" selection-end-line="92" selection-end-column="148" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#c:if#0;n#jsp:root#0;n#!!top" expanded="false" />
                 <element signature="n#c:if#1;n#jsp:root#0;n#!!top" expanded="false" />
-                <element signature="e#10320#10430#0#HTML" expanded="false" />
-                <element signature="e#10529#10662#0#HTML" expanded="false" />
-                <element signature="e#10765#10915#0#HTML" expanded="false" />
-                <element signature="e#10974#11562#0#HTML" expanded="false" />
-                <element signature="e#11608#12196#0#HTML" expanded="false" />
-                <element signature="e#12247#13155#0#HTML" expanded="false" />
-                <element signature="e#13201#13308#0#HTML" expanded="false" />
-                <element signature="e#13361#14293#0#HTML" expanded="false" />
-                <element signature="e#14339#14446#0#HTML" expanded="false" />
+                <element signature="n#c:if#2;n#jsp:root#0;n#!!top" expanded="false" />
+                <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#1;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#2;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#2;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#13009#13230#0#HTML" expanded="false" />
+                <element signature="e#13275#13496#0#HTML" expanded="false" />
+                <element signature="e#14263#14950#0#HTML" expanded="false" />
+                <element signature="e#14987#15119#0#HTML" expanded="false" />
+                <element signature="e#15159#15847#0#HTML" expanded="false" />
+                <element signature="e#15884#16016#0#HTML" expanded="false" />
+                <element signature="e#16833#16965#0#HTML" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="5" column="46" lean-forward="true" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="userUpdate.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userUpdate.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="656">
-              <caret line="296" column="7" lean-forward="true" selection-start-line="296" selection-start-column="7" selection-end-line="296" selection-end-column="7" />
-              <folding>
-                <element signature="n#c:if#0;n#jsp:root#0;n#!!top" expanded="false" />
-                <element signature="n#c:if#1;n#jsp:root#0;n#!!top" expanded="false" />
-                <element signature="e#11212#11345#0#HTML" expanded="false" />
-                <element signature="e#11448#11598#0#HTML" expanded="false" />
-                <element signature="e#11657#12079#0#HTML" expanded="false" />
-                <element signature="e#12124#12546#0#HTML" expanded="false" />
-                <element signature="e#12586#13273#0#HTML" expanded="false" />
-                <element signature="e#13310#13442#0#HTML" expanded="false" />
-                <element signature="e#13482#14170#0#HTML" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="adminIndex.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/adminIndex.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="105" column="90" lean-forward="false" selection-start-line="105" selection-start-column="90" selection-end-line="105" selection-end-column="90" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -129,8 +78,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -174,10 +123,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/managementSystem/service/UserService.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/managementSystem/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/loginError.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/adminIndex.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userInsert.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userUpdate.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/adminIndex.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/managementSystem/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userConfig.jsp" />
       </list>
     </option>
   </component>
@@ -217,6 +168,7 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -330,7 +282,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -568,6 +519,8 @@
       <workItem from="1544097552653" duration="1289000" />
       <workItem from="1544152586552" duration="1077000" />
       <workItem from="1544164106743" duration="14572000" />
+      <workItem from="1544235785312" duration="4432000" />
+      <workItem from="1544241738822" duration="13362000" />
     </task>
     <task id="LOCAL-00001" summary="update mybatis-generator files">
       <created>1543631931341</created>
@@ -626,7 +579,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157061000" />
+    <option name="totallyTimeSpent" value="174855000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -648,12 +601,12 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2685624" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="0" width="1366" height="728" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2685624" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="0" width="1366" height="728" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -684,18 +637,11 @@
           <properties />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/GroupExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-893">
-          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Course.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-95">
@@ -792,13 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="239" column="9" lean-forward="true" selection-start-line="239" selection-start-column="9" selection-end-line="239" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/loginError.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1148">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -924,13 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/util/MD5Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-437">
-          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1566">
@@ -969,14 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="82" column="37" lean-forward="true" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/dao/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -990,7 +914,7 @@
         <state relative-caret-position="516">
           <caret line="49" column="43" lean-forward="false" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
           <folding>
-            <element signature="e#1875#1876#0" expanded="true" />
+            <element signature="e#1875#1876#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1003,12 +927,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="46" lean-forward="false" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="80" column="22" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="117" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/loginError.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1330">
+          <caret line="117" column="7" lean-forward="false" selection-start-line="117" selection-start-column="7" selection-end-line="117" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/util/MD5Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-380">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userUpdate.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1138">
+          <caret line="247" column="10" lean-forward="false" selection-start-line="247" selection-start-column="10" selection-end-line="247" selection-end-column="10" />
+          <folding>
+            <element signature="n#c:if#0;n#jsp:root#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/adminIndex.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="148" column="27" lean-forward="true" selection-start-line="148" selection-start-column="27" selection-end-line="148" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userInsert.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="75" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="12" selection-end-column="79" />
+          <folding>
+            <element signature="n#c:if#1;n#jsp:root#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="214" column="80" lean-forward="false" selection-start-line="214" selection-start-column="80" selection-end-line="214" selection-end-column="80" />
+        <state relative-caret-position="152">
+          <caret line="266" column="32" lean-forward="false" selection-start-line="266" selection-start-column="32" selection-end-line="266" selection-end-column="32" />
           <folding>
-            <element signature="method#toUpdatePage#0;class#UserController#0" expanded="false" />
             <element signature="method#getUsers#0;class#UserController#0" expanded="false" />
             <element signature="method#getUsersWithRoleByRoleName#0;class#UserController#0" expanded="false" />
             <element signature="method#getUsersWithRoleByExampleWithJson#0;class#UserController#0" expanded="false" />
@@ -1016,58 +999,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userInsert.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userConfig.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="204" column="0" lean-forward="true" selection-start-line="192" selection-start-column="4" selection-end-line="231" selection-end-column="7" />
+        <state relative-caret-position="608">
+          <caret line="92" column="148" lean-forward="false" selection-start-line="92" selection-start-column="148" selection-end-line="92" selection-end-column="148" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#c:if#0;n#jsp:root#0;n#!!top" expanded="false" />
             <element signature="n#c:if#1;n#jsp:root#0;n#!!top" expanded="false" />
-            <element signature="e#10320#10430#0#HTML" expanded="false" />
-            <element signature="e#10529#10662#0#HTML" expanded="false" />
-            <element signature="e#10765#10915#0#HTML" expanded="false" />
-            <element signature="e#10974#11562#0#HTML" expanded="false" />
-            <element signature="e#11608#12196#0#HTML" expanded="false" />
-            <element signature="e#12247#13155#0#HTML" expanded="false" />
-            <element signature="e#13201#13308#0#HTML" expanded="false" />
-            <element signature="e#13361#14293#0#HTML" expanded="false" />
-            <element signature="e#14339#14446#0#HTML" expanded="false" />
+            <element signature="n#c:if#2;n#jsp:root#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#1;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#2;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#2;n#fieldset#0;n#form#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#13009#13230#0#HTML" expanded="false" />
+            <element signature="e#13275#13496#0#HTML" expanded="false" />
+            <element signature="e#14263#14950#0#HTML" expanded="false" />
+            <element signature="e#14987#15119#0#HTML" expanded="false" />
+            <element signature="e#15159#15847#0#HTML" expanded="false" />
+            <element signature="e#15884#16016#0#HTML" expanded="false" />
+            <element signature="e#16833#16965#0#HTML" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="5" column="46" lean-forward="true" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userUpdate.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="296" column="7" lean-forward="true" selection-start-line="296" selection-start-column="7" selection-end-line="296" selection-end-column="7" />
-          <folding>
-            <element signature="n#c:if#0;n#jsp:root#0;n#!!top" expanded="false" />
-            <element signature="n#c:if#1;n#jsp:root#0;n#!!top" expanded="false" />
-            <element signature="e#11212#11345#0#HTML" expanded="false" />
-            <element signature="e#11448#11598#0#HTML" expanded="false" />
-            <element signature="e#11657#12079#0#HTML" expanded="false" />
-            <element signature="e#12124#12546#0#HTML" expanded="false" />
-            <element signature="e#12586#13273#0#HTML" expanded="false" />
-            <element signature="e#13310#13442#0#HTML" expanded="false" />
-            <element signature="e#13482#14170#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/adminIndex.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="105" column="90" lean-forward="false" selection-start-line="105" selection-start-column="90" selection-end-line="105" selection-end-column="90" />
-          <folding />
         </state>
       </provider>
     </entry>
