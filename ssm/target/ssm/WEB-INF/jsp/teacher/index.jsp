@@ -156,7 +156,6 @@
         <!-- Widgets -->
         <div class="widgets">
             <div class="widget">
-                <form action="${pageContext.request.contextPath }/user/deleteUsers" method="post">
                     <div class="title">
                         <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
                         <h6>我的课程名单</h6>
@@ -181,7 +180,6 @@
                         </c:forEach>
                         </tbody>
                     </table>
-                </form>
             </div>
         </div>
     </div>

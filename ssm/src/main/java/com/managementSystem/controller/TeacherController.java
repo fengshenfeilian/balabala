@@ -30,6 +30,12 @@ public class TeacherController {
     @Autowired
     TeacherService teacherService;
 
+    //进入首页
+    @RequestMapping(value = "/index")
+    public String gotoIndex(){
+        return "teacher/index";
+    }
+
     //创建课程
     @RequestMapping(value = "/createCourse", method = RequestMethod.POST)
     public String createCourse(@RequestParam(value = "courseName")String courseName,

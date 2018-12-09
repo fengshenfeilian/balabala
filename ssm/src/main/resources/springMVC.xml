@@ -29,7 +29,7 @@
     <mvc:default-servlet-handler />
 
 
-    <!-- 视图解析器，方便页面返回 -->
+    <!-- 视图解析器，用来定位跳转的位置 -->
     <bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass"

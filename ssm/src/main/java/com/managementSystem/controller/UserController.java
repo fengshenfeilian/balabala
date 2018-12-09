@@ -44,12 +44,13 @@ public class UserController {
 
     //用户登陆，输入用户id和密码
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String UserLogin(@RequestParam(value = "userId")String userId
-            , @RequestParam(value = "password")String password, Model model, HttpServletRequest request){
+    public String UserLogin(@RequestParam(value = "userId")String userId,
+                            @RequestParam(value = "password")String password, Model model, HttpServletRequest request)
+    {
         //加入session相关的操作
         User user = userService.checkLogin(userId,password);
         if(user != null && user.getRoleId().equals("1")){
-            model.addAttribute("message","登陆成功");
+           // model.addAttribute("message","登陆成功");
             model.addAttribute("user",user);
             List<User> users = userService.getUsers("3");
             model.addAttribute("users", users);
@@ -57,12 +58,19 @@ public class UserController {
         }
         else if(user != null && user.getRoleId().equals("2"))
         {
-            model.addAttribute("message", "登陆成功");
+           // model.addAttribute("message", "登陆成功");
             model.addAttribute("user", user);
             List<Course> courses = teacherService.getAllCourses(userId);
             model.addAttribute("courses", courses);
             request.getSession().setAttribute("currentUser", user);
-            return "teacher/index";
+            return "redirect:/teacher/index";
+        }
+        //学生登录
+        else if(user != null && user.getRoleId().equals("3")){
+            System.out.println(user.getUserName());
+            model.addAttribute("user",user);
+            request.getSession().setAttribute("currentUser", user);
+            return "redirect:/student/home";
         }
         model.addAttribute("message","用户名或密码错误");
         //此处返回页面待定
@@ -191,7 +199,7 @@ public class UserController {
         model.addAttribute("deleteResult","complete");
         return "admin";
     }
-
+/*
     @RequestMapping(value = "/deleteUsersWithJson/{ids}",method = RequestMethod.DELETE)
     @ResponseBody
     public Msg deleteUsersWithJson(@PathVariable("ids")String ids){
@@ -208,6 +216,7 @@ public class UserController {
         }
         return Msg.success("删除完成！");
     }
+*/
 }
 
 

@@ -10,6 +10,7 @@ com\managementSystem\pojo\Student_CourseExample.class
 com\managementSystem\dao\AssignmentMapper.class
 com\managementSystem\pojo\Course.class
 com\managementSystem\pojo\UserExample$Criteria.class
+com\managementSystem\controller\TeacherController.class
 com\managementSystem\pojo\Group_AssignmentExample.class
 com\managementSystem\pojo\Student_CourseExample$Criterion.class
 com\managementSystem\pojo\Group_AssignmentExample$GeneratedCriteria.class
@@ -34,6 +35,7 @@ com\managementSystem\pojo\PrivelegeExample$Criteria.class
 com\managementSystem\dao\Pri_RoleMapper.class
 com\managementSystem\pojo\CourseExample$Criteria.class
 com\managementSystem\pojo\RoleExample$Criteria.class
+com\managementSystem\service\TeacherService.class
 com\managementSystem\pojo\UserExample$GeneratedCriteria.class
 com\managementSystem\pojo\Group_StudentExample.class
 com\managementSystem\test\MBGtest.class
