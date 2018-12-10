@@ -32,7 +32,11 @@ public class TeacherController {
 
     //进入首页
     @RequestMapping(value = "/index")
-    public String gotoIndex(){
+    public String gotoIndex(Model model, HttpSession session ){
+        User user = (User) session.getAttribute("currentUser");
+        List<Course> courses = teacherService.getAllCourses(user.getUserId());
+        model.addAttribute("courses", courses);
+        model.addAttribute("user", user);
         return "teacher/index";
     }
 

@@ -1,14 +1,20 @@
 package com.managementSystem.controller;
 
 
+import com.managementSystem.pojo.Course;
 import com.managementSystem.pojo.Group_Assignment;
+import com.managementSystem.pojo.Group_Student;
+import com.managementSystem.pojo.User;
 import com.managementSystem.service.StudentService;
-import com.managementSystem.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +27,7 @@ public class StudentController {
 
     //进入首页
     @RequestMapping(value = "/home")
-    public String gotoIndex(){
+    public String gotoIndex(Model model, HttpSession session){
         return "student/home";
     }
     //进入课程页
@@ -29,11 +35,43 @@ public class StudentController {
     public String gotoCourse(){
         return "student/course";
     }
+
     //进入作业信息页
     @RequestMapping(value = "/assignment")
-    public String gotoAssignment(){
+    public String gotoAssignment(HttpSession session, Model model){
+        User user = (User) session.getAttribute("currentUser");
+        List<Group_Student> gs = studentService.getGroupStudent(user.getUserId());
+        model.addAttribute("group_student",gs);
         return "student/assignment";
     }
+
+
+    //进入查看作业页
+    @RequestMapping(value = "/browseAssignment")
+    public String gotoBrowseAssignment(HttpServletRequest request, Model model){
+        String id = request.getParameter("groupId");
+        Integer groupId = Integer.parseInt(id);
+        List<Group_Assignment> ga = studentService.getGroupAssignmentByGroupId(groupId);
+        model.addAttribute("group_assignment",ga);
+        return "student/browseAssignment";
+    }
+    /*
+        @RequestMapping(value = "/goCourse")
+    public String goCourse(HttpServletRequest request, Model model)
+    {
+        String courseId = request.getParameter("courseId");
+        int id = Integer.parseInt(courseId);
+        Course course = teacherService.getCurrentCourse(id);
+
+        model.addAttribute("course", course);
+        List<Assignment> assignments = teacherService.getAssignments(id);
+        model.addAttribute("assignments", assignments);
+        request.getSession().setAttribute("currentCourse", course);
+        return "teacher/course";
+    }
+    */
+
+
     //进入作业上传页
     @RequestMapping(value = "/uploadAssignment")
     public String gotoUploadAssignment(){
@@ -51,10 +89,6 @@ public class StudentController {
     }
 
 
-    //获取小组提交的作业
-    public String getGroupAssignment(){
-        List<Group_Assignment> groupAssignment = studentService.getAll();
-        return "list";
-    }
+
 
 }

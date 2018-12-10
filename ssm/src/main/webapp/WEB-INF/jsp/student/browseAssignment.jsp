@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 风之子
-  Date: 2018/11/30
-  Time: 14:10
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -76,7 +69,7 @@
 <body>
 <!-- 左侧菜单栏 -->
 <div id="leftSide">
-    <div class="logo"><a href="index.html"><img src="/static/images/logo.png" alt="" /></a></div>
+    <div class="logo"><a href="/student/home"><img src="/static/images/logo.png" alt="" /></a></div>
 
     <div class="sidebarSep mt0"></div>
 
@@ -90,7 +83,20 @@
 
     <!-- 左侧导航栏 -->
     <ul id="menu" class="nav">
-        <li class="dash"><a href="index.html" title="" class="active"><span>课程管理</span></a></li>
+        <li class="dash"><a href="/student/home" title=""><span>我的主页</span></a></li>
+        <li class="tables"><a href="/student/course" title="" ><span>课程管理</span></a></li>
+        <li class="tables"><a href="#" title="" class="active exp"><span>作业管理</span><strong>2</strong></a>
+            <ul class="sub">
+                <li class="this"><a href="/student/assignment" title="" >查看作业</a></li>
+                <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
+            </ul>
+        </li>
+        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
+            <ul class="sub">
+                <li class="this"><a href="/student/group" title="" >查看小组信息</a></li>
+                <li><a href="/student/addGroup" title="">添加小组</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 
@@ -99,13 +105,13 @@
     <!-- 顶部导航栏 -->
     <div class="topNav">
         <div class="wrapper">
-            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎【<c:out value="${user.userName}" />】使用本系统</span></div>
+            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<strong>【<c:out value="${user.userName}"/>】</strong>使用本系统</span></div>
 
             <div class="userNav">
                 <ul>
                     <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
                     <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="login.html" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                    <li><a href="../../login.jsp" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
                 </ul>
             </div>
 
@@ -113,99 +119,50 @@
         </div>
     </div>
 
-    <!-- 标题区 -->
-    <div class="titleArea">
-        <div class="wrapper">
-            <div class="pageTitle">
-                <h5>当前时间</h5>
-                <!-- 显示时间 -->
-                <span id="time1"></span>
-                <script>
-                    function mytime(){
-                        var a = new Date();
-                        var b = a.toLocaleTimeString();
-                        var c = a.toLocaleDateString();
-                        document.getElementById("time1").innerHTML = c+"&nbsp"+b;
-                    }
-                    setInterval(function() {mytime()},1000);
-                </script>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-    <div class="line"></div>
 
-    <!-- 选项区域 -->
-    <div class="statsRow">
-        <div class="wrapper">
-            <div class="controlB">
-                <!--上传学生名单
-                                <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
-                                -->
-                <a href="/teacher/goCreateCourse">创建新课程</a>
 
-                <div class="clear"></div>
-            </div>
-        </div>
-    </div>
 
-    <div class="line"></div>
 
-    <!-- 课程名单 ==> 动态数据表 -->
-    <div class="wrapper">
-        <!-- Widgets -->
-        <div class="widgets">
-            <div class="widget">
-                    <div class="title">
-                        <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
-                        <h6>我的课程名单</h6>
-                    </div>
-                    <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" >
-                        <thead>
-                        <tr>
-                            <td class="sortCol"><div>课程名称<span></span></div></td>
-                            <td class="sortCol"><div>开课时间<span></span></div></td>
-                            <td class="sortCol"><div>简介<span></span></div></td>
-                            <td class="sortCol"><div>操作<span></span></div></td>
-                        </tr>
-                        </thead>
-                        <tbody align="center">
-                        <c:forEach items="${courses}" var="course">
-                            <tr>
-                                <td>${course.courseName}</td>
-                                <td>${course.createTime}</td>
-                                <td>${course.courseDescription}</td>
-                                <td><a href="/teacher/goCourse?courseId=${course.courseId}">进入课程页面</a></td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-            </div>
-        </div>
+
+
+    <div class="widget">
+        <div class="title"><img src="images/icons/dark/frames.png" alt="" class="titleIcon" />
+            <h6>作业列表</h6></div>
+        <table cellpadding="0" cellspacing="0" width="100%" class="sTable" id="res1">
+            <thead>
+            <tr>
+                <td class="sortCol"><div>作业要求<span></span></div></td>
+                <td class="sortCol"><div>小组号<span></span></div></td>
+                <td class="sortCol"><div>作业标题<span></span></div></td>
+                <td class="sortCol"><div>作业内容<span></span></div></td>
+                <td class="sortCol"><div>提交时间<span></span></div></td>
+                <td class="sortCol"><div>分数<span></span></div></td>
+
+            </tr>
+            </thead>
+            <tbody align="center">
+            <c:forEach items="${group_assignment}" var="group_assignment">
+                <tr>
+                    <td>${group_assignment.assignmentId}</td>
+                  <%--<td><a href="/student/browseAssignment?groupId=${group_student.groupId}">查看作业</a></td>--%>
+                    <td>${group_assignment.groupId}</td>
+                    <td>${group_assignment.description}</td>
+                    <td>${group_assignment.path}</td>
+                    <td>${group_assignment.submissionTime}</td>
+                    <td>${group_assignment.score}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
 
-    <script>
-        //单个删除
-        $(document).on("click",".del",function () {
-            //alert($(this).parents("tr").find("td:eq(0)").text());
-            var userId = $(this).parents("tr").find("td:eq(0)").text();
-            var userName = $(this).parents("tr").find("td:eq(1)").text();
-            // $('#delBtn').attr("delete-id",userId);
-            //发送AJAX请求
-            if(confirm("确认删除【"+userName+"】吗？")){
-                /*
-                $.ajax({
-                   url: "${APP_PATH}/user/deleteUsers/" + userId,
-                       type:"DELETE"
-                    });*/
-            }
-        });
-    </script>
 
     <!-- Footer line -->
     <div id="footer">
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
     </div>
+
+
 
     <div class="clear"></div>
 </body>

@@ -58,10 +58,12 @@ public class UserController {
         }
         else if(user != null && user.getRoleId().equals("2"))
         {
-           // model.addAttribute("message", "登陆成功");
+            /*
+             model.addAttribute("message", "登陆成功");
+             List<Course> courses = teacherService.getAllCourses(userId);
+             model.addAttribute("courses", courses);
+            */
             model.addAttribute("user", user);
-            List<Course> courses = teacherService.getAllCourses(userId);
-            model.addAttribute("courses", courses);
             request.getSession().setAttribute("currentUser", user);
             return "redirect:/teacher/index";
         }

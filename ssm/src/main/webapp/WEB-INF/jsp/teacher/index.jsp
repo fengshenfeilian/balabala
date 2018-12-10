@@ -99,7 +99,7 @@
     <!-- 顶部导航栏 -->
     <div class="topNav">
         <div class="wrapper">
-            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<c:out value="${user.userName}" />使用本系统</span></div>
+            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎【<c:out value="${user.userName}" />】使用本系统</span></div>
 
             <div class="userNav">
                 <ul>
@@ -151,7 +151,7 @@
 
     <div class="line"></div>
 
-    <!-- 学生名单 ==> 动态数据表 -->
+    <!-- 课程名单 ==> 动态数据表 -->
     <div class="wrapper">
         <!-- Widgets -->
         <div class="widgets">

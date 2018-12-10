@@ -127,28 +127,24 @@
 
     <div class="widget">
         <div class="title"><img src="images/icons/dark/frames.png" alt="" class="titleIcon" />
-            <h6>我的作业</h6></div>
+            <h6>查看作业</h6></div>
         <table cellpadding="0" cellspacing="0" width="100%" class="sTable" id="res1">
             <thead>
             <tr>
-                <td class="sortCol"><div>课程号<span></span></div></td>
+                <td class="sortCol"><div>课程名<span></span></div></td>
                 <td class="sortCol"><div>小组号<span></span></div></td>
-                <td class="sortCol"><div>作业标题<span></span></div></td>
-                <td class="sortCol"><div>作业内容<span></span></div></td>
-                <td class="sortCol"><div>提交时间<span></span></div></td>
-                <td class="sortCol"><div>成绩<span></span></div></td>
+                <td class="sortCol"><div>选项<span></span></div></td>
+
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>软件工程课程设计第一次文档</td>
-                <td>小组前缀 + 小组序号</td>
-                <td>GZH+Marco+风之子_软工第一次文档</td>
-                <td>NONE</td>
-                <td>2018-12-10 00:00:00</td>
-                <td>100</td>
-            </tr>
-
+            <tbody align="center">
+            <c:forEach items="${group_student}" var="group_student">
+                <tr>
+                    <td>--</td>
+                    <td>${group_student.groupId}</td>
+                    <td><a href="/student/browseAssignment?groupId=${group_student.groupId}">查看作业</a></td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
