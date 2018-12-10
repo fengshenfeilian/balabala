@@ -132,9 +132,10 @@
             <thead>
             <tr>
                 <td class="sortCol"><div>作业要求<span></span></div></td>
-                <td class="sortCol"><div>小组号<span></span></div></td>
                 <td class="sortCol"><div>作业标题<span></span></div></td>
                 <td class="sortCol"><div>作业内容<span></span></div></td>
+                <td class="sortCol"><div>小组号<span></span></div></td>
+
                 <td class="sortCol"><div>提交时间<span></span></div></td>
                 <td class="sortCol"><div>分数<span></span></div></td>
 
@@ -144,10 +145,9 @@
             <c:forEach items="${group_assignment}" var="group_assignment">
                 <tr>
                     <td>${group_assignment.assignmentId}</td>
-                  <%--<td><a href="/student/browseAssignment?groupId=${group_student.groupId}">查看作业</a></td>--%>
+                    <td>${group_assignment.title}</td>
+                    <td>${group_assignment.body}</td>
                     <td>${group_assignment.groupId}</td>
-                    <td>${group_assignment.description}</td>
-                    <td>${group_assignment.path}</td>
                     <td>${group_assignment.submissionTime}</td>
                     <td>${group_assignment.score}</td>
                 </tr>

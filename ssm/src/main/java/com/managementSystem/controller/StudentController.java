@@ -1,10 +1,7 @@
 package com.managementSystem.controller;
 
 
-import com.managementSystem.pojo.Course;
-import com.managementSystem.pojo.Group_Assignment;
-import com.managementSystem.pojo.Group_Student;
-import com.managementSystem.pojo.User;
+import com.managementSystem.pojo.*;
 import com.managementSystem.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,17 +33,18 @@ public class StudentController {
         return "student/course";
     }
 
-    //进入作业信息页
+    //进入作业页
     @RequestMapping(value = "/assignment")
     public String gotoAssignment(HttpSession session, Model model){
         User user = (User) session.getAttribute("currentUser");
-        List<Group_Student> gs = studentService.getGroupStudent(user.getUserId());
-        model.addAttribute("group_student",gs);
+        List<Group_Student> gsList = studentService.getGroupStudent(user.getUserId());
+        List<Group> groups = studentService.getGroupByGroupStudentList(gsList);
+        model.addAttribute("group_student",gsList);
+        model.addAttribute("groups",groups);
         return "student/assignment";
     }
 
-
-    //进入查看作业页
+    //查看作业列表
     @RequestMapping(value = "/browseAssignment")
     public String gotoBrowseAssignment(HttpServletRequest request, Model model){
         String id = request.getParameter("groupId");
@@ -55,22 +53,6 @@ public class StudentController {
         model.addAttribute("group_assignment",ga);
         return "student/browseAssignment";
     }
-    /*
-        @RequestMapping(value = "/goCourse")
-    public String goCourse(HttpServletRequest request, Model model)
-    {
-        String courseId = request.getParameter("courseId");
-        int id = Integer.parseInt(courseId);
-        Course course = teacherService.getCurrentCourse(id);
-
-        model.addAttribute("course", course);
-        List<Assignment> assignments = teacherService.getAssignments(id);
-        model.addAttribute("assignments", assignments);
-        request.getSession().setAttribute("currentCourse", course);
-        return "teacher/course";
-    }
-    */
-
 
     //进入作业上传页
     @RequestMapping(value = "/uploadAssignment")

@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("studentService")
@@ -48,6 +49,29 @@ public class StudentService {
         List<Group_Assignment> ga = group_assignmentMapper.selectByExample(gaExample);
         return ga;
     }
+
+    public List<Group> getGroupByGroupStudentList(List<Group_Student> gs)
+    {
+        List<Group> groups = new ArrayList<>();
+        for(Group_Student groupStudent : gs)
+        {
+            Group group = groupMapper.selectByPrimaryKey(groupStudent.getGroupId());
+            groups.add(group);
+        }
+        return groups;
+    }
+/*
+    public List<User> getAllUsers(List<Student_Course> student_courses) {
+        List<User> users = new ArrayList<>();
+        for (Student_Course student_course : student_courses)
+        {
+            User user = userMapper.selectByPrimaryKey(student_course.getStudentId());
+            users.add(user);
+        }
+        return users;
+    }*/
+}
+
 /*
     public List<Assignment> getAssignments(Integer courseId)
     {
@@ -57,4 +81,4 @@ public class StudentService {
         List<Assignment> assignments = assignmentMapper.selectByExample(assignmentExample);
         return assignments;
     }*/
-}
+
