@@ -55,8 +55,8 @@
     <div class="wrapper">
         <div class="userNav">		
             <ul>
-                <li><a href="#" title=""><img src="/static/images/icons/topnav/mainWebsite.png" alt="" /><span>首页</span></a></li>
-                <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>联系我们</span></a></li>
+                <li><a href="login.jsp" title=""><img src="/static/images/icons/topnav/mainWebsite.png" alt="" /><span>首页</span></a></li>
+                <li><a href="/#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>联系我们</span></a></li>
             </ul> 
         </div>
         <div class="clear"></div>
