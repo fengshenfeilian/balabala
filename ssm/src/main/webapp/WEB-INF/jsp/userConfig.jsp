@@ -355,7 +355,7 @@
                 success:function(result){
                     alert(result.message);
                     //修改成功跳回登陆页
-                    if(result.code==100);
+                    if(result.code==100)
                     window.location.href = "${pageContext.request.contextPath}/login.jsp";
                 }
             });

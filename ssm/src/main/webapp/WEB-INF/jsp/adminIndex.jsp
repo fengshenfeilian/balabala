@@ -98,8 +98,13 @@
 <script type="text/javascript">
     var Init = function () {
         //alert("onload");
-        $("#S").addClass("active");
-        menuClick('${pageContext.request.contextPath}/user/selectUsers?roleName=student');
+        if(${sessionScope.user.pwdDefault==1}){
+            menuClick('${pageContext.request.contextPath}/user/toConfigPage');
+        }
+        else{
+            $("#S").addClass("active");
+            menuClick('${pageContext.request.contextPath}/user/selectUsers?roleName=student');
+        }
     }
 
     $("#S").click(function () {

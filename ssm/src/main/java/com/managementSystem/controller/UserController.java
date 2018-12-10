@@ -91,7 +91,7 @@ public class UserController {
         return "loginError";
     }
 
-    //跳转至账户信息更新
+    //跳转至账户信息页面
     @RequestMapping(value = "/toConfigPage")
     public String toConfigPage(HttpSession session,Model model){
         //User curUser = (User)session.getAttribute("user");
@@ -259,8 +259,20 @@ public class UserController {
                                       @RequestParam(value = "old_password",defaultValue = "")String oldPassword,
                                       @RequestParam(value = "password",defaultValue = "")String password){
         User user = userService.getUserWithRoleById(userId);
+        System.out.println(oldPassword);
+        System.out.println(user.getPassword());
+        //判断旧密码是否输入正确
         if(!user.getPassword().equals(oldPassword)){
             return Msg.fail("当前密码错误！");
+        }
+        //判断密码是否默认
+        String default_password = MD5Utils.getPwd(user.getUserId());
+        System.out.println(default_password);
+        if(default_password.equals(password)){
+            user.setPwdDefault(1);
+        }
+        else{
+            user.setPwdDefault(0);
         }
         user.setPassword(password);
         userService.updateUser(user);
