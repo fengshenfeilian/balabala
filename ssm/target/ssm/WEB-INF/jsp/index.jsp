@@ -136,8 +136,8 @@
                                 <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
                                 -->
                     <form action="${pageContext.request.contextPath}/user/addUsersWithFile" method="post" enctype="multipart/form-data">
-                        <input type="file" name="filename"  value="" />
-                        <input type="submit" name=""  value="上传学生名单" />
+                        <input type="file" name="body"  value="" />
+                        <input type="submit" name=""  value="选择作业文件" />
                     </form>
 
                     <div class="clear"></div>

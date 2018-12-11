@@ -119,66 +119,40 @@
         </div>
     </div>
 
-
-    <!-- Main content wrapper -->
+    <div class="line"></div>
     <div class="wrapper">
-
-
-        <!-- Validation form -->
-        <form id="validate" class="form" method="post" action="${pageContext.request.contextPath}/student/assignment">
-            <fieldset>
-                <div class="widget">
-                    <div class="title"><img src="images/icons/dark/alert.png" alt="" class="titleIcon" /><h6>上传作业</h6></div>
-                    <div class="formRow">
-                        <label>作业号:<span class="req">*</span></label>
-                        <div class="formRight"><input type="text" class="validate[required]" name="req" id="req"/></div>
-                        <div class = "clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label>小组号(int):<span class="req">*</span></label>
-                        <div class="formRight"><input type="text" class="validate[required,custom[onlyNumberSp]]" name="numsValid" id="numsValid"/></div>
-                        <div class = "clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label>作业标题:<span class="req">*</span></label>
-                        <div class="formRight"><input type="text" class="validate[required]" name="req" /></div>
-                        <div class = "clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label>作业内容:<span class="req">*</span></label>
-                        <div class="formRight"><textarea rows="8" cols="" name="textarea" class="validate[required]" id="textareaValid"></textarea></div>
-                        <div class = "clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label>密码:<span class="req">*</span></label>
-                        <div class="formRight"><input type="password" class="validate[required]" name="password1" id="password1" /></div>
-                        <div class = "clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label>确认密码:<span class="req">*</span></label>
-                        <div class="formRight"><input type="password" class="validate[required,equals[password1]]" name="password2" id="password2" /></div>
-                        <div class = "clear"></div>
-                    </div>
-                    <div class="formRow">
-                        <label>覆盖之前的提交:<span class="req">*</span></label>
-                        <div class="formRight"><input type="checkbox" id="agree" name="agree" class="required" /><label for="agree"></label></div>
-                        <div class = "clear"></div>
-                    </div>
-                    <div class="formSubmit"><input type="submit" value="提交"  class="blueB" /></div>
-                    <div class = "clear"></div>
+        <div class="widget">
+            <form  method="post" id="validate" class="form" action="${pageContext.request.contextPath}/student/upload">
+                <div class="formRow">
+                    <label for="login">作业号</label>
+                    <div class="loginInput"><input type="text" name="assignmentId" class="validate[required]" id="login" placeholder="c++1801" /></div>
+                    <div class="clear"></div>
                 </div>
-
-            </fieldset>
-        </form>
-
-            </fieldset>
-        </form>
-
+                <div class="formRow">
+                    <label for="login">小组号</label>
+                    <div class="loginInput"><input type="text" name="groupId" class="validate[required]" id="login" placeholder="20180401" /></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formRow">
+                    <label for="login">作业标题</label>
+                    <div class="loginInput"><input type="text" name="title" class="validate[required]" id="login" placeholder="description"/></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formRow">
+                    <label for="login">作业文件</label>
+                    <!--上传学生名单
+                                <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
+                                -->
+                    <div class="loginInput"><input type="file" name="filename"  value="" /></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="loginControl">
+                    <input type="submit" value="创建" class="dblueB logMeIn" />
+                    <div class="clear"></div>
+                </div>
+            </form>
+        </div>
     </div>
-
-
-
-
 
 
 
@@ -188,7 +162,7 @@
     </div>
 
 
-
     <div class="clear"></div>
+</div>
 </body>
 </html>

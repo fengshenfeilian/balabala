@@ -8,10 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +73,17 @@ public class StudentController {
         return "student/addGroup";
     }
 
+    //作业上传(成功：跳转至assignment，失败则刷新uploadAssignment)
+    @RequestMapping(value = "upload", method = RequestMethod.POST)
+    public  String uploadAssignment(@RequestParam(value = "assignmentId") String assignmentId,
+                                    @RequestParam(value = "groupId")String groupId,
+                                    @RequestParam(value = "title")String title,
+                                    @RequestParam(value = "body") String body,
+                                    Model model, HttpSession session, HttpServletRequest request)throws ParseException
+    {
 
+        return "student/assignment";
+    }
 
 
 }

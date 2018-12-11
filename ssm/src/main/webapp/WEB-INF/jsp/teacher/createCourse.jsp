@@ -98,7 +98,7 @@
                 <ul>
                     <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
                     <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="login.html" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                    <li><a href="../../login.jsp" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
                 </ul>
             </div>
 
@@ -128,7 +128,7 @@
     </div>
     <div class="line"></div>
 
-    <form action="${pageContext.request.contextPath}/teacher/createCourse" method="post" id="validate" class="form">
+    <form  method="post" id="validate" class="form" action="${pageContext.request.contextPath}/teacher/createCourse">
         <div class="formRow">
             <label for="login">课程名称</label>
             <div class="loginInput"><input type="text" name="courseName" class="validate[required]" id="login" /></div>
@@ -166,5 +166,6 @@
     </div>
 
     <div class="clear"></div>
+</div>
 </body>
 </html>

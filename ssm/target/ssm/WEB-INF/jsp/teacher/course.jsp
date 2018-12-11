@@ -98,7 +98,7 @@
                 <ul>
                     <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
                     <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="login.html" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                    <li><a href="../../login.jsp" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
                 </ul>
             </div>
 
