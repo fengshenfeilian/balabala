@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -125,35 +126,36 @@
 
 
 
-    <div class="widget">
-        <div class="title"><img src="images/icons/dark/frames.png" alt="" class="titleIcon" />
-            <h6>作业列表</h6></div>
-        <table cellpadding="0" cellspacing="0" width="100%" class="sTable" id="res1">
-            <thead>
-            <tr>
-                <td class="sortCol"><div>作业要求<span></span></div></td>
-                <td class="sortCol"><div>作业标题<span></span></div></td>
-                <td class="sortCol"><div>作业内容<span></span></div></td>
-                <td class="sortCol"><div>小组号<span></span></div></td>
-
-                <td class="sortCol"><div>提交时间<span></span></div></td>
-                <td class="sortCol"><div>分数<span></span></div></td>
-
-            </tr>
-            </thead>
-            <tbody align="center">
-            <c:forEach items="${group_assignment}" var="group_assignment">
+    <div class="wrapper">
+        <div class="widget">
+            <div class="title"><img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
+                <h6>作业列表</h6></div>
+            <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
+                <thead>
                 <tr>
-                    <td>${group_assignment.assignmentId}</td>
-                    <td>${group_assignment.title}</td>
-                    <td>${group_assignment.body}</td>
-                    <td>${group_assignment.groupId}</td>
-                    <td>${group_assignment.submissionTime}</td>
-                    <td>${group_assignment.score}</td>
+                    <td class="sortCol"><div>作业要求<span></span></div></td>
+                    <td class="sortCol"><div>作业标题<span></span></div></td>
+                    <td class="sortCol"><div>作业内容<span></span></div></td>
+                    <td class="sortCol"><div>小组号<span></span></div></td>
+
+                    <td class="sortCol"><div>提交时间<span></span></div></td>
+                    <td class="sortCol"><div>分数<span></span></div></td>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody align="center">
+                <c:forEach items="${group_assignment}" var="group_assignment">
+                    <tr>
+                        <td>${group_assignment.assignmentId}</td>
+                        <td>${group_assignment.title}</td>
+                        <td>${group_assignment.body}</td>
+                        <td>${group_assignment.groupId}</td>
+                        <td>${group_assignment.submissionTime}</td>
+                        <td>${group_assignment.score}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 
@@ -165,5 +167,6 @@
 
 
     <div class="clear"></div>
+</div>
 </body>
 </html>

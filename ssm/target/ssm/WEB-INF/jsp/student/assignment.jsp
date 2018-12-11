@@ -124,30 +124,32 @@
 
 
 
-
-    <div class="widget">
-        <div class="title"><img src="images/icons/dark/frames.png" alt="" class="titleIcon" />
-            <h6>查看作业</h6></div>
-        <table cellpadding="0" cellspacing="0" width="100%" class="sTable" id="res1">
-            <thead>
-            <tr>
-                <td class="sortCol"><div>课程号<span></span></div></td>
-                <td class="sortCol"><div>小组号<span></span></div></td>
-                <td class="sortCol"><div>选项<span></span></div></td>
-
-            </tr>
-            </thead>
-            <tbody align="center">
-            <c:forEach items="${group_student}" var="group_student" varStatus="loop">
+    <div class="wrapper">
+        <div class="widget">
+            <div class="title"><img src="images/icons/dark/frames.png" alt="" class="titleIcon" />
+                <h6>查看作业</h6></div>
+            <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
+                <thead>
                 <tr>
-                    <td>${groups[loop.count-1].courseId}</td>
-                    <td>${group_student.groupId}</td>
-                    <td><a href="/student/browseAssignment?groupId=${group_student.groupId}">查看作业</a></td>
+                    <td class="sortCol"><div>课程号<span></span></div></td>
+                    <td class="sortCol"><div>小组号<span></span></div></td>
+                    <td class="sortCol"><div>选项<span></span></div></td>
+
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody align="center">
+                <c:forEach items="${group_student}" var="group_student" varStatus="loop">
+                    <tr>
+                        <td>${groups[loop.count-1].courseId}</td>
+                        <td>${group_student.groupId}</td>
+                        <td><a href="/student/browseAssignment?groupId=${group_student.groupId}">查看作业</a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
     </div>
+
 
 
     <!-- Footer line -->
@@ -158,5 +160,6 @@
 
 
     <div class="clear"></div>
+</div>
 </body>
 </html>
