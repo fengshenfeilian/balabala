@@ -10,13 +10,7 @@ public class Group {
     private Integer groupMemberNum;
 
     private String leaderId;
-    /*
-    private String courseName;
-    public String getCourseName(Integer courseId)
-    {
-        return courseName;
-    }
-*/
+
 
     public Integer getGroupId() {
         return groupId;

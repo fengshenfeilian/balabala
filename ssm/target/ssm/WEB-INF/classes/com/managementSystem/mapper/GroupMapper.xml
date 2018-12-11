@@ -98,6 +98,11 @@
   <select id="selectId" resultType="java.lang.Integer">
     select GROUP_ID from group_course where GROUP_NAME=#{groupName}
   </select>
+  <!--Add by Marco-->
+  <select id="selectCourseNameByCourseId" resultType="java.lang.String">
+    select COURSE_NAME from course where COURSE_ID=#{courseId}
+  </select>
+  <!--            -->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from group_course
     where GROUP_ID = #{groupId,jdbcType=INTEGER}

@@ -50,15 +50,16 @@ public class StudentService {
         return ga;
     }
 
-    public List<Group> getGroupByGroupStudentList(List<Group_Student> gs)
+    public List<String> getCourseNameByGroupStudentList(List<Group_Student> gs)
     {
-        List<Group> groups = new ArrayList<>();
+        List<String> courseName = new ArrayList<>();
         for(Group_Student groupStudent : gs)
         {
             Group group = groupMapper.selectByPrimaryKey(groupStudent.getGroupId());
-            groups.add(group);
+            String name = groupMapper.selectCourseNameByCourseId(group.getCourseId());
+            courseName.add(name);
         }
-        return groups;
+        return courseName;
     }
 /*
     public List<User> getAllUsers(List<Student_Course> student_courses) {

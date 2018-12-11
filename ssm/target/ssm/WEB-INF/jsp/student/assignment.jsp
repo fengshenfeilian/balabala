@@ -131,7 +131,7 @@
             <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
                 <thead>
                 <tr>
-                    <td class="sortCol"><div>课程号<span></span></div></td>
+                    <td class="sortCol"><div>课程名<span></span></div></td>
                     <td class="sortCol"><div>小组号<span></span></div></td>
                     <td class="sortCol"><div>选项<span></span></div></td>
 
@@ -140,7 +140,7 @@
                 <tbody align="center">
                 <c:forEach items="${group_student}" var="group_student" varStatus="loop">
                     <tr>
-                        <td>${groups[loop.count-1].courseId}</td>
+                        <td>${courseName[loop.count-1]}</td>
                         <td>${group_student.groupId}</td>
                         <td><a href="/student/browseAssignment?groupId=${group_student.groupId}">查看作业</a></td>
                     </tr>

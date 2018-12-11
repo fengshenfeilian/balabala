@@ -38,9 +38,9 @@ public class StudentController {
     public String gotoAssignment(HttpSession session, Model model){
         User user = (User) session.getAttribute("currentUser");
         List<Group_Student> gsList = studentService.getGroupStudent(user.getUserId());
-        List<Group> groups = studentService.getGroupByGroupStudentList(gsList);
+        List<String> courseName = studentService.getCourseNameByGroupStudentList(gsList);
         model.addAttribute("group_student",gsList);
-        model.addAttribute("groups",groups);
+        model.addAttribute("courseName",courseName);
         return "student/assignment";
     }
 

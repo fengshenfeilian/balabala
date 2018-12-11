@@ -33,4 +33,8 @@ public interface GroupMapper {
     int selectGrade(Integer courseId, String studentId);
 
     int selectId(String groupName);
+    /*Add by Marco*/
+    String selectCourseNameByCourseId(int courseId);
+    /* ********** */
+
 }
