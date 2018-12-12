@@ -86,7 +86,7 @@
                 
                 <div class="loginControl">
                     <div class="rememberMe"><input type="checkbox" id="remMe" name="remMe" /><label for="remMe">记住我</label></div>
-                    <input type="submit" value="登录" class="dredB logMeIn" />
+                    <input type="submit" value="登录" class="dblueB logMeIn" />
                     <div class="clear"></div>
                 </div>
             </fieldset>

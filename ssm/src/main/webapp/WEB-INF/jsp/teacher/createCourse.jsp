@@ -155,7 +155,7 @@
             <div class="clear"></div>
         </div>
         <div class="loginControl">
-            <input type="submit" value="创建" class="dredB logMeIn" />
+            <input type="submit" value="创建" class="redB logMeIn" />
             <div class="clear"></div>
         </div>
     </form>

@@ -98,7 +98,7 @@
                 <ul>
                     <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
                     <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="login.html" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                    <li><a href="../../login.jsp" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
                 </ul>
             </div>
 
@@ -110,45 +110,33 @@
     <div class="titleArea">
         <div class="wrapper">
             <div class="pageTitle">
-                <h5>当前时间</h5>
-                <!-- 显示时间 -->
-                <span id="time1"></span>
-                <script>
-                    function mytime(){
-                        var a = new Date();
-                        var b = a.toLocaleTimeString();
-                        var c = a.toLocaleDateString();
-                        document.getElementById("time1").innerHTML = c+"&nbsp"+b;
-                    }
-                    setInterval(function() {mytime()},1000);
-                </script>
+                <h5>作业信息</h5>
+                <p>作业要求:${assignment.title}</p>
+                <p>基本描述:${assignment.body}</p>
+                <p>作业发布时间:${assignment.releaseTime}</p>
+                <p>作业提交时间:${assignment.deadline}</p>
+                <p>作业占比:${assignment.percent}</p>
+                <!-- 选项区域
+                <div class="statsRow">
+                    <div class="wrapper">
+                        <div class="controlB">
+                            <!--上传学生名单
+                                            <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
+
+                            <form action="${pageContext.request.contextPath}/teacher/addStudentByFile" method="post" enctype="multipart/form-data">
+                                <input type="file" name="filename"  value="" />
+                                <input type="submit" name=""  value="上传学生名单" />
+                            </form>
+
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
             <div class="clear"></div>
         </div>
     </div>
-    <div class="line"></div>
-    <p>作业信息</p>
-    <p>作业要求:${assignment.title}</p>
-    <p>基本描述:${assignment.body}</p>
-    <p>作业发布时间:${assignment.releaseTime}</p>
-    <p>作业提交时间:${assignment.deadline}</p>
-    <p>作业占比:${assignment.percent}</p>
-    <!-- 选项区域
-    <div class="statsRow">
-        <div class="wrapper">
-            <div class="controlB">
-                <!--上传学生名单
-                                <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
 
-                <form action="${pageContext.request.contextPath}/teacher/addStudentByFile" method="post" enctype="multipart/form-data">
-                    <input type="file" name="filename"  value="" />
-                    <input type="submit" name=""  value="上传学生名单" />
-                </form>
-
-                <div class="clear"></div>
-            </div>
-        </div>
-    </div> -->
 
     <div class="line"></div>
 
@@ -157,7 +145,6 @@
         <!-- Widgets -->
         <div class="widgets">
             <div class="widget">
-                <form action="${pageContext.request.contextPath }/user/deleteUsers" method="post">
                     <div class="title">
                         <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
                         <h6>提交作业列表</h6>
@@ -186,7 +173,6 @@
                         </c:forEach>
                         </tbody>
                     </table>
-                </form>
             </div>
         </div>
     </div>

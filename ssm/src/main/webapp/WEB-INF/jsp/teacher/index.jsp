@@ -90,7 +90,7 @@
 
     <!-- 左侧导航栏 -->
     <ul id="menu" class="nav">
-        <li class="dash"><a href="index.html" title="" class="active"><span>课程管理</span></a></li>
+        <li class="dash"><a href="/teacher/index" title="" class="active"><span>课程管理</span></a></li>
     </ul>
 </div>
 
@@ -139,11 +139,7 @@
     <div class="statsRow">
         <div class="wrapper">
             <div class="controlB">
-                <!--上传学生名单
-                                <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
-                                -->
-                <a href="/teacher/goCreateCourse">创建新课程</a>
-
+                    <a href="/teacher/goCreateCourse"><button class="redB">创建新课程</button></a>
                 <div class="clear"></div>
             </div>
         </div>

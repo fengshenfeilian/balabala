@@ -105,62 +105,55 @@
             <div class="clear"></div>
         </div>
     </div>
+    <div class="clear"></div>
 
     <!-- 标题区 -->
     <div class="titleArea">
         <div class="wrapper">
             <div class="pageTitle">
-                <h5>当前时间</h5>
-                <!-- 显示时间 -->
-                <span id="time1"></span>
-                <script>
-                    function mytime(){
-                        var a = new Date();
-                        var b = a.toLocaleTimeString();
-                        var c = a.toLocaleDateString();
-                        document.getElementById("time1").innerHTML = c+"&nbsp"+b;
-                    }
-                    setInterval(function() {mytime()},1000);
-                </script>
+                <h5>课程信息</h5>
+                    <p>课程名称:<strong>${course.courseName}</strong></p>
+                    <p>课程简介:<strong>${course.courseDescription}</strong></p>
+                    <p>课程创建时间:<strong>${course.createTime}</strong></p>
             </div>
             <div class="clear"></div>
         </div>
     </div>
-    <div class="line"></div>
-    <p>课程信息</p>
-    <p>课程名称:${course.courseName}</p>
-    <p>课程简介:${course.courseDescription}</p>
-    <p>课程创建时间:${course.createTime}</p>
+
     <!-- 选项区域 -->
     <div class="statsRow">
         <div class="wrapper">
             <div class="controlB">
-                <!--上传学生名单
-                                <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
-                                -->
-                <form action="${pageContext.request.contextPath}/teacher/addStudentByFile" method="post" enctype="multipart/form-data">
-                    <input type="file" name="filename"  value="" />
-                    <input type="submit" name=""  value="上传学生名单" />
-                </form>
-                <form action="${pageContext.request.contextPath}/teacher/addDailyScore" method="post" enctype="multipart/form-data">
-                    <input type="file" name="filename"  value="" />
-                    <input type="submit" name=""  value="上传平时成绩" />
-                </form>
-                <a href="/teacher/goAddAssignment">添加作业</a>
-                <a href="/teacher/showAllStudents">查看学生</a>
-                <div class="clear"></div>
+                <div class="widget" align="left">
+                    <a href="/teacher/goAddAssignment"><button class="blueB">添加作业</button></a>
+                </div>
+                <div class="widget" align="left">
+                    <a href="/teacher/showAllStudents"> <button class="redB">查看学生</button></a>
+                </div>
+                <div class="widget" align="left">
+                    <form action="${pageContext.request.contextPath}/teacher/addStudentByFile" method="post" enctype="multipart/form-data">
+                        <input type="file" name="filename"   value="" /><br>
+                        <input type="submit" class="blueB"  value="上传学生名单" />
+                    </form>
+                    <div class="clear"></div>
+                </div>
+                <div class="widget" align="left">
+                    <form action="${pageContext.request.contextPath}/teacher/addDailyScore" method="post" enctype="multipart/form-data">
+                        <input type="file" name="filename"  value="" /><br>
+                        <input type="submit" name="" class="redB" value="上传平时成绩" />
+                        <div class="clear"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="line"></div>
 
     <!-- 学生名单 ==> 动态数据表 -->
     <div class="wrapper">
         <!-- Widgets -->
         <div class="widgets">
             <div class="widget">
-                <form action="${pageContext.request.contextPath }/user/deleteUsers" method="post">
                     <div class="title">
                         <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
                         <h6>作业列表</h6>
@@ -172,7 +165,7 @@
                             <td class="sortCol"><div>基本描述<span></span></div></td>
                             <td class="sortCol"><div>提交时间<span></span></div></td>
                             <td class="sortCol"><div>发布时间<span></span></div></td>
-                            <td class="sortCol"><div>比例<span></span></div></td>
+                            <td class="sortCol"><div>分值比例<span></span></div></td>
                             <td class="sortCol"><div>操作<span></span></div></td>
                         </tr>
                         </thead>
@@ -184,12 +177,11 @@
                                 <td>${assignment.deadline}</td>
                                 <td>${assignment.releaseTime}</td>
                                 <td>${assignment.percent}</td>
-                                <td><a href="/teacher/showSubmitedAssignments?assignmentId=${assignment.assignmentId}">查看</a></td>
+                                <td><a href="/teacher/showSubmitedAssignments?assignmentId=${assignment.assignmentId}"><button class="blueB">查看</button></a></td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
-                </form>
             </div>
         </div>
     </div>
@@ -200,5 +192,6 @@
     </div>
 
     <div class="clear"></div>
+</div>
 </body>
 </html>

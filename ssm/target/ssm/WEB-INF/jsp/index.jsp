@@ -139,7 +139,6 @@
                         <input type="file" name="body"  value="" />
                         <input type="submit" name=""  value="选择作业文件" />
                     </form>
-
                     <div class="clear"></div>
                 </div>
             </div>
@@ -186,24 +185,6 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            //单个删除
-            $(document).on("click",".del",function () {
-                //alert($(this).parents("tr").find("td:eq(0)").text());
-                var userId = $(this).parents("tr").find("td:eq(0)").text();
-                var userName = $(this).parents("tr").find("td:eq(1)").text();
-               // $('#delBtn').attr("delete-id",userId);
-                //发送AJAX请求
-                if(confirm("确认删除【"+userName+"】吗？")){
-                    /*
-                    $.ajax({
-                       url: "${APP_PATH}/user/deleteUsers/" + userId,
-                       type:"DELETE"
-                    });*/
-                }
-            });
-        </script>
 
         <!-- Footer line -->
         <div id="footer">

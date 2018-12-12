@@ -48,8 +48,6 @@
           <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:3.0.1" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-compress:1.18" />
           <element id="library" level="project" name="Maven: com.github.virtuald:curvesapi:1.04" />
-          <element id="library" level="module" name="Maven: com.alibaba:jconsole:1.8.0" module-name="ssm" />
-          <element id="library" level="module" name="Maven: com.alibaba:tools:1.8.0" module-name="ssm" />
         </element>
       </element>
       <element id="directory" name="META-INF">

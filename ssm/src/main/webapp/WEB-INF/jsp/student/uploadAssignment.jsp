@@ -140,10 +140,7 @@
                 </div>
                 <div class="formRow">
                     <label for="login">作业文件</label>
-                    <!--上传学生名单
-                                <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
-                                -->
-                    <div class="loginInput"><input type="file" name="filename"  value="" /></div>
+                     <div class="loginInput"><input type="file" name="filename"  value="" /></div>
                     <div class="clear"></div>
                 </div>
                 <div class="loginControl">
