@@ -125,26 +125,48 @@
         <div class="wrapper">
             <div class="pageTitle">
                 <h5>小组信息</h5>
-                <p>姓名:<strong>${student.userName}</strong></p>
-                <p>学号:<strong>${student.userId}</strong></p>
-                <p>性别:<strong>${student.gender}</strong></p>
-                <p>Email:<strong>${student.email}</strong></p>
-                <p>学院:<strong>${student.department}</strong></p>
-                <p>专业:<strong>${student.major}</strong></p>
-                <p>班级:<strong>${student.classes}</strong></p>
+                <p>小组号:<strong>${group.groupId}</strong></p>
+                <p>小组名:<strong>${group.groupName}</strong></p>
+                <p>所属课程:<strong>${group.courseId}</strong></p>
+                <p>成员数量:<strong>${group.groupMemberNum}</strong></p>
+                <p>组长:<strong>${group.leaderId}</strong></p>
             </div>
             <div class="clear"></div>
         </div>
     </div>
 
 
-    <!-- 动态数据表 -->
+    <%--动态数据表--%>
     <div class="wrapper">
-        <!-- Widgets -->
-        <div class="widgets">
-            <div class="widget">
-
-            </div>
+        <div class="widget">
+            <div class="title"><img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
+                <h6>可选学生列表</h6></div>
+            <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
+                <thead>
+                <tr>
+                    <th class="sortCol"><div>学生号<span></span></div></th>
+                    <th class="sortCol"><div>姓名<span></span></div></th>
+                    <th class="sortCol"><div>性别<span></span></div></th>
+                    <th class="sortCol"><div>学院<span></span></div></th>
+                    <th class="sortCol"><div>专业<span></span></div></th>
+                    <th class="sortCol"><div>班级<span></span></div></th>
+                    <th class="sortCol"><div>选项<span></span></div></th>
+                </tr>
+                </thead>
+                <tbody align="center">
+                <c:forEach items="${studentWithoutGroup}" var="studentWithoutGroup">
+                    <tr>
+                        <td>${studentWithoutGroup.userId}</td>
+                        <td>${studentWithoutGroup.userName}</td>
+                        <td>${studentWithoutGroup.gender}</td>
+                        <td>${studentWithoutGroup.department}</td>
+                        <td>${studentWithoutGroup.major}</td>
+                        <td>${studentWithoutGroup.classes}</td>
+                        <td><a href="/student/selectGroupMember/?studentId=${studentWithoutGroup.userId}"><button class="blueB">添加到小组</button></a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
     </div>
 

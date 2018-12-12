@@ -85,7 +85,7 @@
     <ul id="menu" class="nav">
         <li class="dash"><a href="/student/home" title=""><span>我的主页</span></a></li>
         <li class="tables"><a href="/student/course" title="" ><span>课程管理</span></a></li>
-        <li class="tables"><a href="#" title="" class="exp"><span>作业管理</span><strong>2</strong></a>
+        <li class="tables"><a href="#" title="" class="active exp"><span>作业管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/assignment" title="">查看作业</a></li>
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>

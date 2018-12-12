@@ -144,21 +144,60 @@ public class StudentController {
         //取出学生所属的小组信息
         Group group = studentService.getGroupByStudentId(groupId);
         model.addAttribute("group",group);
-        return "student/group";
         //取出该小组的所有成员
+        List<Group_Student> gsList = teacherService.getGroupStudents(groupId.intValue());
+        model.addAttribute("gsList",gsList);
+        return "student/group";
     }
 
 
     //进入创建小组页
     @RequestMapping(value = "/addGroup")
-    public String gotoAddGroup(){
+    public String gotoAddGroup()
+    {
         return "student/addGroup";
     }
-    //进入添加小组页
+
+    //进入添加小组成员页
     @RequestMapping(value = "/addGroupMember")
-    public String gotoAddGroupMember(){
+    public String gotoAddGroupMember(Model model, HttpSession session)
+    {
+        User user = (User) session.getAttribute("currentUser");
+        Integer groupId = studentService.getGroupIdByStudentId(user.getUserId());
+        //取出学生所属的小组信息
+        Group group = studentService.getGroupByStudentId(groupId);
+        model.addAttribute("group",group);
+        //取出所有的学生
+        List<User> userList = studentService.getAllStudent();
+        List<User> studentWithoutGroup = studentService.getGroupByStudentList(userList);
+        model.addAttribute("studentWithoutGroup",studentWithoutGroup);
         return "student/addGroupMember";
     }
+    @RequestMapping(value = "/selectGroupMember")
+    public String gotoSelectGroupMember(Model model, HttpSession session, HttpServletRequest request)
+    {
+        String studentId = request.getParameter("studentId");
+        if(studentId.isEmpty()){ //获取记录失败
+            return "redirect:/student/addGroupMember";
+        }
+        User user = (User) session.getAttribute("currentUser");
+        Integer groupId = studentService.getGroupIdByStudentId(user.getUserId());
+        Group group = studentService.getGroupByStudentId(groupId);
+        Course course = teacherService.getCurrentCourse(group.getCourseId());
+        if(user.getUserId().equals(group.getLeaderId())){//只有组长才可以添加组员
+            if(studentService.getCountGroupMember(groupId) < course.getGroupCapacityMax()){ //当前小组人数小于课容量
+                //group_student表更新
+
+                studentService.insertGroupStudent(groupId,studentId);
+            }
+
+        }
+        return "redirect:/student/group";
+    }
+
+    //增加创建小组功能
+    //增加小组成员删除功能
+
 
 
 }

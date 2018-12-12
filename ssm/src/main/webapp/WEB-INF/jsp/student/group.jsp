@@ -137,13 +137,29 @@
 
 
 
-    <!-- 动态数据表 -->
+    <%--动态数据表--%>
     <div class="wrapper">
-        <!-- Widgets -->
-        <div class="widgets">
-            <div class="widget">
-
-            </div>
+        <div class="widget">
+            <div class="title"><img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
+                <h6>小组成员</h6></div>
+            <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
+                <thead>
+                <tr>
+                    <th class="sortCol"><div>小组号<span></span></div></th>
+                    <th class="sortCol"><div>学生号<span></span></div></th>
+                    <th class="sortCol"><div>成绩<span></span></div></th>
+                </tr>
+                </thead>
+                <tbody align="center">
+                <c:forEach items="${gsList}" var="gsList">
+                    <tr>
+                        <td>${gsList.groupId}</td>
+                        <td>${gsList.studentId}</td>
+                        <td>${gsList.grade}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
     </div>
 

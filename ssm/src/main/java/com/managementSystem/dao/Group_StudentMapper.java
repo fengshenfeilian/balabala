@@ -30,6 +30,8 @@ public interface Group_StudentMapper {
     int updateByPrimaryKey(Group_Student record);
 
 /*  marco  */
-    Integer selectGroupIdByStudentId(String StudentId);
+    Integer selectGroupIdByStudentId(String studentId);
+    Boolean existStudent(String studentId);
+    Integer getStudentCountByGroupId(Integer groupId);
 /*   */
 }

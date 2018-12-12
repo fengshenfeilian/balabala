@@ -107,5 +107,40 @@ public class StudentService {
          return userMapper.selectByPrimaryKey(userId);
     }
 
+    public List<User> getAllStudent()
+    {
+        return userMapper.selectByExampleWithRole(null);
+    }
+
+    public List<User> getGroupByStudentList(List<User> userList)
+    {
+        List<User> list = new ArrayList<>();
+        for (User user : userList) {
+           // Group group = groupMapper.selectByPrimaryKey(groupStudent.getGroupId());
+            //String name = groupMapper.selectCourseNameByCourseId(group.getCourseId());
+            //courseName.add(name);
+            //如果在group_student表中找到user，则跳过，否则把它加入list
+            if(group_studentMapper.existStudent(user.getUserId())){
+                continue;
+            }
+            //判断该用户是否是学生
+            else if(user.getRoleId().equals("3")){
+                list.add(user);
+            }
+        }
+        return list;
+    }
+
+    public int getCountGroupMember(int groupId){
+        //查找group_student表中groupId的数量
+        return group_studentMapper.getStudentCountByGroupId(groupId);
+    }
+    public void insertGroupStudent(int groupId,String studentId)
+    {
+        Group_Student gs = new Group_Student();
+        gs.setGroupId(groupId);
+        gs.setStudentId(studentId);
+        group_studentMapper.insert(gs);
+    }
 }
 
