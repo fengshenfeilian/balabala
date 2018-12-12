@@ -72,4 +72,6 @@ public class Assignment {
     public void setPercent(Integer percent) {
         this.percent = percent;
     }
+
+
 }

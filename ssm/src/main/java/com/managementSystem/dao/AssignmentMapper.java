@@ -29,4 +29,5 @@ public interface AssignmentMapper {
     int updateByPrimaryKey(Assignment record);
 
     int getPercent(String assignmentId);
+    boolean existAssignment(String assignmentId);
 }

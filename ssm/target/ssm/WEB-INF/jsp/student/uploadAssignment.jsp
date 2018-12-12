@@ -140,7 +140,7 @@
                 </div>
                 <div class="formRow">
                     <label for="login">作业文件</label>
-                     <div class="loginInput"><input type="file" name="filename"  value="" /></div>
+                     <div class="loginInput"><input type="file" name="body"  value="" /></div>
                     <div class="clear"></div>
                 </div>
                 <div class="loginControl">

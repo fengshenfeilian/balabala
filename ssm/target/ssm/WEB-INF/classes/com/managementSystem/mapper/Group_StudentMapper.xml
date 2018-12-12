@@ -178,4 +178,10 @@
     where GROUP_ID = #{groupId,jdbcType=INTEGER}
       and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectGroupIdByStudentId" parameterType="String" resultType="Integer">
+    SELECT GROUP_ID from group_student
+    where STUDENT_ID = #{studentId}
+  </select>
+
 </mapper>
