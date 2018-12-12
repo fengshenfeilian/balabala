@@ -91,7 +91,7 @@
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>2</strong></a>
+        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>3</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/group" title="" >查看小组信息</a></li>
                 <li class="this"><a href="/student/addGroupMember" title="" >添加小组成员</a></li>
@@ -120,6 +120,22 @@
         </div>
     </div>
 
+    <!-- 标题区 -->
+    <div class="titleArea">
+        <div class="wrapper">
+            <div class="pageTitle">
+                <h5>小组信息</h5>
+                <p>姓名:<strong>${student.userName}</strong></p>
+                <p>学号:<strong>${student.userId}</strong></p>
+                <p>性别:<strong>${student.gender}</strong></p>
+                <p>Email:<strong>${student.email}</strong></p>
+                <p>学院:<strong>${student.department}</strong></p>
+                <p>专业:<strong>${student.major}</strong></p>
+                <p>班级:<strong>${student.classes}</strong></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
 
 
     <!-- 动态数据表 -->
@@ -136,6 +152,8 @@
     <div id="footer">
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
     </div>
+
+
 
     <div class="clear"></div>
 </div>

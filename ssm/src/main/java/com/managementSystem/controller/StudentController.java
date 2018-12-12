@@ -68,19 +68,6 @@ public class StudentController {
         return "student/courseInfo";
     }
 
-    /*
-       public String goCourse(HttpServletRequest request, Model model)
-    {
-        String courseId = request.getParameter("courseId");
-        int id = Integer.parseInt(courseId);
-        Course course = teacherService.getCurrentCourse(id);
-        model.addAttribute("course", course);
-        List<Assignment> assignments = teacherService.getAssignments(id);
-        model.addAttribute("assignments", assignments);
-        request.getSession().setAttribute("currentCourse", course);
-        return "teacher/course";
-    }
-    */
 
 
     //进入作业页
@@ -108,16 +95,6 @@ public class StudentController {
     @RequestMapping(value = "/uploadAssignment")
     public String gotoUploadAssignment(){
         return "student/uploadAssignment";
-    }
-    //进入小组信息页
-    @RequestMapping(value = "/group")
-    public String gotoGroup(){
-        return "student/group";
-    }
-    //进入添加小组页
-    @RequestMapping(value = "/addGroup")
-    public String gotoAddGroup(){
-        return "student/addGroup";
     }
 
     //作业上传(成功：跳转至assignment，失败则刷新uploadAssignment)
@@ -157,4 +134,31 @@ public class StudentController {
             return "redirect:/student/uploadAssignment";
         }
     }
+
+    //进入小组信息页
+    @RequestMapping(value = "/group")
+    public String gotoGroup(Model model, HttpSession session)
+    {
+        User user = (User) session.getAttribute("currentUser");
+        Integer groupId = studentService.getGroupIdByStudentId(user.getUserId());
+        //取出学生所属的小组信息
+        Group group = studentService.getGroupByStudentId(groupId);
+        model.addAttribute("group",group);
+        return "student/group";
+        //取出该小组的所有成员
+    }
+
+
+    //进入创建小组页
+    @RequestMapping(value = "/addGroup")
+    public String gotoAddGroup(){
+        return "student/addGroup";
+    }
+    //进入添加小组页
+    @RequestMapping(value = "/addGroupMember")
+    public String gotoAddGroupMember(){
+        return "student/addGroupMember";
+    }
+
+
 }

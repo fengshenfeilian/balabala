@@ -64,6 +64,11 @@ public class StudentService {
         return group_studentMapper.selectGroupIdByStudentId(studentId);
     }
 
+    public Group getGroupByStudentId(int groupId)
+    {
+        return groupMapper.selectByPrimaryKey(groupId);
+    }
+
     public boolean existAssignment(String assignmentId)
     {
         return assignmentMapper.existAssignment(assignmentId);

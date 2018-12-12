@@ -94,7 +94,8 @@
         <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/group" title="" >查看小组信息</a></li>
-                <li><a href="/student/addGroup" title="">添加小组</a></li>
+                <li class="this"><a href="/student/addGroupMember" title="" >添加小组成员</a></li>
+                <li><a href="/student/addGroup" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>

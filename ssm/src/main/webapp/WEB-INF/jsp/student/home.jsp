@@ -84,17 +84,18 @@
     <!-- 左侧导航栏 -->
     <ul id="menu" class="nav">
         <li class="dash"><a href="/student/home" title="" class="active"><span>我的主页</span></a></li>
-        <li class="tables"><a href="/student/course" ><span>课程管理</span></a></li>
+        <li class="tables"><a href="/student/course" title="" ><span>课程管理</span></a></li>
         <li class="tables"><a href="#" title="" class="exp"><span>作业管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/assignment" title="">查看作业</a></li>
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
+        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>3</strong></a>
             <ul class="sub">
-                <li class="this"><a href="/student/group" title="">查看小组信息</a></li>
-                <li><a href="/student/addGroup" title="">添加小组</a></li>
+                <li class="this"><a href="/student/group" title="" >查看小组信息</a></li>
+                <li class="this"><a href="/student/addGroupMember" title="" >添加小组成员</a></li>
+                <li><a href="/student/addGroup" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>
@@ -135,7 +136,7 @@
             <div class="clear"></div>
         </div>
     </div>
-    
+
 
     <!-- 动态数据表 -->
     <div class="wrapper">
