@@ -41,6 +41,9 @@ public class StudentController {
     //首页
     @RequestMapping(value = "/home")
     public String gotoIndex(Model model, HttpSession session){
+        User user = (User) session.getAttribute("currentUser");
+        User studnet = studentService.getUserById(user.getUserId());
+        model.addAttribute("student",studnet);
         return "student/home";
     }
 
@@ -59,9 +62,9 @@ public class StudentController {
         String courseId = request.getParameter("courseId");
         int id = Integer.parseInt(courseId);
         Course course = teacherService.getCurrentCourse(id);
-        String teacherName = studentService.getUserNameById(course.getTeacherId());
+        User teacher = studentService.getUserById(course.getTeacherId());
         model.addAttribute("course",course);
-        model.addAttribute("currentCourseTeacherName",teacherName);
+        model.addAttribute("currentCourseTeacherName",teacher.getUserName());
         return "student/courseInfo";
     }
 

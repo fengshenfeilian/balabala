@@ -119,11 +119,23 @@
         </div>
     </div>
 
-
-
-
-
-
+    <!-- 标题区 -->
+    <div class="titleArea">
+        <div class="wrapper">
+            <div class="pageTitle">
+                    <h5>个人信息</h5>
+                    <p>姓名:<strong>${student.userName}</strong></p>
+                    <p>学号:<strong>${student.userId}</strong></p>
+                    <p>性别:<strong>${student.gender}</strong></p>
+                    <p>Email:<strong>${student.email}</strong></p>
+                    <p>学院:<strong>${student.department}</strong></p>
+                    <p>专业:<strong>${student.major}</strong></p>
+                    <p>班级:<strong>${student.classes}</strong></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
 
     <!-- 动态数据表 -->
     <div class="wrapper">

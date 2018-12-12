@@ -97,10 +97,9 @@ public class StudentService {
         group_assignmentMapper.insert(ga);
     }
 
-    public String getUserNameById(String userId)
+    public User getUserById(String userId)
     {
-        User user = userMapper.selectByPrimaryKey(userId);
-        return user.getUserName();
+         return userMapper.selectByPrimaryKey(userId);
     }
 
 }
