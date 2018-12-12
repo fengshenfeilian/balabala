@@ -1,10 +1,15 @@
 package com.managementSystem.controller;
 
 
+import com.managementSystem.dao.UserMapper;
 import com.managementSystem.pojo.*;
 import com.managementSystem.service.StudentService;
+import com.managementSystem.service.TeacherService;
+import com.managementSystem.service.UserService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,16 +34,51 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    //进入首页
+    @Autowired
+    TeacherService teacherService;
+
+
+    //首页
     @RequestMapping(value = "/home")
     public String gotoIndex(Model model, HttpSession session){
         return "student/home";
     }
-    //进入课程页
+
+    //课程页
     @RequestMapping(value = "/course")
-    public String gotoCourse(){
+    public String gotoCourse(HttpSession session,HttpServletRequest request, Model model){
+        User user = (User) session.getAttribute("currentUser");
+        List<Student_Course> scList = studentService.getCourseListByUserId(user.getUserId());
+        model.addAttribute("studentCourse",scList);
         return "student/course";
     }
+
+    //课程详细信息
+    @RequestMapping(value = "/courseInfo")
+    public String gotoCourseInfo(HttpServletRequest request, Model model){
+        String courseId = request.getParameter("courseId");
+        int id = Integer.parseInt(courseId);
+        Course course = teacherService.getCurrentCourse(id);
+        String teacherName = studentService.getUserNameById(course.getTeacherId());
+        model.addAttribute("course",course);
+        model.addAttribute("currentCourseTeacherName",teacherName);
+        return "student/courseInfo";
+    }
+
+    /*
+       public String goCourse(HttpServletRequest request, Model model)
+    {
+        String courseId = request.getParameter("courseId");
+        int id = Integer.parseInt(courseId);
+        Course course = teacherService.getCurrentCourse(id);
+        model.addAttribute("course", course);
+        List<Assignment> assignments = teacherService.getAssignments(id);
+        model.addAttribute("assignments", assignments);
+        request.getSession().setAttribute("currentCourse", course);
+        return "teacher/course";
+    }
+    */
+
 
     //进入作业页
     @RequestMapping(value = "/assignment")

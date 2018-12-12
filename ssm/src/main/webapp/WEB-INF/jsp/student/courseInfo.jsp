@@ -83,8 +83,8 @@
 
     <!-- 左侧导航栏 -->
     <ul id="menu" class="nav">
-        <li class="dash"><a href="/student/home" title=""><span>我的主页</span></a></li>
-        <li class="tables"><a href="/student/course" title="" class="active"><span>课程管理</span></a></li>
+        <li class="dash"><a href="/student/home" title="" class="active"><span>我的主页</span></a></li>
+        <li class="tables"><a href="/student/course" ><span>课程管理</span></a></li>
         <li class="tables"><a href="#" title="" class="exp"><span>作业管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/assignment" title="">查看作业</a></li>
@@ -119,30 +119,29 @@
         </div>
     </div>
 
+    <!-- 标题区 -->
+    <div class="titleArea">
+        <div class="wrapper">
+            <div class="pageTitle">
+                <h5>课程信息</h5>
+                <p>课程名称:<strong>${course.courseName}</strong></p>
+                <p>课程简介:<strong>${course.courseDescription}</strong></p>
+                <p>任课老师:<strong>${currentCourseTeacherName}</strong></p>
+                <p>课程创建时间:<strong>${course.createTime}</strong></p>
+                <p>课程是否结束:<strong>${course.isEnd}</strong></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
 
 
-    <%--动态数据表--%>
+    <!-- 动态数据表 -->
     <div class="wrapper">
-        <div class="widget">
-            <div class="title"><img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
-                <h6>已选课程列表</h6></div>
-            <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
-                <thead>
-                <tr>
-                    <td class="sortCol"><div>课程号<span></span></div></td>
-                    <td class="sortCol"><div>选项<span></span></div></td>
-                </tr>
-                </thead>
-                <tbody align="center">
-                <c:forEach items="${studentCourse}" var="studentCourse">
-                    <tr>
-                        <td>${studentCourse.courseId}</td>
-                        <td><a href="/student/courseInfo?courseId=${studentCourse.courseId}"><button class="blueB">查看课程信息</button></a></td>
+        <!-- Widgets -->
+        <div class="widgets">
+            <div class="widget">
 
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+            </div>
         </div>
     </div>
 
@@ -150,8 +149,6 @@
     <div id="footer">
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
     </div>
-
-
 
     <div class="clear"></div>
 </div>

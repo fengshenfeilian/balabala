@@ -121,17 +121,28 @@
 
 
 
-
-
-
-
-    <!-- 动态数据表 -->
+    <%--动态数据表--%>
     <div class="wrapper">
-        <!-- Widgets -->
-        <div class="widgets">
-            <div class="widget">
+        <div class="widget">
+            <div class="title"><img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
+                <h6>已选课程列表</h6></div>
+            <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
+                <thead>
+                <tr>
+                    <td class="sortCol"><div>课程号<span></span></div></td>
+                    <td class="sortCol"><div>选项<span></span></div></td>
+                </tr>
+                </thead>
+                <tbody align="center">
+                <c:forEach items="${studentCourse}" var="studentCourse">
+                    <tr>
+                        <td>${studentCourse.courseId}</td>
+                        <td><a href="/student/courseInfo?courseId=${studentCourse.courseId}"><button class="blueB">查看课程信息</button></a></td>
 
-            </div>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
     </div>
 

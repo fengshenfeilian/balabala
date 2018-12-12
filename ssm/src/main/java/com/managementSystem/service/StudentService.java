@@ -82,13 +82,26 @@ public class StudentService {
         group_assignmentMapper.deleteByPrimaryKey(gak);
     }
 
+    //查询当前学生所选课程
+    public List<Student_Course> getCourseListByUserId(String userId)
+    {
+        Student_CourseExample scExample = new Student_CourseExample();
+        Student_CourseExample.Criteria criteria = scExample.createCriteria();
+        criteria.andStudentIdEqualTo(userId);
+        return student_courseMapper.selectByExample(scExample);
+    }
+
     //上传作业 ：插入group_assignment表
     public void insertGroupAssignment(Group_Assignment ga)
     {
         group_assignmentMapper.insert(ga);
     }
 
-
+    public String getUserNameById(String userId)
+    {
+        User user = userMapper.selectByPrimaryKey(userId);
+        return user.getUserName();
+    }
 
 }
 
