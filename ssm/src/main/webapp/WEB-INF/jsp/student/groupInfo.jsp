@@ -93,8 +93,7 @@
         </li>
         <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>3</strong></a>
             <ul class="sub">
-                <li class="this"><a href="/student/group" title="" >查看小组信息</a></li>
-                <li class="this"><a href="/student/addGroupMember" title="" >添加小组成员</a></li>
+                <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
                 <li><a href="/student/addGroup" title="">创建小组</a></li>
             </ul>
         </li>
@@ -125,17 +124,25 @@
         <div class="wrapper">
             <div class="pageTitle">
                 <h5>小组信息</h5>
-                <p>小组号:<strong>${group.groupId}</strong></p>
-                <p>小组名:<strong>${group.groupName}</strong></p>
-                <p>所属课程:<strong>${group.courseId}</strong></p>
-                <p>成员数量:<strong>${group.groupMemberNum}</strong></p>
-                <p>组长:<strong>${group.leaderId}</strong></p>
+                <p>小组号:<strong>${curGroup.groupId}</strong></p>
+                <p>小组名:<strong>${curGroup.groupName}</strong></p>
+                <p>所属课程号:<strong>${curGroup.courseId}</strong></p>
+                <p>成员数量:<strong>${curGroup.groupMemberNum}</strong></p>
+                <p>组长:<strong>${curGroup.leaderId}</strong></p>
             </div>
             <div class="clear"></div>
         </div>
     </div>
 
-
+    <!-- 选项区域 -->
+    <div class="statsRow">
+        <div class="wrapper">
+            <div class="controlB">
+                <a><button class="redB">解散当前小组</button></a>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
 
     <%--动态数据表--%>
     <div class="wrapper">
@@ -145,17 +152,60 @@
             <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
                 <thead>
                 <tr>
-                    <th class="sortCol"><div>小组号<span></span></div></th>
                     <th class="sortCol"><div>学生号<span></span></div></th>
+                    <th class="sortCol"><div>学生姓名<span></span></div></th>
+                    <th class="sortCol"><div>班级<span></span></div></th>
                     <th class="sortCol"><div>成绩<span></span></div></th>
+                    <th class="sortCol"><div>选项<span></span></div></th>
                 </tr>
                 </thead>
                 <tbody align="center">
-                <c:forEach items="${gsList}" var="gsList">
+                <c:forEach items="${gsList}" var="gsList" varStatus="loop">
                     <tr>
-                        <td>${gsList.groupId}</td>
                         <td>${gsList.studentId}</td>
+                        <td>${curGroupMembers[loop.count-1].userName}</td>
+                        <td>${curGroupMembers[loop.count-1].classes}</td>
                         <td>${gsList.grade}</td>
+                        <td><a href="/student/deleteGroupMember?studentId=${gsList.studentId}&groupId=${curGroup.groupId}">
+                            <button class="redB">删除</button>
+                        </a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <%--动态数据表--%>
+    <div class="wrapper">
+        <div class="widget">
+            <div class="title"><img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
+                <h6>可选学生列表</h6></div>
+            <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
+                <thead>
+                <tr>
+                    <th class="sortCol"><div>学生号<span></span></div></th>
+                    <th class="sortCol"><div>姓名<span></span></div></th>
+                    <th class="sortCol"><div>性别<span></span></div></th>
+                    <th class="sortCol"><div>学院<span></span></div></th>
+                    <th class="sortCol"><div>专业<span></span></div></th>
+                    <th class="sortCol"><div>班级<span></span></div></th>
+                    <th class="sortCol"><div>选项<span></span></div></th>
+                </tr>
+                </thead>
+                <tbody align="center">
+                <c:forEach items="${availableStudent}" var="availabelStudent" >
+                    <tr>
+                        <td>${availabelStudent.userId}</td>
+                        <td>${availabelStudent.userName}</td>
+                        <td>${availabelStudent.gender}</td>
+                        <td>${availabelStudent.department}</td>
+                        <td>${availabelStudent.major}</td>
+                        <td>${availabelStudent.classes}</td>
+                        <td><a href="/student/addGroupMember/?studentId=${availabelStudent.userId}&groupId=${curGroup.groupId}">
+                                <button class="blueB">添加到小组</button>
+                            </a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

@@ -93,8 +93,7 @@
         </li>
         <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>3</strong></a>
             <ul class="sub">
-                <li class="this"><a href="/student/group" title="" >查看小组信息</a></li>
-                <li class="this"><a href="/student/addGroupMember" title="" >添加小组成员</a></li>
+                <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
                 <li><a href="/student/addGroup" title="">创建小组</a></li>
             </ul>
         </li>
@@ -136,12 +135,12 @@
                 </div>
                 <div class="formRow">
                     <label for="login">作业标题</label>
-                    <div class="loginInput"><input type="text" name="title" class="validate[required]" id="login" placeholder="description"/></div>
+                    <div class="loginInput"><input type="text" name="title" class="validate[required]" placeholder="description"/></div>
                     <div class="clear"></div>
                 </div>
                 <div class="formRow">
                     <label for="login">作业文件</label>
-                     <div class="loginInput"><input type="file" name="body"  value="" /></div>
+                    <div class="loginInput"><input type="file" name="body"  value="" id="login" /></div>
                     <div class="clear"></div>
                 </div>
                 <div class="loginControl">

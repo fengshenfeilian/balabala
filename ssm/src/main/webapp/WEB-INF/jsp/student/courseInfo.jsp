@@ -93,8 +93,7 @@
         </li>
         <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>3</strong></a>
             <ul class="sub">
-                <li class="this"><a href="/student/group" title="" >查看小组信息</a></li>
-                <li class="this"><a href="/student/addGroupMember" title="" >添加小组成员</a></li>
+                <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
                 <li><a href="/student/addGroup" title="">创建小组</a></li>
             </ul>
         </li>
@@ -127,7 +126,7 @@
                 <h5>课程信息</h5>
                 <p>课程名称:<strong>${course.courseName}</strong></p>
                 <p>课程简介:<strong>${course.courseDescription}</strong></p>
-                <p>任课老师:<strong>${currentCourseTeacherName}</strong></p>
+                <p>任课教师:<strong>${currentCourseTeacherName}</strong></p>
                 <p>课程创建时间:<strong>${course.createTime}</strong></p>
                 <p>课程是否结束:<strong>${course.isEnd}</strong></p>
             </div>
@@ -136,13 +135,33 @@
     </div>
 
 
-    <!-- 动态数据表 -->
+    <%--动态数据表--%>
     <div class="wrapper">
-        <!-- Widgets -->
-        <div class="widgets">
-            <div class="widget">
-
-            </div>
+        <div class="widget">
+            <div class="title"><img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
+                <h6>课程作业列表</h6></div>
+            <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
+                <thead>
+                <tr>
+                    <td class="sortCol"><div>标题<span></span></div></td>
+                    <td class="sortCol"><div>描述<span></span></div></td>
+                    <td class="sortCol"><div>提交开始时间<span></span></div></td>
+                    <td class="sortCol"><div>提交截止时间<span></span></div></td>
+                    <td class="sortCol"><div>选项<span></span></div></td>
+                </tr>
+                </thead>
+                <tbody align="center">
+                <c:forEach items="${curCourseAssignment}" var="curCourseAssignment">
+                    <tr>
+                        <td>${curCourseAssignment.title}</td>
+                        <td>${curCourseAssignment.body}</td>
+                        <td>${curCourseAssignment.releaseTime}</td>
+                        <td>${curCourseAssignment.deadline}</td>
+                        <td><a><button class="blueB">查看最近一次提交</button></a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
     </div>
 

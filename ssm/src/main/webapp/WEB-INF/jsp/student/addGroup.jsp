@@ -93,8 +93,7 @@
         </li>
         <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
-                <li class="this"><a href="/student/group" title="" >查看小组信息</a></li>
-                <li class="this"><a href="/student/addGroupMember" title="" >添加小组成员</a></li>
+                <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
                 <li><a href="/student/addGroup" title="">创建小组</a></li>
             </ul>
         </li>
@@ -120,10 +119,44 @@
         </div>
     </div>
 
+    <!-- 标题区 -->
+    <div class="titleArea">
+        <div class="wrapper">
+            <div class="pageTitle">
+                <h5>创建小组</h5>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+    <%--表单区域--%>
+    <div class="wrapper">
+        <div class="widget">
+            <form  method="post" id="validate" class="form" action="${pageContext.request.contextPath}/student/addNewGroup">
+                <div class="title"><img src="/static/images/icons/dark/files.png" alt="" class="titleIcon" /></div>
+                <div class="formRow">
+                    <label for="login">课程号</label>
+                    <div class="loginInput"><input type="text" name="courseId" class="validate[required]" id="login" placeholder="" /></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formRow">
+                    <label for="login">组名</label>
+                    <div class="loginInput"><input type="text" name="groupName" class="validate[required]" id="login" placeholder="" /></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="loginControl">
+                    <input type="submit" value="确认创建" class="dblueB logMeIn" />
+                    <div class="clear"></div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
     <!-- 动态数据表 -->
-    <div class="wrapper">
+    <%--
+        <div class="wrapper">
         <!-- Widgets -->
         <div class="widgets">
             <div class="widget">
@@ -131,6 +164,8 @@
             </div>
         </div>
     </div>
+    --%>
+
 
     <!-- Footer line -->
     <div id="footer">

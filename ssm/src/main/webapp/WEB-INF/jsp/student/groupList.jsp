@@ -84,14 +84,14 @@
     <!-- 左侧导航栏 -->
     <ul id="menu" class="nav">
         <li class="dash"><a href="/student/home" title=""><span>我的主页</span></a></li>
-        <li class="tables"><a href="/student/course" title="" class="active"><span>课程管理</span></a></li>
+        <li class="tables"><a href="/student/course" title="" ><span>课程管理</span></a></li>
         <li class="tables"><a href="#" title="" class="exp"><span>作业管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/assignment" title="">查看作业</a></li>
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>3</strong></a>
+        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>3</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
                 <li><a href="/student/addGroup" title="">创建小组</a></li>
@@ -119,33 +119,61 @@
         </div>
     </div>
 
+    <!-- 标题区 -->
+    <div class="titleArea">
+        <div class="wrapper">
+            <div class="pageTitle">
+                <h5>我的小组</h5>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <!-- 选项区域 -->
+    <div class="statsRow">
+        <div class="wrapper">
+            <div class="controlB">
+                <a href="/student/addGroup"><button class="blueB">创建小组</button></a>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
 
 
     <%--动态数据表--%>
     <div class="wrapper">
         <div class="widget">
             <div class="title"><img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
-                <h6>已选课程列表</h6></div>
+                <h6>小组列表</h6></div>
             <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
                 <thead>
                 <tr>
-                    <td class="sortCol"><div>课程号<span></span></div></td>
-                    <td class="sortCol"><div>选项<span></span></div></td>
+                    <th class="sortCol"><div>小组号<span></span></div></th>
+                    <th class="sortCol"><div>课程号<span></span></div></th>
+                    <th class="sortCol"><div>小组名<span></span></div></th>
+                    <th class="sortCol"><div>小组成员数量<span></span></div></th>
+                    <th class="sortCol"><div>组长号<span></span></div></th>
+                    <th class="sortCol"><div>选项<span></span></div></th>
                 </tr>
                 </thead>
                 <tbody align="center">
-                <c:forEach items="${studentCourse}" var="studentCourse">
+                <c:forEach items="${groupList}" var="groupList">
                     <tr>
-                        <td>${studentCourse.courseId}</td>
-                        <td><a href="/student/courseInfo?courseId=${studentCourse.courseId}"><button class="blueB">查看课程信息</button></a></td>
+                        <td>${groupList.groupId}</td>
+                        <td>${groupList.courseId}</td>
+                        <td>${groupList.groupName}</td>
+                        <td>${groupList.groupMemberNum}</td>
+                        <td>${groupList.leaderId}</td>
+                        <td>
+                            <a href="/student/groupInfo?groupId=${groupList.groupId}"><button class="blueB">查看</button></a>
+                            <a href="/student/deleteGroup"><button class="redB">删除</button></a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
-
-
 
     <!-- Footer line -->
     <div id="footer">

@@ -93,8 +93,7 @@
         </li>
         <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>3</strong></a>
             <ul class="sub">
-                <li class="this"><a href="/student/group" title="" >查看小组信息</a></li>
-                <li class="this"><a href="/student/addGroupMember" title="" >添加小组成员</a></li>
+                <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
                 <li><a href="/student/addGroup" title="">创建小组</a></li>
             </ul>
         </li>
@@ -139,13 +138,14 @@
                     <tr>
                         <td>${studentCourse.courseId}</td>
                         <td><a href="/student/courseInfo?courseId=${studentCourse.courseId}"><button class="blueB">查看课程信息</button></a></td>
-
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
+
+
 
     <!-- Footer line -->
     <div id="footer">
