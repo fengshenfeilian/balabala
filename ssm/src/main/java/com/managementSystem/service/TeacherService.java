@@ -222,4 +222,25 @@ public class TeacherService {
         }
         return users;
     }
+
+    public int getCount(String userId) {
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andTeacherIdEqualTo(userId);
+        return (int)courseMapper.countByExample(courseExample);
+    }
+
+    public boolean findCourse(Course course) {
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andTeacherIdEqualTo(course.getTeacherId());
+        criteria.andCreateTimeEqualTo(course.getCreateTime());
+        criteria.andCourseNameEqualTo(course.getCourseName());
+        List<Course> courses = courseMapper.selectByExample(courseExample);
+        if(courses.size() == 0)
+        {
+            return false;
+        }
+        return true;
+    }
 }

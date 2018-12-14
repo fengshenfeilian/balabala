@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
@@ -36,23 +37,39 @@ public class TeacherController {
                                @RequestParam(value = "description")String description,
                                @RequestParam(value = "minNum") String minNum,
                                @RequestParam(value = "maxNum") String maxNum,
-                               @RequestParam(value = "groupPrefix") String groupPrefix,
-                               Model model, HttpSession session, HttpServletRequest request){
+                               @RequestParam(value = "startTime") String startTime,
+                               Model model, HttpSession session, HttpServletRequest request) throws ParseException {
         Course course = new Course();
         User user = (User) session.getAttribute("currentUser");
         course.setCourseName(courseName);
-        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy-MM");
+        Date date = format.parse(startTime);
         course.setCreateTime(date);
         if(minNum == null) System.out.println("min is null");
         int min = Integer.parseInt(minNum);
         course.setGroupCapacityMin(min);
         int max = Integer.parseInt(maxNum);
         course.setGroupCapacityMax(max);
-        int prefix = Integer.parseInt(groupPrefix);
+        int suffix = teacherService.getCount(user.getUserId()) + 1;
+        int count = 0, tem = suffix;
+        while(tem > 0)
+        {
+            count++;
+            tem /= 10;
+        }
+        Calendar cale = null;
+        cale = Calendar.getInstance();
+        int year = cale.get(Calendar.YEAR);
+        int prefix = year*(int)Math.pow(10,count) + suffix;
         course.setGroupPrefix(prefix);
         course.setCourseDescription(description);
         course.setTeacherId(user.getUserId());
         course.setIsEnd(0);
+        if(teacherService.findCourse(course) == true)
+        {
+            model.addAttribute("message","课程已存在");
+            return "teacher/course";
+        }
         teacherService.createNewCourse(course);
         model.addAttribute("message","创建成功");
 //        model.addAttribute("courses", teacherService.getAllCourses(user.getUserId()));
