@@ -7,245 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5242d435-3b40-4cf3-82ee-fa93ba0624a3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index2.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index3.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/index2.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/index3.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/dao/AssignmentMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/dao/AssignmentMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/dao/GroupMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/dao/GroupMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/dao/Group_AssignmentMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/dao/Group_AssignmentMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/dao/Group_StudentMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/dao/Group_StudentMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/Group.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/Group.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/Group_Assignment.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/pojo/Group_Assignment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/test/MVCtest.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/test/MVCtest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/util/ReadExcel.class" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/util/ReadExcel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm.war" afterPath="$PROJECT_DIR$/target/ssm.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/controller/UserController.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/dao/AssignmentMapper.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/dao/AssignmentMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/dao/GroupMapper.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/dao/GroupMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/dao/Group_AssignmentMapper.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/dao/Group_AssignmentMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/dao/Group_StudentMapper.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/dao/Group_StudentMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/pojo/Group.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/pojo/Group.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/pojo/Group_Assignment.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/pojo/Group_Assignment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/test/MVCtest.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/test/MVCtest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/util/ReadExcel.class" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/util/ReadExcel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../test.xlsx" afterPath="$PROJECT_DIR$/../test.xlsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mbg.xml" afterPath="$PROJECT_DIR$/mbg.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruangong.sql" afterPath="$PROJECT_DIR$/ruangong.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/controller/RoleController.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/controller/RoleController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/AssignmentMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/AssignmentMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/CourseMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/CourseMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/GroupMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/GroupMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/Group_AssignmentMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/Group_AssignmentMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/Group_StudentMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/Group_StudentMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/Pri_RoleMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/Pri_RoleMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/PrivelegeMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/PrivelegeMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/RoleMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/RoleMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/Student_CourseMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/Student_CourseMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/UserMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/dao/UserMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/AssignmentMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/AssignmentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/CourseMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/CourseMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/GroupMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/GroupMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Group_AssignmentMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Group_AssignmentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Group_StudentMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Group_StudentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Pri_RoleMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Pri_RoleMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/PrivelegeMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/PrivelegeMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/RoleMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/RoleMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Student_CourseMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Student_CourseMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper_written/user_written_mapepr.xml" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper_written/user_written_mapepr.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Assignment.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Assignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/AssignmentExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/AssignmentExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Course.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Course.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/CourseExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/CourseExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/GroupExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/GroupExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_Assignment.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_Assignment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_AssignmentExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_AssignmentExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_AssignmentKey.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_AssignmentKey.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_Student.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_Student.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_StudentExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_StudentExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_StudentKey.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_StudentKey.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Msg.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Msg.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Pri_RoleExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Pri_RoleExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Pri_RoleKey.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Pri_RoleKey.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Privelege.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Privelege.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/PrivelegeExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/PrivelegeExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Role.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Role.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/RoleExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/RoleExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Student_Course.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Student_Course.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Student_CourseExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Student_CourseExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Student_CourseKey.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Student_CourseKey.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/UserExample.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/UserExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/service/RoleService.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/service/RoleService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/test/MBGtest.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/test/MBGtest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/test/MVCtest.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/test/MVCtest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/util/Page.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/util/Page.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/managementSystem/util/ReadExcel.java" afterPath="$PROJECT_DIR$/src/main/java/com/managementSystem/util/ReadExcel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/db-config.properties" afterPath="$PROJECT_DIR$/src/main/resources/db-config.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/springMVC.xml" afterPath="$PROJECT_DIR$/src/main/resources/springMVC.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/adminIndex.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/adminIndex.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userConfig.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userConfig.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/css/bootstrap-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/css/bootstrap-theme.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/css/bootstrap.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/js/bootstrap.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/js/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/js/npm.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/bootstrap/js/npm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/datatable.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/datatable.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/elfinder.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/elfinder.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/fullcalendar.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/fullcalendar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/main.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/prettyPhoto.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/prettyPhoto.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/reset.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/reset.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/ui_custom.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/ui_custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/jquery/jquery-3.3.1.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/jquery/jquery-3.3.1.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/charts/bar.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/charts/bar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/charts/chart.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/charts/chart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/charts/hBar.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/charts/hBar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/charts/pie.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/charts/pie.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/charts/updating.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/charts/updating.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/custom.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/custom.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/jquery-ui.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/jquery-ui.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/jquery.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/jquery.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/calendar.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/calendar.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/charts/jquery.flot.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/charts/jquery.flot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/charts/jquery.flot.orderBars.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/charts/jquery.flot.orderBars.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/charts/jquery.flot.pie.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/charts/jquery.flot.pie.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/charts/jquery.flot.resize.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/charts/jquery.flot.resize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/charts/jquery.sparkline.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/charts/jquery.sparkline.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/autogrowtextarea.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/autogrowtextarea.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/chosen.jquery.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/chosen.jquery.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.cleditor.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.cleditor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.dualListBox.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.dualListBox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.inputlimiter.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.inputlimiter.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.maskedinput.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.maskedinput.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.tagsinput.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.tagsinput.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.validationEngine-en.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.validationEngine-en.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.validationEngine.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/forms/jquery.validationEngine.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/spinner/jquery.mousewheel.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/spinner/jquery.mousewheel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/spinner/ui.spinner.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/spinner/ui.spinner.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/tables/datatable.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/tables/datatable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/tables/resizable.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/tables/resizable.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/tables/tablesort.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/tables/tablesort.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.breadcrumbs.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.breadcrumbs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.collapsible.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.collapsible.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.colorpicker.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.colorpicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.jgrowl.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.jgrowl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.prettyPhoto.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.prettyPhoto.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.progress.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.progress.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.sourcerer.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.sourcerer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.timeentry.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.timeentry.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.tipsy.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/ui/jquery.tipsy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/uploader/plupload.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/uploader/plupload.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/wizard/jquery.form.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/wizard/jquery.form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/wizard/jquery.form.wizard.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/wizard/jquery.form.wizard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/wizard/jquery.validate.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/plugins/wizard/jquery.validate.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/AssignmentMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/AssignmentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/CourseMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/CourseMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/GroupMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/GroupMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/Group_AssignmentMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/Group_AssignmentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/Group_StudentMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/Group_StudentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/Pri_RoleMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/Pri_RoleMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/PrivelegeMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/PrivelegeMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/RoleMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/RoleMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/Student_CourseMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/Student_CourseMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper_written/user_written_mapepr.xml" afterPath="$PROJECT_DIR$/target/classes/com/managementSystem/mapper_written/user_written_mapepr.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/db-config.properties" afterPath="$PROJECT_DIR$/target/classes/db-config.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/springMVC.xml" afterPath="$PROJECT_DIR$/target/classes/springMVC.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/applicationContext.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/AssignmentMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/AssignmentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/CourseMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/CourseMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/GroupMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/GroupMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/Group_AssignmentMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/Group_AssignmentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/Group_StudentMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/Group_StudentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/Pri_RoleMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/Pri_RoleMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/PrivelegeMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/PrivelegeMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/RoleMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/RoleMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/Student_CourseMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/Student_CourseMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper_written/user_written_mapepr.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/managementSystem/mapper_written/user_written_mapepr.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/db-config.properties" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/db-config.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/mybatis-config.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/springMVC.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/springMVC.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/adminIndex.jsp" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/adminIndex.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/loginError.jsp" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/loginError.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/userConfig.jsp" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/jsp/userConfig.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/login.jsp" afterPath="$PROJECT_DIR$/target/ssm/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/bootstrap/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/target/ssm/static/bootstrap/css/bootstrap-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/bootstrap/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/target/ssm/static/bootstrap/css/bootstrap-theme.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/bootstrap/css/bootstrap.css" afterPath="$PROJECT_DIR$/target/ssm/static/bootstrap/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/bootstrap/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/target/ssm/static/bootstrap/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/target/ssm/static/bootstrap/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/bootstrap/js/bootstrap.js" afterPath="$PROJECT_DIR$/target/ssm/static/bootstrap/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/bootstrap/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/bootstrap/js/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/bootstrap/js/npm.js" afterPath="$PROJECT_DIR$/target/ssm/static/bootstrap/js/npm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/css/datatable.css" afterPath="$PROJECT_DIR$/target/ssm/static/css/datatable.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/css/elfinder.css" afterPath="$PROJECT_DIR$/target/ssm/static/css/elfinder.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/css/fullcalendar.css" afterPath="$PROJECT_DIR$/target/ssm/static/css/fullcalendar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/css/main.css" afterPath="$PROJECT_DIR$/target/ssm/static/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/css/prettyPhoto.css" afterPath="$PROJECT_DIR$/target/ssm/static/css/prettyPhoto.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/css/reset.css" afterPath="$PROJECT_DIR$/target/ssm/static/css/reset.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/css/ui_custom.css" afterPath="$PROJECT_DIR$/target/ssm/static/css/ui_custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/jquery/jquery-3.3.1.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/jquery/jquery-3.3.1.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/charts/bar.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/charts/bar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/charts/chart.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/charts/chart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/charts/hBar.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/charts/hBar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/charts/pie.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/charts/pie.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/charts/updating.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/charts/updating.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/custom.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/custom.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/jquery-ui.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/jquery-ui.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/jquery.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/jquery.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/calendar.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/calendar.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/charts/jquery.flot.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/charts/jquery.flot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/charts/jquery.flot.orderBars.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/charts/jquery.flot.orderBars.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/charts/jquery.flot.pie.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/charts/jquery.flot.pie.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/charts/jquery.flot.resize.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/charts/jquery.flot.resize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/charts/jquery.sparkline.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/charts/jquery.sparkline.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/autogrowtextarea.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/autogrowtextarea.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/chosen.jquery.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/chosen.jquery.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.cleditor.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.cleditor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.dualListBox.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.dualListBox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.inputlimiter.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.inputlimiter.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.maskedinput.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.maskedinput.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.tagsinput.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.tagsinput.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.validationEngine-en.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.validationEngine-en.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.validationEngine.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/forms/jquery.validationEngine.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/spinner/jquery.mousewheel.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/spinner/jquery.mousewheel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/spinner/ui.spinner.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/spinner/ui.spinner.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/tables/datatable.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/tables/datatable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/tables/resizable.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/tables/resizable.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/tables/tablesort.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/tables/tablesort.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.breadcrumbs.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.breadcrumbs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.collapsible.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.collapsible.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.colorpicker.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.colorpicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.jgrowl.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.jgrowl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.prettyPhoto.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.prettyPhoto.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.progress.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.progress.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.sourcerer.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.sourcerer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.timeentry.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.timeentry.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.tipsy.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/ui/jquery.tipsy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/uploader/plupload.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/uploader/plupload.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/wizard/jquery.form.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/wizard/jquery.form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/wizard/jquery.form.wizard.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/wizard/jquery.form.wizard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/ssm/static/js/plugins/wizard/jquery.validate.min.js" afterPath="$PROJECT_DIR$/target/ssm/static/js/plugins/wizard/jquery.validate.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../说明.txt" afterPath="$PROJECT_DIR$/../说明.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroup.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroup.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -260,7 +23,7 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
+            <state relative-caret-position="798">
               <caret line="64" column="49" lean-forward="false" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -275,8 +38,8 @@
       <file leaf-file-name="addGroup.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroup.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="132" column="16" lean-forward="true" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
+            <state relative-caret-position="228">
+              <caret line="143" column="27" lean-forward="false" selection-start-line="143" selection-start-column="27" selection-end-line="143" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -285,7 +48,7 @@
       <file leaf-file-name="userInsert.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userInsert.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
+            <state relative-caret-position="2755">
               <caret line="145" column="129" lean-forward="false" selection-start-line="145" selection-start-column="122" selection-end-line="145" selection-end-column="140" />
               <folding />
             </state>
@@ -398,8 +161,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -514,7 +277,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -776,7 +539,8 @@
       <workItem from="1544536974520" duration="404000" />
       <workItem from="1544537594470" duration="597000" />
       <workItem from="1544709785615" duration="3571000" />
-      <workItem from="1544752084056" duration="1786000" />
+      <workItem from="1544752084056" duration="1974000" />
+      <workItem from="1544754200493" duration="44000" />
     </task>
     <task id="LOCAL-00001" summary="update mybatis-generator files">
       <created>1543631931341</created>
@@ -835,7 +599,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="186487000" />
+    <option name="totallyTimeSpent" value="186719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -858,8 +622,8 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2685624" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="0" width="1366" height="728" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2685624" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="0" width="1366" height="728" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20717423" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1005,7 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,7 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="29">
           <caret line="1000" column="56" lean-forward="true" selection-start-line="1000" selection-start-column="56" selection-end-line="1000" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1092,6 +854,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="467">
           <caret line="99" column="20" lean-forward="true" selection-start-line="99" selection-start-column="20" selection-end-line="99" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1141,6 +904,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="117" column="7" lean-forward="false" selection-start-line="117" selection-start-column="7" selection-end-line="117" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1218,7 +982,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userInsert.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
+        <state relative-caret-position="2755">
           <caret line="145" column="129" lean-forward="false" selection-start-line="145" selection-start-column="122" selection-end-line="145" selection-end-column="140" />
           <folding />
         </state>
@@ -1234,7 +998,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
+        <state relative-caret-position="798">
           <caret line="64" column="49" lean-forward="false" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1247,8 +1011,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroup.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="132" column="16" lean-forward="true" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
+        <state relative-caret-position="228">
+          <caret line="143" column="27" lean-forward="false" selection-start-line="143" selection-start-column="27" selection-end-line="143" selection-end-column="27" />
           <folding />
         </state>
       </provider>

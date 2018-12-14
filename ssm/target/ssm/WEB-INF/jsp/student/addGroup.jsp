@@ -137,12 +137,12 @@
                 <div class="title"><img src="/static/images/icons/dark/files.png" alt="" class="titleIcon" /></div>
                 <div class="formRow">
                     <label for="login">课程号</label>
-                    <div class="loginInput"><input type="text" name="courseId" class="validate[required]" id="login" placeholder="" /></div>
+                    <div class="loginInput"><input type="text" name="courseId" class="validate[required]"  placeholder="" /></div>
                     <div class="clear"></div>
                 </div>
                 <div class="formRow">
                     <label for="login">组名</label>
-                    <div class="loginInput"><input type="text" name="groupName" class="validate[required]" id="login" placeholder="" /></div>
+                    <div class="loginInput"><input type="text" name="groupName" class="validate[required]"  placeholder="" /></div>
                     <div class="clear"></div>
                 </div>
                 <div class="loginControl">
