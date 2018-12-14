@@ -16,6 +16,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -26,7 +27,6 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
-@SessionAttributes("user")//将名为user的属性加入session中，这样保证了session中存在User对象
 public class UserController {
 
     @Autowired
@@ -51,46 +51,69 @@ public class UserController {
     //用户登陆，输入用户id和密码
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String UserLogin(@RequestParam(value = "userId")String userId
-            ,@RequestParam(value = "password")String password,Model model,HttpSession session){
+            ,@RequestParam(value = "password")String password,Model model,HttpServletRequest request){
         //加入session相关的操作
         //前端传来的密码应该是md5加密后的32位密码
+        System.out.println(userId);
+        System.out.println(password);
         User user = userService.checkLogin(userId,password);
         if(user != null){
-            model.addAttribute("message","登陆成功");
+            request.getSession().setAttribute("currentUser",user);
             model.addAttribute("user",user);
             //根据不同角色传入不同属性
-            if(user.getRole().getName().equals("admin")){
-                //改为传角色名，增强可读性
-                List<User> users = userService.getUsersWithRoleByExample("student","","","","");
-                model.addAttribute("users",users);
+            if(user.getRoleId().equals("1")){
+                return "redirect:/user/AdminIndex";
+            }
+            else if(user.getRoleId().equals("2"))
+            {
+            /*
+             model.addAttribute("message", "登陆成功");
+             List<Course> courses = teacherService.getAllCourses(userId);
+             model.addAttribute("courses", courses);
+            */
+                return "redirect:/teacher/index";
+            }
+            //学生登录
+            else if(user.getRoleId().equals("3")){
+                return "redirect:/student/home";
+            }
+            else {
+                return "redirect:/login.jsp";
+            }
+           /* if(user.getRole().getName().equals("admin")){
+
             }
             else if(user.getRole().getName().equals("teacher")){
-                //此处应判断密码是否为默认从而跳转到更改密码界面
+
             }
             else if(user.getRole().getName().equals("student")){
-                //此处应判断密码是否为默认从而跳转到更改密码界面
+
             }
             else{
                 model.addAttribute("message","未知用户");
                 return "loginError";
-            }
-            //返回页面直接以用户角色名命名
-            return user.getRole().getName()+"Index";
+            }*/
         }
 
         model.addAttribute("message","用户名或密码错误");
-        //此处返回页面待定
-        return "loginError";
+
+        return "redirect:/login.jsp";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String UserLogout(HttpSession session,Model model){
+    public String UserLogout(HttpSession session, Model model){
+        session.removeAttribute("currentUser");
         session.invalidate();
         model.addAttribute("message","注销成功");
         //此处返回登录页
-        return "loginError";
+        return "redirect:/login.jsp";
     }
 
+    @RequestMapping(value = "/AdminIndex")
+    public String toIndexPage(HttpSession session,Model model){
+        //User curUser = (User)session.getAttribute("user");
+        return "adminIndex";
+    }
     //跳转至账户信息页面
     @RequestMapping(value = "/toConfigPage")
     public String toConfigPage(HttpSession session,Model model){

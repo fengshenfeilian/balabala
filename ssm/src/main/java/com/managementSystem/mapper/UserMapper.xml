@@ -94,7 +94,7 @@
   </sql>
   <sql id="WithRole_Column_List">
     u.USER_ID, u.ROLE_ID, u.PASSWORD, u.USER_NAME, u.GENDER, u.EMAIL,u.DEPARTMENT, u.MAJOR, u.CLASSES,
-    u.PWD_DEFAULT, r.ROLE_ID,r.NAME, r.DESCRIPTION
+    u.PWD_DEFAULT, r.ROLE_ID, r.NAME, r.DESCRIPTION
   </sql>
   <select id="selectByExample" parameterType="com.managementSystem.pojo.UserExample" resultMap="BaseResultMap">
     select

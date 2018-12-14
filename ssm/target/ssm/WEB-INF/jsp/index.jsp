@@ -69,7 +69,7 @@
 <body>
     <!-- 左侧菜单栏 -->
     <div id="leftSide">
-        <div class="logo"><a href=""><img src="/static/images/logo.png" alt="" /></a></div>
+        <div class="logo"><a href="index.html"><img src="/static/images/logo.png" alt="" /></a></div>
 
         <div class="sidebarSep mt0"></div>
 
@@ -81,15 +81,11 @@
 
         <div class="sidebarSep"></div>
 
-        <!--决定使用ajax更新页面-->
         <!-- 左侧导航栏 -->
         <ul id="menu" class="nav">
-            <li class="dash"><a href="#"><span>学生管理</span></a></li>
-            <li class="dash"><a href="#"><span>教师管理</span></a></li>
+            <li class="dash"><a href="index.html" title="" class="active"><span>学生管理</span></a></li>
         </ul>
     </div>
-
-
 
 <!-- 右侧区域 -->
     <div id="rightSide">
@@ -136,12 +132,13 @@
         <div class="statsRow">
             <div class="wrapper">
                 <div class="controlB">
-                    <!--上传学生名单-->
+                    <!--上传学生名单
+                                <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
+                                -->
                     <form action="${pageContext.request.contextPath}/user/addUsersWithFile" method="post" enctype="multipart/form-data">
-                        <input type="file" name="filename"  value="" />
-                        <input type="submit" name=""  value="上传学生名单" />
+                        <input type="file" name="body"  value="" />
+                        <input type="submit" name=""  value="选择作业文件" />
                     </form>
-
                     <div class="clear"></div>
                 </div>
             </div>
@@ -171,13 +168,13 @@
                             </tr>
                             </thead>
                             <tbody align="center">
-                            <c:forEach items="${pageInfo.list}" var="student">
+                            <c:forEach items="${users}" var="user">
                                 <tr>
-                                    <td>${student.userId}</td>
-                                    <td>${student.userName}</td>
-                                    <td>${student.department}</td>
-                                    <td>${student.major}</td>
-                                    <td>${student.classes}</td>
+                                    <td>${user.userId}</td>
+                                    <td>${user.userName}</td>
+                                    <td>${user.department}</td>
+                                    <td>${user.major}</td>
+                                    <td>${user.classes}</td>
                                     <td><button class="btn update dblueB">修改</button>
                                         <button class="btn del dredB" id="delBtn">删除</button></td>
                                 </tr>
@@ -189,31 +186,11 @@
             </div>
         </div>
 
-        <script>
-            //单个删除
-            $(document).on("click",".del",function () {
-                //alert($(this).parents("tr").find("td:eq(0)").text());
-                var userId = $(this).parents("tr").find("td:eq(0)").text();
-                var userName = $(this).parents("tr").find("td:eq(1)").text();
-               // $('#delBtn').attr("delete-id",userId);
-                //发送AJAX请求
-                if(confirm("确认删除【"+userName+"】吗？")){
-
-                    $.ajax({
-                       url: "${APP_PATH}/user/deleteUsers/" + userId,
-                       type:"DELETE"
-                    });
-                }
-            });
-        </script>
-
         <!-- Footer line -->
         <div id="footer">
             <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
         </div>
-    </div>
 
-
+        <div class="clear"></div>
 </body>
-
 </html>

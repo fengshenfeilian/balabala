@@ -6,7 +6,7 @@
 <generatorConfiguration>
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
-
+        <!--生成注释-->
         <commentGenerator>
             <property name="suppressAllComments" value="true"></property>
         </commentGenerator>
@@ -46,9 +46,8 @@
        <!-- <table tableName="group_student" domainObjectName="Group_Student"></table>
         <table tableName="privelege" domainObjectName="Privelege"></table>
         <table tableName="pri_role" domainObjectName="Pri_Role"></table>
-        <table tableName="role" domainObjectName="Role"></table>-->
-        <table tableName="student_course" domainObjectName="Student_Course"></table>
+        <table tableName="role" domainObjectName="Role"></table> -->
         <!--<table tableName="user_role" domainObjectName="User"></table>-->
-
+        <table tableName="student_course" domainObjectName="Student_Course"></table>
     </context>
 </generatorConfiguration>

@@ -225,4 +225,8 @@
     where ASSIGNMENT_ID = #{assignmentId,jdbcType=VARCHAR}
       and GROUP_ID = #{groupId,jdbcType=INTEGER}
   </update>
+  <select id="existGroupAssignment" resultType="boolean">
+    select count(ASSIGNMENT_ID) from group_assignment
+    where ASSIGNMENT_ID = #{arg0} and GROUP_ID = #{arg1}
+  </select>
 </mapper>

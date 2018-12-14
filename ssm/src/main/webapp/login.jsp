@@ -54,64 +54,64 @@
 
 <!-- 导航栏 -->
 <div class="topNav">
-    <div class="wrapper">
-        <div class="userNav">		
-            <ul>
-                <li><a href="#" title=""><img src="/static/images/icons/topnav/mainWebsite.png" alt="" /><span>首页</span></a></li>
-                <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>联系我们</span></a></li>
-            </ul> 
-        </div>
-        <div class="clear"></div>
-    </div>
+	<div class="wrapper">
+		<div class="userNav">
+			<ul>
+				<li><a href="#" title=""><img src="/static/images/icons/topnav/mainWebsite.png" alt="" /><span>首页</span></a></li>
+				<li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>联系我们</span></a></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
 </div>
 
 
 <!-- Main content wrapper -->
 <div class="loginWrapper">
-    <div class="loginLogo"><img src="/static/images/loginLogo.png" alt="" /></div>
-    <div class="widget">
-        <div class="title"><img src="/static/images/icons/dark/files.png" alt="" class="titleIcon" /><h6>登录</h6></div>
-       <!-- 表单数据 -->
+	<div class="loginLogo"><img src="/static/images/loginLogo.png" alt="" /></div>
+	<div class="widget">
+		<div class="title"><img src="/static/images/icons/dark/files.png" alt="" class="titleIcon" /><h6>登录</h6></div>
+		<!-- 表单数据 -->
 		<form action="${pageContext.request.contextPath}/user/login" method="post" id="validate" class="form">
-            <fieldset>
-                <div class="formRow">
-                    <label for="login">用户号</label>
-                    <div class="loginInput"><input type="text" name="userId"  class="validate[required]" id="login" ></div>
-                    <div class="clear"></div>
-                </div>
-                
-                <div class="formRow">
-                    <label for="pass">密码</label>
-                    <div class="loginInput"><input type="password" name="password" class="validate[required]" id="pass" /></div>
-                    <div class="clear"></div>
-                </div>
-                
-                <div class="loginControl">
-                    <div class="rememberMe"><input type="checkbox" id="remMe" name="remMe" /><label for="remMe">记住我</label></div>
-                    <input type="submit" value="登录" class="dredB logMeIn" />
-                    <div class="clear"></div>
-                </div>
-            </fieldset>
-        </form>
-    </div>
+			<fieldset>
+				<div class="formRow">
+					<label for="login">用户号</label>
+					<div class="loginInput"><input type="text" name="userId"  class="validate[required]" id="login" ></div>
+					<div class="clear"></div>
+				</div>
+
+				<div class="formRow">
+					<label for="pass">密码</label>
+					<div class="loginInput"><input type="password" name="password" class="validate[required]" id="pass" /></div>
+					<div class="clear"></div>
+				</div>
+
+				<div class="loginControl">
+					<div class="rememberMe"><input type="checkbox" id="remMe" name="remMe" /><label for="remMe">记住我</label></div>
+					<input type="submit" value="登录" class="dredB logMeIn" />
+					<div class="clear"></div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
 </div>
 
 
 <!-- Footer line -->
 <div id="footer">
-    <div class="wrapper">All right reserved by Marco</div>
+	<div class="wrapper">All right reserved by Marco</div>
 </div>
 <script type="text/javascript">
-	$("#validate").validate();
-	//前端密码加密
-	$("#validate").submit(function(){
-	    //alert("test");
-		var pwd = $("#pass").val();
-		if(pwd != ""){
+    $("#validate").validate();
+    //前端密码加密
+    $("#validate").submit(function(){
+        //alert("test");
+        var pwd = $("#pass").val();
+        if(pwd != ""){
             pwd = $.md5(pwd);
             $("#pass").val(pwd);
-		}
-	});
+        }
+    });
 </script>
 
 </body>

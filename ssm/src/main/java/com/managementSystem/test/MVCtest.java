@@ -42,11 +42,10 @@ public class MVCtest {
     }
 
 
-    @Test
     //mvc接口测试
     public void testPage() throws Exception {
         //模拟请求拿到返回值
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/user/selectUsers").param("pn","1"))
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/user/selectUsers").param("pn","1"))
                 .andReturn();
         //请求成功以后，请求域中会有pageInfo,取出pageInfo进行验证
         MockHttpServletRequest request = result.getRequest();
@@ -68,10 +67,10 @@ public class MVCtest {
     }
 
 
-
+    @Test
     public void testLogin() throws Exception {
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/user/login").param("userId","5")
-                .param("password","555"))
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/user/login").param("userId","4")
+                .param("password","444"))
                 .andReturn();
         MockHttpServletRequest request = result.getRequest();
         String msg = (String)request.getAttribute("message");

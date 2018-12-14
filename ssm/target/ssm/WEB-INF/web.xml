@@ -3,8 +3,14 @@
          xmlns="http://java.sun.com/xml/ns/javaee" 
          xmlns:web="http://java.sun.com/xml/ns/javaee" 
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-	
+
+
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+
 	<!-- spring的配置文件-->
+	<!--spring的监听器-->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
@@ -29,6 +35,15 @@
 		<servlet-name>mvc-dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	<!--可以mapping js文件-->
+	<!--
+		<servlet-mapping>
+			<servlet-name>default</servlet-name>
+			<url-pattern>*.js</url-pattern>
+		</servlet-mapping>
+	-->
+
+
 	<!--字符编码过滤器-->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
@@ -42,6 +57,8 @@
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
+
+
 	<filter-mapping>
 		<filter-name>characterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>

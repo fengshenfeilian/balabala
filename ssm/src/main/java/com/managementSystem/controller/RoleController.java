@@ -15,8 +15,8 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-   @RequestMapping("/rolesWithJson")
-   @ResponseBody
+    @RequestMapping("/rolesWithJson")
+    @ResponseBody
     public Msg getRoles(){
         List<Role> list = roleService.getRoles();
         return Msg.success("").add("roles",list);

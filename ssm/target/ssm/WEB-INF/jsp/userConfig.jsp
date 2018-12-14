@@ -78,43 +78,43 @@
                 <fieldset>
                     <div class="formRow">
                         <label style="width:10%">学号</label>
-                        <input type="text" name="userId"  id="userId" disabled = "disabled" value="${sessionScope.user.userId}" style="width:60%"/>
+                        <input type="text" name="userId"  id="userId" disabled = "disabled" value="${sessionScope.currentUser.userId}" style="width:60%"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">姓名</label>
-                        <input type="text" name="userName"  disabled = "disabled" value="${sessionScope.user.userName}" id="userName" style="width:60%;"/>
+                        <input type="text" name="userName"  disabled = "disabled" value="${sessionScope.currentUser.userName}" id="userName" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">性别</label>
-                        <input type="text" name="gender"  disabled = "disabled" value="${sessionScope.user.gender}" id="gender" style="width:60%;"/>
+                        <input type="text" name="gender"  disabled = "disabled" value="${sessionScope.currentUser.gender}" id="gender" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">学院</label>
-                        <input type="text" name="department" disabled = "disabled" value="${sessionScope.user.department}" id="department" style="width:60%;"/>
+                        <input type="text" name="department" disabled = "disabled" value="${sessionScope.currentUser.department}" id="department" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">专业</label>
-                        <input type="text" name="major" disabled = "disabled" value="${sessionScope.user.major}" id="major" style="width:60%;"/>
+                        <input type="text" name="major" disabled = "disabled" value="${sessionScope.currentUser.major}" id="major" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">班级</label>
-                        <input type="text" name="classes"  disabled = "disabled" value="${sessionScope.user.classes}" id="classes" style="width:60%;"/>
+                        <input type="text" name="classes"  disabled = "disabled" value="${sessionScope.currentUser.classes}" id="classes" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">Email</label>
-                        <input type="text" name="email"  value="${sessionScope.user.email}" id="email" style="width:60%;"/>
+                        <input type="text" name="email"  value="${sessionScope.currentUser.email}" id="email" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
@@ -136,31 +136,31 @@
                 <fieldset>
                     <div class="formRow">
                         <label style="width:10%">工号</label>
-                        <input type="text" name="userId" id="userId" disabled = "disabled" value="${sessionScope.user.userId}" style="width:60%"/>
+                        <input type="text" name="userId" id="userId" disabled = "disabled" value="${sessionScope.currentUser.userId}" style="width:60%"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">姓名</label>
-                        <input type="text" name="userName"  disabled = "disabled" value="${sessionScope.user.userName}" id="userName" style="width:60%;"/>
+                        <input type="text" name="userName"  disabled = "disabled" value="${sessionScope.currentUser.userName}" id="userName" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">性别</label>
-                        <input type="text" name="gender"  disabled = "disabled" value="${sessionScope.user.gender}" id="gender" style="width:60%;"/>
+                        <input type="text" name="gender"  disabled = "disabled" value="${sessionScope.currentUser.gender}" id="gender" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">学院</label>
-                        <input type="text" name="department"  disabled = "disabled" value="${sessionScope.user.department}" id="department" style="width:60%;"/>
+                        <input type="text" name="department"  disabled = "disabled" value="${sessionScope.currentUser.department}" id="department" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
                     <div class="formRow">
                         <label style="width:10%">Email</label>
-                        <input type="text" name="email"  value="${sessionScope.user.email}" id="email" style="width:60%;"/>
+                        <input type="text" name="email"  value="${sessionScope.currentUser.email}" id="email" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
@@ -173,7 +173,7 @@
         </div>
     </div>
 </c:if>
-<c:if test="${sessionScope.user.getRole().getName()=='admin'}">
+<c:if test="${sessionScope.currentUser.getRole().getName()=='admin'}">
     <div class="wrapper">
         <div class="widget" style="width:80%;">
             <div class="title"><h6>管理员信息</h6></div>
@@ -182,12 +182,12 @@
                 <fieldset>
                     <div class="formRow">
                         <label style="width:10%">ID</label>
-                        <input type="text" name="userId"  id="userId" disabled = "disabled" value="${sessionScope.user.userId}" style="width:60%"/>
+                        <input type="text" name="userId"  id="userId" disabled = "disabled" value="${sessionScope.currentUser.userId}" style="width:60%"/>
                         <div class="clear"></div>
                     </div>
                     <div class="formRow">
                         <label style="width:10%">用户名</label>
-                        <input type="text" name="userName"  id="userName" disabled = "disabled" value="${sessionScope.user.userName}" style="width:60%"/>
+                        <input type="text" name="userName"  id="userName" disabled = "disabled" value="${sessionScope.currentUser.userName}" style="width:60%"/>
                         <div class="clear"></div>
                     </div>
                 </fieldset>
@@ -303,7 +303,7 @@
         //alert(datas);
         if(svalidator.form()){
             $.ajax({
-                url:"${pageContext.request.contextPath}/user/updateUsersWithJson/"+'${updateUser.userId}',
+                url:"${pageContext.request.contextPath}/user/updateUsersWithJson/"+'${sessionScope.currentUser.userId}',
                 data:datas + "&_method=PUT",
                 type:"POST",
                 success:function(result){
@@ -326,7 +326,7 @@
         //alert(datas);
         if(tvalidator.form()){
             $.ajax({
-                url:"${pageContext.request.contextPath}/user/updateUsersWithJson/"+'${updateUser.userId}',
+                url:"${pageContext.request.contextPath}/user/updateUsersWithJson/"+'${sessionScope.currentUser.userId}',
                 data:datas + "&_method=PUT",
                 type:"POST",
                 success:function(result){
@@ -344,7 +344,7 @@
     });
     $("#pwdUpdate").click(function () {
         //alert("password");
-        var userId = '${sessionScope.user.userId}';
+        var userId = '${sessionScope.currentUser.userId}';
         var enOldPWD = $.md5($("#old_password").val());
         var enNewPWD = $.md5($("#password").val());
         if(pwdvalidator.form()){

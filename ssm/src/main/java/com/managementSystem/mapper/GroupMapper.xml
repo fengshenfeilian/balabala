@@ -89,6 +89,20 @@
     from group_course
     where GROUP_ID = #{groupId,jdbcType=INTEGER}
   </select>
+  <select id="selectByUseridCourseid" resultType="java.lang.Integer">
+    select GOURP_ID from group_course gc, group_student gs where gc.GROUP_ID=gs.GROUP_ID and gc.COURSE_ID=#{courseId} and gs.STUDENT_ID=#{studentId}
+  </select>
+  <select id="selectGrade" resultType="java.lang.Integer">
+        select GRADE from group_student gs, group_course gc where gc.GROUP_ID=gs.GROUP_id and gc.COURSE_ID=#{courseId} and gs.STUDENT_ID=#{studentId}
+    </select>
+  <select id="selectId" resultType="java.lang.Integer">
+    select GROUP_ID from group_course where GROUP_NAME=#{groupName}
+  </select>
+  <!--Add by Marco-->
+  <select id="selectCourseNameByCourseId" resultType="java.lang.String">
+    select COURSE_NAME from course where COURSE_ID=#{courseId}
+  </select>
+  <!--            -->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from group_course
     where GROUP_ID = #{groupId,jdbcType=INTEGER}

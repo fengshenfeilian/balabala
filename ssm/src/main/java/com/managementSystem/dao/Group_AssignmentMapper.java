@@ -28,4 +28,7 @@ public interface Group_AssignmentMapper {
     int updateByPrimaryKeySelective(Group_Assignment record);
 
     int updateByPrimaryKey(Group_Assignment record);
+    /*marco*/
+    boolean existGroupAssignment(String assignmentId,Integer groupId);
+    /*     */
 }

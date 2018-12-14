@@ -27,4 +27,14 @@ public interface GroupMapper {
     int updateByPrimaryKeySelective(Group record);
 
     int updateByPrimaryKey(Group record);
+
+    int selectByUseridCourseid(Integer courseId, String studentId);
+
+    int selectGrade(Integer courseId, String studentId);
+
+    int selectId(String groupName);
+    /*Add by Marco*/
+    String selectCourseNameByCourseId(int courseId);
+    /* ********** */
+
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018-12-01 11:35:57
+-- Generation Time: 2018-12-01 10:52:49
 -- 服务器版本： 10.1.16-MariaDB
 -- PHP Version: 5.3.29-upupw
 
@@ -50,8 +50,7 @@ CREATE TABLE IF NOT EXISTS `course` (
   `GROUP_CAPACITY_MIN` int(3) NOT NULL DEFAULT '1',
   `GROUP_CAPACITY_MAX` int(3) NOT NULL DEFAULT '5',
   `GROUP_PREFIX` int(11) DEFAULT NULL,
-  `CREATE_TIME` datetime NOT NULL,
-  `IS_END` int(11) NOT NULL DEFAULT '0'
+  `CREATE_TIME` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -92,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `group_course` (
 CREATE TABLE IF NOT EXISTS `group_student` (
   `GROUP_ID` int(10) NOT NULL,
   `STUDENT_ID` varchar(10) NOT NULL,
-  `GRADE` int(3) DEFAULT '100'
+  `GRADE` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -148,8 +147,7 @@ INSERT INTO `role` (`ROLE_ID`, `NAME`, `DESCRIPTION`) VALUES
 CREATE TABLE IF NOT EXISTS `student_course` (
   `STUDENT_ID` varchar(10) NOT NULL,
   `COURSE_ID` int(10) NOT NULL,
-  `ASSIGNMENT_GRADE` int(11) DEFAULT '0',
-  `DAILY_GRADE` int(11) NOT NULL DEFAULT '0'
+  `TOTAL_GRADE` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

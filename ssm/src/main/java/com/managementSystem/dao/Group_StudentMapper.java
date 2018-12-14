@@ -28,4 +28,10 @@ public interface Group_StudentMapper {
     int updateByPrimaryKeySelective(Group_Student record);
 
     int updateByPrimaryKey(Group_Student record);
+
+/*  marco  */
+    Integer selectGroupIdByStudentId(String studentId);
+    Boolean existStudent(String studentId);
+    Integer getStudentCountByGroupId(Integer groupId);
+/*   */
 }

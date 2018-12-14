@@ -98,7 +98,7 @@
 <script type="text/javascript">
     var Init = function () {
         //alert("onload");
-        if(${sessionScope.user.pwdDefault==1}){
+        if(${sessionScope.currentUser.pwdDefault==1}){
             menuClick('${pageContext.request.contextPath}/user/toConfigPage');
         }
         else{
@@ -130,7 +130,7 @@
     <!-- 顶部导航栏 -->
     <div class="topNav">
         <div class="wrapper">
-            <div class="welcome"><a href="javascript:void(0);" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<c:out value="${sessionScope.user.userName}" />使用本系统</span></div>
+            <div class="welcome"><a href="javascript:void(0);" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<c:out value="${sessionScope.currentUser.userName}" />使用本系统</span></div>
 
             <div class="userNav">
                 <ul>

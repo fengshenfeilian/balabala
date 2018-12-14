@@ -11,6 +11,7 @@ public class Group {
 
     private String leaderId;
 
+
     public Integer getGroupId() {
         return groupId;
     }
