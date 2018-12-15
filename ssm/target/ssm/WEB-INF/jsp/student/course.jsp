@@ -91,10 +91,10 @@
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>3</strong></a>
+        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/addGroup" title="">创建小组</a></li>
+                <li><a href="/student/course" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>
@@ -130,13 +130,17 @@
                 <thead>
                 <tr>
                     <td class="sortCol"><div>课程号<span></span></div></td>
+                    <td class="sortCol"><div>课程名<span></span></div></td>
+                    <td class="sortCol"><div>任课教师<span></span></div></td>
                     <td class="sortCol"><div>选项<span></span></div></td>
                 </tr>
                 </thead>
                 <tbody align="center">
-                <c:forEach items="${studentCourse}" var="studentCourse">
+                <c:forEach items="${studentCourse}" var="studentCourse" varStatus="loop">
                     <tr>
                         <td>${studentCourse.courseId}</td>
+                        <td>${courseList[loop.count-1].courseName}</td>
+                        <td>${teacherList[loop.count-1].userName}</td>
                         <td><a href="/student/courseInfo?courseId=${studentCourse.courseId}"><button class="blueB">查看课程信息</button></a></td>
                     </tr>
                 </c:forEach>

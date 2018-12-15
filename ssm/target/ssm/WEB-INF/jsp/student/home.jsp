@@ -91,10 +91,10 @@
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>3</strong></a>
+        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/addGroup" title="">创建小组</a></li>
+                <li><a href="/student/course" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>
@@ -124,13 +124,13 @@
         <div class="wrapper">
             <div class="pageTitle">
                     <h5>个人信息</h5>
-                    <p>姓名:<strong>${student.userName}</strong></p>
-                    <p>学号:<strong>${student.userId}</strong></p>
-                    <p>性别:<strong>${student.gender}</strong></p>
-                    <p>Email:<strong>${student.email}</strong></p>
-                    <p>学院:<strong>${student.department}</strong></p>
-                    <p>专业:<strong>${student.major}</strong></p>
-                    <p>班级:<strong>${student.classes}</strong></p>
+                <div class="formRow"><p>姓名: <strong>${student.userName}</strong></p></div>
+                <div class="formRow"><p>学号: <strong>${student.userId}</strong></p></div>
+                <div class="formRow"><p>性别: <strong>${student.gender}</strong></p></div>
+                <div class="formRow"><p>Email:  <strong>${student.email}</strong></p></div>
+                <div class="formRow"><p>学院: <strong>${student.department}</strong></p></div>
+                <div class="formRow"><p>专业: <strong>${student.major}</strong></p></div>
+                <div class="formRow"><p>班级: <strong>${student.classes}</strong></p></div>
             </div>
             <div class="clear"></div>
         </div>

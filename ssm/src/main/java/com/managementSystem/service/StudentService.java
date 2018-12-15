@@ -310,6 +310,17 @@ public class StudentService {
         return list;
     }
 
+    public List<User> getTeacherListByCourseList(List<Course> courseList)
+    {
+        List<User> list = new ArrayList<>();
+        for(Course course : courseList)
+        {
+            User teacher = userMapper.selectByPrimaryKey(course.getTeacherId());
+            list.add(teacher);
+        }
+        return list;
+    }
+
     public Group getGroupByGroupId(String groupId){
         return groupMapper.selectByPrimaryKey(groupId);
     }
@@ -324,5 +335,44 @@ public class StudentService {
         }
         return list;
     }
+
+    public Course getCurrentCourse(int id) {
+        return courseMapper.selectByPrimaryKey(id);
+    }
+
+    public  List<Course> getCourseListBySCList(List<Student_Course> scList)
+    {
+        List<Course> list = new ArrayList<>();
+        for(Student_Course sc : scList)
+        {
+            Course course = getCurrentCourse(sc.getCourseId());
+            list.add(course);
+        }
+        return list;
+    }
+
+    /* group_course.groupId = group_student.groupId*/
+    public Group getGroupUnderCourse(int courseId, String userId)
+    {
+        List<Group> courseGroupList = getGroupListByCourseId(courseId);
+        for(Group courseGroup : courseGroupList)
+        {
+            String groupId = group_studentMapper.selectGroupIdByStudentId(userId);
+            if(groupId == null){
+                continue;
+            }
+            if(courseGroup.getGroupId().equals(groupId)){
+                return courseGroup;
+            }
+        }
+
+        return null;
+    }
+
+
 }
+
+
+
+
 

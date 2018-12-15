@@ -45,22 +45,34 @@ public class StudentController {
     public String gotoCourse(HttpSession session,HttpServletRequest request, Model model){
         User user = (User) session.getAttribute("currentUser");
         List<Student_Course> scList = studentService.getCourseListByUserId(user.getUserId());
+        List<Course> courseList = studentService.getCourseListBySCList(scList);
+        List<User> teacherList = studentService.getTeacherListByCourseList(courseList);
         model.addAttribute("studentCourse",scList);
+        model.addAttribute("courseList",courseList);
+        model.addAttribute("teacherList",teacherList);
         return "student/course";
     }
 
     //课程详细信息
+    /*
+        1.显示该课程信息
+        2.显示当前用户(在该课程下的)小组信息
+
+    */
     @RequestMapping(value = "/courseInfo")
-    public String gotoCourseInfo(HttpServletRequest request, Model model){
+    public String gotoCourseInfo(HttpServletRequest request, Model model, HttpSession session){
+        User user = (User) session.getAttribute("currentUser");
         String id = request.getParameter("courseId");
         int courseId = Integer.parseInt(id);
+        //group可能为空(该学生在该课程下还未拥有小组)
+        Group group = studentService.getGroupUnderCourse(courseId, user.getUserId());
         Course course = teacherService.getCurrentCourse(courseId);
         User teacher = studentService.getUserById(course.getTeacherId());
-        model.addAttribute("course",course);
-        model.addAttribute("currentCourseTeacherName",teacher.getUserName());
-
         List<Assignment> curCourseAssignment = teacherService.getAssignments(courseId);
         model.addAttribute("curCourseAssignment",curCourseAssignment);
+        model.addAttribute("course",course);
+        model.addAttribute("currentCourseTeacherName",teacher.getUserName());
+        model.addAttribute("curGroup",group);
 
         return "student/courseInfo";
     }
@@ -145,6 +157,9 @@ public class StudentController {
         }
     }
 /* *****************************************小组模块************************************************************ */
+/*可增加功能：组员 - 退出小组
+             组长 - 删除小组
+*/
     //小组列表
     @RequestMapping(value = "/groupList")
     public String gotoGroupList(Model model,HttpSession session )
@@ -192,8 +207,11 @@ public class StudentController {
 
     //进入创建小组页
     @RequestMapping(value = "/addGroup")
-    public String gotoAddGroup()throws ParseException
+    public String gotoAddGroup(@RequestParam(value = "courseId") String courseId,Model model)throws ParseException
     {
+        Integer id = Integer.parseInt(courseId);
+        model.addAttribute("curCourseId",id);
+
         return "student/addGroup";
     }
 

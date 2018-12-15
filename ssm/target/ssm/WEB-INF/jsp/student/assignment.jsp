@@ -91,10 +91,10 @@
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>3</strong></a>
+        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/addGroup" title="">创建小组</a></li>
+                <li><a href="/student/course" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>

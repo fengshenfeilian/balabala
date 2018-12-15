@@ -91,10 +91,10 @@
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>3</strong></a>
+        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/addGroup" title="">创建小组</a></li>
+                <li><a href="/student/course" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>
@@ -130,7 +130,8 @@
     </div>
 
     <!-- 选项区域 -->
-    <div class="statsRow">
+    <%--
+        <div class="statsRow">
         <div class="wrapper">
             <div class="controlB">
                 <a href="/student/addGroup"><button class="blueB">创建小组</button></a>
@@ -138,6 +139,8 @@
             </div>
         </div>
     </div>
+    --%>
+
 
 
     <%--动态数据表--%>
