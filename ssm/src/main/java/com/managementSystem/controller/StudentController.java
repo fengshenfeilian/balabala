@@ -79,19 +79,25 @@ public class StudentController {
     public String gotoAssignment(HttpSession session, Model model){
         User user = (User) session.getAttribute("currentUser");
         List<Group_Student> gsList = studentService.getGroupStudent(user.getUserId());
-        List<String> courseName = studentService.getCourseNameByGroupStudentList(gsList);
+        List<Course> course = studentService.getCourseByGroupStudentList(gsList);
         model.addAttribute("group_student",gsList);
-        model.addAttribute("courseName",courseName);
+        model.addAttribute("course",course);
         return "student/assignment";
     }
 
     //查看作业列表
+    //还应该能查看作业要求，不然交作业从何谈起
     @RequestMapping(value = "/browseAssignment")
     public String gotoBrowseAssignment(HttpServletRequest request, Model model){
-        String id = request.getParameter("groupId");
-        Integer groupId = Integer.parseInt(id);
+        String groupId = request.getParameter("groupId");
+        String cId = request.getParameter("courseId");
+        Integer courseId = Integer.parseInt(cId);
+
         List<Group_Assignment> ga = studentService.getGroupAssignmentByGroupId(groupId);
+        //查询该课程下的作业要求
+        List<Assignment> assignments = studentService.getAssignments(courseId);
         model.addAttribute("group_assignment",ga);
+        model.addAttribute("assignments",assignments);
         return "student/browseAssignment";
     }
 
@@ -104,7 +110,7 @@ public class StudentController {
     //作业上传(成功：跳转至assignment，失败则刷新uploadAssignment)
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     public  String uploadAssignment(@RequestParam(value = "assignmentId") String assignmentId,
-                                    @RequestParam(value = "groupId")Integer groupId,
+                                    @RequestParam(value = "groupId")String groupId,
                                     @RequestParam(value = "title")String title,
                                     @RequestParam(value="body")String body,
                                     Model model, HttpSession session, HttpServletRequest request)throws ParseException
@@ -112,7 +118,7 @@ public class StudentController {
         //Group_Assignment ga = new Group_Assignment();
         User user = (User) session.getAttribute("currentUser");
 
-        Integer userGroupId = studentService.getGroupIdByStudentId(user.getUserId());
+        String userGroupId = studentService.getGroupIdByStudentId(user.getUserId());
         //小组号校验 && 作业号校验
         if(userGroupId.equals(groupId) && studentService.existAssignment(assignmentId)){
             //如果已有<作业号，小组号>的作业，那么先删除该作业
@@ -145,23 +151,32 @@ public class StudentController {
     {
         User user = (User) session.getAttribute("currentUser");
         List<Group_Student> gsList = studentService.getGroupListByStudentId(user.getUserId());
+        /*for(Group_Student gs:gsList){
+            System.out.println(gs.getGroupId());
+            System.out.println(gs.getStudentId());
+        }*/
         model.addAttribute("gsList",gsList);
         List<Group> groupList = studentService.getGroupListByGSList(gsList);
+        for(Group group:groupList){
+            System.out.println(group.getGroupId());
+            System.out.println(group.getCourseId());
+        }
         model.addAttribute("groupList",groupList);
         return "student/groupList";
     }
 
     //进入小组信息页
+    //groupId
     @RequestMapping(value = "/groupInfo")
     public String gotoGroupInfo(Model model,HttpSession session,HttpServletRequest request)
     {
-        String id = request.getParameter("groupId");
-        Integer groupId = Integer.parseInt(id);
+        String groupId = request.getParameter("groupId");
+
         //小组信息
         Group curGroup = teacherService.getGroup(groupId);
         model.addAttribute("curGroup",curGroup);
         //小组成员列表
-        List<Group_Student> gsList = teacherService.getGroupStudents(groupId.intValue());
+        List<Group_Student> gsList = teacherService.getGroupStudents(groupId);
         List<User> curGroupMembers = studentService.getCurGroupMembers(gsList);
         model.addAttribute("gsList",gsList);
         model.addAttribute("curGroupMembers",curGroupMembers);
@@ -186,6 +201,7 @@ public class StudentController {
     /*
     功能:创建小组<courseId,groupName,studentId>
     判断该学生在该课程下是否已有小组：
+        若该学生未选择该课，则不能创建小组，所以此功能最好从学生选课信息页跳转到创建小组或小组信息页，且创建小组时不能修改课程id。
         1.找到该课程的所有小组courseGroup
         2.找到学生所属的所有小组studentGroup
         3.如果courseGroup和studentGroup交集不为空，那么该学生已有小组
@@ -196,6 +212,9 @@ public class StudentController {
                                Model model, HttpSession session,HttpServletRequest request)throws ParseException
     {
         User user = (User) session.getAttribute("currentUser");
+        //判断学生是否选了该课
+        if(studentService.courseNotSelected(user.getUserId(),courseId)) return "redirect:/student/addGroup";
+
         List<Group_Student> studentGroupList = studentService.getGroupListByStudentId(user.getUserId());
         List<Group> courseGroupList = studentService.getGroupListByCourseId(courseId);
         if(!studentService.groupNotNull(studentGroupList,courseGroupList)){ //可以在该课程下创建小组
@@ -213,9 +232,10 @@ public class StudentController {
     }
 
     //小组成员【添加】
+    //groupId
     @RequestMapping(value = "/addGroupMember")
     public String gotoAddGroupMember(@RequestParam(value = "studentId") String studentId,
-                                     @RequestParam(value = "groupId")Integer groupId,
+                                     @RequestParam(value = "groupId")String groupId,
                                      Model model, HttpSession session,HttpServletRequest request)throws ParseException
     {
         //获取当前学生用户
@@ -234,9 +254,10 @@ public class StudentController {
     }
 
     //小组成员【删除】
+    //groupId
     @RequestMapping(value = "/deleteGroupMember")
     public String gotoDeleteGroupMember(@RequestParam(value = "studentId") String studentId,
-                                        @RequestParam(value = "groupId")Integer groupId,
+                                        @RequestParam(value = "groupId")String groupId,
                                         Model model, HttpSession session,HttpServletRequest request)throws ParseException
     {
         //获取当前学生用户

@@ -92,13 +92,13 @@
     <!-- 顶部导航栏 -->
     <div class="topNav">
         <div class="wrapper">
-            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<c:out value="${user.userName}" />使用本系统</span></div>
+            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<strong>【<c:out value="${sessionScope.currentUser.userName}"/>】老师</strong>使用本系统</span></div>
 
             <div class="userNav">
                 <ul>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="login.html" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/user/toConfigPage" title="" id="userConfig"><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
+                    <%--<li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>--%>
+                    <li><a href="${pageContext.request.contextPath}/user/logout" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
                 </ul>
             </div>
 
@@ -130,23 +130,23 @@
 
     <form action="${pageContext.request.contextPath}/teacher/addAssignment" method="post" id="validate" class="form">
         <div class="formRow">
-            <label for="login">作业名称</label>
-            <div class="loginInput"><input type="text" name="assignmentName" class="validate[required]" id="login" /></div>
+            <label style="width:10%">作业名称</label>
+            <div><input type="text" name="assignmentName" style="width:50%"required /></div>
             <div class="clear"></div>
         </div>
         <div class="formRow">
-            <label for="login">作业描述或要求</label>
-            <div class="loginInput"><input type="text" name="description" class="validate[required]" id="login" /></div>
+            <label style="width:10%">作业描述或要求</label>
+            <div><input type="text" name="description" style="width:50%"required/></div>
             <div class="clear"></div>
         </div>
         <div class="formRow">
-            <label for="login">提交时间（格式如2018-12-12 00-00-00)</label>
-            <div class="loginInput"><input type="text" name="deadline" class="validate[required]" id="login" /></div>
+            <label style="width:10%">提交时间（格式如2018-12-12 00-00-00)</label>
+            <div><input type="text" name="deadline" style="width:50%"required/></div>
             <div class="clear"></div>
         </div>
         <div class="formRow">
-            <label for="login">作业成绩比例</label>
-            <div class="loginInput"><input type="text" name="percentage" class="validate[required]" id="login" /></div>
+            <label style="width:10%">作业成绩比例</label>
+            <div><input type="text" name="percentage" style="width:50%"required/></div>
             <div class="clear"></div>
         </div>
         <div class="loginControl">

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.managementSystem.dao.Group_StudentMapper">
   <resultMap id="BaseResultMap" type="com.managementSystem.pojo.Group_Student">
-    <id column="GROUP_ID" jdbcType="INTEGER" property="groupId" />
+    <id column="GROUP_ID" jdbcType="VARCHAR" property="groupId" />
     <id column="STUDENT_ID" jdbcType="VARCHAR" property="studentId" />
     <result column="GRADE" jdbcType="INTEGER" property="grade" />
   </resultMap>
@@ -85,12 +85,12 @@
     select 
     <include refid="Base_Column_List" />
     from group_student
-    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+    where GROUP_ID = #{groupId,jdbcType=VARCHAR}
       and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="com.managementSystem.pojo.Group_StudentKey">
     delete from group_student
-    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+    where GROUP_ID = #{groupId,jdbcType=VARCHAR}
       and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.managementSystem.pojo.Group_StudentExample">
@@ -102,7 +102,7 @@
   <insert id="insert" parameterType="com.managementSystem.pojo.Group_Student">
     insert into group_student (GROUP_ID, STUDENT_ID, GRADE
       )
-    values (#{groupId,jdbcType=INTEGER}, #{studentId,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}
+    values (#{groupId,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.managementSystem.pojo.Group_Student">
@@ -120,7 +120,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="groupId != null">
-        #{groupId,jdbcType=INTEGER},
+        #{groupId,jdbcType=VARCHAR},
       </if>
       <if test="studentId != null">
         #{studentId,jdbcType=VARCHAR},
@@ -140,7 +140,7 @@
     update group_student
     <set>
       <if test="record.groupId != null">
-        GROUP_ID = #{record.groupId,jdbcType=INTEGER},
+        GROUP_ID = #{record.groupId,jdbcType=VARCHAR},
       </if>
       <if test="record.studentId != null">
         STUDENT_ID = #{record.studentId,jdbcType=VARCHAR},
@@ -155,7 +155,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update group_student
-    set GROUP_ID = #{record.groupId,jdbcType=INTEGER},
+    set GROUP_ID = #{record.groupId,jdbcType=VARCHAR},
       STUDENT_ID = #{record.studentId,jdbcType=VARCHAR},
       GRADE = #{record.grade,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -169,17 +169,17 @@
         GRADE = #{grade,jdbcType=INTEGER},
       </if>
     </set>
-    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+    where GROUP_ID = #{groupId,jdbcType=VARCHAR}
       and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.managementSystem.pojo.Group_Student">
     update group_student
     set GRADE = #{grade,jdbcType=INTEGER}
-    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+    where GROUP_ID = #{groupId,jdbcType=VARCHAR}
       and STUDENT_ID = #{studentId,jdbcType=VARCHAR}
   </update>
 <!--marco-->
-  <select id="selectGroupIdByStudentId" parameterType="String" resultType="Integer">
+  <select id="selectGroupIdByStudentId" parameterType="String" resultType="String">
     SELECT GROUP_ID from group_student
     where STUDENT_ID = #{studentId}
   </select>
@@ -187,7 +187,7 @@
     select count(STUDENT_ID) from group_student
     where STUDENT_ID = #{studentId}
   </select>
-  <select id="getStudentCountByGroupId" parameterType="Integer" resultType="Integer">
+  <select id="getStudentCountByGroupId" parameterType="String" resultType="Integer">
     SELECT count(GROUP_ID) from group_student
     where GROUP_Id = #{groupId}
   </select>

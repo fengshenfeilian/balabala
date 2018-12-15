@@ -1,16 +1,16 @@
 package com.managementSystem.pojo;
 
 public class Group_StudentKey {
-    private Integer groupId;
+    private String groupId;
 
     private String studentId;
 
-    public Integer getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
+    public void setGroupId(String groupId) {
+        this.groupId = groupId == null ? null : groupId.trim();
     }
 
     public String getStudentId() {

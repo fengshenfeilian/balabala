@@ -105,13 +105,13 @@
     <!-- 顶部导航栏 -->
     <div class="topNav">
         <div class="wrapper">
-            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<strong>【<c:out value="${sessionScope.currentUser.userName}"/>】</strong>使用本系统</span></div>
+            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<strong>【<c:out value="${sessionScope.currentUser.userName}"/>】同学</strong>使用本系统</span></div>
 
             <div class="userNav">
                 <ul>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="../../login.jsp" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/user/toConfigPage" title="" id="userConfig"><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
+                    <%--<li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>--%>
+                    <li><a href="${pageContext.request.contextPath}/user/logout" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
                 </ul>
             </div>
 
@@ -127,7 +127,7 @@
     <div class="wrapper">
         <div class="widget">
             <div class="title"><img src="images/icons/dark/frames.png" alt="" class="titleIcon" />
-                <h6>查看作业</h6></div>
+                <h6>查看已提交作业</h6></div>
             <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
                 <thead>
                 <tr>
@@ -140,15 +140,16 @@
                 <tbody align="center">
                 <c:forEach items="${group_student}" var="group_student" varStatus="loop">
                     <tr>
-                        <td>${courseName[loop.count-1]}</td>
+                        <td>${course[loop.count-1].courseName}</td>
                         <td>${group_student.groupId}</td>
-                        <td><a href="/student/browseAssignment?groupId=${group_student.groupId}">查看作业</a></td>
+                        <td><a href="/student/browseAssignment?groupId=${group_student.groupId}&courseId=${course[loop.count-1].courseId}">查看作业</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
+
 
 
 

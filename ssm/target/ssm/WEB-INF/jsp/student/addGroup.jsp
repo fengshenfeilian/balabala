@@ -105,13 +105,13 @@
     <!-- 顶部导航栏 -->
     <div class="topNav">
         <div class="wrapper">
-            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<strong>【<c:out value="${sessionScope.currentUser.userName}"/>】</strong>使用本系统</span></div>
+            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<strong>【<c:out value="${sessionScope.currentUser.userName}"/>】同学</strong>使用本系统</span></div>
 
             <div class="userNav">
                 <ul>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="../../login.jsp" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/user/toConfigPage" title="" id="userConfig"><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
+                    <%--<li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>--%>
+                    <li><a href="${pageContext.request.contextPath}/user/logout" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
                 </ul>
             </div>
 
@@ -131,18 +131,18 @@
 
 
     <%--表单区域--%>
-    <div class="loginWrapper">
+    <div class="wrapper">
         <div class="widget">
             <form  method="post" id="validate" class="form" action="${pageContext.request.contextPath}/student/addNewGroup">
                 <div class="title"><img src="/static/images/icons/dark/files.png" alt="" class="titleIcon" /></div>
                 <div class="formRow">
-                    <label for="login">课程号</label>
-                    <div class="loginInput"><input type="text" name="courseId" class="validate[required]"  placeholder="" /></div>
+                    <label style="width:10%">课程号</label>
+                    <div><input type="text" name="courseId"  placeholder=""  style="width:50%"required/></div>
                     <div class="clear"></div>
                 </div>
                 <div class="formRow">
-                    <label for="login">组名</label>
-                    <div class="loginInput"><input type="text" name="groupName" class="validate[required]"  placeholder="" /></div>
+                    <label style="width:10%">组名</label>
+                    <div><input type="text" name="groupName"   placeholder="" style="width:50%"required/></div>
                     <div class="clear"></div>
                 </div>
                 <div class="loginControl">

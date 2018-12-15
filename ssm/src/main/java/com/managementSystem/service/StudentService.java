@@ -41,7 +41,7 @@ public class StudentService {
         return group_studentMapper.selectByExample(gpExample);
     }
 
-    public List<Group_Assignment> getGroupAssignmentByGroupId(Integer groupId) {
+    public List<Group_Assignment> getGroupAssignmentByGroupId(String groupId) {
         Group_AssignmentExample gaExample = new Group_AssignmentExample();
         Group_AssignmentExample.Criteria criteria = gaExample.createCriteria();
         criteria.andGroupIdEqualTo(groupId);
@@ -59,7 +59,17 @@ public class StudentService {
         return courseName;
     }
 
-    public Integer getGroupIdByStudentId(String studentId)
+    public List<Course> getCourseByGroupStudentList(List<Group_Student> gs) {
+        List<Course> course = new ArrayList<>();
+        for (Group_Student groupStudent : gs) {
+            Group group = groupMapper.selectByPrimaryKey(groupStudent.getGroupId());
+            Course c = courseMapper.selectByPrimaryKey(group.getCourseId());
+            course.add(c);
+        }
+        return course;
+    }
+    //groupId
+    public String getGroupIdByStudentId(String studentId)
     {
         return group_studentMapper.selectGroupIdByStudentId(studentId);
     }
@@ -73,12 +83,12 @@ public class StudentService {
         return assignmentMapper.existAssignment(assignmentId);
     }
 
-    public boolean existGroupAssignment(String assignmentId, Integer groupId)
+    public boolean existGroupAssignment(String assignmentId, String groupId)
     {
         return group_assignmentMapper.existGroupAssignment(assignmentId,groupId);
     }
 
-    public void deleteGroupAssignment(String assignmentId,Integer groupId)
+    public void deleteGroupAssignment(String assignmentId,String  groupId)
     {
         Group_AssignmentKey gak = new Group_AssignmentKey();
         gak.setAssignmentId(assignmentId);
@@ -95,6 +105,28 @@ public class StudentService {
         return student_courseMapper.selectByExample(scExample);
     }
 
+    //判断学生是否选了该课
+    public boolean courseNotSelected(String userId,Integer courseId){
+        Student_CourseExample scExample = new Student_CourseExample();
+        Student_CourseExample.Criteria criteria = scExample.createCriteria();
+        criteria.andStudentIdEqualTo(userId);
+        criteria.andCourseIdEqualTo(courseId);
+        System.out.println(userId);
+        System.out.println(courseId);
+        List<Student_Course> sc = student_courseMapper.selectByExample(scExample);
+        if(sc==null || sc.size()==0)return true;
+        return false;
+    }
+
+    //获取作业要求
+    public List<Assignment> getAssignments(Integer courseId)
+    {
+        AssignmentExample assignmentExample = new AssignmentExample();
+        AssignmentExample.Criteria criteria = assignmentExample.createCriteria();
+        criteria.andCourseIdEqualTo(courseId);
+        List<Assignment> assignments = assignmentMapper.selectByExample(assignmentExample);
+        return assignments;
+    }
     //上传作业 ：插入group_assignment表
     public void insertGroupAssignment(Group_Assignment ga)
     {
@@ -107,13 +139,13 @@ public class StudentService {
     }
 
 
-    public int getCountGroupMember(int groupId){
+    public int getCountGroupMember(String groupId){
         //查找group_student表中groupId的数量
         return group_studentMapper.getStudentCountByGroupId(groupId);
     }
 
     //添加一个小组成员
-    public void insertGroupMember(int groupId,String studentId)
+    public void insertGroupMember(String groupId,String studentId)
     {
         //Group_Student表更新
         Group_Student gs = new Group_Student();
@@ -127,7 +159,7 @@ public class StudentService {
     }
 
     //删除一个小组成员
-    public void deleteGroupMember(int groupId,String studentId)
+    public void deleteGroupMember(String groupId,String studentId)
     {
         //Group_Student表更新
         Group_Student gs = new Group_Student();
@@ -172,7 +204,7 @@ public class StudentService {
     public Boolean groupNotNull(List<Group_Student> studentGroupList,List<Group> courseGroupList)
     {
         for(Group_Student gs : studentGroupList){
-            Integer groupId = gs.getGroupId();
+            String groupId = gs.getGroupId();
             for(Group courseGroup : courseGroupList){
                 if(courseGroup.getGroupId().equals(groupId)){
                     return true;
@@ -199,9 +231,9 @@ public class StudentService {
         Integer groupCnt = cnt;
         //获取小组前缀
         Course course = courseMapper.selectByPrimaryKey(courseId);
-        Integer prefix = course.getGroupPrefix();
+        String prefix = course.getGroupPrefix();
         //生成小组号
-        Integer groupId = prefix * 100 + groupCnt + 1;
+        String groupId = prefix  + Integer.toString(groupCnt + 1);
         Integer groupMemberNum = 1;
         //创建新的小组对象
         Group newGroup = new Group();
@@ -278,7 +310,7 @@ public class StudentService {
         return list;
     }
 
-    public Group getGroupByGroupId(Integer groupId){
+    public Group getGroupByGroupId(String groupId){
         return groupMapper.selectByPrimaryKey(groupId);
     }
 

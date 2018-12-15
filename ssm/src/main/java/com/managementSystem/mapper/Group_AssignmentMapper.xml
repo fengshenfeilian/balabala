@@ -3,7 +3,7 @@
 <mapper namespace="com.managementSystem.dao.Group_AssignmentMapper">
   <resultMap id="BaseResultMap" type="com.managementSystem.pojo.Group_Assignment">
     <id column="ASSIGNMENT_ID" jdbcType="VARCHAR" property="assignmentId" />
-    <id column="GROUP_ID" jdbcType="INTEGER" property="groupId" />
+    <id column="GROUP_ID" jdbcType="VARCHAR" property="groupId" />
     <result column="TITLE" jdbcType="VARCHAR" property="title" />
     <result column="BODY" jdbcType="VARCHAR" property="body" />
     <result column="SUBMISSION_TIME" jdbcType="TIMESTAMP" property="submissionTime" />
@@ -89,12 +89,12 @@
     <include refid="Base_Column_List" />
     from group_assignment
     where ASSIGNMENT_ID = #{assignmentId,jdbcType=VARCHAR}
-      and GROUP_ID = #{groupId,jdbcType=INTEGER}
+      and GROUP_ID = #{groupId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="com.managementSystem.pojo.Group_AssignmentKey">
     delete from group_assignment
     where ASSIGNMENT_ID = #{assignmentId,jdbcType=VARCHAR}
-      and GROUP_ID = #{groupId,jdbcType=INTEGER}
+      and GROUP_ID = #{groupId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.managementSystem.pojo.Group_AssignmentExample">
     delete from group_assignment
@@ -106,7 +106,7 @@
     insert into group_assignment (ASSIGNMENT_ID, GROUP_ID, TITLE, 
       BODY, SUBMISSION_TIME, SCORE
       )
-    values (#{assignmentId,jdbcType=VARCHAR}, #{groupId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+    values (#{assignmentId,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},
       #{body,jdbcType=VARCHAR}, #{submissionTime,jdbcType=TIMESTAMP}, #{score,jdbcType=INTEGER}
       )
   </insert>
@@ -137,7 +137,7 @@
         #{assignmentId,jdbcType=VARCHAR},
       </if>
       <if test="groupId != null">
-        #{groupId,jdbcType=INTEGER},
+        #{groupId,jdbcType=VARCHAR},
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
@@ -166,7 +166,7 @@
         ASSIGNMENT_ID = #{record.assignmentId,jdbcType=VARCHAR},
       </if>
       <if test="record.groupId != null">
-        GROUP_ID = #{record.groupId,jdbcType=INTEGER},
+        GROUP_ID = #{record.groupId,jdbcType=VARCHAR},
       </if>
       <if test="record.title != null">
         TITLE = #{record.title,jdbcType=VARCHAR},
@@ -188,7 +188,7 @@
   <update id="updateByExample" parameterType="map">
     update group_assignment
     set ASSIGNMENT_ID = #{record.assignmentId,jdbcType=VARCHAR},
-      GROUP_ID = #{record.groupId,jdbcType=INTEGER},
+      GROUP_ID = #{record.groupId,jdbcType=VARCHAR},
       TITLE = #{record.title,jdbcType=VARCHAR},
       BODY = #{record.body,jdbcType=VARCHAR},
       SUBMISSION_TIME = #{record.submissionTime,jdbcType=TIMESTAMP},
@@ -214,7 +214,7 @@
       </if>
     </set>
     where ASSIGNMENT_ID = #{assignmentId,jdbcType=VARCHAR}
-      and GROUP_ID = #{groupId,jdbcType=INTEGER}
+      and GROUP_ID = #{groupId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.managementSystem.pojo.Group_Assignment">
     update group_assignment
@@ -223,7 +223,7 @@
       SUBMISSION_TIME = #{submissionTime,jdbcType=TIMESTAMP},
       SCORE = #{score,jdbcType=INTEGER}
     where ASSIGNMENT_ID = #{assignmentId,jdbcType=VARCHAR}
-      and GROUP_ID = #{groupId,jdbcType=INTEGER}
+      and GROUP_ID = #{groupId,jdbcType=VARCHAR}
   </update>
   <select id="existGroupAssignment" resultType="boolean">
     select count(ASSIGNMENT_ID) from group_assignment

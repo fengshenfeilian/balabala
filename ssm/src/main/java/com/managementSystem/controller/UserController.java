@@ -1,7 +1,5 @@
 package com.managementSystem.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.managementSystem.pojo.Msg;
 import com.managementSystem.pojo.Role;
 import com.managementSystem.pojo.User;
@@ -75,9 +73,12 @@ public class UserController {
             }
             //学生登录
             else if(user.getRoleId().equals("3")){
+                if(user.getPwdDefault()==1)
+                    return  "/student/userConfig";
                 return "redirect:/student/home";
             }
             else {
+                model.addAttribute("message","角色不存在");
                 return "redirect:/login.jsp";
             }
            /* if(user.getRole().getName().equals("admin")){
@@ -112,13 +113,22 @@ public class UserController {
     @RequestMapping(value = "/AdminIndex")
     public String toIndexPage(HttpSession session,Model model){
         //User curUser = (User)session.getAttribute("user");
-        return "adminIndex";
+        return "admin/adminIndex";
     }
     //跳转至账户信息页面
     @RequestMapping(value = "/toConfigPage")
     public String toConfigPage(HttpSession session,Model model){
-        //User curUser = (User)session.getAttribute("user");
-        return "userConfig";
+        User user = (User)session.getAttribute("currentUser");
+        if(user.getRoleId().equals("1")){
+            return "admin/userConfig";
+        }
+        else if(user.getRoleId().equals("2")){
+            return "/teacher/userConfig";
+        }
+        else if(user.getRoleId().equals("3")){
+            return "/student/userConfig";
+        }
+        return "admin/userConfig";
     }
     //跳转至用户插入
     @RequestMapping(value = "/toAdminInsertPage", method = RequestMethod.GET)
@@ -129,7 +139,7 @@ public class UserController {
         else
             model.addAttribute("roleId","");
         model.addAttribute("roleName",roleName);
-        return "userInsert";
+        return "admin/userInsert";
     }
     //跳转至用户更新
     @RequestMapping(value = "/toAdminUpdatePage", method = RequestMethod.GET)
@@ -141,7 +151,7 @@ public class UserController {
             model.addAttribute("updateUser",user);
             model.addAttribute("roleName",roleName);
         }
-        return "userUpdate";
+        return "admin/userUpdate";
     }
     //查询所有用户
     @RequestMapping("/selectAllUsers")
@@ -180,7 +190,11 @@ public class UserController {
         model.addAttribute("users",users);
         model.addAttribute("searchRoleName",roleName);
 
-        return roleName+"Mangement";
+        if(roleName.equals("student"))
+            return "admin/studentMangement";
+        else if(roleName.equals("teacher"))
+            return "admin/teacherMangement";
+        return "loginError";
     }
 
     //查询的条件可在前端设置全局变量

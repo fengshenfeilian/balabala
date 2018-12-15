@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.managementSystem.dao.GroupMapper">
   <resultMap id="BaseResultMap" type="com.managementSystem.pojo.Group">
-    <id column="GROUP_ID" jdbcType="INTEGER" property="groupId" />
+    <id column="GROUP_ID" jdbcType="VARCHAR" property="groupId" />
     <result column="COURSE_ID" jdbcType="INTEGER" property="courseId" />
     <result column="GROUP_NAME" jdbcType="VARCHAR" property="groupName" />
     <result column="GROUP_MEMBER_NUM" jdbcType="INTEGER" property="groupMemberNum" />
@@ -83,13 +83,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from group_course
-    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+    where GROUP_ID = #{groupId,jdbcType=VARCHAR}
   </select>
-  <select id="selectByUseridCourseid" resultType="java.lang.Integer">
+  <select id="selectByUseridCourseid" resultType="java.lang.String">
     select GOURP_ID from group_course gc, group_student gs where gc.GROUP_ID=gs.GROUP_ID and gc.COURSE_ID=#{courseId} and gs.STUDENT_ID=#{studentId}
   </select>
   <select id="selectGrade" resultType="java.lang.Integer">
@@ -105,7 +105,7 @@
   <!--            -->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from group_course
-    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+    where GROUP_ID = #{groupId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.managementSystem.pojo.GroupExample">
     delete from group_course
@@ -116,7 +116,7 @@
   <insert id="insert" parameterType="com.managementSystem.pojo.Group">
     insert into group_course (GROUP_ID, COURSE_ID, GROUP_NAME, 
       GROUP_MEMBER_NUM, LEADER_ID)
-    values (#{groupId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, 
+    values (#{groupId,jdbcType=VARCHAR}, #{courseId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR},
       #{groupMemberNum,jdbcType=INTEGER}, #{leaderId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.managementSystem.pojo.Group">
@@ -140,7 +140,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="groupId != null">
-        #{groupId,jdbcType=INTEGER},
+        #{groupId,jdbcType=VARCHAR},
       </if>
       <if test="courseId != null">
         #{courseId,jdbcType=INTEGER},
@@ -166,7 +166,7 @@
     update group_course
     <set>
       <if test="record.groupId != null">
-        GROUP_ID = #{record.groupId,jdbcType=INTEGER},
+        GROUP_ID = #{record.groupId,jdbcType=VARCHAR},
       </if>
       <if test="record.courseId != null">
         COURSE_ID = #{record.courseId,jdbcType=INTEGER},
@@ -187,7 +187,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update group_course
-    set GROUP_ID = #{record.groupId,jdbcType=INTEGER},
+    set GROUP_ID = #{record.groupId,jdbcType=VARCHAR},
       COURSE_ID = #{record.courseId,jdbcType=INTEGER},
       GROUP_NAME = #{record.groupName,jdbcType=VARCHAR},
       GROUP_MEMBER_NUM = #{record.groupMemberNum,jdbcType=INTEGER},
@@ -212,11 +212,11 @@
         LEADER_ID = #{leaderId,jdbcType=VARCHAR},
       </if>
     </set>
-    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+    where GROUP_ID = #{groupId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.managementSystem.pojo.Group">
     update group_course
-    set COURSE_ID = #{courseId,jdbcType=INTEGER},
+    set COURSE_ID = #{courseId,jdbcType=VARCHAR},
       GROUP_NAME = #{groupName,jdbcType=VARCHAR},
       GROUP_MEMBER_NUM = #{groupMemberNum,jdbcType=INTEGER},
       LEADER_ID = #{leaderId,jdbcType=VARCHAR}

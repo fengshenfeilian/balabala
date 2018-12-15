@@ -92,13 +92,13 @@
     <!-- 顶部导航栏 -->
     <div class="topNav">
         <div class="wrapper">
-            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<c:out value="${user.userName}" />使用本系统</span></div>
+            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<strong>【<c:out value="${sessionScope.currentUser.userName}"/>】老师</strong>使用本系统</span></div>
 
             <div class="userNav">
                 <ul>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="../../login.jsp" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/user/toConfigPage" title="" id="userConfig"><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
+                    <%--<li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>--%>
+                    <li><a href="${pageContext.request.contextPath}/user/logout" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
                 </ul>
             </div>
 
@@ -130,28 +130,28 @@
 
     <form  method="post" id="validate" class="form" action="${pageContext.request.contextPath}/teacher/createCourse">
         <div class="formRow">
-            <label for="login">课程名称</label>
-            <div class="loginInput"><input type="text" name="courseName" class="validate[required]" id="login" /></div>
+            <label style="width:10%">课程名称</label>
+            <div ><input type="text" name="courseName" style="width:50%;"required /></div>
             <div class="clear"></div>
         </div>
         <div class="formRow">
-            <label for="login">课程简介</label>
-            <div class="loginInput"><input type="text" name="description" class="validate[required]" id="login" /></div>
+            <label style="width:10%">课程简介</label>
+            <div ><input type="text" name="description"  style="width:50%;" required/></div>
             <div class="clear"></div>
         </div>
         <div class="formRow">
-            <label for="login">小组最小人数</label>
-            <div class="loginInput"><input type="text" name="minNum" class="validate[required]" id="login" /></div>
+            <label style="width:10%">小组最小人数</label>
+            <div ><input type="text" name="minNum"  style="width:50%;"required/></div>
             <div class="clear"></div>
         </div>
         <div class="formRow">
-            <label for="login">小组最大人数</label>
-            <div class="loginInput"><input type="text" name="maxNum" class="validate[required]" id="login" /></div>
+            <label style="width:10%">小组最大人数</label>
+            <div ><input type="text" name="maxNum"  style="width:50%;" required/></div>
             <div class="clear"></div>
         </div>
         <div class="formRow">
-            <label for="login">小组前缀</label>
-            <div class="loginInput"><input type="text" name="groupPrefix" class="validate[required]" id="login" /></div>
+            <label style="width:10%">小组前缀</label>
+            <div ><input type="text" name="groupPrefix"  style="width:50%;" required/></div>
             <div class="clear"></div>
         </div>
         <div class="loginControl">

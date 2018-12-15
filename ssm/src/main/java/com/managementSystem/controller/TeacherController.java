@@ -58,11 +58,12 @@ public class TeacherController {
         course.setGroupCapacityMin(min);
         int max = Integer.parseInt(maxNum);
         course.setGroupCapacityMax(max);
-        int prefix = Integer.parseInt(groupPrefix);
-        course.setGroupPrefix(prefix);
+
+        course.setGroupPrefix(groupPrefix);
         course.setCourseDescription(description);
         course.setTeacherId(user.getUserId());
         course.setIsEnd(0);
+        //小组前缀前加“课程id-”
         teacherService.createNewCourse(course);
         model.addAttribute("message","创建成功");
 //        model.addAttribute("courses", teacherService.getAllCourses(user.getUserId()));
@@ -86,7 +87,7 @@ public class TeacherController {
         String name = file.getOriginalFilename();
         //进一步判断文件是否为空（即判断其大小是否为0或其名称是否为null）
         long size=file.getSize();
-        if(name==null || ("").equals(name) && size==0) return null;
+        if(name==null || ("").equals(name) && size==0) return "teacher/course";
         //批量导入。参数：文件名，文件。
         User user = (User) session.getAttribute("currentUser");
         Course course = (Course) session.getAttribute("currentCourse");
@@ -105,7 +106,7 @@ public class TeacherController {
         String name = file.getOriginalFilename();
         //进一步判断文件是否为空（即判断其大小是否为0或其名称是否为null）
         long size=file.getSize();
-        if(name==null || ("").equals(name) && size==0) return null;
+        if(name==null || ("").equals(name) && size==0) return "teacher/course";
         //批量导入。参数：文件名，文件。
         User user = (User) session.getAttribute("currentUser");
         Course course = (Course) session.getAttribute("currentCourse");
@@ -209,11 +210,11 @@ public class TeacherController {
         String assignmentId = request.getParameter("assignmentId");
         String groupId = request.getParameter("groupId");
         Assignment assignment = teacherService.getCurrentAssignment(assignmentId);
-        Group group = teacherService.getGroup(Integer.parseInt(groupId));
-        Group_Assignment group_assignment = teacherService.getCurrentGroupAssignemnt(Integer.parseInt(groupId),
+        Group group = teacherService.getGroup(groupId);
+        Group_Assignment group_assignment = teacherService.getCurrentGroupAssignemnt(groupId,
                 assignmentId);
         List<User> members = new ArrayList<>();
-        List<Group_Student> group_students = teacherService.getGroupStudents(Integer.parseInt(groupId));
+        List<Group_Student> group_students = teacherService.getGroupStudents(groupId);
         for (Group_Student group_student : group_students)
         {
             User user = teacherService.getStudentsInGroup(group_student.getStudentId());
@@ -262,7 +263,7 @@ public class TeacherController {
             Student_Course student_course = new Student_Course();
             double grade = 0.0;
             String studentId = student.getStudentId();
-            Integer groupId = teacherService.getGroupID(courseId, studentId);
+            String groupId = teacherService.getGroupID(courseId, studentId);
             Integer groupGrade = teacherService.getGroupGrade(courseId, studentId);
             List<Group_Assignment> group_assignments = teacherService.getGroupAssignemnt(groupId);
             for (Group_Assignment group_assignment : group_assignments)

@@ -15,7 +15,7 @@ public class Course {
 
     private Integer groupCapacityMax;
 
-    private Integer groupPrefix;
+    private String groupPrefix;
 
     private Date createTime;
 
@@ -69,12 +69,12 @@ public class Course {
         this.groupCapacityMax = groupCapacityMax;
     }
 
-    public Integer getGroupPrefix() {
+    public String getGroupPrefix() {
         return groupPrefix;
     }
 
-    public void setGroupPrefix(Integer groupPrefix) {
-        this.groupPrefix = groupPrefix;
+    public void setGroupPrefix(String groupPrefix) {
+        this.groupPrefix = groupPrefix == null ? null : groupPrefix.trim();
     }
 
     public Date getCreateTime() {

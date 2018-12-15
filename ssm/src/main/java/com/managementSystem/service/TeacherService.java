@@ -45,7 +45,11 @@ public class TeacherService {
 
     public void createNewCourse(Course course)
     {
+        //由于课程id自增，插入后才能知道课程id
         courseMapper.insert(course);
+        String groupPrefix = Integer.toString(course.getCourseId())+"-"+course.getGroupPrefix();
+        course.setGroupPrefix(groupPrefix);
+        courseMapper.updateByPrimaryKeySelective(course);
     }
 
     public void addUserByFile(String name, MultipartFile file, Integer courseId) {
@@ -109,12 +113,12 @@ public class TeacherService {
         return ans;
     }
 
-    public Integer getGroupID(Integer courseId, String studentId) {
-        Integer groupId = groupMapper.selectByUseridCourseid(courseId, studentId);
+    public String getGroupID(Integer courseId, String studentId) {
+        String groupId = groupMapper.selectByUseridCourseid(courseId, studentId);
         return groupId;
     }
 
-    public List<Group_Assignment> getGroupAssignemnt(Integer groupId) {
+    public List<Group_Assignment> getGroupAssignemnt(String groupId) {
         Group_AssignmentExample group_assignmentExample = new Group_AssignmentExample();
         Group_AssignmentExample.Criteria criteria = group_assignmentExample.createCriteria();
         criteria.andGroupIdEqualTo(groupId);
@@ -150,7 +154,7 @@ public class TeacherService {
     }
 
     public List<Group_Assignment> getAssignmentsByCondition(String title, String groupName) {
-        int groupId = groupMapper.selectId(groupName);
+        String groupId = groupMapper.selectId(groupName);
         AssignmentExample assignmentExample = new AssignmentExample();
         AssignmentExample.Criteria criteria = assignmentExample.createCriteria();
         criteria.andTitleEqualTo(title);
@@ -171,24 +175,24 @@ public class TeacherService {
         return assignmentMapper.selectByPrimaryKey(assignmentId);
     }
 
-    public Group getGroup(Integer groupId) {
+    public Group getGroup(String groupId) {
         return groupMapper.selectByPrimaryKey(groupId);
     }
 
-    public User getStudent(Integer groupId) {
+    public User getStudent(String groupId) {
         Group group = groupMapper.selectByPrimaryKey(groupId);
         User user = userMapper.selectByPrimaryKey(group.getLeaderId());
         return user;
     }
 
-    public Group_Assignment getCurrentGroupAssignemnt(int groupId, String assignmentId) {
+    public Group_Assignment getCurrentGroupAssignemnt(String groupId, String assignmentId) {
         Group_AssignmentKey group_assignmentKey = new Group_AssignmentKey();
         group_assignmentKey.setAssignmentId(assignmentId);
         group_assignmentKey.setGroupId(groupId);
         return group_assignmentMapper.selectByPrimaryKey(group_assignmentKey);
     }
 
-    public List<Group_Student> getGroupStudents(int groupId) {
+    public List<Group_Student> getGroupStudents(String groupId) {
         Group_StudentExample group_studentExample = new Group_StudentExample();
         Group_StudentExample.Criteria criteria = group_studentExample.createCriteria();
         criteria.andGroupIdEqualTo(groupId);
@@ -209,7 +213,7 @@ public class TeacherService {
         for(Student_Course student_course : users)
         {
             student_course.setCourseId(courseId);
-            student_courseMapper.updateByPrimaryKey(student_course);
+            student_courseMapper.updateByPrimaryKeySelective(student_course);
         }
     }
 

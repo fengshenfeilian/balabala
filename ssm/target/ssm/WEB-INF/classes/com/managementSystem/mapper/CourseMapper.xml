@@ -8,7 +8,7 @@
     <result column="TEACHER_ID" jdbcType="VARCHAR" property="teacherId" />
     <result column="GROUP_CAPACITY_MIN" jdbcType="INTEGER" property="groupCapacityMin" />
     <result column="GROUP_CAPACITY_MAX" jdbcType="INTEGER" property="groupCapacityMax" />
-    <result column="GROUP_PREFIX" jdbcType="INTEGER" property="groupPrefix" />
+    <result column="GROUP_PREFIX" jdbcType="VARCHAR" property="groupPrefix" />
     <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
     <result column="IS_END" jdbcType="INTEGER" property="isEnd" />
   </resultMap>
@@ -104,17 +104,17 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.managementSystem.pojo.Course">
+  <insert id="insert" parameterType="com.managementSystem.pojo.Course" useGeneratedKeys="true" keyProperty="courseId">
     insert into course (COURSE_ID, COURSE_NAME, COURSE_DESCRIPTION, 
       TEACHER_ID, GROUP_CAPACITY_MIN, GROUP_CAPACITY_MAX, 
       GROUP_PREFIX, CREATE_TIME, IS_END
       )
     values (#{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{courseDescription,jdbcType=VARCHAR}, 
       #{teacherId,jdbcType=VARCHAR}, #{groupCapacityMin,jdbcType=INTEGER}, #{groupCapacityMax,jdbcType=INTEGER}, 
-      #{groupPrefix,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{isEnd,jdbcType=INTEGER}
+      #{groupPrefix,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{isEnd,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.managementSystem.pojo.Course">
+  <insert id="insertSelective" parameterType="com.managementSystem.pojo.Course" useGeneratedKeys="true" keyProperty="courseId">
     insert into course
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="courseId != null">
@@ -165,7 +165,7 @@
         #{groupCapacityMax,jdbcType=INTEGER},
       </if>
       <if test="groupPrefix != null">
-        #{groupPrefix,jdbcType=INTEGER},
+        #{groupPrefix,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -203,7 +203,7 @@
         GROUP_CAPACITY_MAX = #{record.groupCapacityMax,jdbcType=INTEGER},
       </if>
       <if test="record.groupPrefix != null">
-        GROUP_PREFIX = #{record.groupPrefix,jdbcType=INTEGER},
+        GROUP_PREFIX = #{record.groupPrefix,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null">
         CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
@@ -224,7 +224,7 @@
       TEACHER_ID = #{record.teacherId,jdbcType=VARCHAR},
       GROUP_CAPACITY_MIN = #{record.groupCapacityMin,jdbcType=INTEGER},
       GROUP_CAPACITY_MAX = #{record.groupCapacityMax,jdbcType=INTEGER},
-      GROUP_PREFIX = #{record.groupPrefix,jdbcType=INTEGER},
+      GROUP_PREFIX = #{record.groupPrefix,jdbcType=VARCHAR},
       CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
       IS_END = #{record.isEnd,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -250,7 +250,7 @@
         GROUP_CAPACITY_MAX = #{groupCapacityMax,jdbcType=INTEGER},
       </if>
       <if test="groupPrefix != null">
-        GROUP_PREFIX = #{groupPrefix,jdbcType=INTEGER},
+        GROUP_PREFIX = #{groupPrefix,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
@@ -268,7 +268,7 @@
       TEACHER_ID = #{teacherId,jdbcType=VARCHAR},
       GROUP_CAPACITY_MIN = #{groupCapacityMin,jdbcType=INTEGER},
       GROUP_CAPACITY_MAX = #{groupCapacityMax,jdbcType=INTEGER},
-      GROUP_PREFIX = #{groupPrefix,jdbcType=INTEGER},
+      GROUP_PREFIX = #{groupPrefix,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       IS_END = #{isEnd,jdbcType=INTEGER}
     where COURSE_ID = #{courseId,jdbcType=INTEGER}

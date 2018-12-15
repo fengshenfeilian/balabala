@@ -505,52 +505,62 @@ public class CourseExample {
             return (Criteria) this;
         }
 
-        public Criteria andGroupPrefixEqualTo(Integer value) {
+        public Criteria andGroupPrefixEqualTo(String value) {
             addCriterion("GROUP_PREFIX =", value, "groupPrefix");
             return (Criteria) this;
         }
 
-        public Criteria andGroupPrefixNotEqualTo(Integer value) {
+        public Criteria andGroupPrefixNotEqualTo(String value) {
             addCriterion("GROUP_PREFIX <>", value, "groupPrefix");
             return (Criteria) this;
         }
 
-        public Criteria andGroupPrefixGreaterThan(Integer value) {
+        public Criteria andGroupPrefixGreaterThan(String value) {
             addCriterion("GROUP_PREFIX >", value, "groupPrefix");
             return (Criteria) this;
         }
 
-        public Criteria andGroupPrefixGreaterThanOrEqualTo(Integer value) {
+        public Criteria andGroupPrefixGreaterThanOrEqualTo(String value) {
             addCriterion("GROUP_PREFIX >=", value, "groupPrefix");
             return (Criteria) this;
         }
 
-        public Criteria andGroupPrefixLessThan(Integer value) {
+        public Criteria andGroupPrefixLessThan(String value) {
             addCriterion("GROUP_PREFIX <", value, "groupPrefix");
             return (Criteria) this;
         }
 
-        public Criteria andGroupPrefixLessThanOrEqualTo(Integer value) {
+        public Criteria andGroupPrefixLessThanOrEqualTo(String value) {
             addCriterion("GROUP_PREFIX <=", value, "groupPrefix");
             return (Criteria) this;
         }
 
-        public Criteria andGroupPrefixIn(List<Integer> values) {
+        public Criteria andGroupPrefixLike(String value) {
+            addCriterion("GROUP_PREFIX like", value, "groupPrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixNotLike(String value) {
+            addCriterion("GROUP_PREFIX not like", value, "groupPrefix");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupPrefixIn(List<String> values) {
             addCriterion("GROUP_PREFIX in", values, "groupPrefix");
             return (Criteria) this;
         }
 
-        public Criteria andGroupPrefixNotIn(List<Integer> values) {
+        public Criteria andGroupPrefixNotIn(List<String> values) {
             addCriterion("GROUP_PREFIX not in", values, "groupPrefix");
             return (Criteria) this;
         }
 
-        public Criteria andGroupPrefixBetween(Integer value1, Integer value2) {
+        public Criteria andGroupPrefixBetween(String value1, String value2) {
             addCriterion("GROUP_PREFIX between", value1, value2, "groupPrefix");
             return (Criteria) this;
         }
 
-        public Criteria andGroupPrefixNotBetween(Integer value1, Integer value2) {
+        public Criteria andGroupPrefixNotBetween(String value1, String value2) {
             addCriterion("GROUP_PREFIX not between", value1, value2, "groupPrefix");
             return (Criteria) this;
         }

@@ -106,13 +106,13 @@
     <!-- 顶部导航栏 -->
     <div class="topNav">
         <div class="wrapper">
-            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<strong>【<c:out value="${sessionScope.currentUser.userName}"/>】</strong>使用本系统</span></div>
+            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<strong>【<c:out value="${sessionScope.currentUser.userName}"/>】同学</strong>使用本系统</span></div>
 
             <div class="userNav">
                 <ul>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
-                    <li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>
-                    <li><a href="../../login.jsp" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/user/toConfigPage" title="" id="userConfig"><img src="/static/images/icons/topnav/profile.png" alt="" /><span>账户</span></a></li>
+                    <%--<li><a href="#" title=""><img src="/static/images/icons/topnav/settings.png" alt="" /><span>设置</span></a></li>--%>
+                    <li><a href="${pageContext.request.contextPath}/user/logout" title=""><img src="/static/images/icons/topnav/logout.png" alt="" /><span>注销</span></a></li>
                 </ul>
             </div>
 
@@ -120,18 +120,55 @@
         </div>
     </div>
 
+    <!-- 作业要求 ==> 动态数据表 -->
+    <div class="wrapper">
+        <!-- Widgets -->
+        <div class="widgets">
+            <div class="widget">
+                <div class="title">
+                    <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
+                    <h6>作业要求</h6>
+                </div>
+                <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" >
+                    <thead>
+                    <tr>
+                        <td class="sortCol"><div>作业ID<span></span></div></td>
+                        <td class="sortCol"><div>作业名称<span></span></div></td>
+                        <td class="sortCol"><div>基本描述<span></span></div></td>
+                        <td class="sortCol"><div>提交时间<span></span></div></td>
+                        <td class="sortCol"><div>发布时间<span></span></div></td>
+                        <td class="sortCol"><div>分值比例<span></span></div></td>
+                    </tr>
+                    </thead>
+                    <tbody align="center">
+                    <c:forEach items="${assignments}" var="assignment">
+                        <tr>
+                            <td>${assignment.assignmentId}</td>
+                            <td>${assignment.title}</td>
+                            <td>${assignment.body}</td>
+                            <td>${assignment.deadline}</td>
+                            <td>${assignment.releaseTime}</td>
+                            <td>${assignment.percent}%</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <%--动态数据表--%>
     <div class="wrapper">
         <div class="widget">
             <div class="title"><img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
-                <h6>作业列表</h6></div>
+                <h6>已提交作业列表</h6></div>
             <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
                 <thead>
                 <tr>
-                    <td class="sortCol"><div>作业要求<span></span></div></td>
-                    <td class="sortCol"><div>作业标题<span></span></div></td>
-                    <td class="sortCol"><div>作业内容<span></span></div></td>
-                    <td class="sortCol"><div>小组号<span></span></div></td>
+                    <td class="sortCol"><div>作业ID<span></span></div></td>
+                    <td class="sortCol"><div>提交作业标题<span></span></div></td>
+                    <td class="sortCol"><div>作业路径<span></span></div></td>
+                    <td class="sortCol"><div>小组ID<span></span></div></td>
 
                     <td class="sortCol"><div>提交时间<span></span></div></td>
                     <td class="sortCol"><div>分数<span></span></div></td>

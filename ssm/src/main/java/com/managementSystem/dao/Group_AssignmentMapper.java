@@ -29,6 +29,7 @@ public interface Group_AssignmentMapper {
 
     int updateByPrimaryKey(Group_Assignment record);
     /*marco*/
-    boolean existGroupAssignment(String assignmentId,Integer groupId);
+    //groupId
+    boolean existGroupAssignment(String assignmentId,String groupId);
     /*     */
 }
