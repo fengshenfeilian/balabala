@@ -135,9 +135,10 @@
                         <td class="sortCol"><div>作业ID<span></span></div></td>
                         <td class="sortCol"><div>作业名称<span></span></div></td>
                         <td class="sortCol"><div>基本描述<span></span></div></td>
-                        <td class="sortCol"><div>提交时间<span></span></div></td>
+                        <td class="sortCol"><div>截止时间<span></span></div></td>
                         <td class="sortCol"><div>发布时间<span></span></div></td>
                         <td class="sortCol"><div>分值比例<span></span></div></td>
+                        <td class="sortCol"><div>选项<span></span></div></td>
                     </tr>
                     </thead>
                     <tbody align="center">
@@ -146,9 +147,10 @@
                             <td>${assignment.assignmentId}</td>
                             <td>${assignment.title}</td>
                             <td>${assignment.body}</td>
-                            <td>${assignment.deadline}</td>
+                            <td id="deadlineTime">${assignment.deadline}</td>
                             <td>${assignment.releaseTime}</td>
                             <td>${assignment.percent}%</td>
+                            <td><a href="/student/uploadAssignment"><button class="blueB">上传作业</button></a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -169,7 +171,6 @@
                     <td class="sortCol"><div>提交作业标题<span></span></div></td>
                     <td class="sortCol"><div>作业路径<span></span></div></td>
                     <td class="sortCol"><div>小组ID<span></span></div></td>
-
                     <td class="sortCol"><div>提交时间<span></span></div></td>
                     <td class="sortCol"><div>分数<span></span></div></td>
                 </tr>
@@ -196,8 +197,9 @@
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
     </div>
 
-
-
+    <script type="text/javascript">
+       
+    </script>
     <div class="clear"></div>
 </div>
 </body>
