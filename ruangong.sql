@@ -6,7 +6,7 @@
 -- Generation Time: 2018-12-15 16:19:39
 -- 服务器版本： 10.1.16-MariaDB
 -- PHP Version: 5.3.29-upupw
-
+use ruangong;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 

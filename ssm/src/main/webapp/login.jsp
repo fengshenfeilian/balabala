@@ -73,7 +73,6 @@
 		<div class="title"><img src="/static/images/icons/dark/files.png" alt="" class="titleIcon" /><h6>登录</h6></div>
 		<!-- 表单数据 -->
 		<form action="${pageContext.request.contextPath}/user/login" method="post" id="validate" class="form">
-			<fieldset>
 				<div class="formRow">
 					<label for="login">用户号</label>
 					<div class="loginInput"><input type="text" name="userId"  class="validate[required]" id="login" ></div>
@@ -87,11 +86,11 @@
 				</div>
 
 				<div class="loginControl">
-					<div class="rememberMe"><input type="checkbox" id="remMe" name="remMe" /><label for="remMe">记住我</label></div>
-					<input type="submit" value="登录" class="dredB logMeIn" />
+					<%--<div class="rememberMe"><input type="checkbox" id="remMe" name="remMe" /><label for="remMe">记住我</label></div>
+--%>
+					<input type="submit" value="登录" class="blueB logMeIn" />
 					<div class="clear"></div>
 				</div>
-			</fieldset>
 		</form>
 	</div>
 </div>
