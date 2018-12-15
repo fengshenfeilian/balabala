@@ -127,12 +127,13 @@
     <div class="wrapper">
         <div class="widget">
             <div class="title"><img src="images/icons/dark/frames.png" alt="" class="titleIcon" />
-                <h6>查看已提交作业</h6></div>
+                <h6>已选课程列表</h6></div>
             <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
                 <thead>
                 <tr>
                     <td class="sortCol"><div>课程名<span></span></div></td>
                     <td class="sortCol"><div>小组号<span></span></div></td>
+                    <td class="sortCol"><div>是否结束<span></span></div></td>
                     <td class="sortCol"><div>选项<span></span></div></td>
 
                 </tr>
@@ -142,6 +143,7 @@
                     <tr>
                         <td>${course[loop.count-1].courseName}</td>
                         <td>${group_student.groupId}</td>
+                        <td>${course[loop.count-1].isEnd}</td>
                         <td><a href="/student/browseAssignment?groupId=${group_student.groupId}&courseId=${course[loop.count-1].courseId}">查看作业</a></td>
                     </tr>
                 </c:forEach>

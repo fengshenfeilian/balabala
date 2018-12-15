@@ -132,6 +132,7 @@
                     <td class="sortCol"><div>课程号<span></span></div></td>
                     <td class="sortCol"><div>课程名<span></span></div></td>
                     <td class="sortCol"><div>任课教师<span></span></div></td>
+                    <td class="sortCol"><div>是否结束<span></span></div></td>
                     <td class="sortCol"><div>选项<span></span></div></td>
                 </tr>
                 </thead>
@@ -141,6 +142,7 @@
                         <td>${studentCourse.courseId}</td>
                         <td>${courseList[loop.count-1].courseName}</td>
                         <td>${teacherList[loop.count-1].userName}</td>
+                        <td>${courseList[loop.count-1].isEnd}</td>
                         <td><a href="/student/courseInfo?courseId=${studentCourse.courseId}"><button class="blueB">查看课程信息</button></a></td>
                     </tr>
                 </c:forEach>

@@ -120,6 +120,45 @@
         </div>
     </div>
 
+    <%-- 待交作业列表--%>
+    <div class="wrapper">
+        <!-- Widgets -->
+        <div class="widgets">
+            <div class="widget">
+                <div class="title">
+                    <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
+                    <h6>待交作业列表</h6>
+                </div>
+                <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" >
+                    <thead>
+                    <tr>
+                        <td class="sortCol"><div>作业ID<span></span></div></td>
+                        <td class="sortCol"><div>作业名称<span></span></div></td>
+                        <td class="sortCol"><div>基本描述<span></span></div></td>
+                        <td class="sortCol"><div>截止时间<span></span></div></td>
+                        <td class="sortCol"><div>发布时间<span></span></div></td>
+                        <td class="sortCol"><div>分值比例<span></span></div></td>
+                        <td class="sortCol"><div>选项<span></span></div></td>
+                    </tr>
+                    </thead>
+                    <tbody align="center">
+                    <c:forEach items="${assignments}" var="assignment">
+                        <tr>
+                            <td>${assignment.assignmentId}</td>
+                            <td>${assignment.title}</td>
+                            <td>${assignment.body}</td>
+                            <td>${assignment.deadline}</td>
+                            <td>${assignment.releaseTime}</td>
+                            <td>${assignment.percent}%</td>
+                            <td><a href="/student/uploadAssignment"><button class="blueB">上传作业</button></a></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <!-- 作业要求 ==> 动态数据表 -->
     <div class="wrapper">
         <!-- Widgets -->
@@ -198,7 +237,7 @@
     </div>
 
     <script type="text/javascript">
-       
+
     </script>
     <div class="clear"></div>
 </div>
