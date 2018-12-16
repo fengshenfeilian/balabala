@@ -193,13 +193,21 @@
                                 <td>${assignment.deadline}</td>
                                 <td>${assignment.releaseTime}</td>
                                 <td>${assignment.percent}%</td>
-                                <td><a href="/teacher/showSubmitedAssignments?assignmentId=${assignment.assignmentId}"><button class="blueB">查看</button></a></td>
+                                <td><a href="/teacher/showSubmitedAssignments?assignmentId=${assignment.assignmentId}"><button class="blueB">查看作业</button></a></td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
             </div>
         </div>
+    </div>
+    <div>
+        <c:if test="${course.isEnd==0}">
+            <a href="/teacher/finishCourse">结课</a>
+        </c:if>
+        <c:if test="${course.isEnd==1}">
+            <a href="/teacher/scoreToExcel">生成成绩单</a>
+        </c:if>
     </div>
 
     <!-- Footer line -->

@@ -141,6 +141,7 @@
     <c:forEach items="${members}" var="member">
     <p>${member.userName}</p>
     </c:forEach>
+    <a href="/teacher/downloadFile?filepath=${group_assignment.body}">下载</a>
     <form action="${pageContext.request.contextPath}/teacher/scoreGroup" method="post" id="validate" class="form">
         <div class="formRow">
             <label for="login">成绩</label>

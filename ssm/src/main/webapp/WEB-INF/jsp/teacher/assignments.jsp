@@ -116,6 +116,19 @@
                 <p>作业发布时间:${assignment.releaseTime}</p>
                 <p>作业提交时间:${assignment.deadline}</p>
                 <p>作业占比:${assignment.percent}</p>
+                <c:if test="${course.isEnd == 0}">
+                    <form action="${pageContext.request.contextPath}/teacher/modifyPercent" method="post" id="validate" class="form">
+                        <div class="formRow">
+                            <label style="width:10%">修改比例</label>
+                            <div><input type="text" name="newPercent" style="width:50%"required /></div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="loginControl">
+                            <input type="submit" value="确认修改" class="dredB logMeIn" />
+                            <div class="clear"></div>
+                        </div>
+                    </form>
+                </c:if>
                 <!-- 选项区域
                 <div class="statsRow">
                     <div class="wrapper">

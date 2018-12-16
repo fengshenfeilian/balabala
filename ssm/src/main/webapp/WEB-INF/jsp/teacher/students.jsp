@@ -170,6 +170,7 @@
                         <tr>
                             <td class="sortCol"><div>学生姓名<span></span></div></td>
                             <td class="sortCol"><div>学号<span></span></div></td>
+                            <td class="sortCol"><div>班级<span></span></div></td>
                             <td class="sortCol"><div>平时成绩<span></span></div></td>
                             <td class="sortCol"><div>作业成绩<span></span></div></td>
                         </tr>
@@ -179,6 +180,7 @@
                             <tr>
                                 <td>${students[loop.count - 1].userName}</td>
                                 <td>${student_course.studentId}</td>
+                                <td>${students[loop.count - 1].classes}</td>
                                 <td>${student_course.dailyGrade}</td>
                                 <td>${student_course.assignmentGrade}</td>
                             </tr>

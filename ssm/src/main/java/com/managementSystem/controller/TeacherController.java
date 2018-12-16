@@ -2,6 +2,11 @@ package com.managementSystem.controller;
 
 import com.managementSystem.pojo.*;
 import com.managementSystem.service.TeacherService;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -12,12 +17,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.*;
+import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,27 +55,37 @@ public class TeacherController {
                                @RequestParam(value = "description")String description,
                                @RequestParam(value = "minNum") String minNum,
                                @RequestParam(value = "maxNum") String maxNum,
-                               @RequestParam(value = "groupPrefix") String groupPrefix,
-                               Model model, HttpSession session, HttpServletRequest request){
+                               @RequestParam(value = "startTime") String startTime,
+                               Model model, HttpSession session, HttpServletRequest request) throws ParseException {
         Course course = new Course();
         User user = (User) session.getAttribute("currentUser");
         course.setCourseName(courseName);
-        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy-MM");
+        Date date = format.parse(startTime);
         course.setCreateTime(date);
         if(minNum == null) System.out.println("min is null");
         int min = Integer.parseInt(minNum);
         course.setGroupCapacityMin(min);
         int max = Integer.parseInt(maxNum);
         course.setGroupCapacityMax(max);
-
+        Calendar cale = null;
+        cale = Calendar.getInstance();
+        int year = cale.get(Calendar.YEAR);
+        int suffix = teacherService.getCount(user.getUserId()) + 1;
+        String groupPrefix = String.valueOf(year) + String.valueOf(suffix);
         course.setGroupPrefix(groupPrefix);
         course.setCourseDescription(description);
         course.setTeacherId(user.getUserId());
         course.setIsEnd(0);
+        if(teacherService.findCourse(course) == true)
+        {
+            model.addAttribute("message", "课程已存在");
+            return "/teacher/course";
+        }
         //小组前缀前加“课程id-”
         teacherService.createNewCourse(course);
         model.addAttribute("message","创建成功");
-//        model.addAttribute("courses", teacherService.getAllCourses(user.getUserId()));
+        model.addAttribute("courses", teacherService.getAllCourses(user.getUserId()));
         model.addAttribute("course", course);
         request.getSession().setAttribute("currentCourse", course);
         //此处返回页面待定
@@ -113,7 +132,7 @@ public class TeacherController {
 //        Integer courseId = teacherService.getCourseId(course.getCourseName(), user.getUserId());
         Integer courseId = course.getCourseId();
         teacherService.addDailyScore(name, file, courseId);
-        model.addAttribute("msg", "导入平时成绩成功");
+        model.addAttribute("message", "导入平时成绩成功");
         model.addAttribute("course", course);
         return "teacher/course";
     }
@@ -181,6 +200,7 @@ public class TeacherController {
     {
         String assignmentId = request.getParameter("assignmentId");
         Assignment assignment = teacherService.getCurrentAssignment(assignmentId);
+        httpSession.setAttribute("currentAssignment", assignment);
         List<Group_Assignment> group_assignments = teacherService.getSubmitedAssignments(assignmentId);
         for (Group_Assignment group_assignment : group_assignments)
         {
@@ -191,6 +211,30 @@ public class TeacherController {
         }
         model.addAttribute("group_assignments", group_assignments);
         model.addAttribute("assignment", assignment);
+        Course course = (Course)httpSession.getAttribute("currentCourse");
+        model.addAttribute("course", course);
+        return "teacher/assignments";
+    }
+
+    @RequestMapping(value = "/modifyPercent", method=RequestMethod.POST)
+    public String modifyPercent(@RequestParam(value = "newPercent") String newPercent, HttpSession session, Model model)
+    {
+        Assignment assignment = (Assignment) session.getAttribute("currentAssignment");
+        assignment.setPercent(Integer.parseInt(newPercent));
+        teacherService.updatePercent(assignment);
+        String assignmentId = assignment.getAssignmentId();
+        List<Group_Assignment> group_assignments = teacherService.getSubmitedAssignments(assignmentId);
+        for (Group_Assignment group_assignment : group_assignments)
+        {
+            Group group = teacherService.getGroup(group_assignment.getGroupId());
+            group_assignment.setGroupName(group.getGroupName());
+            User user = teacherService.getStudent(group_assignment.getGroupId());
+            group_assignment.setStudentName(user.getUserName());
+        }
+        model.addAttribute("group_assignments", group_assignments);
+        model.addAttribute("assignment", assignment);
+        Course course = (Course)session.getAttribute("currentCourse");
+        model.addAttribute("course", course);
         return "teacher/assignments";
     }
 
@@ -201,6 +245,8 @@ public class TeacherController {
     {
         List<Group_Assignment> group_assignments = teacherService.getAssignmentsByCondition(title, groupName);
         model.addAttribute("group_assignments", group_assignments);
+        Course course = (Course)session.getAttribute("currentCourse");
+        model.addAttribute("course", course);
         return "teacher/assignments";
     }
 
@@ -248,8 +294,11 @@ public class TeacherController {
         }
         model.addAttribute("group_assignments", group_assignments);
         model.addAttribute("assignment", assignment);
+        Course course = (Course)httpSession.getAttribute("currentCourse");
+        model.addAttribute("course", course);
         return "teacher/assignments";
     }
+
 
     @RequestMapping(value = "/createScore")
     public String createScore(HttpSession session, HttpServletRequest request, Model model)
@@ -276,13 +325,13 @@ public class TeacherController {
             grade = grade * groupGrade / 100;
             student_course.setStudentId(studentId);
             student_course.setCourseId(courseId);
-            student_course.setAssignmentGrade((int)grade);
+            student_course.setAssignmentGrade((int) grade);
             teacherService.updateGrade(student_course);
         }
         return "teacher/course";
     }
 
-    @RequestMapping(value = "showAllStudents")
+    @RequestMapping(value = "/showAllStudents")
     public String showAllStudents(HttpSession httpSession, HttpServletRequest request, Model model)
     {
         Course course = (Course) httpSession.getAttribute("currentCourse");
@@ -294,5 +343,107 @@ public class TeacherController {
         List<User > students = teacherService.getAllUsers(student_courses);
         model.addAttribute("students", students);
         return "teacher/students";
+    }
+
+    @RequestMapping(value = "/finishCourse")
+    public String finishCourse(Model model, HttpSession session)
+    {
+        Course course = (Course) session.getAttribute("currentCourse");
+        course.setIsEnd(1);
+        teacherService.setCourseEnd(course);
+        User user = (User) session.getAttribute("currentUser");
+        List<Course> courses = teacherService.getAllCourses(user.getUserId());
+        model.addAttribute("courses", courses);
+        model.addAttribute("user", user);
+        return "teacher/course";
+    }
+
+    @RequestMapping(value = "/scoreToExcel")
+    public String scoreToExcel(Model model, HttpSession session) throws IOException {
+        Course course = (Course) session.getAttribute("currentCourse");
+        int assignCount = teacherService.getAssignmentCount(course.getCourseId());
+        String path = "D:/" + course.getCourseName() + ".xlsx";
+        Workbook wb = null;
+        File file = new File(path);
+        Sheet sheet = null;
+        if(!file.exists())
+        {
+            wb = new XSSFWorkbook();
+            sheet = (Sheet) wb.createSheet("sheet1");
+            OutputStream outputStream = new FileOutputStream(path);
+            wb.write(outputStream);
+            outputStream.flush();
+            outputStream.close();
+        }
+        if (sheet == null) sheet = (Sheet) wb.createSheet("sheet1");
+        Row row = sheet.createRow(0);
+        Cell cell = row.createCell(0);
+        row.setHeight((short) 400);
+        cell.setCellValue("学号");
+        cell = row.createCell(1);
+        cell.setCellValue("姓名");
+        for(int i = 0;i < assignCount;i++)
+        {
+            cell = row.createCell(2*i + 2);
+            cell.setCellValue("小组作业成绩" + String.valueOf(i+1));
+            cell = row.createCell(2*i + 3);
+            cell.setCellValue("小组评分" + String.valueOf(i+1));
+        }
+        cell = row.createCell(2*assignCount + 2);
+        cell.setCellValue("平时成绩");
+        cell = row.createCell(2*assignCount + 3);
+        cell.setCellValue("总成绩");
+        List<Student_Course> student_courses = teacherService.getAllStudentsInfo(course.getCourseId());
+        int rowIndex = 1;
+        for (Student_Course student_course : student_courses)
+        {
+            row = sheet.createRow(rowIndex);
+            cell = row.createCell(0);
+            User user = teacherService.getStudentsInGroup(student_course.getStudentId());
+            cell.setCellValue(user.getUserId());
+            cell = row.createCell(1);
+            cell.setCellValue(user.getUserName());
+            String groupId= teacherService.getGroupID(course.getCourseId(), user.getUserId());
+            List<Group_Assignment> group_assignments = teacherService.getGroupAssignemnt(groupId);
+            for(int i = 0;i < assignCount;i++)
+            {
+                cell = row.createCell(2*i + 2);
+                cell.setCellValue(String.valueOf(group_assignments.get(i).getScore()));
+                cell = row.createCell(2*i + 3);
+                Integer percent = teacherService.getAssignmentPercent(group_assignments.get(i).getAssignmentId());
+                cell.setCellValue(String.valueOf(group_assignments.get(i).getScore() * percent / 100));
+            }
+            cell = row.createCell(2*assignCount + 2);
+            cell.setCellValue(String.valueOf(student_course.getDailyGrade()));
+            cell = row.createCell(2*assignCount + 3);
+            cell.setCellValue(String.valueOf(student_course.getDailyGrade() + student_course.getAssignmentGrade()));
+        }
+
+        model.addAttribute("message", "生成成绩成功");
+        User user = (User) session.getAttribute("currentUser");
+        List<Course> courses = teacherService.getAllCourses(user.getUserId());
+        model.addAttribute("courses", courses);
+        model.addAttribute("user", user);
+        return "teacher/course";
+    }
+
+    @RequestMapping(value = "/downloadFile")
+    public void downloadFile(@RequestParam(value="filepath") String path, HttpServletResponse response, Model model) throws IOException {
+        String[] tem = path.split("/");
+        File file = new File("D:/down");
+        if (!file.exists()) file.mkdirs();
+        String filepath = "D:/down/" + tem[tem.length];
+        filepath = URLEncoder.encode(filepath, "UTF-8");
+        InputStream bis = new BufferedInputStream(new FileInputStream(new File(path)));
+        response.addHeader("Content-Disposition", "attachment;filename=" + filepath);
+        response.setContentType("multipart/form-data");
+        BufferedOutputStream out = new BufferedOutputStream(response.getOutputStream());
+        int len = 0;
+        while((len = bis.read()) != -1)
+        {
+            out.write(len);
+            out.flush();
+        }
+        out.close();
     }
 }
