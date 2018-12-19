@@ -54,15 +54,11 @@ public class TeacherService {
 
     public void addUserByFile(String name, MultipartFile file, Integer courseId) {
         ReadExcel readExcel = new ReadExcel();
-        List<User> users = readExcel.getExcelInfo(name, file);
-        for(User user : users)
-        {
-            Student_Course student_course = new Student_Course();
-            student_course.setCourseId(courseId);
-            student_course.setStudentId(user.getUserId());
-            student_course.setAssignmentGrade(0);
+        List<Student_Course> student_courses = readExcel.getStudentId(name, file);
+        for (Student_Course student_course : student_courses) {
             student_course.setDailyGrade(0);
-            int flag = student_courseMapper.insert(student_course);
+            student_course.setAssignmentGrade(0);
+            student_courseMapper.insert(student_course);
         }
     }
 
@@ -131,7 +127,7 @@ public class TeacherService {
     }
 
     public void updateGrade(Student_Course student_course) {
-        student_courseMapper.updateByPrimaryKey(student_course);
+        student_courseMapper.updateByPrimaryKeySelective(student_course);
     }
 
     public Integer getGroupGrade(Integer courseId, String studentId) {
@@ -225,5 +221,41 @@ public class TeacherService {
             users.add(user);
         }
         return users;
+    }
+
+    public int getCount(String userId) {
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andTeacherIdEqualTo(userId);
+        return (int)courseMapper.countByExample(courseExample);
+    }
+
+    public boolean findCourse(Course course) {
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andTeacherIdEqualTo(course.getTeacherId());
+        criteria.andCreateTimeEqualTo(course.getCreateTime());
+        criteria.andCourseNameEqualTo(course.getCourseName());
+        List<Course> courses = courseMapper.selectByExample(courseExample);
+        if(courses.size() == 0)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public void setCourseEnd(Course course) {
+        courseMapper.updateByPrimaryKey(course);
+    }
+
+    public int getAssignmentCount(Integer courseId) {
+        AssignmentExample assignmentExample = new AssignmentExample();
+        AssignmentExample.Criteria criteria = assignmentExample.createCriteria();
+        criteria.andCourseIdEqualTo(courseId);
+        return (int)assignmentMapper.countByExample(assignmentExample);
+    }
+
+    public void updatePercent(Assignment assignment) {
+        assignmentMapper.updateByPrimaryKey(assignment);
     }
 }

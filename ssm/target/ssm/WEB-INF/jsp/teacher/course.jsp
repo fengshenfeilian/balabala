@@ -112,9 +112,10 @@
         <div class="wrapper">
             <div class="pageTitle">
                 <h5>课程信息</h5>
-                    <p>课程名称:<strong>${course.courseName}</strong></p>
-                    <p>课程简介:<strong>${course.courseDescription}</strong></p>
-                    <p>课程创建时间:<strong>${course.createTime}</strong></p>
+                <p>课程名称:<strong>${course.courseName}</strong></p>
+                <p>课程简介:<strong>${course.courseDescription}</strong></p>
+                <p>课程创建时间:<strong>${course.createTime}</strong></p>
+                <p>状态：<strong>${course.isEnd==1?"已结课":"正在开课"}</strong></p>
             </div>
             <div class="clear"></div>
         </div>
@@ -193,13 +194,36 @@
                                 <td>${assignment.deadline}</td>
                                 <td>${assignment.releaseTime}</td>
                                 <td>${assignment.percent}%</td>
-                                <td><a href="/teacher/showSubmitedAssignments?assignmentId=${assignment.assignmentId}"><button class="blueB">查看</button></a></td>
+                                <td><a href="/teacher/showSubmitedAssignments?assignmentId=${assignment.assignmentId}"><button class="blueB">查看已提交作业</button></a></td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
             </div>
         </div>
+    </div>
+    <div>
+        <c:if test="${course.isEnd==0}">
+            <div class="statsRow">
+                <div class="wrapper">
+                    <div class="controlB">
+                        <a href="/teacher/finishCourse"><button class="blueB">结课</button></a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </c:if>
+        <c:if test="${course.isEnd==1}">
+            <div class="statsRow">
+                <div class="wrapper">
+                    <div class="controlB">
+                        <a href="/teacher/createScore"><button class="blueB">计算作业总成绩</button></a>
+                        <a href="/teacher/scoreToExcel"><button class="blueB">生成成绩单</button></a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </c:if>
     </div>
 
     <!-- Footer line -->

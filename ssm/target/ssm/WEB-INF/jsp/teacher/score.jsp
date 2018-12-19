@@ -126,50 +126,53 @@
             <div class="clear"></div>
         </div>
     </div>
-    <div class="line"></div>
-    <p>作业信息</p>
-    <p>作业要求:${assignment.title}</p>
-    <p>基本描述:${assignment.body}</p>
-    <p>作业发布时间:${assignment.releaseTime}</p>
-    <p>作业截止时间:${assignment.deadline}</p>
-    <p>作业占比:${assignment.percent}</p>
-    <p>作业提交时间:${group_assignment.submissionTime}</p>
-    <p>小组信息</p>
-    <p>组长姓名:${group_assignment.studentName}</p>
-    <p>小组人数:${group.groupMemberNum}</p>
-    <p>小组成员:</p>
-    <c:forEach items="${members}" var="member">
-    <p>${member.userName}</p>
-    </c:forEach>
-    <form action="${pageContext.request.contextPath}/teacher/scoreGroup" method="post" id="validate" class="form">
-        <div class="formRow">
-            <label for="login">成绩</label>
-            <div class="loginInput"><input type="text" name="grade" class="validate[required]" id="login" /></div>
-            <div class="clear"></div>
-        </div>
-        <div class="loginControl">
-            <input type="submit" value="提交" class="dredB logMeIn" />
-            <div class="clear"></div>
-        </div>
-    </form>
-    <!-- 选项区域
+
     <div class="statsRow">
         <div class="wrapper">
-            <div class="controlB">
-                <!--上传学生名单
-                                <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
-
-                <form action="${pageContext.request.contextPath}/teacher/addStudentByFile" method="post" enctype="multipart/form-data">
-                    <input type="file" name="filename"  value="" />
-                    <input type="submit" name=""  value="上传学生名单" />
-                </form>
-
-                <div class="clear"></div>
-            </div>
+            <div class="title"><h5>作业信息</h5></div>
+                <p><strong>作业要求:&nbsp;</strong>${assignment.title}</p>
+                <p><strong>基本描述:&nbsp;</strong>${assignment.body}</p>
+                <p><strong>作业发布时间:&nbsp;</strong>${assignment.releaseTime}</p>
+                <p><strong>作业截止时间:&nbsp;</strong>${assignment.deadline}</p>
+                <p><strong>作业占比:&nbsp;</strong>${assignment.percent}%</p>
+                <p><strong>作业提交时间:&nbsp;</strong>${group_assignment.submissionTime}</p>
+                <p><strong>当前评分:&nbsp;</strong>${group_assignment.score}</p>
         </div>
-    </div> -->
+    </div>
+    <br>
 
+    <div class="statsRow">
+        <div class="wrapper">
+            <div class="title"> <h5>小组信息</h5></div>
+            <p><strong>组长姓名:&nbsp;</strong>${group_assignment.studentName}</p>
+            <p><strong>小组人数:&nbsp;</strong>${group.groupMemberNum}</p>
+            <p><strong>小组成员:</strong>&nbsp;
+            <c:forEach items="${members}" var="member">
+                ${member.userName}&nbsp;
+            </c:forEach>
+            </p>
+            <p><a href="/teacher/downloadFile?filepath=${group_assignment.body}">作业下载</a></p>
+        </div>
+        <c:if test="${course.isEnd == 0}">
+            <div class="line"></div>
+        <div class="wrapper">
+            <form action="${pageContext.request.contextPath}/teacher/scoreGroup" method="post" id="validate" class="form">
+                <div class="formRow">
+                    <label style="width: 10%">设置成绩</label>
+                    <div><input type="text" name="grade" required style="width: 20%"/></div>
+                    <div class="clear"></div>
+                </div>
+                <div >
+                    <input type="submit" value="提交" class="dredB logMeIn" />
+                    <div class="clear"></div>
+                </div>
+            </form>
+            <div class="clear"></div>
+        </div>
+        </c:if>
+    </div>
     <div class="line"></div>
+
 
     <!-- Footer line -->
     <div id="footer">

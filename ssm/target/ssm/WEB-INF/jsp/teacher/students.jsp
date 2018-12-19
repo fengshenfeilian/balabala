@@ -127,27 +127,51 @@
         </div>
     </div>
     <div class="line"></div>
-    <p>课程信息</p>
-    <p>课程名称:${course.courseName}</p>
-    <p>课程简介:${course.courseDescription}</p>
-    <p>课程创建时间:${course.createTime}</p>
+    <div class="statsRow">
+        <div class="wrapper">
+            <div class="title"><h5>课程信息</h5></div>
+            <p><strong>课程名称:</strong>&nbsp;${course.courseName}</p>
+            <p><strong>课程简介:</strong>&nbsp;${course.courseDescription}</p>
+            <p><strong>课程创建时间:</strong>&nbsp;${course.createTime}</p>
+            <p><strong>状态:</strong>&nbsp;${course.isEnd==1?"已结课":"正在开课"}</p>
+        </div>
+    </div>
+
     <!-- 选项区域 -->
     <div class="statsRow">
         <div class="wrapper">
             <div class="controlB">
-                <!--上传学生名单
-                                <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
-                                -->
-                <form action="${pageContext.request.contextPath}/teacher/addStudentByFile" method="post" enctype="multipart/form-data">
-                    <input type="file" name="filename"  value="" />
-                    <input type="submit" name=""  value="上传学生名单" />
-                </form>
-                <form action="${pageContext.request.contextPath}/teacher/addDailyScore" method="post" enctype="multipart/form-data">
-                    <input type="file" name="filename"  value="" />
-                    <input type="submit" name=""  value="上传平时成绩" />
-                </form>
-                <a href="/teacher/goAddAssignment">添加作业</a>
-                <a href="/teacher/showAllStudents">查看学生</a>
+                <div  align="left">
+                    <form action="${pageContext.request.contextPath}/teacher/addDailyScore" method="post" enctype="multipart/form-data">
+                        <input type="file" name="filename"  value="" />
+                        <input type="submit" name="" class="redB" value="上传平时成绩" />
+                        <div class="clear"></div>
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="statsRow">
+        <div class="wrapper">
+            <div class="controlB">
+                <div  align="left">
+                    <form action="${pageContext.request.contextPath}/teacher/addStudentByFile" method="post" enctype="multipart/form-data">
+                        <input type="file" name="filename"   value="" />
+                        <input type="submit" class="blueB"  value="上传学生名单" />
+                    </form>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="statsRow">
+        <div class="wrapper">
+            <div class="controlB">
+                <a href="/teacher/goAddAssignment"><button class="blueB">添加作业</button></a>
+                <a href="/teacher/showAllStudents"><button class="blueB">查看学生</button></a>
                 <div class="clear"></div>
             </div>
         </div>
@@ -170,8 +194,10 @@
                         <tr>
                             <td class="sortCol"><div>学生姓名<span></span></div></td>
                             <td class="sortCol"><div>学号<span></span></div></td>
+                            <td class="sortCol"><div>班级<span></span></div></td>
                             <td class="sortCol"><div>平时成绩<span></span></div></td>
                             <td class="sortCol"><div>作业成绩<span></span></div></td>
+                            <td class="sortCol"><div>总成绩<span></span></div></td>
                         </tr>
                         </thead>
                         <tbody align="center">
@@ -179,8 +205,10 @@
                             <tr>
                                 <td>${students[loop.count - 1].userName}</td>
                                 <td>${student_course.studentId}</td>
+                                <td>${students[loop.count - 1].classes}</td>
                                 <td>${student_course.dailyGrade}</td>
                                 <td>${student_course.assignmentGrade}</td>
+                                <td>${student_course.assignmentGrade*0.8+student_course.dailyGrade*0.2}</td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -189,7 +217,7 @@
             </div>
         </div>
     </div>
-
+    <div class="wrapper"><p>说明：学生总成绩中，作业成绩占80%，平时成绩占20%。作业成绩中，各项作业加权计算后的成绩占80%，小组评分占20%。</p></div>
     <!-- Footer line -->
     <div id="footer">
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>

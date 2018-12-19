@@ -150,8 +150,8 @@
             <div class="clear"></div>
         </div>
         <div class="formRow">
-            <label style="width:10%">小组前缀</label>
-            <div ><input type="text" name="groupPrefix"  style="width:50%;" required/></div>
+            <label style="width:10%">开课时间(格式形如2018-06)</label>
+            <div ><input type="text" name="startTime"  style="width:50%;" required/></div>
             <div class="clear"></div>
         </div>
         <div class="loginControl">

@@ -162,6 +162,7 @@
                             <td class="sortCol"><div>课程名称<span></span></div></td>
                             <td class="sortCol"><div>开课时间<span></span></div></td>
                             <td class="sortCol"><div>简介<span></span></div></td>
+                            <td class="sortCol"><div>状态<span></span></div></td>
                             <td class="sortCol"><div>操作<span></span></div></td>
                         </tr>
                         </thead>
@@ -171,6 +172,7 @@
                                 <td>${course.courseName}</td>
                                 <td>${course.createTime}</td>
                                 <td>${course.courseDescription}</td>
+                                <td>${course.isEnd==1?"已结课":"正在开课"}</td>
                                 <td><a href="/teacher/goCourse?courseId=${course.courseId}">进入课程页面</a></td>
                             </tr>
                         </c:forEach>
@@ -180,23 +182,7 @@
         </div>
     </div>
 
-    <script>
-        //单个删除
-        $(document).on("click",".del",function () {
-            //alert($(this).parents("tr").find("td:eq(0)").text());
-            var userId = $(this).parents("tr").find("td:eq(0)").text();
-            var userName = $(this).parents("tr").find("td:eq(1)").text();
-            // $('#delBtn').attr("delete-id",userId);
-            //发送AJAX请求
-            if(confirm("确认删除【"+userName+"】吗？")){
-                /*
-                $.ajax({
-                   url: "${APP_PATH}/user/deleteUsers/" + userId,
-                       type:"DELETE"
-                    });*/
-            }
-        });
-    </script>
+
 
     <!-- Footer line -->
     <div id="footer">

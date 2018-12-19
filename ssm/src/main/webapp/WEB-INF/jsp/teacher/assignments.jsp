@@ -111,31 +111,39 @@
         <div class="wrapper">
             <div class="pageTitle">
                 <h5>作业信息</h5>
-                <p>作业要求:${assignment.title}</p>
-                <p>基本描述:${assignment.body}</p>
-                <p>作业发布时间:${assignment.releaseTime}</p>
-                <p>作业提交时间:${assignment.deadline}</p>
-                <p>作业占比:${assignment.percent}</p>
-                <!-- 选项区域
-                <div class="statsRow">
-                    <div class="wrapper">
-                        <div class="controlB">
-                            <!--上传学生名单
-                                            <form action="${pageContext.request.contextPath}/user/importUserList" method="get" id="validate" class="form">
+                <p>作业要求:&nbsp;${assignment.title}</p>
+                <p>基本描述:&nbsp;${assignment.body}</p>
+                <p>作业发布时间:&nbsp;${assignment.releaseTime}</p>
+                <p>作业提交时间:&nbsp;${assignment.deadline}</p>
+                <p>作业占比:&nbsp;${assignment.percent}%</p>
 
-                            <form action="${pageContext.request.contextPath}/teacher/addStudentByFile" method="post" enctype="multipart/form-data">
-                                <input type="file" name="filename"  value="" />
-                                <input type="submit" name=""  value="上传学生名单" />
-                            </form>
-
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
             <div class="clear"></div>
         </div>
     </div>
+    <c:if test="${course.isEnd == 0}">
+        <div class="line"></div>
+        <div class="statsRow">
+            <div class="wrapper">
+                <div class="controlB">
+                    <div  align="left">
+                        <form action="${pageContext.request.contextPath}/teacher/modifyPercent" method="post" id="validate" class="form">
+                            <div class="formRow">
+                                <label style="width:10%">修改比例</label>
+                                <div><input type="text" name="newPercent" style="width:30%"required /></div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="loginControl">
+                                <input type="submit" value="确认修改" class="dredB logMeIn" />
+                                <div class="clear"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </c:if>
 
 
     <div class="line"></div>

@@ -90,10 +90,12 @@
     where GROUP_ID = #{groupId,jdbcType=VARCHAR}
   </select>
   <select id="selectByUseridCourseid" resultType="java.lang.String">
-    select GOURP_ID from group_course gc, group_student gs where gc.GROUP_ID=gs.GROUP_ID and gc.COURSE_ID=#{courseId} and gs.STUDENT_ID=#{studentId}
+    select gc.GROUP_ID from group_course gc join group_student gs on gc.GROUP_ID=gs.GROUP_ID
+    where  gc.COURSE_ID=#{courseId,jdbcType=INTEGER} and gs.STUDENT_ID=#{studentId,jdbcType=VARCHAR}
   </select>
   <select id="selectGrade" resultType="java.lang.Integer">
-        select GRADE from group_student gs, group_course gc where gc.GROUP_ID=gs.GROUP_id and gc.COURSE_ID=#{courseId} and gs.STUDENT_ID=#{studentId}
+        select GRADE from group_student gs join group_course gc on gc.GROUP_ID=gs.GROUP_id
+        where gc.COURSE_ID=#{courseId,jdbcType=INTEGER} and gs.STUDENT_ID=#{studentId,jdbcType=VARCHAR}
     </select>
   <select id="selectId" resultType="java.lang.Integer">
     select GROUP_ID from group_course where GROUP_NAME=#{groupName}
