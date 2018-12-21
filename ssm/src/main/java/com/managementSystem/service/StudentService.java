@@ -4,9 +4,12 @@ import com.managementSystem.dao.*;
 import com.managementSystem.pojo.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.spel.ast.Assign;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Service("studentService")
@@ -118,15 +121,37 @@ public class StudentService {
         return false;
     }
 
-    //获取作业要求
-    public List<Assignment> getAssignments(Integer courseId)
+    //近期需提交的作业
+    /*1. 距离截止日期不足15天
+    * 2. 仍未提交过作业*/
+    public List<Assignment> getComingToEndAssignment(List<Assignment> assignments, String groupId)
     {
-        AssignmentExample assignmentExample = new AssignmentExample();
-        AssignmentExample.Criteria criteria = assignmentExample.createCriteria();
-        criteria.andCourseIdEqualTo(courseId);
-        List<Assignment> assignments = assignmentMapper.selectByExample(assignmentExample);
-        return assignments;
+        List<Assignment> list = new ArrayList<>();
+        for(Assignment assignment : assignments)
+        {
+            Date date = new Date();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+            df.format(date);
+            Date ddl = assignment.getDeadline();
+            if(date.after(ddl)){ //该作业已过期
+                continue;
+            }
+            long mSecond = ddl.getTime() - date.getTime();
+            long day = mSecond / (1000*60*60*24);
+            if(day < 15){//距离截止日期不足15天
+                Group_AssignmentKey gak = new Group_AssignmentKey();
+                gak.setAssignmentId(assignment.getAssignmentId());
+                gak.setGroupId(groupId);
+                Group_Assignment ga = group_assignmentMapper.selectByPrimaryKey(gak);
+                if(ga == null){//仍未提交作业
+                    list.add(assignment);
+                }
+
+            }
+        }
+        return list;
     }
+
     //上传作业 ：插入group_assignment表
     public void insertGroupAssignment(Group_Assignment ga)
     {
@@ -369,6 +394,65 @@ public class StudentService {
         return null;
     }
 
+    public void updateScoreByGroupMember(String groupId,String studentId,Integer curGrade)
+    {
+        Group_StudentKey gsk = new Group_StudentKey();
+        gsk.setGroupId(groupId);
+        gsk.setStudentId(studentId);
+        Group_Student gs = group_studentMapper.selectByPrimaryKey(gsk);
+        gs.setGrade(curGrade);
+        group_studentMapper.updateByPrimaryKey(gs);
+    }
+
+    public List<Boolean> judgeOvertimeByAssignment(List<Assignment> assignments)
+    {
+        List<Boolean> list = new ArrayList<>();
+        for(Assignment assignment : assignments)
+        {
+            Date curDate = new Date();
+            if(curDate.after(assignment.getDeadline())){
+                list.add(false);
+            }else{
+                list.add(true);
+            }
+        }
+        return list;
+    }
+
+    public List<Boolean> checkGroupLeader(List<Group>groupList,String userId)
+    {
+        List list = new ArrayList<>();
+        for(Group group : groupList)
+        {
+            if(group.getLeaderId().equals(userId)){
+                list.add(true);
+            }else{
+                list.add(false);
+            }
+        }
+        return list;
+    }
+
+    /*
+* 1. 删除group_course表下数据
+* 2. 删除group_student表下数据
+* 3. 删除group_assignment表下数据
+* */
+    public void deleteGroup(Group curGroup)
+    {
+        //删除group_course表下数据
+        groupMapper.deleteByPrimaryKey(curGroup.getGroupId());
+        //删除group_student表下数据
+        Group_StudentExample gse = new Group_StudentExample();
+        Group_StudentExample.Criteria criteria = gse.createCriteria();
+        criteria.andGroupIdEqualTo(curGroup.getGroupId());
+        group_studentMapper.deleteByExample(gse);
+        //删除group_assignment表下数据
+        Group_AssignmentExample gae = new Group_AssignmentExample();
+        Group_AssignmentExample.Criteria criteria1 = gae.createCriteria();
+        criteria1.andGroupIdEqualTo(curGroup.getGroupId());
+        group_assignmentMapper.deleteByExample(gae);
+    }
 
 }
 

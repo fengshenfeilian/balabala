@@ -123,14 +123,18 @@
     <div class="wrapper">
         <div class="widget">
             <form  method="post" id="validate" class="form" action="${pageContext.request.contextPath}/student/upload">
+                <%
+                    String assignmentId = request.getParameter("assignmentId");
+                    String groupId = request.getParameter("groupId");
+                %>
                 <div class="formRow">
                     <label style="width:10%">作业号</label>
-                    <div ><input type="text" name="assignmentId"  placeholder="" style="width:60%;" required/></div>
+                    <div ><input type="text" name="assignmentId" value="<%=assignmentId%>"  style="width:60%;" required/></div>
                     <div class="clear"></div>
                 </div>
                 <div class="formRow">
                     <label style="width:10%">小组号</label>
-                    <div ><input type="text" name="groupId"  placeholder="" style="width:60%;" required/></div>
+                    <div ><input type="text" name="groupId"  value="<%=groupId%>"  style="width:60%;" required/></div>
                     <div class="clear"></div>
                 </div>
                 <div class="formRow">

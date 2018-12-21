@@ -17,11 +17,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="courseInfo.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/courseInfo.jsp">
+      <file leaf-file-name="StudentController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/controller/StudentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5258">
-              <caret line="239" column="13" lean-forward="false" selection-start-line="197" selection-start-column="4" selection-end-line="239" selection-end-column="13" />
+            <state relative-caret-position="372">
+              <caret line="266" column="32" lean-forward="true" selection-start-line="266" selection-start-column="32" selection-end-line="266" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="groupList.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/groupList.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="173" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -30,54 +40,31 @@
       <file leaf-file-name="browseAssignment.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/browseAssignment.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="129" column="30" lean-forward="false" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
+            <state relative-caret-position="152">
+              <caret line="154" column="79" lean-forward="false" selection-start-line="154" selection-start-column="79" selection-end-line="154" selection-end-column="79" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="assignment.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/assignment.jsp">
+      <file leaf-file-name="uploadAssignment.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/uploadAssignment.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="722">
-              <caret line="145" column="62" lean-forward="true" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="course.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/course.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="144" column="40" lean-forward="false" selection-start-line="144" selection-start-column="40" selection-end-line="144" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addGroup.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroup.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3058">
-              <caret line="139" column="90" lean-forward="false" selection-start-line="139" selection-start-column="90" selection-end-line="139" selection-end-column="90" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StudentController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/controller/StudentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4246">
-              <caret line="212" column="45" lean-forward="false" selection-start-line="212" selection-start-column="45" selection-end-line="212" selection-end-column="45" />
+            <state relative-caret-position="132">
+              <caret line="131" column="91" lean-forward="false" selection-start-line="131" selection-start-column="91" selection-end-line="131" selection-end-column="91" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -88,6 +75,16 @@
       <find>== null</find>
       <find>addGroup</find>
       <find>addGroupp</find>
+      <find>oncli</find>
+      <find>待交</find>
+      <find>browseAssi</find>
+      <find>browse</find>
+      <find>groupList</find>
+      <find>上传作业</find>
+      <find>upload</find>
+      <find>delete</find>
+      <find>getComing</find>
+      <find>browseAss</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -102,19 +99,21 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/managementSystem/service/StudentService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/userConfig.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/uploadAssignment.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/home.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/courseInfo.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroup.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/course.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/assignment.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroupMember.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/updateGroupMember.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/groupList.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/groupInfo.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/courseInfo.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroupMember.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/managementSystem/controller/StudentController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroup.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/uploadAssignment.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/browseAssignment.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/assignment.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/course.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/managementSystem/controller/StudentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/managementSystem/service/StudentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/GroupMapper.xml" />
       </list>
     </option>
   </component>
@@ -193,10 +192,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -246,6 +241,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="managementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="managementSystem" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -286,6 +290,10 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -473,16 +481,17 @@
       <option name="presentableId" value="Default" />
       <updated>1544870010275</updated>
       <workItem from="1544870011931" duration="13353000" />
-      <workItem from="1544883604072" duration="539000" />
+      <workItem from="1544883604072" duration="666000" />
+      <workItem from="1545132837318" duration="5889000" />
+      <workItem from="1545306829404" duration="14321000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13892000" />
+    <option name="totallyTimeSpent" value="34229000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -505,7 +514,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2306867" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2333691" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -517,6 +526,40 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19635193" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -529,6 +572,98 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/courseInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4994">
+          <caret line="227" column="53" lean-forward="false" selection-start-line="227" selection-start-column="48" selection-end-line="227" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/browseAssignment.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4224">
+          <caret line="192" column="31" lean-forward="false" selection-start-line="192" selection-start-column="31" selection-end-line="192" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/groupInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3740">
+          <caret line="170" column="122" lean-forward="false" selection-start-line="170" selection-start-column="122" selection-end-line="170" selection-end-column="122" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/service/StudentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2706">
+          <caret line="123" column="17" lean-forward="false" selection-start-line="123" selection-start-column="17" selection-end-line="123" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11982#11983#0" expanded="true" />
+            <element signature="e#12044#12045#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/controller/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6182">
+          <caret line="281" column="0" lean-forward="true" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/courseInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5258">
+          <caret line="239" column="13" lean-forward="false" selection-start-line="197" selection-start-column="4" selection-end-line="239" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/browseAssignment.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2838">
+          <caret line="129" column="30" lean-forward="false" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/assignment.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3190">
+          <caret line="145" column="62" lean-forward="true" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroup.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3058">
+          <caret line="139" column="90" lean-forward="false" selection-start-line="139" selection-start-column="90" selection-end-line="139" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/controller/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4664">
+          <caret line="212" column="45" lean-forward="false" selection-start-line="212" selection-start-column="45" selection-end-line="212" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/course.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3168">
+          <caret line="144" column="40" lean-forward="false" selection-start-line="144" selection-start-column="40" selection-end-line="144" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/courseInfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5258">
@@ -569,26 +704,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/service/StudentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="362" column="13" lean-forward="true" selection-start-line="362" selection-start-column="13" selection-end-line="362" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ssm.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-303">
           <caret line="35" column="94" lean-forward="true" selection-start-line="35" selection-start-column="94" selection-end-line="35" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="113" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -600,90 +719,225 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/uploadAssignment.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/course.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="93" column="86" lean-forward="false" selection-start-line="93" selection-start-column="86" selection-end-line="93" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/home.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="93" column="86" lean-forward="false" selection-start-line="93" selection-start-column="86" selection-end-line="93" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/groupList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="93" column="93" lean-forward="false" selection-start-line="93" selection-start-column="93" selection-end-line="93" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/groupInfo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="93" column="93" lean-forward="false" selection-start-line="93" selection-start-column="93" selection-end-line="93" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroupMember.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="93" column="93" lean-forward="false" selection-start-line="93" selection-start-column="93" selection-end-line="93" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/controller/StudentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4246">
-          <caret line="212" column="45" lean-forward="false" selection-start-line="212" selection-start-column="45" selection-end-line="212" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroup.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3058">
-          <caret line="139" column="90" lean-forward="false" selection-start-line="139" selection-start-column="90" selection-end-line="139" selection-end-column="90" />
+        <state relative-caret-position="524">
+          <caret line="144" column="40" lean-forward="false" selection-start-line="144" selection-start-column="40" selection-end-line="144" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/courseInfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5258">
-          <caret line="239" column="13" lean-forward="false" selection-start-line="197" selection-start-column="4" selection-end-line="239" selection-end-column="13" />
+        <state relative-caret-position="0">
+          <caret line="227" column="53" lean-forward="false" selection-start-line="227" selection-start-column="48" selection-end-line="227" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/browseAssignment.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="129" column="30" lean-forward="false" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
+        <state relative-caret-position="350">
+          <caret line="91" column="17" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="159" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="49" column="65" lean-forward="false" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="762">
+          <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="113" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/assignment.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="145" column="62" lean-forward="true" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="62" />
+        <state relative-caret-position="681">
+          <caret line="146" column="165" lean-forward="false" selection-start-line="146" selection-start-column="165" selection-end-line="146" selection-end-column="165" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/course.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/groupInfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="144" column="40" lean-forward="false" selection-start-line="144" selection-start-column="40" selection-end-line="144" selection-end-column="40" />
+        <state relative-caret-position="658">
+          <caret line="223" column="21" lean-forward="true" selection-start-line="223" selection-start-column="21" selection-end-line="223" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroupMember.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1649">
+          <caret line="162" column="32" lean-forward="false" selection-start-line="162" selection-start-column="30" selection-end-line="162" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/addGroup.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="87" column="86" lean-forward="true" selection-start-line="87" selection-start-column="86" selection-end-line="87" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/updateGroupMember.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="162" column="110" lean-forward="false" selection-start-line="162" selection-start-column="110" selection-end-line="162" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/browseAssignment.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="154" column="79" lean-forward="false" selection-start-line="154" selection-start-column="79" selection-end-line="154" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/groupList.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="173" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_Assignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_StudentKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_AssignmentKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/pojo/Group_Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/controller/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="266" column="32" lean-forward="true" selection-start-line="266" selection-start-column="32" selection-end-line="266" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Group_AssignmentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1024">
+          <caret line="102" column="9" lean-forward="true" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
+          <folding>
+            <marker date="1544871108157" expanded="true" signature="3704:3886" ph="select from group_assignment" />
+            <marker date="1544871108157" expanded="true" signature="4000:4136" ph="delete from " />
+            <marker date="1544871108157" expanded="true" signature="4251:4279" ph="delete from " />
+            <marker date="1544871108157" expanded="true" signature="4470:4781" ph="insert into group_assignment... " />
+            <marker date="1544871108157" expanded="true" signature="6097:6134" ph="select count... group_assignment" />
+            <marker date="1544871108157" expanded="true" signature="7181:7532" ph="update group... " />
+            <marker date="1544871108157" expanded="true" signature="7754:8281" ph="update group... " />
+            <marker date="1544871108157" expanded="true" signature="8392:8707" ph="update group... " />
+            <marker date="1544871108157" expanded="true" signature="8782:8888" ph="select count... group_assignment" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/GroupMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="110" column="28" lean-forward="true" selection-start-line="110" selection-start-column="28" selection-end-line="110" selection-end-column="28" />
+          <folding>
+            <marker date="1545320856860" expanded="true" signature="3585:3704" ph="select from group_course" />
+            <marker date="1545320856860" expanded="true" signature="3790:3934" ph="select GOURP... group_course" />
+            <marker date="1545320856860" expanded="true" signature="4014:4155" ph="select GRADE... group_student" />
+            <marker date="1545320856860" expanded="true" signature="4230:4293" ph="select GROUP... group_course" />
+            <marker date="1545320856860" expanded="true" signature="4405:4463" ph="select COURS... course" />
+            <marker date="1545320856860" expanded="true" signature="4570:4643" ph="delete from " />
+            <marker date="1545320856860" expanded="true" signature="4747:4771" ph="delete from " />
+            <marker date="1545320856860" expanded="true" signature="4951:5219" ph="insert into group_course... " />
+            <marker date="1545320856860" expanded="true" signature="6388:6421" ph="select count... group_course" />
+            <marker date="1545320856860" expanded="true" signature="7376:7684" ph="update group... " />
+            <marker date="1545320856860" expanded="true" signature="7895:8394" ph="update group... " />
+            <marker date="1545320856860" expanded="true" signature="8494:8770" ph="update group... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/mapper/Group_StudentMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="90" column="9" lean-forward="false" selection-start-line="90" selection-start-column="3" selection-end-line="90" selection-end-column="9" />
+          <folding>
+            <marker date="1544871108160" expanded="true" signature="3433:3606" ph="select from group_student" />
+            <marker date="1544871108160" expanded="true" signature="3717:3844" ph="delete from " />
+            <marker date="1544871108160" expanded="true" signature="3956:3981" ph="delete from " />
+            <marker date="1544871108160" expanded="true" signature="4169:4337" ph="insert into group_student... " />
+            <marker date="1544871108160" expanded="true" signature="5183:5217" ph="select count... group_student" />
+            <marker date="1544871108160" expanded="true" signature="5922:6101" ph="update group... " />
+            <marker date="1544871108160" expanded="true" signature="6320:6550" ph="update group... " />
+            <marker date="1544871108160" expanded="true" signature="6658:6822" ph="update group... " />
+            <marker date="1544871108160" expanded="true" signature="6936:7006" ph="SELECT GROUP... group_student" />
+            <marker date="1544871108160" expanded="true" signature="7096:7175" ph="select count... group_student" />
+            <marker date="1544871108160" expanded="true" signature="7277:7350" ph="SELECT count... group_student" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/managementSystem/service/StudentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="454" column="5" lean-forward="true" selection-start-line="454" selection-start-column="5" selection-end-line="454" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11982#11983#0" expanded="true" />
+            <element signature="e#12044#12045#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/student/uploadAssignment.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="131" column="91" lean-forward="false" selection-start-line="131" selection-start-column="91" selection-end-line="131" selection-end-column="91" />
           <folding />
         </state>
       </provider>

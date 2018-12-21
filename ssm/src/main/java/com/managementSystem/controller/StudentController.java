@@ -104,18 +104,23 @@ public class StudentController {
         String groupId = request.getParameter("groupId");
         String cId = request.getParameter("courseId");
         Integer courseId = Integer.parseInt(cId);
-
         List<Group_Assignment> ga = studentService.getGroupAssignmentByGroupId(groupId);
         //查询该课程下的作业要求
-        List<Assignment> assignments = studentService.getAssignments(courseId);
+        List<Assignment> assignments = teacherService.getAssignments(courseId);
+        List<Boolean> notOverTime = studentService.judgeOvertimeByAssignment(assignments);
+        //查询该课程下的待交作业要求
+        List<Assignment>  comingToEndAssignments = studentService.getComingToEndAssignment(assignments,groupId);
         model.addAttribute("group_assignment",ga);
         model.addAttribute("assignments",assignments);
+        model.addAttribute("comingToEndAssignments",comingToEndAssignments);
+        model.addAttribute("notOverTime",notOverTime);
         return "student/browseAssignment";
     }
 
     //进入作业上传页
     @RequestMapping(value = "/uploadAssignment")
-    public String gotoUploadAssignment(){
+    public String gotoUploadAssignment(HttpServletRequest request) {
+
         return "student/uploadAssignment";
     }
 
@@ -138,7 +143,7 @@ public class StudentController {
                 studentService.deleteGroupAssignment(assignmentId,groupId);
             }
             //上传(学生)作业
-            String rootPath = "C:\\Users\\marco\\Desktop\\balabala\\assignment\\";
+            String rootPath = "C:/Users/marco/Desktop/balabala/assignment/";
             //添加数据库记录
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
             Date date = new Date();
@@ -166,12 +171,10 @@ public class StudentController {
     {
         User user = (User) session.getAttribute("currentUser");
         List<Group_Student> gsList = studentService.getGroupListByStudentId(user.getUserId());
-        /*for(Group_Student gs:gsList){
-            System.out.println(gs.getGroupId());
-            System.out.println(gs.getStudentId());
-        }*/
         model.addAttribute("gsList",gsList);
         List<Group> groupList = studentService.getGroupListByGSList(gsList);
+        List<Boolean> isGroupLeader = studentService.checkGroupLeader(groupList,user.getUserId());
+        model.addAttribute("isGroupLeader",isGroupLeader);
         for(Group group:groupList){
             System.out.println(group.getGroupId());
             System.out.println(group.getCourseId());
@@ -186,7 +189,7 @@ public class StudentController {
     public String gotoGroupInfo(Model model,HttpSession session,HttpServletRequest request)
     {
         String groupId = request.getParameter("groupId");
-
+        User user = (User)session.getAttribute("currentUser");
         //小组信息
         Group curGroup = teacherService.getGroup(groupId);
         model.addAttribute("curGroup",curGroup);
@@ -201,6 +204,12 @@ public class StudentController {
         List<User> courseStudentListWithGroup = studentService.getCourseStudentWithGroup(courseId);//当前课程有小组的学生
         List<User> availableStudent = studentService.userRemoveCurrentCourse(courseStudentList,courseStudentListWithGroup);
         model.addAttribute("availableStudent",availableStudent);
+        //是否是组长
+        Boolean isGroupLeader = false;
+        if(user.getUserId().equals(curGroup.getLeaderId())){
+            isGroupLeader = true;
+        }
+        model.addAttribute("isGroupLeader",isGroupLeader);
         return "student/groupInfo";
     }
 
@@ -243,9 +252,20 @@ public class StudentController {
     }
 
     //小组【解散】
+    /*
+      0. 只有组长可以删除小组(在前端完成校验)
+    * 1. 删除group_course表下数据
+    * 2. 删除group_student表下数据
+    * 3. 删除group_assignment表下数据
+    * */
     @RequestMapping(value = "/deleteGroup")
-    public String gotoDeleteGroup()
+    public String gotoDeleteGroup(@RequestParam(value = "groupId")String groupId,HttpSession session)
     {
+        User user = (User) session.getAttribute("currentUser");
+        Group curGroup = studentService.getGroupByGroupId(groupId);
+        if(curGroup.getLeaderId().equals(user.getUserId())){//只有组长可以删除
+            studentService.deleteGroup(curGroup);
+        }
         return "redirect:/student/groupList";
     }
 
@@ -269,6 +289,31 @@ public class StudentController {
         }
         String urlParam = groupId.toString();
         return "redirect:/student/groupInfo?groupId=" + urlParam;
+    }
+
+    //小组成员修改
+    @RequestMapping(value = "/updateGroupMember")
+    public String gotoUpdateGroupMember(@RequestParam(value = "studentId") String studentId,
+                                        @RequestParam(value = "groupId")String groupId,
+                                        Model model, HttpSession session,HttpServletRequest request)throws ParseException
+    {
+        return "student/updateGroupMember";
+    }
+
+    //小组成员 : 设置成绩
+    @RequestMapping(value = "/updateGroupMemberScore",method = RequestMethod.POST)
+    public String gotoupdateScore(@RequestParam(value = "groupId")String groupId,
+                                  @RequestParam(value = "studentId")String studentId,
+                                  @RequestParam(value = "grade")String grade,
+                                  HttpServletRequest request
+                                  )throws ParseException
+    {
+        Integer curGrade = Integer.parseInt(grade);
+        if((curGrade >= 60) || curGrade <= 100){//一个合法的成绩
+            studentService.updateScoreByGroupMember(groupId,studentId,curGrade);
+        }
+        return "redirect:/student/groupInfo?groupId=" + groupId;
+
     }
 
     //小组成员【删除】

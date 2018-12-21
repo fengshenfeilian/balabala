@@ -144,7 +144,7 @@
                         <td>${course[loop.count-1].courseName}</td>
                         <td>${group_student.groupId}</td>
                         <td>${course[loop.count-1].isEnd}</td>
-                        <td><a href="/student/browseAssignment?groupId=${group_student.groupId}&courseId=${course[loop.count-1].courseId}">查看作业</a></td>
+                        <td><a href="/student/browseAssignment?groupId=${group_student.groupId}&courseId=${course[loop.count-1].courseId}"><button class="blueB">查看作业</button></a></td>
                     </tr>
                 </c:forEach>
                 </tbody>

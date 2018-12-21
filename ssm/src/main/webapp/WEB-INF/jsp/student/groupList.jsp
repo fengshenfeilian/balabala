@@ -160,7 +160,7 @@
                 </tr>
                 </thead>
                 <tbody align="center">
-                <c:forEach items="${groupList}" var="groupList">
+                <c:forEach items="${groupList}" var="groupList" varStatus="loop">
                     <tr>
                         <td>${groupList.groupId}</td>
                         <td>${groupList.courseId}</td>
@@ -169,7 +169,9 @@
                         <td>${groupList.leaderId}</td>
                         <td>
                             <a href="/student/groupInfo?groupId=${groupList.groupId}"><button class="blueB">查看</button></a>
-                            <a href="/student/deleteGroup"><button class="redB">删除</button></a>
+                            <c:if test="${isGroupLeader[loop.count-1]}"><%--是组长--%>
+                                <a href="/student/deleteGroup?groupId=${groupList.groupId}"><button class="redB">删除</button></a>
+                            </c:if>
                         </td>
                     </tr>
                 </c:forEach>

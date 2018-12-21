@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -120,6 +120,7 @@
         </div>
     </div>
 
+    <% String groupId = request.getParameter("groupId");%>
     <%-- 待交作业列表--%>
     <div class="wrapper">
         <!-- Widgets -->
@@ -142,15 +143,19 @@
                     </tr>
                     </thead>
                     <tbody align="center">
-                    <c:forEach items="${assignments}" var="assignment">
+                    <c:forEach items="${comingToEndAssignments}" var="comingToEndAssignments">
                         <tr>
-                            <td>${assignment.assignmentId}</td>
-                            <td>${assignment.title}</td>
-                            <td>${assignment.body}</td>
-                            <td>${assignment.deadline}</td>
-                            <td>${assignment.releaseTime}</td>
-                            <td>${assignment.percent}%</td>
-                            <td><a href="/student/uploadAssignment"><button class="blueB">上传作业</button></a></td>
+                            <td>${comingToEndAssignments.assignmentId}</td>
+                            <td>${comingToEndAssignments.title}</td>
+                            <td>${comingToEndAssignments.body}</td>
+                            <td>${comingToEndAssignments.deadline}</td>
+                            <td>${comingToEndAssignments.releaseTime}</td>
+                            <td>${comingToEndAssignments.percent}%</td>
+                            <td>
+                                <a href="/student/uploadAssignment?assignmentId=${comingToEndAssignments.assignmentId}&groupId=<%=groupId%>">
+                                    <button class="blueB">上传作业</button>
+                                </a>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -168,7 +173,7 @@
                     <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
                     <h6>作业要求</h6>
                 </div>
-                <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" >
+                <table cellpadding="0" cellspacing="0" width="100%" class="display dTable assignmentTable">
                     <thead>
                     <tr>
                         <td class="sortCol"><div>作业ID<span></span></div></td>
@@ -181,15 +186,21 @@
                     </tr>
                     </thead>
                     <tbody align="center">
-                    <c:forEach items="${assignments}" var="assignment">
+                    <c:forEach items="${assignments}" var="assignment" varStatus="loop">
                         <tr>
                             <td>${assignment.assignmentId}</td>
                             <td>${assignment.title}</td>
                             <td>${assignment.body}</td>
-                            <td id="deadlineTime">${assignment.deadline}</td>
+                            <td>${assignment.deadline}</td>
                             <td>${assignment.releaseTime}</td>
-                            <td>${assignment.percent}%</td>
-                            <td><a href="/student/uploadAssignment"><button class="blueB">上传作业</button></a></td>
+                            <td>${assignment.percent}</td>
+                            <td>
+                                <c:if test="${notOverTime[loop.count-1]}"><%--当前时间未超过提交截止时间--%>
+                                    <a href="/student/uploadAssignment?assignmentId=${assignment.assignmentId}&groupId=<%=groupId%>">
+                                        <button class="blueB">上传作业</button>
+                                    </a>
+                                </c:if>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -235,8 +246,8 @@
     <div id="footer">
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
     </div>
-
     <script type="text/javascript">
+
 
     </script>
     <div class="clear"></div>
