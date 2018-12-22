@@ -83,9 +83,9 @@
 
     <!-- 左侧导航栏 -->
     <ul id="menu" class="nav">
-        <li class="dash"><a href="/student/home" title=""><span>我的主页</span></a></li>
+        <li class="dash"><a href="/student/home" title="" class="active"><span>我的主页</span></a></li>
         <li class="tables"><a href="/student/course" title="" ><span>课程管理</span></a></li>
-        <li class="tables"><a href="#" title="" class="active exp"><span>作业管理</span><strong>2</strong></a>
+        <li class="tables"><a href="#" title="" class="exp"><span>作业管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/assignment" title="">查看作业</a></li>
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
@@ -119,55 +119,64 @@
         </div>
     </div>
 
+    <!-- 标题区 -->
+    <div class="titleArea">
+        <div class="wrapper">
+            <div class="pageTitle">
+                <h5>组员评分</h5>
+                <%--
 
+                <div class="formRow"><p>姓名: <strong>${student.userName}</strong></p></div>
+                <div class="formRow"><p>学号: <strong>${student.userId}</strong></p></div>
+                <div class="formRow"><p>性别: <strong>${student.gender}</strong></p></div>
+                <div class="formRow"><p>Email:  <strong>${student.email}</strong></p></div>
+                <div class="formRow"><p>学院: <strong>${student.department}</strong></p></div>
+                <div class="formRow"><p>专业: <strong>${student.major}</strong></p></div>
+                <div class="formRow"><p>班级: <strong>${student.classes}</strong></p></div>
+                --%>
 
-
-
-
-    <div class="wrapper">
-        <div class="widget">
-            <div class="title"><img src="images/icons/dark/frames.png" alt="" class="titleIcon" />
-                <h6>已选课程列表</h6></div>
-            <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
-                <thead>
-                <tr>
-                    <td class="sortCol"><div>课程名<span></span></div></td>
-                    <td class="sortCol"><div>小组号<span></span></div></td>
-                    <td class="sortCol"><div>是否结束<span></span></div></td>
-                    <td class="sortCol"><div>选项<span></span></div></td>
-                </tr>
-                </thead>
-                <tbody align="center">
-                <c:forEach items="${group_student}" var="group_student" varStatus="loop">
-                    <tr>
-                        <c:if test="${hasComingToEndAssignment[loop.count-1]==false}">
-                            <td>${course[loop.count-1].courseName}</td>
-                            <td>${group_student.groupId}</td>
-                            <td>${course[loop.count-1].isEnd==1?"是":"否"}</td>
-                            <td><a href="/student/browseAssignment?groupId=${group_student.groupId}&courseId=${course[loop.count-1].courseId}"><button class="blueB">查看作业</button></a></td>
-                        </c:if>
-                        <c:if test="${hasComingToEndAssignment[loop.count-1]==true}">
-                            <td style="color: darkred">${course[loop.count-1].courseName}</td>
-                            <td style="color: darkred">${group_student.groupId}</td>
-                            <td style="color: darkred">${course[loop.count-1].isEnd==1?"是":"否"}</td>
-                            <td style="color: darkred"><a href="/student/browseAssignment?groupId=${group_student.groupId}&courseId=${course[loop.count-1].courseId}"><button class="redB">查看作业</button></a></td>
-                        </c:if>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+            </div>
+            <div class="clear"></div>
         </div>
     </div>
 
+    <div class="wrapper">
+        <div class="widget">
+            <form method="post" id="validate" class="form" action="${pageContext.request.contextPath}/student/updateGroupMemberScore">
+                <div class="widget">
+                    <%
+                        String groupId = request.getParameter("groupId");
+                        String studentId = request.getParameter("studentId");
+                    %>
+                    <div class="formRow">
+                        <label style="width:10%">小组号</label>
+                        <div ><input type="text" name="groupId" value="<%=groupId%>"  readonly style="width:80%;" required/></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow">
+                        <label style="width:10%">学生号</label>
+                        <div ><input type="text" name="studentId" value="<%=studentId%>" readonly  style="width:80%;" required/></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formRow">
+                        <label style="width:10%">成绩</label>
+                        <div ><input type="text" name="grade"  class="validate[required,custom[onlyNumberSp]]" style="width:80%;" required/></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="loginControl">
+                            <input type="submit" value="确认" class="dblueB logMeIn" />
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </form>
 
-
+        </div>
+    </div>
 
     <!-- Footer line -->
     <div id="footer">
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
     </div>
-
-
 
     <div class="clear"></div>
 </div>

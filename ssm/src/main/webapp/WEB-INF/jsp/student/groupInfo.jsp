@@ -91,10 +91,10 @@
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>3</strong></a>
+        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/addGroup" title="">创建小组</a></li>
+                <li><a href="/student/course" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>
@@ -134,15 +134,18 @@
         </div>
     </div>
 
-    <!-- 选项区域 -->
+    <%--
+        <!-- 选项区域 -->
     <div class="statsRow">
         <div class="wrapper">
             <div class="controlB">
-                <a><button class="redB">解散当前小组</button></a>
+                <a><button class="redB">解散小组</button></a>
                 <div class="clear"></div>
             </div>
         </div>
     </div>
+    --%>
+
 
     <%--动态数据表--%>
     <div class="wrapper">
@@ -166,9 +169,22 @@
                         <td>${curGroupMembers[loop.count-1].userName}</td>
                         <td>${curGroupMembers[loop.count-1].classes}</td>
                         <td>${gsList.grade}</td>
-                        <td><a href="/student/deleteGroupMember?studentId=${gsList.studentId}&groupId=${curGroup.groupId}">
-                            <button class="redB">删除</button>
-                        </a></td>
+                        <td>
+                            <c:if test="${isGroupLeader}"><%--是组长--%>
+                                <c:if test="${gsList.studentId} != ${curGroup.leaderId}">
+                                    <a href="/student/deleteGroupMember?studentId=${gsList.studentId}&groupId=${curGroup.groupId}"><button class="redB">删除</button></a>
+                                </c:if>
+                                <c:choose>
+                                    <c:when test="${curCourse.isEnd==0}"><%--未结课--%>
+                                        <a href="/student/updateGroupMember?studentId=${gsList.studentId}&groupId=${curGroup.groupId}"><button class="blueB">打分</button></a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        已结课
+                                    </c:otherwise>
+                                </c:choose>
+
+                            </c:if>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -202,9 +218,10 @@
                         <td>${availabelStudent.department}</td>
                         <td>${availabelStudent.major}</td>
                         <td>${availabelStudent.classes}</td>
-                        <td><a href="/student/addGroupMember/?studentId=${availabelStudent.userId}&groupId=${curGroup.groupId}">
-                                <button class="blueB">添加到小组</button>
-                            </a>
+                        <td>
+                            <c:if test="${isGroupLeader}"><%--是组长--%>
+                                <a href="/student/addGroupMember/?studentId=${availabelStudent.userId}&groupId=${curGroup.groupId}"><button class="blueB">添加到小组</button></a>
+                            </c:if>
                         </td>
                     </tr>
                 </c:forEach>

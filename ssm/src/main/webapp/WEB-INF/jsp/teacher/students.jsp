@@ -196,7 +196,7 @@
                             <td class="sortCol"><div>学号<span></span></div></td>
                             <td class="sortCol"><div>班级<span></span></div></td>
                             <td class="sortCol"><div>平时成绩<span></span></div></td>
-                            <td class="sortCol"><div>作业成绩<span></span></div></td>
+                            <td class="sortCol"><div>个人总成绩<span></span></div></td>
                             <td class="sortCol"><div>总成绩<span></span></div></td>
                         </tr>
                         </thead>
@@ -217,7 +217,7 @@
             </div>
         </div>
     </div>
-    <div class="wrapper"><p>说明：学生总成绩中，作业成绩占80%，平时成绩占20%。作业成绩中，各项作业加权计算后的成绩占80%，小组评分占20%。</p></div>
+    <div class="wrapper"><p>说明：学生总成绩中，个人总成绩占80%，平时成绩占20%。个人总成绩中为各项作业加权计算后的小组成绩*小组评分/100。</p></div>
     <!-- Footer line -->
     <div id="footer">
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>

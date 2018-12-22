@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -92,10 +92,10 @@
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>3</strong></a>
+        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/addGroup" title="">创建小组</a></li>
+                <li><a href="/student/course" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>
@@ -120,14 +120,15 @@
         </div>
     </div>
 
-    <!-- 作业要求 ==> 动态数据表 -->
+    <% String groupId = request.getParameter("groupId");%>
+    <%-- 待交作业列表--%>
     <div class="wrapper">
         <!-- Widgets -->
         <div class="widgets">
             <div class="widget">
                 <div class="title">
                     <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
-                    <h6>作业要求</h6>
+                    <h6>即将过期</h6>
                 </div>
                 <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" >
                     <thead>
@@ -135,13 +136,57 @@
                         <td class="sortCol"><div>作业ID<span></span></div></td>
                         <td class="sortCol"><div>作业名称<span></span></div></td>
                         <td class="sortCol"><div>基本描述<span></span></div></td>
-                        <td class="sortCol"><div>提交时间<span></span></div></td>
+                        <td class="sortCol"><div>截止时间<span></span></div></td>
                         <td class="sortCol"><div>发布时间<span></span></div></td>
                         <td class="sortCol"><div>分值比例<span></span></div></td>
+                        <td class="sortCol"><div>选项<span></span></div></td>
                     </tr>
                     </thead>
                     <tbody align="center">
-                    <c:forEach items="${assignments}" var="assignment">
+                    <c:forEach items="${comingToEndAssignments}" var="comingToEndAssignments">
+                        <tr>
+                            <td><div style="color: darkred">${comingToEndAssignments.assignmentId}</div></td>
+                            <td><div style="color: darkred">${comingToEndAssignments.title}</div></td>
+                            <td><div style="color: darkred">${comingToEndAssignments.body}</div></td>
+                            <td><div style="color: darkred">${comingToEndAssignments.deadline}</div></td>
+                            <td><div style="color: darkred">${comingToEndAssignments.releaseTime}</div></td>
+                            <td><div style="color: darkred">${comingToEndAssignments.percent}%</td>
+                            <td>
+                                <a href="/student/uploadAssignment?assignmentId=${comingToEndAssignments.assignmentId}&groupId=<%=groupId%>">
+                                    <button class="blueB">上传作业</button>
+                                </a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 作业要求 ==> 动态数据表 -->
+    <div class="wrapper">
+        <!-- Widgets -->
+        <div class="widgets">
+            <div class="widget">
+                <div class="title">
+                    <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
+                    <h6>已布置作业</h6>
+                </div>
+                <table cellpadding="0" cellspacing="0" width="100%" class="display dTable assignmentTable">
+                    <thead>
+                    <tr>
+                        <td class="sortCol"><div>作业ID<span></span></div></td>
+                        <td class="sortCol"><div>作业名称<span></span></div></td>
+                        <td class="sortCol"><div>基本描述<span></span></div></td>
+                        <td class="sortCol"><div>截止时间<span></span></div></td>
+                        <td class="sortCol"><div>发布时间<span></span></div></td>
+                        <td class="sortCol"><div>分值比例<span></span></div></td>
+                        <td class="sortCol"><div>选项<span></span></div></td>
+                    </tr>
+                    </thead>
+                    <tbody align="center">
+                    <c:forEach items="${assignments}" var="assignment" varStatus="loop">
                         <tr>
                             <td>${assignment.assignmentId}</td>
                             <td>${assignment.title}</td>
@@ -149,6 +194,18 @@
                             <td>${assignment.deadline}</td>
                             <td>${assignment.releaseTime}</td>
                             <td>${assignment.percent}%</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${notOverTime[loop.count-1]}"><%--当前时间未超过提交截止时间--%>
+                                        <a href="/student/uploadAssignment?assignmentId=${assignment.assignmentId}&groupId=<%=groupId%>">
+                                            <button class="blueB">上传作业</button>
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        已截止
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -169,7 +226,6 @@
                     <td class="sortCol"><div>提交作业标题<span></span></div></td>
                     <td class="sortCol"><div>作业路径<span></span></div></td>
                     <td class="sortCol"><div>小组ID<span></span></div></td>
-
                     <td class="sortCol"><div>提交时间<span></span></div></td>
                     <td class="sortCol"><div>分数<span></span></div></td>
                 </tr>
@@ -195,9 +251,10 @@
     <div id="footer">
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
     </div>
+    <script type="text/javascript">
 
 
-
+    </script>
     <div class="clear"></div>
 </div>
 </body>

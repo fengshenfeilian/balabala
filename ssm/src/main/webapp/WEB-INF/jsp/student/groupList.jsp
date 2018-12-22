@@ -91,10 +91,10 @@
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>3</strong></a>
+        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/addGroup" title="">创建小组</a></li>
+                <li><a href="/student/course" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>
@@ -130,7 +130,8 @@
     </div>
 
     <!-- 选项区域 -->
-    <div class="statsRow">
+    <%--
+        <div class="statsRow">
         <div class="wrapper">
             <div class="controlB">
                 <a href="/student/addGroup"><button class="blueB">创建小组</button></a>
@@ -138,8 +139,17 @@
             </div>
         </div>
     </div>
+    --%>
 
 
+    <div class="statsRow">
+        <div class="wrapper">
+            <div class="controlB">
+                <p>注意：删除小组将删除一切与小组有关的信息（包括成绩信息），请谨慎操作！</p>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
     <%--动态数据表--%>
     <div class="wrapper">
         <div class="widget">
@@ -157,7 +167,7 @@
                 </tr>
                 </thead>
                 <tbody align="center">
-                <c:forEach items="${groupList}" var="groupList">
+                <c:forEach items="${groupList}" var="groupList" varStatus="loop">
                     <tr>
                         <td>${groupList.groupId}</td>
                         <td>${groupList.courseId}</td>
@@ -166,7 +176,9 @@
                         <td>${groupList.leaderId}</td>
                         <td>
                             <a href="/student/groupInfo?groupId=${groupList.groupId}"><button class="blueB">查看</button></a>
-                            <a href="/student/deleteGroup"><button class="redB">删除</button></a>
+                            <c:if test="${isGroupLeader[loop.count-1]}"><%--是组长--%>
+                                <a href="/student/deleteGroup?groupId=${groupList.groupId}"><button class="redB">删除</button></a>
+                            </c:if>
                         </td>
                     </tr>
                 </c:forEach>

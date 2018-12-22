@@ -94,7 +94,7 @@
         <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/addGroup" title="">创建小组</a></li>
+                <li><a href="/student/course" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>
@@ -137,7 +137,7 @@
                 <div class="title"><img src="/static/images/icons/dark/files.png" alt="" class="titleIcon" /></div>
                 <div class="formRow">
                     <label style="width:10%">课程号</label>
-                    <div><input type="text" name="courseId"  placeholder=""  style="width:50%"required/></div>
+                    <div><input readonly type="text" name="courseId"  value="${curCourseId}" placeholder=""  style="width:50%"required/></div>
                     <div class="clear"></div>
                 </div>
                 <div class="formRow">

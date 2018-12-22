@@ -127,7 +127,7 @@
             <div class="controlB">
                 <div  align="left">
                     <a href="/teacher/goAddAssignment"><button class="blueB">添加作业</button></a>
-                    <a href="/teacher/showAllStudents"> <button class="redB">查看学生</button></a>
+                    <a href="/teacher/showAllStudents"> <button class="redB">学生管理</button></a>
                 </div>
             </div>
         </div>
@@ -202,7 +202,14 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="statsRow">
+        <div class="wrapper">
+            <div class="controlB">
+                <p>说明：结课后可以结算学生总成绩以及生成成绩单，但不能再修改作业比例和学生成绩，请确保您已经完成相应评分操作。</p>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
         <c:if test="${course.isEnd==0}">
             <div class="statsRow">
                 <div class="wrapper">

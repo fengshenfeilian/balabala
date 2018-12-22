@@ -88,7 +88,7 @@ public class TeacherController {
         model.addAttribute("courses", teacherService.getAllCourses(user.getUserId()));
         model.addAttribute("course", course);
         request.getSession().setAttribute("currentCourse", course);
-        //此处返回页面待定
+
         return "teacher/course";
     }
 
@@ -106,15 +106,22 @@ public class TeacherController {
         String name = file.getOriginalFilename();
         //进一步判断文件是否为空（即判断其大小是否为0或其名称是否为null）
         long size=file.getSize();
-        if(name==null || ("").equals(name) && size==0) return "teacher/course";
-        //批量导入。参数：文件名，文件。
-        User user = (User) session.getAttribute("currentUser");
+
         Course course = (Course) session.getAttribute("currentCourse");
-//        Integer courseId = teacherService.getCourseId(course.getCourseName(), user.getUserId());
+        User user = (User) session.getAttribute("currentUser");
+        List<Student_Course> student_courses = teacherService.getAllStudentsInfo(course.getCourseId());
+        model.addAttribute("student_courses", student_courses);
+        model.addAttribute("course", course);
+        List<User> users = teacherService.getAllUsers(student_courses);
+        model.addAttribute("students", users);
+
+        if(name==null || ("").equals(name) && size==0) return "teacher/students";
+        //批量导入。参数：文件名，文件。
+
         Integer courseId = course.getCourseId();
         teacherService.addUserByFile(name, file, courseId);
-        model.addAttribute("course", course);
-        return "teacher/course";
+
+        return "teacher/students";
     }
 
     @RequestMapping(value = "/addDailyScore", method = RequestMethod.POST)
@@ -125,16 +132,23 @@ public class TeacherController {
         String name = file.getOriginalFilename();
         //进一步判断文件是否为空（即判断其大小是否为0或其名称是否为null）
         long size=file.getSize();
-        if(name==null || ("").equals(name) && size==0) return "teacher/course";
-        //批量导入。参数：文件名，文件。
-        User user = (User) session.getAttribute("currentUser");
+        //页面返回有问题
         Course course = (Course) session.getAttribute("currentCourse");
-//        Integer courseId = teacherService.getCourseId(course.getCourseName(), user.getUserId());
+        User user = (User) session.getAttribute("currentUser");
+        List<Student_Course> student_courses = teacherService.getAllStudentsInfo(course.getCourseId());
+        model.addAttribute("student_courses", student_courses);
+        model.addAttribute("course", course);
+        List<User> users = teacherService.getAllUsers(student_courses);
+        model.addAttribute("students", users);
+
+        if(name==null || ("").equals(name) && size==0) return "teacher/students";
+        //批量导入。参数：文件名，文件。
         Integer courseId = course.getCourseId();
         teacherService.addDailyScore(name, file, courseId);
         model.addAttribute("message", "导入平时成绩成功");
-        model.addAttribute("course", course);
-        return "teacher/course";
+        student_courses = teacherService.getAllStudentsInfo(course.getCourseId());
+        model.addAttribute("student_courses", student_courses);
+        return "teacher/students";
     }
 
     @RequestMapping(value = "/goCourse")
@@ -331,11 +345,13 @@ public class TeacherController {
             {
                 String assignmentId = group_assignment.getAssignmentId();
                 Integer score = group_assignment.getScore();
+                //System.out.println(score);
                 Integer percent = teacherService.getAssignmentPercent(assignmentId);
+                //System.out.println(percent);
                 grade = grade + (float)score * percent / 100;
             }
-            //作业占80%，小组评分占20%
-            grade = grade * 0.8 + groupGrade*0.2;
+            //小组评分为贡献率
+            grade = grade *  groupGrade/100;
             student_course.setStudentId(studentId);
             student_course.setCourseId(courseId);
             student_course.setAssignmentGrade((int) grade);
@@ -379,25 +395,12 @@ public class TeacherController {
 
     @RequestMapping(value = "/scoreToExcel")
     public String scoreToExcel(Model model, HttpSession session) throws IOException {
-        //excel里并没有写进数据,也没有计算学生的作业成绩
         Course course = (Course) session.getAttribute("currentCourse");
         int assignCount = teacherService.getAssignmentCount(course.getCourseId());
-        System.out.println("assignCount:"+assignCount);
-        String path = "D:/" + course.getCourseName() + "成绩单.xlsx";
-        Workbook wb = null;
-        File file = new File(path);
-        Sheet sheet = null;
-        if(!file.exists())
-        {
-            wb = new XSSFWorkbook();
-            sheet = (Sheet) wb.createSheet("sheet1");
-            OutputStream outputStream = new FileOutputStream(path);
-            wb.write(outputStream);
-            outputStream.flush();
-            outputStream.close();
-        }
-        //若文件已存在，则此处出错
-        if (sheet == null) sheet = (Sheet) wb.createSheet("sheet1");
+        //System.out.println("assignCount:"+assignCount);
+        String path = "D:/" + course.getCourseName() + new Date().getTime() + "成绩单.xlsx";
+        Workbook wb = new XSSFWorkbook();
+        Sheet sheet = wb.createSheet("sheet1");
         Row row = sheet.createRow(0);
         Cell cell = row.createCell(0);
         row.setHeight((short) 400);
@@ -409,11 +412,17 @@ public class TeacherController {
             cell = row.createCell(2*i + 2);
             cell.setCellValue("小组作业成绩" + String.valueOf(i+1));
             cell = row.createCell(2*i + 3);
-            cell.setCellValue("小组评分" + String.valueOf(i+1));
+            cell.setCellValue("小组作业加权成绩" + String.valueOf(i+1));
         }
         cell = row.createCell(2*assignCount + 2);
-        cell.setCellValue("平时成绩");
+        cell.setCellValue("小组成绩");
         cell = row.createCell(2*assignCount + 3);
+        cell.setCellValue("组员评分");
+        cell = row.createCell(2*assignCount + 4);
+        cell.setCellValue("个人总成绩");
+        cell = row.createCell(2*assignCount + 5);
+        cell.setCellValue("平时成绩");
+        cell = row.createCell(2*assignCount + 6);
         cell.setCellValue("总成绩");
         //获取选取该课的学生
         List<Student_Course> student_courses = teacherService.getAllStudentsInfo(course.getCourseId());
@@ -430,24 +439,36 @@ public class TeacherController {
             //获取学生所选课程所在的小组
             String groupId= teacherService.getGroupID(course.getCourseId(), user.getUserId());
             //获取该小组所交的作业
-            //此处存在越界问题
             List<Group_Assignment> group_assignments = teacherService.getGroupAssignemnt(groupId);
-            System.out.println(group_assignments.size());
+            //System.out.println(group_assignments.size());
+            double grade = 0.0;
             for(int i = 0;i < assignCount && i < group_assignments.size();i++)
             {
                 cell = row.createCell(2*i + 2);
-                cell.setCellValue(String.valueOf(group_assignments.get(i).getScore()));
+                Integer score = group_assignments.get(i).getScore();
+                cell.setCellValue(String.valueOf(score));
                 cell = row.createCell(2*i + 3);
                 Integer percent = teacherService.getAssignmentPercent(group_assignments.get(i).getAssignmentId());
                 cell.setCellValue(String.valueOf(group_assignments.get(i).getScore() * percent / 100));
+                grade = grade + (float)score * percent / 100;
             }
-            cell = row.createCell(2*assignCount + 2);
+            cell = row.createCell(2*assignCount + 2);//小组成绩
+            cell.setCellValue(String.valueOf(grade));
+            cell = row.createCell(2*assignCount + 3);//组员评分
+            Integer groupGrade = teacherService.getGroupGrade(student_course.getCourseId(), student_course.getStudentId());
+            cell.setCellValue(String.valueOf(groupGrade));
+            cell = row.createCell(2*assignCount + 4);//个人总成绩
+            cell.setCellValue(String.valueOf(student_course.getAssignmentGrade()));
+            cell = row.createCell(2*assignCount + 5);//平时成绩
             cell.setCellValue(String.valueOf(student_course.getDailyGrade()));
-            cell = row.createCell(2*assignCount + 3);
-            //平时成绩占20%，作业成绩占80%
+            cell = row.createCell(2*assignCount + 6);//总成绩
+            //平时成绩占20%，个人总成绩占80%
             cell.setCellValue(String.valueOf(student_course.getDailyGrade()*0.2 + student_course.getAssignmentGrade()*0.8));
+            rowIndex++;
         }
-
+        FileOutputStream outputStream = new FileOutputStream(path);
+        wb.write(outputStream);
+        outputStream.close();
         model.addAttribute("message", "生成成绩成功");
         User user = (User) session.getAttribute("currentUser");
         List<Course> courses = teacherService.getAllCourses(user.getUserId());
@@ -457,16 +478,37 @@ public class TeacherController {
     }
 
     @RequestMapping(value = "/downloadFile")
-    public void downloadFile(@RequestParam(value="filepath") String path, HttpServletResponse response, Model model) throws IOException {
-        String[] tem = path.split("/");
-        File file = new File("D:/down");
-        if (!file.exists()) file.mkdirs();
-        //此处出错
-        String filepath = "D:/down/" + tem[tem.length];
-        filepath = URLEncoder.encode(filepath, "UTF-8");
-        InputStream bis = new BufferedInputStream(new FileInputStream(new File(path)));
-        response.addHeader("Content-Disposition", "attachment;filename=" + filepath);
+    public void downloadFile(@RequestParam(value="filepath") String path,
+                             HttpServletRequest request,
+                             HttpServletResponse response,
+                             Model model) throws IOException {
+        Group_Assignment group_assignment = (Group_Assignment)  request.getSession().getAttribute(
+                "current_group_assignment");
+       /* File file = new File("D:/down");
+        if (!file.exists()) file.mkdirs();*/
+        String filepath = path;
+        String[] names= filepath.split("/");
+        String filename = names[names.length-1];
+        System.out.println(filename);
+
+        if (request.getHeader("User-Agent").toLowerCase().indexOf("firefox") > 0) {
+            filename = new String(filename.getBytes("UTF-8"), "ISO8859-1"); // firefox浏览器
+        } else if (request.getHeader("User-Agent").toUpperCase().indexOf("MSIE") > 0) {
+            filename = URLEncoder.encode(filename, "UTF-8");// IE浏览器
+        }else if (request.getHeader("User-Agent").toUpperCase().indexOf("CHROME") > 0) {
+            filename = new String(filename.getBytes("UTF-8"), "ISO8859-1");// 谷歌
+        }
+        else {  //其他浏览器
+            filename = new String(filename.getBytes("UTF-8"), "iso-8859-1");
+        }
+        String downfile = group_assignment.getGroupId() + "_"+ new Date().getTime()+"_"+filename;
+       /* filepath = URLEncoder.encode(filepath, "UTF-8");
+        filepath = filepath.replace("%2F","/");
+        filepath = filepath.replace("%3A",":");*/
+        InputStream bis = new BufferedInputStream(new FileInputStream(new File(filepath)));
+        response.addHeader("Content-Disposition", "attachment;filename=" + downfile);
         response.setContentType("multipart/form-data");
+        //response.setCharacterEncoding("UTF-8");
         BufferedOutputStream out = new BufferedOutputStream(response.getOutputStream());
         int len = 0;
         while((len = bis.read()) != -1)

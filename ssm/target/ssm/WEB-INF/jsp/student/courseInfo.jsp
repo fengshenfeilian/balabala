@@ -91,10 +91,10 @@
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>3</strong></a>
+        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/addGroup" title="">创建小组</a></li>
+                <li><a href="/student/course" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>
@@ -123,12 +123,15 @@
     <div class="titleArea">
         <div class="wrapper">
             <div class="pageTitle">
-                <h5>课程信息</h5>
-                <p>课程名称:<strong>${course.courseName}</strong></p>
-                <p>课程简介:<strong>${course.courseDescription}</strong></p>
-                <p>任课教师:<strong>${currentCourseTeacherName}</strong></p>
-                <p>课程创建时间:<strong>${course.createTime}</strong></p>
-                <p>课程是否结束:<strong>${course.isEnd}</strong></p>
+                <%--课程信息--%>
+                <div class="formRow"><h5>课程信息</h5></div>
+                <input type="hidden" value="${course.courseId}" id="courseId">
+                <div class="formRow"><p>课程号:<strong>${course.courseId}</strong></p></div>
+                <div class="formRow"><p>课程名称:<strong>${course.courseName}</strong></p></div>
+                <div class="formRow"><p>课程简介:<strong>${course.courseDescription}</strong></p></div>
+                <div class="formRow"><p>任课教师:<strong>${currentCourseTeacherName}</strong></p></div>
+                <div class="formRow"><p>课程创建时间:<strong>${course.createTime}</strong></p></div>
+                <div class="formRow"><p>课程是否结束:<strong>${course.isEnd}</strong></p></div>
             </div>
             <div class="clear"></div>
         </div>
@@ -157,7 +160,7 @@
                         <td>${curCourseAssignment.body}</td>
                         <td>${curCourseAssignment.releaseTime}</td>
                         <td>${curCourseAssignment.deadline}</td>
-                        <td><a><button class="blueB">查看最近一次提交</button></a></td>
+                        <td><a href="/student/goGroupAssignment?groupId=${curGroup.groupId}&courseId=${curCourseAssignment.courseId}"><button class="blueB">查看最近一次提交</button></a></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -165,12 +168,77 @@
         </div>
     </div>
 
+    <div class="wrapper">
+        <div class="widget">
+            <%--小组信息--%>
+            <div class="formRow"><h5>小组信息</h5></div>
+            <div class="formRow">
+                <div align="center">
+                    <input type="button" onclick="groupInfo()" value="查看小组" class="redB">
+                    <input type="button" id="addGroup" value="创建小组" class="redB">
+                </div>
+            </div>
+            <div id="groupInfo">
+                <input type="hidden" value="${curGroup.groupId}" id="groupId">
+                <input type="hidden" value="${curGroup.groupName}" id="groupName">
+                <input type="hidden" value="${curGroup.courseId}" id="courseId">
+                <input type="hidden" value="${curGroup.groupMemberNum}" id="groupMemberNum">
+                <input type="hidden" value="${curGroup.leaderId}" id="leaderId">
+            </div>
+
+        </div>
+    </div>
+
+
     <!-- Footer line -->
     <div id="footer">
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
     </div>
-
     <div class="clear"></div>
+    <script type="text/javascript">
+        function groupInfo() {
+            var groupId = document.getElementById("groupId").value;
+            var groupName = document.getElementById("groupName").value;
+            var courseId = document.getElementById("courseId").value;
+            var groupMemberNum = document.getElementById("groupMemberNum").value;
+            var leaderId = document.getElementById("leaderId").value;
+            if(groupId == null || groupId == undefined || groupId == ""){
+                var html = "<div class=\"formRow\"><p>您还未加入小组</p></div>";
+                document.getElementById("groupInfo").innerHTML = html;
+            }else{
+                var html = " <div class=\"formRow\"><p>小组号:<strong>${curGroup.groupId}</strong></p></div>";
+                html += " <div class=\"formRow\"><p>小组名:<strong>${curGroup.groupName}</strong></p></div>";
+                html += " <div class=\"formRow\"><p>所属课程号:<strong>${curGroup.courseId}</strong></p></div>";
+                html += " <div class=\"formRow\"><p>成员数量:<strong>${curGroup.groupMemberNum}</strong></p></div>";
+                html += " <div class=\"formRow\"><p>组长:<strong>${curGroup.leaderId}</strong></p></div>";
+                document.getElementById("groupInfo").innerHTML = html;
+            }
+        }
+
+        function checkGroup() {
+            var groupId = document.getElementById("groupId").value;
+            if(groupId == null || groupId == undefined || groupId == ""){
+
+            }else{
+                alert("您已加入小组，无法重复创建！");
+            }
+        }
+
+        window.onload = function(){
+            document.getElementById("addGroup").onclick = function(){
+                var groupId = document.getElementById("groupId").value;
+                if(groupId == null || groupId == undefined || groupId == "") {//无小组，可创建
+                    var courseId = document.getElementById("courseId").value;
+                    location = "/student/addGroup?courseId=" + courseId;
+                }
+                else{
+                    alert("您已加入小组，无法重复创建！");
+                }
+            }
+        };
+
+    </script>
+
 </div>
 </body>
 </html>

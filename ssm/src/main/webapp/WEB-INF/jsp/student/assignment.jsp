@@ -91,10 +91,10 @@
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>3</strong></a>
+        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/addGroup" title="">创建小组</a></li>
+                <li><a href="/student/course" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>
@@ -127,22 +127,31 @@
     <div class="wrapper">
         <div class="widget">
             <div class="title"><img src="images/icons/dark/frames.png" alt="" class="titleIcon" />
-                <h6>查看已提交作业</h6></div>
+                <h6>已选课程列表</h6></div>
             <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
                 <thead>
                 <tr>
                     <td class="sortCol"><div>课程名<span></span></div></td>
                     <td class="sortCol"><div>小组号<span></span></div></td>
+                    <td class="sortCol"><div>是否结束<span></span></div></td>
                     <td class="sortCol"><div>选项<span></span></div></td>
-
                 </tr>
                 </thead>
                 <tbody align="center">
                 <c:forEach items="${group_student}" var="group_student" varStatus="loop">
                     <tr>
-                        <td>${course[loop.count-1].courseName}</td>
-                        <td>${group_student.groupId}</td>
-                        <td><a href="/student/browseAssignment?groupId=${group_student.groupId}&courseId=${course[loop.count-1].courseId}">查看作业</a></td>
+                        <c:if test="${hasComingToEndAssignment[loop.count-1]==false}">
+                            <td>${course[loop.count-1].courseName}</td>
+                            <td>${group_student.groupId}</td>
+                            <td>${course[loop.count-1].isEnd==1?"是":"否"}</td>
+                            <td><a href="/student/browseAssignment?groupId=${group_student.groupId}&courseId=${course[loop.count-1].courseId}"><button class="blueB">查看作业</button></a></td>
+                        </c:if>
+                        <c:if test="${hasComingToEndAssignment[loop.count-1]==true}">
+                            <td style="color: darkred">${course[loop.count-1].courseName}</td>
+                            <td style="color: darkred">${group_student.groupId}</td>
+                            <td style="color: darkred">${course[loop.count-1].isEnd==1?"是":"否"}</td>
+                            <td style="color: darkred"><a href="/student/browseAssignment?groupId=${group_student.groupId}&courseId=${course[loop.count-1].courseId}"><button class="redB">查看作业</button></a></td>
+                        </c:if>
                     </tr>
                 </c:forEach>
                 </tbody>

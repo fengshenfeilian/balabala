@@ -91,10 +91,10 @@
                 <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
             </ul>
         </li>
-        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>3</strong></a>
+        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/addGroup" title="">创建小组</a></li>
+                <li><a href="/student/course" title="">创建小组</a></li>
             </ul>
         </li>
     </ul>
@@ -122,15 +122,19 @@
     <div class="line"></div>
     <div class="wrapper">
         <div class="widget">
-            <form  method="post" id="validate" class="form" action="${pageContext.request.contextPath}/student/upload">
+            <form  method="post" id="validate" class="form" action="${pageContext.request.contextPath}/student/upload" enctype="multipart/form-data">
+                <%
+                    String assignmentId = request.getParameter("assignmentId");
+                    String groupId = request.getParameter("groupId");
+                %>
                 <div class="formRow">
                     <label style="width:10%">作业号</label>
-                    <div ><input type="text" name="assignmentId"  placeholder="" style="width:60%;" required/></div>
+                    <div ><input type="text" name="assignmentId" value="<%=assignmentId%>"  style="width:60%;" required/></div>
                     <div class="clear"></div>
                 </div>
                 <div class="formRow">
                     <label style="width:10%">小组号</label>
-                    <div ><input type="text" name="groupId"  placeholder="" style="width:60%;" required/></div>
+                    <div ><input type="text" name="groupId"  value="<%=groupId%>"  style="width:60%;" required/></div>
                     <div class="clear"></div>
                 </div>
                 <div class="formRow">
