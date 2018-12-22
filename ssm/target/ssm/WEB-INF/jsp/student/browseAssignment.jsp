@@ -145,12 +145,12 @@
                     <tbody align="center">
                     <c:forEach items="${comingToEndAssignments}" var="comingToEndAssignments">
                         <tr>
-                            <td>${comingToEndAssignments.assignmentId}</td>
-                            <td>${comingToEndAssignments.title}</td>
-                            <td>${comingToEndAssignments.body}</td>
-                            <td>${comingToEndAssignments.deadline}</td>
-                            <td>${comingToEndAssignments.releaseTime}</td>
-                            <td>${comingToEndAssignments.percent}%</td>
+                            <td><div style="color: darkred">${comingToEndAssignments.assignmentId}</div></td>
+                            <td><div style="color: darkred">${comingToEndAssignments.title}</div></td>
+                            <td><div style="color: darkred">${comingToEndAssignments.body}</div></td>
+                            <td><div style="color: darkred">${comingToEndAssignments.deadline}</div></td>
+                            <td><div style="color: darkred">${comingToEndAssignments.releaseTime}</div></td>
+                            <td><div style="color: darkred">${comingToEndAssignments.percent}%</td>
                             <td>
                                 <a href="/student/uploadAssignment?assignmentId=${comingToEndAssignments.assignmentId}&groupId=<%=groupId%>">
                                     <button class="blueB">上传作业</button>

@@ -122,7 +122,7 @@
     <div class="line"></div>
     <div class="wrapper">
         <div class="widget">
-            <form  method="post" id="validate" class="form" action="${pageContext.request.contextPath}/student/upload">
+            <form  method="post" id="validate" class="form" action="${pageContext.request.contextPath}/student/upload" enctype="multipart/form-data">
                 <%
                     String assignmentId = request.getParameter("assignmentId");
                     String groupId = request.getParameter("groupId");

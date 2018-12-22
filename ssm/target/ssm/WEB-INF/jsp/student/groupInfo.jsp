@@ -171,7 +171,9 @@
                         <td>${gsList.grade}</td>
                         <td>
                             <c:if test="${isGroupLeader}"><%--是组长--%>
-                                <a href="/student/deleteGroupMember?studentId=${gsList.studentId}&groupId=${curGroup.groupId}"><button class="redB">删除</button></a>
+                                <c:if test="${gsList.studentId} != ${curGroup.leaderId}">
+                                    <a href="/student/deleteGroupMember?studentId=${gsList.studentId}&groupId=${curGroup.groupId}"><button class="redB">删除</button></a>
+                                </c:if>
                                 <a href="/student/updateGroupMember?studentId=${gsList.studentId}&groupId=${curGroup.groupId}"><button class="blueB">打分</button></a>
                             </c:if>
                         </td>

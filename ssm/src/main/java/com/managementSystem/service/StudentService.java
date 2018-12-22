@@ -122,7 +122,7 @@ public class StudentService {
     }
 
     //近期需提交的作业
-    /*1. 距离截止日期不足15天
+    /*1. 距离截止日期不足3天
     * 2. 仍未提交过作业*/
     public List<Assignment> getComingToEndAssignment(List<Assignment> assignments, String groupId)
     {
@@ -138,7 +138,7 @@ public class StudentService {
             }
             long mSecond = ddl.getTime() - date.getTime();
             long day = mSecond / (1000*60*60*24);
-            if(day < 15){//距离截止日期不足15天
+            if(day < 3){//距离截止日期不足3天
                 Group_AssignmentKey gak = new Group_AssignmentKey();
                 gak.setAssignmentId(assignment.getAssignmentId());
                 gak.setGroupId(groupId);

@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
@@ -129,7 +132,7 @@ public class StudentController {
     public  String uploadAssignment(@RequestParam(value = "assignmentId") String assignmentId,
                                     @RequestParam(value = "groupId")String groupId,
                                     @RequestParam(value = "title")String title,
-                                    @RequestParam(value="body")String body,
+                                    @RequestParam(value="body")MultipartFile file,
                                     Model model, HttpSession session, HttpServletRequest request)throws ParseException
     {
         //Group_Assignment ga = new Group_Assignment();
@@ -142,8 +145,18 @@ public class StudentController {
             if(studentService.existGroupAssignment(assignmentId,groupId)){
                 studentService.deleteGroupAssignment(assignmentId,groupId);
             }
-            //上传(学生)作业
             String rootPath = "C:/Users/marco/Desktop/balabala/assignment/";
+            //上传(学生)作业
+            try {
+
+                File destFile = new File(rootPath + title);
+                if(!destFile.getParentFile().exists()){
+                    destFile.mkdirs();
+                }
+                file.transferTo(destFile);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             //添加数据库记录
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
             Date date = new Date();
@@ -152,7 +165,7 @@ public class StudentController {
             ga.setAssignmentId(assignmentId);
             ga.setGroupId(groupId);
             ga.setTitle(title);
-            ga.setBody(rootPath + body);
+            ga.setBody(rootPath + title);
             ga.setSubmissionTime(date);
             studentService.insertGroupAssignment(ga);
             return  "redirect:/student/assignment";
