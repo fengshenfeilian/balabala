@@ -154,8 +154,16 @@
             </form>
         </div>
     </div>
-
-
+    <c:if test="${hasSubmitted==1}">
+        <div class="statsRow">
+            <div class="wrapper">
+                <div class="controlB">
+                    <p>注意：您已提交过该项作业，重复提交将重置成绩，请谨慎操作。</p>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </c:if>
 
     <!-- Footer line -->
     <div id="footer">

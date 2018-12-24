@@ -1,6 +1,9 @@
 package com.managementSystem.service;
 
+import com.managementSystem.dao.Pri_RoleMapper;
 import com.managementSystem.dao.UserMapper;
+import com.managementSystem.pojo.Pri_RoleExample;
+import com.managementSystem.pojo.Pri_RoleKey;
 import com.managementSystem.pojo.User;
 import com.managementSystem.pojo.UserExample;
 import com.managementSystem.util.MD5Utils;
@@ -17,6 +20,20 @@ public class UserService {
 
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    Pri_RoleMapper pri_roleMapper;
+
+    //根据当前用户角色id与相应的权限id鉴权
+    public boolean Authenticate(String roleId, String priId){
+
+        Pri_RoleExample pri_roleExample = new Pri_RoleExample();
+        Pri_RoleExample.Criteria criteria = pri_roleExample.createCriteria();
+        criteria.andPriIdEqualTo(priId);
+        criteria.andRoleIdEqualTo(roleId);
+        return  pri_roleMapper.selectByExample(pri_roleExample).size()>0;
+
+    }
+
     public List<User> getAllUsersWithRole() {
 
         //带角色的查询

@@ -57,8 +57,7 @@
 	<div class="wrapper">
 		<div class="userNav">
 			<ul>
-				<li><a href="#" title=""><img src="/static/images/icons/topnav/mainWebsite.png" alt="" /><span>首页</span></a></li>
-				<li><a href="#" title=""><img src="/static/images/icons/topnav/profile.png" alt="" /><span>联系我们</span></a></li>
+				<li><span>欢迎来到作业管理系统</span></li>
 			</ul>
 		</div>
 		<div class="clear"></div>
@@ -87,7 +86,7 @@
 				</div>
 
 				<div class="loginControl">
-					<div class="rememberMe"><input type="checkbox" id="remMe" name="remMe" /><label for="remMe">记住我</label></div>
+					<%--<div class="rememberMe"><input type="checkbox" id="remMe" name="remMe" /><label for="remMe">记住我</label></div>--%>
 					<input type="submit" value="登录" class="dredB logMeIn" />
 					<div class="clear"></div>
 				</div>

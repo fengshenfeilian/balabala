@@ -4,6 +4,7 @@ package com.managementSystem.controller;
 import com.managementSystem.pojo.*;
 import com.managementSystem.service.StudentService;
 import com.managementSystem.service.TeacherService;
+import com.managementSystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +35,8 @@ public class StudentController {
     @Autowired
     TeacherService teacherService;
 
+    @Autowired
+    UserService userService;
 
     //首页
     @RequestMapping(value = "/home")
@@ -46,7 +49,7 @@ public class StudentController {
         for(Student_Course sc:scList){
             List<Assignment> assignments = teacherService.getAssignments(sc.getCourseId());
             Group group = studentService.getGroupUnderCourse(sc.getCourseId(),user.getUserId());
-            if(studentService.hasComingToEndAssignment(assignments,group.getGroupId()))
+            if(group!=null && studentService.hasComingToEndAssignment(assignments,group.getGroupId()))
                 count++;
         }
         User studnet = studentService.getUserById(user.getUserId());
@@ -59,6 +62,11 @@ public class StudentController {
     @RequestMapping(value = "/course")
     public String gotoCourse(HttpSession session,HttpServletRequest request, Model model){
         User user = (User) session.getAttribute("currentUser");
+        //查看课程权限
+        if(!userService.Authenticate(user.getRoleId(),"UC31")){
+            model.addAttribute("message","查看课程权限不足！");
+            return "student/error";
+        }
         List<Student_Course> scList = studentService.getCourseListByUserId(user.getUserId());
         List<Course> courseList = studentService.getCourseListBySCList(scList);
         List<User> teacherList = studentService.getTeacherListByCourseList(courseList);
@@ -77,6 +85,11 @@ public class StudentController {
     @RequestMapping(value = "/courseInfo")
     public String gotoCourseInfo(HttpServletRequest request, Model model, HttpSession session){
         User user = (User) session.getAttribute("currentUser");
+        //查看课程权限
+        if(!userService.Authenticate(user.getRoleId(),"UC31")){
+            model.addAttribute("message","查看课程权限不足！");
+            return "student/error";
+        }
         String id = request.getParameter("courseId");
         int courseId = Integer.parseInt(id);
         //group可能为空(该学生在该课程下还未拥有小组)
@@ -94,8 +107,14 @@ public class StudentController {
 
     //课程->课程详细信息->作业要求->查看最近一次提交的作业
     @RequestMapping(value = "/goGroupAssignment")
-    public String goGroupAssignment(HttpServletRequest request, Model model)
+    public String goGroupAssignment(HttpServletRequest request, Model model,HttpSession session)
     {
+        User user = (User) session.getAttribute("currentUser");
+        //查看作业权限
+        if(!userService.Authenticate(user.getRoleId(),"UC32")){
+            model.addAttribute("message","查看作业权限不足！");
+            return "student/error";
+        }
         String groupId = request.getParameter("groupId");
         String cId = request.getParameter("courseId");
         Integer courseId = Integer.parseInt(cId);
@@ -117,6 +136,11 @@ public class StudentController {
     @RequestMapping(value = "/assignment")
     public String gotoAssignment(HttpSession session, Model model){
         User user = (User) session.getAttribute("currentUser");
+        //查看作业权限
+        if(!userService.Authenticate(user.getRoleId(),"UC32")){
+            model.addAttribute("message","查看作业权限不足！");
+            return "student/error";
+        }
         List<Group_Student> gsList = studentService.getGroupStudent(user.getUserId());
         List<Course> course = studentService.getCourseByGroupStudentList(gsList);
 
@@ -137,7 +161,13 @@ public class StudentController {
 
     //查看作业列表
     @RequestMapping(value = "/browseAssignment")
-    public String gotoBrowseAssignment(HttpServletRequest request, Model model){
+    public String gotoBrowseAssignment(HttpServletRequest request, Model model,HttpSession session){
+        User user = (User) session.getAttribute("currentUser");
+        //查看成绩权限
+        if(!userService.Authenticate(user.getRoleId(),"UC36")){
+            model.addAttribute("message","查看成绩权限不足！");
+            return "student/error";
+        }
         String groupId = request.getParameter("groupId");
         String cId = request.getParameter("courseId");
         Integer courseId = Integer.parseInt(cId);
@@ -156,8 +186,26 @@ public class StudentController {
 
     //进入作业上传页
     @RequestMapping(value = "/uploadAssignment")
-    public String gotoUploadAssignment(HttpServletRequest request) {
-
+    public String gotoUploadAssignment(@RequestParam(value = "assignmentId") String assignmentId,
+                                       @RequestParam(value = "groupId")String groupId,
+                                       HttpServletRequest request,HttpSession session,Model model) {
+        User user = (User) session.getAttribute("currentUser");
+        //上传及重复上传权限
+        if(!userService.Authenticate(user.getRoleId(),"UC34") && !userService.Authenticate(user.getRoleId(),"UC35")){
+            model.addAttribute("message","提交作业权限不足！");
+            return "student/error";
+        }
+        String userGroupId = studentService.getGroupIdByStudentId(user.getUserId());
+        if(groupId == null || groupId.equals("")){
+            model.addAttribute("message","您还未加入小组，无法上传作业。");
+            return  "student/error";
+        }
+        //小组号校验 && 作业号校验
+        if(userGroupId.equals(groupId) && studentService.existAssignment(assignmentId)) {
+            if(studentService.existGroupAssignment(assignmentId,groupId)){
+                model.addAttribute("hasSubmitted",1);
+            }
+        }
         return "student/uploadAssignment";
     }
 
@@ -171,6 +219,11 @@ public class StudentController {
     {
         //Group_Assignment ga = new Group_Assignment();
         User user = (User) session.getAttribute("currentUser");
+        //上传及重复上传权限
+        if(!userService.Authenticate(user.getRoleId(),"UC34") && !userService.Authenticate(user.getRoleId(),"UC35")){
+            model.addAttribute("message","提交作业权限不足！");
+            return "student/error";
+        }
 
         String userGroupId = studentService.getGroupIdByStudentId(user.getUserId());
         //小组号校验 && 作业号校验
@@ -179,7 +232,7 @@ public class StudentController {
             if(studentService.existGroupAssignment(assignmentId,groupId)){
                 studentService.deleteGroupAssignment(assignmentId,groupId);
             }
-            String rootPath = "D:/assignments/";
+            String rootPath = "D:/assignments/"+title+"/";
             //上传(学生)作业
             String filename = file.getOriginalFilename();
             try {
@@ -191,6 +244,8 @@ public class StudentController {
                 file.transferTo(destFile);
             }catch (Exception e){
                 e.printStackTrace();
+                model.addAttribute("message","文件上传失败");
+                return "student/error";
             }
             //添加数据库记录
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
@@ -218,6 +273,11 @@ public class StudentController {
     public String gotoGroupList(Model model,HttpSession session )
     {
         User user = (User) session.getAttribute("currentUser");
+        //创建及小组管理权限
+        if(!userService.Authenticate(user.getRoleId(),"UC33") ){
+            model.addAttribute("message","创建小组权限不足！");
+            return "student/error";
+        }
         List<Group_Student> gsList = studentService.getGroupListByStudentId(user.getUserId());
         model.addAttribute("gsList",gsList);
         List<Group> groupList = studentService.getGroupListByGSList(gsList);
@@ -238,6 +298,11 @@ public class StudentController {
     {
         String groupId = request.getParameter("groupId");
         User user = (User)session.getAttribute("currentUser");
+        //创建及小组管理权限
+        if(!userService.Authenticate(user.getRoleId(),"UC33") ){
+            model.addAttribute("message","查看小组权限不足！");
+            return "student/error";
+        }
 
         //小组信息
         Group curGroup = teacherService.getGroup(groupId);
@@ -290,8 +355,17 @@ public class StudentController {
                                Model model, HttpSession session,HttpServletRequest request)throws ParseException
     {
         User user = (User) session.getAttribute("currentUser");
+        //创建及小组管理权限
+        if(!userService.Authenticate(user.getRoleId(),"UC33") ){
+            model.addAttribute("message","创建小组权限不足！");
+            return "student/error";
+        }
+
         //判断学生是否选了该课
-        if(studentService.courseNotSelected(user.getUserId(),courseId)) return "redirect:/student/addGroup";
+        if(studentService.courseNotSelected(user.getUserId(),courseId)){
+            model.addAttribute("message","您未选择该课");
+            return "student/error";
+        }
 
         List<Group_Student> studentGroupList = studentService.getGroupListByStudentId(user.getUserId());
         List<Group> courseGroupList = studentService.getGroupListByCourseId(courseId);
@@ -313,6 +387,7 @@ public class StudentController {
     public String gotoDeleteGroup(@RequestParam(value = "groupId")String groupId,HttpSession session)
     {
         User user = (User) session.getAttribute("currentUser");
+
         Group curGroup = studentService.getGroupByGroupId(groupId);
         if(curGroup.getLeaderId().equals(user.getUserId())){//只有组长可以删除
             studentService.deleteGroup(curGroup);
@@ -329,6 +404,12 @@ public class StudentController {
     {
         //获取当前学生用户
         User user = (User) session.getAttribute("currentUser");
+        //创建及小组管理权限
+        if(!userService.Authenticate(user.getRoleId(),"UC33") ){
+            model.addAttribute("message","增加成员权限不足！");
+            return "student/error";
+        }
+
         //获取当前小组
         Group group = studentService.getGroupByGroupId(groupId);
         //获取小组所属课程
@@ -376,6 +457,12 @@ public class StudentController {
     {
         //获取当前学生用户
         User user = (User) session.getAttribute("currentUser");
+        //创建及小组管理权限
+        if(!userService.Authenticate(user.getRoleId(),"UC33") ){
+            model.addAttribute("message","成员删除权限不足！");
+            return "student/error";
+        }
+
         if(user.getUserId().equals(studentId)){ //不能自己删除自己
             String urlParam = groupId.toString();
             return "redirect:/student/groupInfo?groupId=" + urlParam;

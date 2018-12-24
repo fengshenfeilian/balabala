@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 风之子
+  Date: 2018/11/30
+  Time: 14:10
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -69,7 +76,7 @@
 <body>
 <!-- 左侧菜单栏 -->
 <div id="leftSide">
-    <div class="logo"><a href="/student/home"><img src="/static/images/logo.png" alt="" /></a></div>
+    <div class="logo"><a href="index.html"><img src="/static/images/logo.png" alt="" /></a></div>
 
     <div class="sidebarSep mt0"></div>
 
@@ -83,20 +90,7 @@
 
     <!-- 左侧导航栏 -->
     <ul id="menu" class="nav">
-        <li class="dash"><a href="/student/home" title=""><span>我的主页</span></a></li>
-        <li class="tables"><a href="/student/course" title="" ><span>课程管理</span></a></li>
-        <li class="tables"><a href="#" title="" class="active exp"><span>作业管理</span><strong>2</strong></a>
-            <ul class="sub">
-                <li class="this"><a href="/student/assignment" title="">查看作业</a></li>
-                <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
-            </ul>
-        </li>
-        <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
-            <ul class="sub">
-                <li class="this"><a href="/student/groupList" title="" >我的小组</a></li>
-                <li><a href="/student/course" title="">创建小组</a></li>
-            </ul>
-        </li>
+        <li class="dash"><a href="/teacher/index" title="" class="active"><span>课程管理</span></a></li>
     </ul>
 </div>
 
@@ -105,7 +99,7 @@
     <!-- 顶部导航栏 -->
     <div class="topNav">
         <div class="wrapper">
-            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎<strong>【<c:out value="${sessionScope.currentUser.userName}"/>】同学</strong>使用本系统</span></div>
+            <div class="welcome"><a href="#" title=""><img src="/static/images/userPic.png" alt="" /></a><span>欢迎【<c:out value="${user.userName}" />】老师使用本系统</span></div>
 
             <div class="userNav">
                 <ul>
@@ -119,57 +113,20 @@
         </div>
     </div>
 
-    <div class="line"></div>
-    <div class="wrapper">
-        <div class="widget">
-            <form  method="post" id="validate" class="form" action="${pageContext.request.contextPath}/student/upload" enctype="multipart/form-data">
-                <%
-                    String assignmentId = request.getParameter("assignmentId");
-                    String groupId = request.getParameter("groupId");
-                %>
-                <div class="formRow">
-                    <label style="width:10%">作业号</label>
-                    <div ><input type="text" name="assignmentId" value="<%=assignmentId%>"  style="width:60%;" required/></div>
-                    <div class="clear"></div>
-                </div>
-                <div class="formRow">
-                    <label style="width:10%">小组号</label>
-                    <div ><input type="text" name="groupId"  value="<%=groupId%>"  style="width:60%;" required/></div>
-                    <div class="clear"></div>
-                </div>
-                <div class="formRow">
-                    <label style="width:10%">作业标题</label>
-                    <div><input type="text" name="title"  placeholder="" style="width:60%;" required/></div>
-                    <div class="clear"></div>
-                </div>
-                <div class="formRow">
-                    <label style="width:10%">作业文件</label>
-                    <div ><input type="file" name="body"  value="" style="width:60%;" required/></div>
-                    <div class="clear"></div>
-                </div>
-                <div class="loginControl">
-                    <input type="submit" value="创建" class="dblueB logMeIn" />
-                    <div class="clear"></div>
-                </div>
-            </form>
+    <div class="titleArea">
+        <div class="wrapper">
+            <div class="pageTitle">
+                <h5 style="color: darkred">错误</h5>
+                <p>${message}</p>
+            </div>
+            <div class="clear"></div>
         </div>
     </div>
-    <c:if test="${hasSubmitted==1}">
-        <div class="statsRow">
-            <div class="wrapper">
-                <div class="controlB">
-                    <p>注意：您已提交过该项作业，重复提交将重置成绩，请谨慎操作。</p>
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </div>
-    </c:if>
 
     <!-- Footer line -->
     <div id="footer">
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>
     </div>
-
 
     <div class="clear"></div>
 </div>

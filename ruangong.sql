@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018-12-15 16:19:39
+-- Generation Time: 2018-12-24 12:48:53
 -- 服务器版本： 10.1.16-MariaDB
 -- PHP Version: 5.3.29-upupw
 
@@ -41,8 +41,8 @@ CREATE TABLE IF NOT EXISTS `assignment` (
 --
 
 INSERT INTO `assignment` (`ASSIGNMENT_ID`, `TITLE`, `BODY`, `COURSE_ID`, `RELEASE_TIME`, `DEADLINE`, `PERCENT`) VALUES
-('40', '软件开发计划', '给出软件开发计划', 4, '2018-12-15 15:16:19', '2018-12-30 00:00:00', 20),
-('41', '第一次验收', '无', 4, '2018-12-15 15:32:36', '2018-12-30 00:00:00', 20);
+('40', '软件开发计划', '给出软件开发计划', 4, '2018-12-15 15:16:19', '2018-12-25 00:00:00', 10),
+('41', '第一次验收', '无', 4, '2018-12-15 15:32:36', '2018-12-25 00:00:00', 20);
 
 -- --------------------------------------------------------
 
@@ -60,14 +60,15 @@ CREATE TABLE IF NOT EXISTS `course` (
   `GROUP_PREFIX` varchar(30) DEFAULT NULL,
   `CREATE_TIME` datetime NOT NULL,
   `IS_END` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `course`
 --
 
 INSERT INTO `course` (`COURSE_ID`, `COURSE_NAME`, `COURSE_DESCRIPTION`, `TEACHER_ID`, `GROUP_CAPACITY_MIN`, `GROUP_CAPACITY_MAX`, `GROUP_PREFIX`, `CREATE_TIME`, `IS_END`) VALUES
-(4, '软件工程实践', '无', '199001255', 3, 5, '4-201804', '2018-12-15 14:57:46', 0);
+(4, '软件工程实践', '无', '199001255', 3, 5, '4-201804', '2018-12-15 14:57:46', 1),
+(5, '现代通信网', '介绍现代通信网', '199001255', 1, 5, '5-20182', '2018-09-01 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -81,15 +82,8 @@ CREATE TABLE IF NOT EXISTS `group_assignment` (
   `TITLE` varchar(255) DEFAULT NULL,
   `BODY` varchar(255) DEFAULT NULL,
   `SUBMISSION_TIME` datetime DEFAULT NULL,
-  `SCORE` int(11) DEFAULT NULL
+  `SCORE` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `group_assignment`
---
-
-INSERT INTO `group_assignment` (`ASSIGNMENT_ID`, `GROUP_ID`, `TITLE`, `BODY`, `SUBMISSION_TIME`, `SCORE`) VALUES
-('40', '4-2018041', 'test', 'C:\\Users\\marco\\Desktop\\balabala\\assignment\\test.xlsx', '2018-12-15 15:42:20', 90);
 
 -- --------------------------------------------------------
 
@@ -105,13 +99,6 @@ CREATE TABLE IF NOT EXISTS `group_course` (
   `LEADER_ID` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `group_course`
---
-
-INSERT INTO `group_course` (`GROUP_ID`, `COURSE_ID`, `GROUP_NAME`, `GROUP_MEMBER_NUM`, `LEADER_ID`) VALUES
-('4-2018041', 4, 'test', 2, '2015211232');
-
 -- --------------------------------------------------------
 
 --
@@ -121,16 +108,8 @@ INSERT INTO `group_course` (`GROUP_ID`, `COURSE_ID`, `GROUP_NAME`, `GROUP_MEMBER
 CREATE TABLE IF NOT EXISTS `group_student` (
   `GROUP_ID` varchar(30) NOT NULL,
   `STUDENT_ID` varchar(10) NOT NULL,
-  `GRADE` int(3) DEFAULT '100'
+  `GRADE` int(3) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `group_student`
---
-
-INSERT INTO `group_student` (`GROUP_ID`, `STUDENT_ID`, `GRADE`) VALUES
-('4-2018041', '2015211232', NULL),
-('4-2018041', '2015211242', NULL);
 
 -- --------------------------------------------------------
 
@@ -144,6 +123,28 @@ CREATE TABLE IF NOT EXISTS `privelege` (
   `DESCRIPTION` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- 转存表中的数据 `privelege`
+--
+
+INSERT INTO `privelege` (`PRI_ID`, `NAME`, `DESCRIPTION`) VALUES
+('UC1', '更新个人信息', NULL),
+('UC11', '设置课程', NULL),
+('UC12', '设置学生名单', NULL),
+('UC14', '设置小组配置', NULL),
+('UC15', '设置作业', NULL),
+('UC16', '作业检查', NULL),
+('UC17', '生成成绩', NULL),
+('UC19', '查看学生名单', NULL),
+('UC31', '查看课程信息', NULL),
+('UC32', '查看作业信息', NULL),
+('UC33', '创建及管理小组', NULL),
+('UC34', '提交作业', NULL),
+('UC35', '重复提交', NULL),
+('UC36', '查看成绩', NULL),
+('UC41', '用户导入', NULL),
+('UC42', '用户管理', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -154,6 +155,30 @@ CREATE TABLE IF NOT EXISTS `pri_role` (
   `ROLE_ID` varchar(11) NOT NULL,
   `PRI_ID` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `pri_role`
+--
+
+INSERT INTO `pri_role` (`ROLE_ID`, `PRI_ID`) VALUES
+('1', 'UC1'),
+('1', 'UC41'),
+('1', 'UC42'),
+('2', 'UC1'),
+('2', 'UC11'),
+('2', 'UC12'),
+('2', 'UC14'),
+('2', 'UC15'),
+('2', 'UC16'),
+('2', 'UC17'),
+('2', 'UC19'),
+('3', 'UC1'),
+('3', 'UC31'),
+('3', 'UC32'),
+('3', 'UC33'),
+('3', 'UC34'),
+('3', 'UC35'),
+('3', 'UC36');
 
 -- --------------------------------------------------------
 
@@ -185,7 +210,7 @@ INSERT INTO `role` (`ROLE_ID`, `NAME`, `DESCRIPTION`) VALUES
 CREATE TABLE IF NOT EXISTS `student_course` (
   `STUDENT_ID` varchar(10) NOT NULL,
   `COURSE_ID` int(10) NOT NULL,
-  `ASSIGNMENT_GRADE` int(11) DEFAULT '0',
+  `ASSIGNMENT_GRADE` int(11) NOT NULL DEFAULT '0',
   `DAILY_GRADE` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -194,8 +219,8 @@ CREATE TABLE IF NOT EXISTS `student_course` (
 --
 
 INSERT INTO `student_course` (`STUDENT_ID`, `COURSE_ID`, `ASSIGNMENT_GRADE`, `DAILY_GRADE`) VALUES
-('2015211232', 4, 0, 0),
-('2015211242', 4, 0, 0);
+('2015211232', 4, 4, 100),
+('2015211242', 4, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -221,12 +246,13 @@ CREATE TABLE IF NOT EXISTS `user_role` (
 --
 
 INSERT INTO `user_role` (`USER_ID`, `ROLE_ID`, `PASSWORD`, `USER_NAME`, `GENDER`, `EMAIL`, `DEPARTMENT`, `MAJOR`, `CLASSES`, `PWD_DEFAULT`) VALUES
-('199001255', '2', 'cdf6544f8f1043477cf8257baff76353', '张老师', '女', 'test@qq.com', '计算机', NULL, NULL, 1),
-('2014211232', '3', 'e74aed0bcfb66ed5a44cb1c1f20bca28', '张三', '男', '', '计算机', '计算机科学与技术', '2015211333', 0),
+('199001255', '2', 'cdf6544f8f1043477cf8257baff76353', '张老师', '女', 'test123@qq.com', '计算机', NULL, NULL, 1),
+('2014211232', '3', 'e74aed0bcfb66ed5a44cb1c1f20bca28', '张三', '男', '111@qq.com', '计算机', '计算机科学与技术', '2015211333', 0),
 ('2015211232', '3', 'e10adc3949ba59abbe56e057f20f883e', '郭子晖', '男', 'test2@qq.com', '计算机', '计算机科学与技术', '2015211304', 0),
 ('2015211242', '3', 'e10adc3949ba59abbe56e057f20f883e', '古同学', '男', '', '计算机', '计算机', '2015211304', 0),
+('2015211255', '3', '4db09faf87cfca9e4d3a6124adfee1bf', '王年', '女', '', '计算机', '计算机', '2015211304', 1),
 ('2015211303', '3', '74058fad5eebc032f067f05241d5a54d', '张盐城', '男', '', '计算机', '计算机', '2015211304', 1),
-('admin', '1', 'fcea920f7412b5da7be0cf42b8c93759', 'admin', '男', NULL, NULL, NULL, NULL, 0);
+('admin', '1', 'e10adc3949ba59abbe56e057f20f883e', 'admin', '男', NULL, NULL, NULL, NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -309,7 +335,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `COURSE_ID` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `COURSE_ID` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

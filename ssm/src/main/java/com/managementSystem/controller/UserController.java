@@ -180,12 +180,16 @@ public class UserController {
 
 
     //按条件查询用户
+    //加入鉴权
     @RequestMapping(value = "/selectUsers",method = RequestMethod.GET)
     public String getUsersWithRoleByRoleName(@RequestParam(value = "roleName",defaultValue = "")String roleName,
                                             HttpSession session,Model model){
-        User curUser = (User)session.getAttribute("user");
+        User curUser = (User)session.getAttribute("currentUser");
+        //用户管理权限
+       if(!userService.Authenticate(curUser.getRoleId(),"UC42")){
+            return null;
+        }
         //非管理员不能查找管理员
-        if(roleName.equals("admin")) roleName="";
         List<User> users = userService.getUsersWithRoleByExample(roleName,"","","","");
         model.addAttribute("users",users);
         model.addAttribute("searchRoleName",roleName);
@@ -194,7 +198,7 @@ public class UserController {
             return "admin/studentMangement";
         else if(roleName.equals("teacher"))
             return "admin/teacherMangement";
-        return "loginError";
+        return null;
     }
 
     //查询的条件可在前端设置全局变量
@@ -215,17 +219,17 @@ public class UserController {
     }
 
 
-    //通过输入添加用户
-    @RequestMapping(value = "/addUsers",method = RequestMethod.POST)
-    public String addUserByInput(User user,HttpSession session,Model model){
-        userService.addUserByInput(user);
-        model.addAttribute("addResult","complete");
-        return "admin";
-    }
 
+
+    //加入鉴权
     @RequestMapping(value = "/addUsersWithJson",method = RequestMethod.POST)
     @ResponseBody
     public Msg addUserByInputWithJson(HttpSession session,@Valid User user,BindingResult result){
+        User curUser = (User)session.getAttribute("currentUser");
+        //用户管理权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC42")){
+            return Msg.fail("用户权限不足！");
+        }
         if(userService.getUserWithRoleById(user.getUserId())!=null){
             return Msg.fail("用户id重复！");
         }
@@ -245,9 +249,16 @@ public class UserController {
 
 
     //通过文件添加用户
+    //加入鉴权
     @RequestMapping(value = "/addUsersWithFile", method =RequestMethod.POST)
     @ResponseBody
     public Msg addUserByFile(@RequestParam(value="filename",required = false) MultipartFile file, HttpSession session,Model model){
+        User curUser = (User)session.getAttribute("currentUser");
+        //导入用户权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC41")){
+            return Msg.fail("用户权限不足！");
+        }
+
         if(file==null) return Msg.fail("请选择文件！");
         //获取文件名
         String name = file.getOriginalFilename();
@@ -261,21 +272,17 @@ public class UserController {
     }
 
 
-
-    //更新用户
-    @RequestMapping(value = "/updateUsers/{userId}",method = RequestMethod.PUT)
-    public String updateUser(User user,HttpSession session,Model model){
-
-        //数据后端校验
-        userService.updateUser(user);
-        model.addAttribute("updateResult","complete");
-        return "admin";
-    }
-
+    //用户修改个人信息
+    //加入鉴权
     @RequestMapping(value = "/updateUsersWithJson/{userId}",method = RequestMethod.PUT)
     @ResponseBody
     public Msg updateUserWithJson(HttpSession session, @Valid User user, BindingResult result){
 
+        User curUser = (User)session.getAttribute("currentUser");
+        //更新个人信息权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC1")){
+            return Msg.fail("用户权限不足！");
+        }
         //数据后端校验
         if(result.hasErrors()){
             Map<String,Object> map = new HashMap<>();
@@ -289,12 +296,44 @@ public class UserController {
         return Msg.success("更新成功！");
     }
 
+    //管理员修改用户信息
+    //加入鉴权
+    @RequestMapping(value = "/adminUpdateUsersWithJson/{userId}",method = RequestMethod.PUT)
+    @ResponseBody
+    public Msg adminUpdateUserWithJson(HttpSession session, @Valid User user, BindingResult result){
+
+        User curUser = (User)session.getAttribute("currentUser");
+        //用户管理权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC42")){
+            return Msg.fail("用户权限不足！");
+        }
+        //数据后端校验
+        if(result.hasErrors()){
+            Map<String,Object> map = new HashMap<>();
+            List<FieldError> errors = result.getFieldErrors();
+            for(FieldError fieldError:errors){
+                map.put(fieldError.getField(),fieldError.getDefaultMessage());
+            }
+            return Msg.fail("更新失败！").add("errorFields",map);
+        }
+        userService.updateUser(user);
+        return Msg.success("更新成功！");
+    }
+
+
+    //加入鉴权
     @RequestMapping(value = "/updatePasswordWithJson",method = RequestMethod.POST)
     @ResponseBody
     public Msg updatePasswordWithJson(HttpSession session,
                                       @RequestParam(value = "userId",defaultValue = "")String userId,
                                       @RequestParam(value = "old_password",defaultValue = "")String oldPassword,
                                       @RequestParam(value = "password",defaultValue = "")String password){
+
+        User curUser = (User)session.getAttribute("currentUser");
+        //更新个人信息权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC1")){
+            return Msg.fail("用户权限不足！");
+        }
         User user = userService.getUserWithRoleById(userId);
         System.out.println(oldPassword);
         System.out.println(user.getPassword());
@@ -317,26 +356,15 @@ public class UserController {
     }
 
     //单个/批量删除用户，批量需传入以“-”分隔的用户id
-    @RequestMapping(value = "/deleteUsers/{ids}",method = RequestMethod.DELETE)
-    public String deleteUsers(@PathVariable("ids")String ids,HttpSession session,Model model){
-        if(ids.contains("-")){
-            List<String> del_ids = new ArrayList<>();
-            String[] str_ids= ids.split("-");
-            for(String string:str_ids){
-                del_ids.add(string);
-            }
-            userService.deleteUsers(del_ids);
-        }
-        else{
-            userService.deleteUser(ids);
-        }
-        model.addAttribute("deleteResult","complete");
-        return "admin";
-    }
-
+   //加入鉴权
     @RequestMapping(value = "/deleteUsersWithJson/{ids}",method = RequestMethod.DELETE)
     @ResponseBody
     public Msg deleteUsersWithJson(@PathVariable("ids")String ids,HttpSession session){
+        User curUser = (User)session.getAttribute("currentUser");
+        //用户管理权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC42")){
+            return Msg.fail("用户权限不足！");
+        }
         if(ids.contains("-")){
             List<String> del_ids = new ArrayList<>();
             String[] str_ids= ids.split("-");

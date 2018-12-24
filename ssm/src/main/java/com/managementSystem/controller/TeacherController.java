@@ -39,6 +39,9 @@ public class TeacherController {
     @Autowired
     TeacherService teacherService;
 
+    @Autowired
+    UserService userService;
+
     //进入首页
     @RequestMapping(value = "/index")
     public String gotoIndex(Model model, HttpSession session ){
@@ -50,6 +53,7 @@ public class TeacherController {
     }
 
     //创建课程
+    //加入鉴权
     @RequestMapping(value = "/createCourse", method = RequestMethod.POST)
     public String createCourse(@RequestParam(value = "courseName")String courseName,
                                @RequestParam(value = "description")String description,
@@ -57,6 +61,13 @@ public class TeacherController {
                                @RequestParam(value = "maxNum") String maxNum,
                                @RequestParam(value = "startTime") String startTime,
                                Model model, HttpSession session, HttpServletRequest request) throws ParseException {
+        User curUser = (User)session.getAttribute("currentUser");
+        //设置课程权限与小组设置权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC11") && !userService.Authenticate(curUser.getRoleId(),"UC14")){
+            model.addAttribute("message","创建课程权限不足！");
+            return "teacher/error";
+        }
+
         Course course = new Course();
         User user = (User) session.getAttribute("currentUser");
         course.setCourseName(courseName);
@@ -80,7 +91,7 @@ public class TeacherController {
         if(teacherService.findCourse(course) == true)
         {
             model.addAttribute("message", "课程已存在");
-            return "/teacher/course";
+            return "teacher/error";
         }
         //小组前缀前加“课程id-”
         teacherService.createNewCourse(course);
@@ -98,9 +109,17 @@ public class TeacherController {
         return "teacher/createCourse";
     }
 
+
+    //加入鉴权
     @RequestMapping(value = "/addStudentByFile", method = RequestMethod.POST)
     public String addStudentByFile(@RequestParam(value="filename") MultipartFile file, Model model, HttpSession session)
     {
+        User curUser = (User)session.getAttribute("currentUser");
+        //设置学生名单权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC12")){
+            model.addAttribute("message","设置学生名单权限不足！");
+            return "teacher/error";
+        }
         if(file==null) return null;
         //获取文件名
         String name = file.getOriginalFilename();
@@ -115,7 +134,10 @@ public class TeacherController {
         List<User> users = teacherService.getAllUsers(student_courses);
         model.addAttribute("students", users);
 
-        if(name==null || ("").equals(name) && size==0) return "teacher/students";
+        if(name==null || ("").equals(name) && size==0) {
+            model.addAttribute("message","找不到文件或文件为空");
+            return "teacher/error";
+        }
         //批量导入。参数：文件名，文件。
 
         Integer courseId = course.getCourseId();
@@ -124,15 +146,22 @@ public class TeacherController {
         return "teacher/students";
     }
 
+    //加入鉴权
     @RequestMapping(value = "/addDailyScore", method = RequestMethod.POST)
     public String addDailyScore(@RequestParam(value="filename") MultipartFile file, Model model, HttpSession session)
     {
+        User curUser = (User)session.getAttribute("currentUser");
+        //设置学生名单权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC12")){
+            model.addAttribute("message","设置学生名单权限不足！");
+            return "teacher/error";
+        }
         if(file==null) return null;
         //获取文件名
         String name = file.getOriginalFilename();
         //进一步判断文件是否为空（即判断其大小是否为0或其名称是否为null）
         long size=file.getSize();
-        //页面返回有问题
+
         Course course = (Course) session.getAttribute("currentCourse");
         User user = (User) session.getAttribute("currentUser");
         List<Student_Course> student_courses = teacherService.getAllStudentsInfo(course.getCourseId());
@@ -170,12 +199,21 @@ public class TeacherController {
         return "teacher/addAssignment";
     }
 
+    //加入鉴权
     @RequestMapping(value = "/addAssignment", method = RequestMethod.POST)
     public String addAssignment(@RequestParam(value = "assignmentName") String name,
                                 @RequestParam(value = "description")String description,
                                 @RequestParam(value = "deadline")String deadline,
                                 @RequestParam(value = "percentage") String percentage,
                                 Model model, HttpSession session, HttpServletRequest request) throws ParseException {
+
+        User curUser = (User)session.getAttribute("currentUser");
+        //设置作业权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC15")){
+            model.addAttribute("message","设置作业权限不足！");
+            return "teacher/error";
+        }
+
         Assignment assignment = new Assignment();
         assignment.setTitle(name);
         assignment.setBody(description);
@@ -209,9 +247,16 @@ public class TeacherController {
         return "teacher/assignments";
     }
 */
+    //加入鉴权
     @RequestMapping(value = "/showSubmitedAssignments")
     public String showSubmitedAssignments(HttpSession httpSession, HttpServletRequest request, Model model)
     {
+        User curUser = (User)httpSession.getAttribute("currentUser");
+        //作业检查权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC16")){
+            model.addAttribute("message","查看作业权限不足！");
+            return "teacher/error";
+        }
         String assignmentId = request.getParameter("assignmentId");
         Assignment assignment = teacherService.getCurrentAssignment(assignmentId);
         httpSession.setAttribute("currentAssignment", assignment);
@@ -233,9 +278,16 @@ public class TeacherController {
         return "teacher/assignments";
     }
 
+    //加入鉴权
     @RequestMapping(value = "/modifyPercent", method=RequestMethod.POST)
     public String modifyPercent(@RequestParam(value = "newPercent") String newPercent, HttpSession session, Model model)
     {
+        User curUser = (User)session.getAttribute("currentUser");
+        //设置作业权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC15")){
+            model.addAttribute("message","修改比例权限不足！");
+            return "teacher/error";
+        }
         Assignment assignment = (Assignment) session.getAttribute("currentAssignment");
         assignment.setPercent(Integer.parseInt(newPercent));
         teacherService.updatePercent(assignment);
@@ -303,6 +355,12 @@ public class TeacherController {
                              HttpServletRequest request,
                              Model model)
     {
+        User curUser = (User)httpSession.getAttribute("currentUser");
+        //生成成绩权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC17")){
+            model.addAttribute("message","生成成绩权限不足！");
+            return "teacher/error";
+        }
         Group_Assignment group_assignment = (Group_Assignment) httpSession.getAttribute("current_group_assignment");
         group_assignment.setScore(Integer.parseInt(grade));
         teacherService.updateGroupGrade(group_assignment);
@@ -328,6 +386,12 @@ public class TeacherController {
     @RequestMapping(value = "/createScore")
     public String createScore(HttpSession session, HttpServletRequest request, Model model)
     {
+        User curUser = (User)session.getAttribute("currentUser");
+        //生成成绩权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC17")){
+            model.addAttribute("message","生成成绩权限不足！");
+            return "teacher/error";
+        }
         Course course = (Course) session.getAttribute("currentCourse");
         User user = (User) session.getAttribute("currentUser");
         Integer courseId = teacherService.getCourseId(course.getCourseName(), user.getUserId());
@@ -338,6 +402,10 @@ public class TeacherController {
             double grade = 0.0;
             String studentId = student.getStudentId();
             String groupId = teacherService.getGroupID(courseId, studentId);
+            if(groupId==null || groupId.equals("")){
+                model.addAttribute("message","找不到小组信息");
+                return "teacher/error";
+            }
             //获取小组评分
             Integer groupGrade = teacherService.getGroupGrade(courseId, studentId);
             List<Group_Assignment> group_assignments = teacherService.getGroupAssignemnt(groupId);
@@ -369,6 +437,12 @@ public class TeacherController {
     @RequestMapping(value = "/showAllStudents")
     public String showAllStudents(HttpSession httpSession, HttpServletRequest request, Model model)
     {
+        User curUser = (User)httpSession.getAttribute("currentUser");
+        //查看学生名单权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC19")){
+            model.addAttribute("message","查看学生权限不足！");
+            return "teacher/error";
+        }
         Course course = (Course) httpSession.getAttribute("currentCourse");
         User user = (User) httpSession.getAttribute("currentUser");
         Integer courseId = teacherService.getCourseId(course.getCourseName(), user.getUserId());
@@ -395,6 +469,12 @@ public class TeacherController {
 
     @RequestMapping(value = "/scoreToExcel")
     public String scoreToExcel(Model model, HttpSession session) throws IOException {
+        User curUser = (User)session.getAttribute("currentUser");
+        //生成成绩权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC17")){
+            model.addAttribute("message","生成成绩权限不足！");
+            return "teacher/error";
+        }
         Course course = (Course) session.getAttribute("currentCourse");
         int assignCount = teacherService.getAssignmentCount(course.getCourseId());
         //System.out.println("assignCount:"+assignCount);
@@ -439,6 +519,10 @@ public class TeacherController {
             //获取学生所选课程所在的小组
             String groupId= teacherService.getGroupID(course.getCourseId(), user.getUserId());
             //获取该小组所交的作业
+            if(groupId==null || groupId.equals("")){
+                model.addAttribute("message","找不到小组信息");
+                return "teacher/error";
+            }
             List<Group_Assignment> group_assignments = teacherService.getGroupAssignemnt(groupId);
             //System.out.println(group_assignments.size());
             double grade = 0.0;
@@ -482,6 +566,7 @@ public class TeacherController {
                              HttpServletRequest request,
                              HttpServletResponse response,
                              Model model) throws IOException {
+
         Group_Assignment group_assignment = (Group_Assignment)  request.getSession().getAttribute(
                 "current_group_assignment");
        /* File file = new File("D:/down");

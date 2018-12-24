@@ -88,11 +88,11 @@
 
                     <div class="formRow">
                         <label style="width:10%">性别</label>
-                        <c:if test="${updateUser.gender=='男'}">
+                        <c:if test="${updateUser.gender=='男' || updateUser.gender=='male'}">
                             <label><input type="radio" name="gender" value="男" checked/>男</label>
                             <label><input type="radio" name="gender" value="女"/>女</label>
                         </c:if>
-                        <c:if test="${updateUser.gender=='女'}">
+                        <c:if test="${updateUser.gender=='女' || updateUser.gender=='female'}">
                             <label><input type="radio" name="gender" value="男" />男</label>
                             <label><input type="radio" name="gender" value="女" checked/>女</label>
                         </c:if>
@@ -153,11 +153,11 @@
 
                     <div class="formRow">
                         <label style="width:10%">性别</label>
-                        <c:if test="${updateUser.gender=='男'}">
+                        <c:if test="${updateUser.gender=='男' || updateUser.gender=='male'}">
                             <label><input type="radio" name="gender" value="男" checked/>男</label>
                             <label><input type="radio" name="gender" value="女"/>女</label>
                         </c:if>
-                        <c:if test="${updateUser.gender=='女'}">
+                        <c:if test="${updateUser.gender=='女' || updateUser.gender=='female'}">
                             <label><input type="radio" name="gender" value="男" />男</label>
                             <label><input type="radio" name="gender" value="女" checked/>女</label>
                         </c:if>
@@ -248,7 +248,7 @@
         //alert(datas);
         if(svalidator.form()){
             $.ajax({
-                url:"${pageContext.request.contextPath}/user/updateUsersWithJson/"+'${updateUser.userId}',
+                url:"${pageContext.request.contextPath}/user/adminUpdateUsersWithJson/"+'${updateUser.userId}',
                 data:datas + "&_method=PUT",
                 type:"POST",
                 success:function(result){
@@ -271,7 +271,7 @@
         //alert(datas);
         if(tvalidator.form()){
             $.ajax({
-                url:"${pageContext.request.contextPath}/user/updateUsersWithJson/"+'${updateUser.userId}',
+                url:"${pageContext.request.contextPath}/user/adminUpdateUsersWithJson/"+'${updateUser.userId}',
                 data:datas + "&_method=PUT",
                 type:"POST",
                 success:function(result){
