@@ -184,7 +184,7 @@
         <!-- Widgets -->
         <div class="widgets">
             <div class="widget">
-                <form action="${pageContext.request.contextPath }/user/deleteUsers" method="post">
+                <form>
                     <div class="title">
                         <img src="/static/images/icons/dark/frames.png" alt="" class="titleIcon" />
                         <h6>学生列表</h6>
@@ -198,6 +198,7 @@
                             <td class="sortCol"><div>平时成绩<span></span></div></td>
                             <td class="sortCol"><div>个人总成绩<span></span></div></td>
                             <td class="sortCol"><div>总成绩<span></span></div></td>
+                            <td class="sortCol"><div>操作<span></span></div></td>
                         </tr>
                         </thead>
                         <tbody align="center">
@@ -209,6 +210,7 @@
                                 <td>${student_course.dailyGrade}</td>
                                 <td>${student_course.assignmentGrade}</td>
                                 <td>${student_course.assignmentGrade*0.8+student_course.dailyGrade*0.2}</td>
+                                <td><a href="${pageContext.request.contextPath }/teacher/deleteStudent?studentId=${student_course.studentId}">删除</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

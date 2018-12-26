@@ -153,20 +153,7 @@ public class UserController {
         }
         return "admin/userUpdate";
     }
-    //查询所有用户
-    @RequestMapping("/selectAllUsers")
-    public String getUsers(HttpSession session,Model model){
-        //分页查询，引入pagehelper插件
-        //在查询之前调用，引入页码和页面大小
-        //PageHelper.startPage(pn,5);
-        //startPage后紧跟的就是分页查询
-        List<User> users = userService.getAllUsersWithRole();
-        //使用pageinfo包装查询后的结果，封装了查询详细信息和页面信息，将pageInfo交给页面
-        //PageInfo pageInfo = new PageInfo(users,5);//可传入连续显示的页数
-        //model.addAttribute("pageInfo",pageInfo);
-        model.addAttribute("users",users);
-        return "admin";
-    }
+
 
 
     //返回结果为json的查询

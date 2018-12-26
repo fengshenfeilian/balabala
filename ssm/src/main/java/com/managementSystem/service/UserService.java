@@ -78,7 +78,7 @@ public class UserService {
             //默认用户密码为学号，并对其进行md5加密
             user.setPassword(MD5Utils.getPwd(user.getUserId()));
             if(userMapper.selectByPrimaryKey(user.getUserId())==null)
-                userMapper.insert(user);
+                userMapper.insertSelective(user);
         }
     }
 

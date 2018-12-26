@@ -56,9 +56,16 @@ public class TeacherService {
         ReadExcel readExcel = new ReadExcel();
         List<Student_Course> student_courses = readExcel.getStudentId(name, file);
         for (Student_Course student_course : student_courses) {
+            Student_CourseKey key = new Student_CourseKey();
+            key.setCourseId(courseId);
+            key.setStudentId(student_course.getStudentId());
+
+            student_course.setCourseId(courseId);
             student_course.setDailyGrade(0);
             student_course.setAssignmentGrade(0);
-            student_courseMapper.insert(student_course);
+            if(student_courseMapper.selectByPrimaryKey(key)==null)
+                //System.out.println("test");
+                student_courseMapper.insertSelective(student_course);
         }
     }
 
@@ -257,5 +264,11 @@ public class TeacherService {
 
     public void updatePercent(Assignment assignment) {
         assignmentMapper.updateByPrimaryKey(assignment);
+    }
+
+    public void deleteStudent(String studentId,Integer courseId){
+        Student_CourseKey key = new Student_CourseKey();
+        key.setStudentId(studentId);key.setCourseId(courseId);
+        student_courseMapper.deleteByPrimaryKey(key);
     }
 }

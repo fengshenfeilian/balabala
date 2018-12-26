@@ -128,11 +128,7 @@ public class TeacherController {
 
         Course course = (Course) session.getAttribute("currentCourse");
         User user = (User) session.getAttribute("currentUser");
-        List<Student_Course> student_courses = teacherService.getAllStudentsInfo(course.getCourseId());
-        model.addAttribute("student_courses", student_courses);
-        model.addAttribute("course", course);
-        List<User> users = teacherService.getAllUsers(student_courses);
-        model.addAttribute("students", users);
+
 
         if(name==null || ("").equals(name) && size==0) {
             model.addAttribute("message","找不到文件或文件为空");
@@ -143,6 +139,12 @@ public class TeacherController {
         Integer courseId = course.getCourseId();
         teacherService.addUserByFile(name, file, courseId);
 
+
+        List<Student_Course> student_courses = teacherService.getAllStudentsInfo(course.getCourseId());
+        model.addAttribute("student_courses", student_courses);
+        model.addAttribute("course", course);
+        List<User> users = teacherService.getAllUsers(student_courses);
+        model.addAttribute("students", users);
         return "teacher/students";
     }
 
@@ -153,7 +155,7 @@ public class TeacherController {
         User curUser = (User)session.getAttribute("currentUser");
         //设置学生名单权限
         if(!userService.Authenticate(curUser.getRoleId(),"UC12")){
-            model.addAttribute("message","设置学生名单权限不足！");
+            model.addAttribute("message","更新平时成绩权限不足！");
             return "teacher/error";
         }
         if(file==null) return null;
@@ -235,18 +237,7 @@ public class TeacherController {
         model.addAttribute("assignments", assignments);
         return "teacher/course";
     }
-/*
-    @RequestMapping(value = "/showAssignments")
-    public String showAssignments(HttpSession httpSession, HttpServletRequest request, Model model)
-    {
-        Course course = (Course) httpSession.getAttribute("currentCourse");
-        User user = (User) httpSession.getAttribute("currentUser");
-        Integer courseId = course.getCourseId();
-        List<Assignment> assignments = teacherService.getAssignments(courseId);
-        model.addAttribute("assignments", assignments);
-        return "teacher/assignments";
-    }
-*/
+
     //加入鉴权
     @RequestMapping(value = "/showSubmitedAssignments")
     public String showSubmitedAssignments(HttpSession httpSession, HttpServletRequest request, Model model)
@@ -602,5 +593,30 @@ public class TeacherController {
             out.flush();
         }
         out.close();
+    }
+
+    @RequestMapping(value="/deleteStudent")
+    public String deleteStudent(@RequestParam(value = "studentId") String studentId,
+                              HttpSession httpSession,
+                              Model model){
+        User curUser = (User)httpSession.getAttribute("currentUser");
+        //查看学生名单权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC19")){
+            model.addAttribute("message","删除学生权限不足！");
+            return "teacher/error";
+        }
+        Course course = (Course) httpSession.getAttribute("currentCourse");
+        User user = (User) httpSession.getAttribute("currentUser");
+        Integer courseId = teacherService.getCourseId(course.getCourseName(), user.getUserId());
+
+        //删除学生
+        teacherService.deleteStudent(studentId,courseId);
+
+        List<Student_Course> student_courses = teacherService.getAllStudentsInfo(courseId);
+        model.addAttribute("student_courses", student_courses);
+        model.addAttribute("course", course);
+        List<User> students = teacherService.getAllUsers(student_courses);
+        model.addAttribute("students", students);
+        return "teacher/students";
     }
 }
