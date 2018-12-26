@@ -159,8 +159,8 @@
                         <div class="clear"></div>
                     </div>
                     <div class="formRow">
-                        <label style="width:10%">成绩</label>
-                        <div ><input type="text" name="grade"  class="validate[required,custom[onlyNumberSp]]" style="width:80%;" required/></div>
+                        <label style="width:10%">成绩(60-100)</label>
+                        <div ><input type="text" name="grade"  class="validate[required,custom[onlyNumberSp]]" style="width:80%;" required /></div>
                         <div class="clear"></div>
                     </div>
                     <div class="loginControl">
@@ -172,7 +172,27 @@
 
         </div>
     </div>
-
+    <script type="text/javascript">
+        $("#validate").validate({
+            rules:{
+                grade:{
+                    digits:true,
+                    range:[60,100]
+                },
+            },
+            messages:{
+                grade:{
+                    required:"此项必填",
+                    digits:"只能为数字",
+                    range:"成绩范围错误"
+                }
+            },
+            //提交表单后，（第一个）未通过验证的表单获得焦点
+            focusInvalid:true,
+            //当未通过验证的元素获得焦点时，移除错误提示
+            focusCleanup:true,
+        });
+    </script>
     <!-- Footer line -->
     <div id="footer">
         <div class="wrapper">All rights reserved by <a href="http://hashmap.me">Marco Hao</a></div>

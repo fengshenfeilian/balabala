@@ -232,7 +232,7 @@ public class StudentController {
             if(studentService.existGroupAssignment(assignmentId,groupId)){
                 studentService.deleteGroupAssignment(assignmentId,groupId);
             }
-            String rootPath = "D:/assignments/"+title+"/";
+            String rootPath = "D:/assignments/"+ groupId + "-" + assignmentId + "-" + title  + "/";
             //上传(学生)作业
             String filename = file.getOriginalFilename();
             try {
@@ -373,6 +373,8 @@ public class StudentController {
             studentService.insertGroup(courseId, groupName, user.getUserId());
             return "redirect:/student/groupList";
         }
+
+
         return "redirect:/student/addGroup";
     }
 
@@ -437,14 +439,18 @@ public class StudentController {
     public String gotoupdateScore(@RequestParam(value = "groupId")String groupId,
                                   @RequestParam(value = "studentId")String studentId,
                                   @RequestParam(value = "grade")String grade,
-                                  HttpServletRequest request
-                                  )throws ParseException
+                                  HttpServletRequest request,
+                                  Model model)throws ParseException
     {
         Integer curGrade = Integer.parseInt(grade);
-        if((curGrade >= 60) || curGrade <= 100){//一个合法的成绩
+        if((curGrade >= 60) && curGrade <= 100){//一个合法的成绩
             studentService.updateScoreByGroupMember(groupId,studentId,curGrade);
+            return "redirect:/student/groupInfo?groupId=" + groupId;
         }
-        return "redirect:/student/groupInfo?groupId=" + groupId;
+        else {
+            model.addAttribute("message","不合法的分数！");
+            return "student/error";
+        }
 
     }
 

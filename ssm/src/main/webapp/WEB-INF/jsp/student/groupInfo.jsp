@@ -157,7 +157,11 @@
                 <tr>
                     <th class="sortCol"><div>学生号<span></span></div></th>
                     <th class="sortCol"><div>学生姓名<span></span></div></th>
+                    <th class="sortCol"><div>性别<span></span></div></th>
+                    <th class="sortCol"><div>学院<span></span></div></th>
+                    <th class="sortCol"><div>专业<span></span></div></th>
                     <th class="sortCol"><div>班级<span></span></div></th>
+                    <th class="sortCol"><div>Email<span></span></div></th>
                     <th class="sortCol"><div>成绩<span></span></div></th>
                     <th class="sortCol"><div>选项<span></span></div></th>
                 </tr>
@@ -167,7 +171,11 @@
                     <tr>
                         <td>${gsList.studentId}</td>
                         <td>${curGroupMembers[loop.count-1].userName}</td>
+                        <td>${curGroupMembers[loop.count-1].gender}</td>
+                        <td>${curGroupMembers[loop.count-1].department}</td>
+                        <td>${curGroupMembers[loop.count-1].major}</td>
                         <td>${curGroupMembers[loop.count-1].classes}</td>
+                        <td>${curGroupMembers[loop.count-1].email}</td>
                         <td>${gsList.grade}</td>
                         <td>
                             <c:if test="${isGroupLeader}"><%--是组长--%>
@@ -206,6 +214,7 @@
                     <th class="sortCol"><div>学院<span></span></div></th>
                     <th class="sortCol"><div>专业<span></span></div></th>
                     <th class="sortCol"><div>班级<span></span></div></th>
+                    <th class="sortCol"><div>Email<span></span></div></th>
                     <th class="sortCol"><div>选项<span></span></div></th>
                 </tr>
                 </thead>
@@ -218,6 +227,7 @@
                         <td>${availabelStudent.department}</td>
                         <td>${availabelStudent.major}</td>
                         <td>${availabelStudent.classes}</td>
+                        <td>${availabelStudent.email}</td>
                         <td>
                             <c:if test="${isGroupLeader}"><%--是组长--%>
                                 <a href="/student/addGroupMember/?studentId=${availabelStudent.userId}&groupId=${curGroup.groupId}"><button class="blueB">添加到小组</button></a>

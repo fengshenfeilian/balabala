@@ -131,7 +131,7 @@
                 <div class="formRow"><p>课程简介:<strong>${course.courseDescription}</strong></p></div>
                 <div class="formRow"><p>任课教师:<strong>${currentCourseTeacherName}</strong></p></div>
                 <div class="formRow"><p>课程创建时间:<strong>${course.createTime}</strong></p></div>
-                <div class="formRow"><p>课程是否结束:<strong>${course.isEnd}</strong></p></div>
+                <div class="formRow"><p>课程是否结束:<strong>${course.isEnd==1?"是":"否"}</strong></p></div>
             </div>
             <div class="clear"></div>
         </div>

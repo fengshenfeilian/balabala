@@ -164,7 +164,7 @@ public class StudentService {
 
             long mSecond = ddl.getTime() - date.getTime();
             long day = mSecond / (1000*60*60*24);
-            if(day < 3){//距离截止日期不足3天
+            if(day < 3 && day > 0){//距离截止日期不足3天
                 Group_AssignmentKey gak = new Group_AssignmentKey();
                 gak.setAssignmentId(assignment.getAssignmentId());
                 gak.setGroupId(groupId);
@@ -172,7 +172,6 @@ public class StudentService {
                 if(ga == null){//仍未提交作业
                     return true;
                 }
-
             }
         }
         return false;
@@ -203,11 +202,11 @@ public class StudentService {
         Group_Student gs = new Group_Student();
         gs.setGroupId(groupId);
         gs.setStudentId(studentId);
-        group_studentMapper.insert(gs);
+        group_studentMapper.insertSelective(gs);
         //Group_Course表更新(小组成员数量 + 1)
         Group group = groupMapper.selectByPrimaryKey(groupId);
         group.setGroupMemberNum(group.getGroupMemberNum() + 1);
-        groupMapper.updateByPrimaryKey(group);
+        groupMapper.updateByPrimaryKeySelective(group);
     }
 
     //删除一个小组成员
@@ -295,12 +294,12 @@ public class StudentService {
         newGroup.setGroupMemberNum(groupMemberNum);
         newGroup.setLeaderId(userId);
         //向数据表Group_Course插入小组
-        groupMapper.insert(newGroup);
+        groupMapper.insertSelective(newGroup);
         //向数据表Group_Student插入小组_学生数据
         Group_Student newGS = new Group_Student();
         newGS.setStudentId(userId);
         newGS.setGroupId(groupId);
-        group_studentMapper.insert(newGS);
+        group_studentMapper.insertSelective(newGS);
     }
 
     //当前课程的所有学生
