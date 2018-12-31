@@ -88,7 +88,7 @@
         <li class="tables"><a href="#" title="" class="active exp"><span>作业管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/assignment" title="">查看作业</a></li>
-                <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
+                <%--<li><a href="/student/uploadAssignment" title="">上传作业</a></li>--%>
             </ul>
         </li>
         <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
@@ -127,7 +127,7 @@
     <div class="wrapper">
         <div class="widget">
             <div class="title"><img src="images/icons/dark/frames.png" alt="" class="titleIcon" />
-                <h6>已选课程列表</h6></div>
+                <h6>已创建小组的课程</h6></div>
             <table cellpadding="0" cellspacing="0" width="100%" class="display dTable" id="res1">
                 <thead>
                 <tr>

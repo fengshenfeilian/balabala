@@ -88,7 +88,7 @@
         <li class="tables"><a href="#" title="" class="exp"><span>作业管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/assignment" title="">查看作业</a></li>
-                <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
+                <%--<li><a href="/student/uploadAssignment" title="">上传作业</a></li>--%>
             </ul>
         </li>
         <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>2</strong></a>
@@ -127,6 +127,7 @@
                 <p>小组号:<strong>${curGroup.groupId}</strong></p>
                 <p>小组名:<strong>${curGroup.groupName}</strong></p>
                 <p>所属课程号:<strong>${curGroup.courseId}</strong></p>
+                <p>小组人数:<strong>${curCourse.groupCapacityMin}-${curCourse.groupCapacityMax}</strong></p>
                 <p>成员数量:<strong>${curGroup.groupMemberNum}</strong></p>
                 <p>组长:<strong>${curGroup.leaderId}</strong></p>
             </div>
@@ -179,7 +180,7 @@
                         <td>${gsList.grade}</td>
                         <td>
                             <c:if test="${isGroupLeader}"><%--是组长--%>
-                                <c:if test="${gsList.studentId} != ${curGroup.leaderId}">
+                                <c:if test="${gsList.studentId != curGroup.leaderId}">
                                     <a href="/student/deleteGroupMember?studentId=${gsList.studentId}&groupId=${curGroup.groupId}"><button class="redB">删除</button></a>
                                 </c:if>
                                 <c:choose>
@@ -190,7 +191,6 @@
                                         已结课
                                     </c:otherwise>
                                 </c:choose>
-
                             </c:if>
                         </td>
                     </tr>

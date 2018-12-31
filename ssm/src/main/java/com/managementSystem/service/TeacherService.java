@@ -34,6 +34,14 @@ public class TeacherService {
     @Autowired
     Group_StudentMapper group_studentMapper;
 
+    public void deleteAssignmentById(String assignmentId){
+        assignmentMapper.deleteByPrimaryKey(assignmentId);
+        //删除作业要求和提交的作业
+        Group_AssignmentExample group_assignmentExample = new Group_AssignmentExample();
+        Group_AssignmentExample.Criteria criteria = group_assignmentExample.createCriteria();
+        criteria.andAssignmentIdEqualTo(assignmentId);
+        group_assignmentMapper.deleteByExample(group_assignmentExample);
+    }
     public List<Course> getAllCourses(String teacherId)
     {
         CourseExample courseExample = new CourseExample();
@@ -81,7 +89,7 @@ public class TeacherService {
 
     public void addAssignment(Assignment assignment)
     {
-        assignmentMapper.insert(assignment);
+        assignmentMapper.insertSelective(assignment);
     }
 
     public List<Assignment> getAssignments(Integer courseId)
@@ -98,6 +106,11 @@ public class TeacherService {
         AssignmentExample.Criteria criteria = assignmentExample.createCriteria();
         criteria.andCourseIdEqualTo(courseId);
         long num = assignmentMapper.countByExample(assignmentExample);
+        String assignId = courseId.toString()+ "-" + String.valueOf(num);
+        while(assignmentMapper.selectByPrimaryKey(assignId)!=null){
+            num++;
+          assignId = courseId.toString()+ "-" + String.valueOf(num);
+        }
         return num;
     }
 
@@ -225,6 +238,7 @@ public class TeacherService {
         for (Student_Course student_course : student_courses)
         {
             User user = userMapper.selectByPrimaryKey(student_course.getStudentId());
+            if(user!=null)
             users.add(user);
         }
         return users;

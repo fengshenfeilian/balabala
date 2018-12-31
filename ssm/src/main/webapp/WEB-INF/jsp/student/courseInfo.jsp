@@ -88,7 +88,7 @@
         <li class="tables"><a href="#" title="" class="exp"><span>作业管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/assignment" title="">查看作业</a></li>
-                <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
+                <%--<li><a href="/student/uploadAssignment" title="">上传作业</a></li>--%>
             </ul>
         </li>
         <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
@@ -124,14 +124,15 @@
         <div class="wrapper">
             <div class="pageTitle">
                 <%--课程信息--%>
-                <div class="formRow"><h5>课程信息</h5></div>
-                <input type="hidden" value="${course.courseId}" id="courseId">
-                <div class="formRow"><p>课程号:<strong>${course.courseId}</strong></p></div>
-                <div class="formRow"><p>课程名称:<strong>${course.courseName}</strong></p></div>
-                <div class="formRow"><p>课程简介:<strong>${course.courseDescription}</strong></p></div>
-                <div class="formRow"><p>任课教师:<strong>${currentCourseTeacherName}</strong></p></div>
-                <div class="formRow"><p>课程创建时间:<strong>${course.createTime}</strong></p></div>
-                <div class="formRow"><p>课程是否结束:<strong>${course.isEnd==1?"是":"否"}</strong></p></div>
+                 <div class="formRow"><h5>课程信息</h5></div>
+                    <input type="hidden" value="${course.courseId}" id="courseId">
+                    <div class="formRow"><p>课程号:<strong>${course.courseId}</strong></p></div>
+                    <div class="formRow"><p>课程名称:<strong>${course.courseName}</strong></p></div>
+                    <div class="formRow"><p>课程简介:<strong>${course.courseDescription}</strong></p></div>
+                    <div class="formRow"><p>任课教师:<strong>${currentCourseTeacherName}</strong></p></div>
+                    <div class="formRow"><p>课程创建时间:<strong>${course.createTime}</strong></p></div>
+                    <div class="formRow">小组人数：<strong>${course.groupCapacityMin}-${course.groupCapacityMax}</strong></div>
+                    <div class="formRow"><p>课程是否结束:<strong>${course.isEnd==1?"是":"否"}</strong></p></div>
             </div>
             <div class="clear"></div>
         </div>

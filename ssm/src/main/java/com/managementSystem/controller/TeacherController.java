@@ -230,11 +230,12 @@ public class TeacherController {
         assignment.setCourseId(course.getCourseId());
         String prefix = course.getCourseId().toString();
         long assignNumber = teacherService.getAssignmentNumber(course.getCourseId());
-        String assignId = prefix + String.valueOf(assignNumber);
+        String assignId = prefix + "-" + String.valueOf(assignNumber);
         assignment.setAssignmentId(assignId);
         teacherService.addAssignment(assignment);
         List<Assignment> assignments = teacherService.getAssignments(course.getCourseId());
         model.addAttribute("assignments", assignments);
+        model.addAttribute("course",course);
         return "teacher/course";
     }
 
@@ -267,6 +268,26 @@ public class TeacherController {
         Course course = (Course)httpSession.getAttribute("currentCourse");
         model.addAttribute("course", course);
         return "teacher/assignments";
+    }
+    //加入鉴权
+    @RequestMapping(value = "/deleteAssignment")
+    public String deleteAssignment(HttpSession httpSession, HttpServletRequest request, Model model)
+    {
+        User curUser = (User)httpSession.getAttribute("currentUser");
+        //作业检查权限
+        if(!userService.Authenticate(curUser.getRoleId(),"UC16")){
+            model.addAttribute("message","删除作业权限不足！");
+            return "teacher/error";
+        }
+        String assignmentId = request.getParameter("assignmentId");
+        teacherService.deleteAssignmentById(assignmentId);
+
+        Course course = (Course) httpSession.getAttribute("currentCourse");
+        List<Assignment> assignments = teacherService.getAssignments(course.getCourseId());
+        model.addAttribute("assignments", assignments);
+        model.addAttribute("course",course);
+        return "teacher/course";
+
     }
 
     //加入鉴权
@@ -394,8 +415,7 @@ public class TeacherController {
             String studentId = student.getStudentId();
             String groupId = teacherService.getGroupID(courseId, studentId);
             if(groupId==null || groupId.equals("")){
-                model.addAttribute("message","找不到小组信息");
-                return "teacher/error";
+                continue;
             }
             //获取小组评分
             Integer groupGrade = teacherService.getGroupGrade(courseId, studentId);
@@ -449,7 +469,10 @@ public class TeacherController {
     public String finishCourse(Model model, HttpSession session)
     {
         Course course = (Course) session.getAttribute("currentCourse");
-        course.setIsEnd(1);
+        if(course.getIsEnd()==0)
+            course.setIsEnd(1);
+        else
+            course.setIsEnd(0);
         teacherService.setCourseEnd(course);
         User user = (User) session.getAttribute("currentUser");
         List<Course> courses = teacherService.getAllCourses(user.getUserId());
@@ -459,7 +482,10 @@ public class TeacherController {
     }
 
     @RequestMapping(value = "/scoreToExcel")
-    public String scoreToExcel(Model model, HttpSession session) throws IOException {
+    public String scoreToExcel(Model model,
+                               HttpServletRequest request,
+                               HttpServletResponse response,
+                               HttpSession session) throws IOException {
         User curUser = (User)session.getAttribute("currentUser");
         //生成成绩权限
         if(!userService.Authenticate(curUser.getRoleId(),"UC17")){
@@ -468,8 +494,11 @@ public class TeacherController {
         }
         Course course = (Course) session.getAttribute("currentCourse");
         int assignCount = teacherService.getAssignmentCount(course.getCourseId());
+        File file = new  File("scoreList");
+        //创建一个目录 （它的路径名由当前 File 对象指定，包括任一必须的父路径。）
+        if (!file.exists()) file.mkdirs();
         //System.out.println("assignCount:"+assignCount);
-        String path = "D:/" + course.getCourseName() + new Date().getTime() + "成绩单.xlsx";
+        String path = "scoreList/" + course.getCourseName() +  "成绩单.xlsx";
         Workbook wb = new XSSFWorkbook();
         Sheet sheet = wb.createSheet("sheet1");
         Row row = sheet.createRow(0);
@@ -504,6 +533,9 @@ public class TeacherController {
             cell = row.createCell(0);
             //获取在小组中的学生
             User user = teacherService.getStudentsInGroup(student_course.getStudentId());
+
+            System.out.println(user.getUserName());
+
             cell.setCellValue(user.getUserId());
             cell = row.createCell(1);
             cell.setCellValue(user.getUserName());
@@ -511,8 +543,8 @@ public class TeacherController {
             String groupId= teacherService.getGroupID(course.getCourseId(), user.getUserId());
             //获取该小组所交的作业
             if(groupId==null || groupId.equals("")){
-                model.addAttribute("message","找不到小组信息");
-                return "teacher/error";
+                rowIndex++;
+                continue;
             }
             List<Group_Assignment> group_assignments = teacherService.getGroupAssignemnt(groupId);
             //System.out.println(group_assignments.size());
@@ -549,6 +581,8 @@ public class TeacherController {
         List<Course> courses = teacherService.getAllCourses(user.getUserId());
         model.addAttribute("courses", courses);
         model.addAttribute("user", user);
+        //下载文件
+        downloadFile(path,request,response,model);
         return "teacher/index";
     }
 
@@ -577,7 +611,7 @@ public class TeacherController {
         else {  //其他浏览器
             filename = new String(filename.getBytes("UTF-8"), "iso-8859-1");
         }
-        String downfile = group_assignment.getGroupId() + "_"+ new Date().getTime()+"_"+filename;
+        String downfile =  new Date().getTime()+"_"+filename;
        /* filepath = URLEncoder.encode(filepath, "UTF-8");
         filepath = filepath.replace("%2F","/");
         filepath = filepath.replace("%3A",":");*/

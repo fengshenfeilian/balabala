@@ -86,7 +86,7 @@
         <li class="tables"><a href="#" title="" class="exp"><span>作业管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/assignment" title="">查看作业</a></li>
-                <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
+                <%--<li><a href="/student/uploadAssignment" title="">上传作业</a></li>--%>
             </ul>
         </li>
         <li class="tables"><a href="#" title="" class="exp"><span>小组管理</span><strong>2</strong></a>
@@ -163,7 +163,7 @@
 
                     <div class="formRow">
                         <label style="width:10%">Email</label>
-                        <input type="text" name="email"  value="${sessionScope.currentUser.email}" id="email" style="width:60%;"/>
+                        <input type="text" name="email"  value="${sessionScope.currentUser.email}"  id="email" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 
@@ -175,17 +175,15 @@
         </div>
     </div>
 
-
+    <c:if test="${sessionScope.currentUser.pwdDefault==1}">
     <div class="wrapper">
         <div class="widget" style="width:80%;vertical-align:middle;">
             <div class="formRow">
-                <c:if test="${sessionScope.currentUser.pwdDefault==1}">
-                    <h5>您当前的密码默认为学号，请尽快修改！</h5>
-                </c:if>
+                <h5>您当前的密码默认为学号，请尽快修改！</h5>
             </div>
         </div>
     </div>
-
+    </c:if>
 
     <div class="wrapper">
         <div class="widget" style="width:80%;">

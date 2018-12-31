@@ -1,11 +1,7 @@
 package com.managementSystem.service;
 
-import com.managementSystem.dao.Pri_RoleMapper;
-import com.managementSystem.dao.UserMapper;
-import com.managementSystem.pojo.Pri_RoleExample;
-import com.managementSystem.pojo.Pri_RoleKey;
-import com.managementSystem.pojo.User;
-import com.managementSystem.pojo.UserExample;
+import com.managementSystem.dao.*;
+import com.managementSystem.pojo.*;
 import com.managementSystem.util.MD5Utils;
 import com.managementSystem.util.ReadExcel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +18,7 @@ public class UserService {
     UserMapper userMapper;
     @Autowired
     Pri_RoleMapper pri_roleMapper;
+
 
     //根据当前用户角色id与相应的权限id鉴权
     public boolean Authenticate(String roleId, String priId){

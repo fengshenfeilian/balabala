@@ -72,10 +72,22 @@ public class StudentService {
         }
         return course;
     }
-    //groupId
-    public String getGroupIdByStudentId(String studentId)
+
+    public String getGroupIdByStudentId(String studentId,Integer courseId)
     {
-        return group_studentMapper.selectGroupIdByStudentId(studentId);
+        List<Group> courseGroupList = getGroupListByCourseId(courseId);
+        //找到用户所在的组
+        for(Group courseGroup : courseGroupList)
+        {
+            Group_StudentKey key = new Group_StudentKey();
+            key.setGroupId(courseGroup.getGroupId());
+            key.setStudentId(studentId);
+
+            if(group_studentMapper.selectByPrimaryKey(key)!=null){
+                return courseGroup.getGroupId();
+            }
+        }
+        return null;
     }
 
 
@@ -220,7 +232,7 @@ public class StudentService {
         //Group_Course表更新(小组成员数量 - 1)
         Group group = groupMapper.selectByPrimaryKey(groupId);
         group.setGroupMemberNum(group.getGroupMemberNum() - 1);
-        groupMapper.updateByPrimaryKey(group);
+        groupMapper.updateByPrimaryKeySelective(group);
     }
 
     //在G_S表查找该学生的所有小组
@@ -313,6 +325,7 @@ public class StudentService {
         for(Student_Course sc : scList)
         {
             User user = userMapper.selectByPrimaryKey(sc.getStudentId());
+            if(user!=null)
             list.add(user);
         }
         return list;
@@ -405,14 +418,16 @@ public class StudentService {
     /* group_course.groupId = group_student.groupId*/
     public Group getGroupUnderCourse(int courseId, String userId)
     {
+        //找到该门课程的所有组
         List<Group> courseGroupList = getGroupListByCourseId(courseId);
+        //找到用户所在的组
         for(Group courseGroup : courseGroupList)
         {
-            String groupId = group_studentMapper.selectGroupIdByStudentId(userId);
-            if(groupId == null){
-                continue;
-            }
-            if(courseGroup.getGroupId().equals(groupId)){
+            Group_StudentKey key = new Group_StudentKey();
+            key.setGroupId(courseGroup.getGroupId());
+            key.setStudentId(userId);
+
+            if(group_studentMapper.selectByPrimaryKey(key)!=null){
                 return courseGroup;
             }
         }

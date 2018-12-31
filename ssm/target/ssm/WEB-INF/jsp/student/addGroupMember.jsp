@@ -88,7 +88,7 @@
         <li class="tables"><a href="#" title="" class="exp"><span>作业管理</span><strong>2</strong></a>
             <ul class="sub">
                 <li class="this"><a href="/student/assignment" title="">查看作业</a></li>
-                <li><a href="/student/uploadAssignment" title="">上传作业</a></li>
+                <%--<li><a href="/student/uploadAssignment" title="">上传作业</a></li>--%>
             </ul>
         </li>
         <li class="tables"><a href="#" title="" class="active exp"><span>小组管理</span><strong>2</strong></a>

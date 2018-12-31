@@ -186,8 +186,8 @@ public class StudentController {
 
     //进入作业上传页
     @RequestMapping(value = "/uploadAssignment")
-    public String gotoUploadAssignment(@RequestParam(value = "assignmentId") String assignmentId,
-                                       @RequestParam(value = "groupId")String groupId,
+    public String gotoUploadAssignment(@RequestParam(value = "assignmentId",required = false) String assignmentId,
+                                       @RequestParam(value = "groupId",required = false)String groupId,
                                        HttpServletRequest request,HttpSession session,Model model) {
         User user = (User) session.getAttribute("currentUser");
         //上传及重复上传权限
@@ -195,13 +195,9 @@ public class StudentController {
             model.addAttribute("message","提交作业权限不足！");
             return "student/error";
         }
-        String userGroupId = studentService.getGroupIdByStudentId(user.getUserId());
-        if(groupId == null || groupId.equals("")){
-            model.addAttribute("message","您还未加入小组，无法上传作业。");
-            return  "student/error";
-        }
-        //小组号校验 && 作业号校验
-        if(userGroupId.equals(groupId) && studentService.existAssignment(assignmentId)) {
+
+        //作业号校验
+        if(studentService.existAssignment(assignmentId)) {
             if(studentService.existGroupAssignment(assignmentId,groupId)){
                 model.addAttribute("hasSubmitted",1);
             }
@@ -225,14 +221,32 @@ public class StudentController {
             return "student/error";
         }
 
-        String userGroupId = studentService.getGroupIdByStudentId(user.getUserId());
+
+
+        Assignment assignment = teacherService.getCurrentAssignment(assignmentId);
+
+        String userGroupId = studentService.getGroupIdByStudentId(user.getUserId(),assignment.getCourseId());
+        Group group = studentService.getGroupByGroupId(groupId);
+        Course course = studentService.getCurrentCourse(group.getCourseId());
+        if(!group.getLeaderId().equals(user.getUserId())){
+            model.addAttribute("message","非组长不能提交作业！");
+            return "student/error";
+        }
+        if(group.getGroupMemberNum()<course.getGroupCapacityMin() || group.getGroupMemberNum()>course.getGroupCapacityMax()){
+            model.addAttribute("message","小组人数不符合要求！");
+            return "student/error";
+        }
+        if(course.getIsEnd()==1){
+            model.addAttribute("message","课程已结束，无法提交！");
+            return "student/error";
+        }
         //小组号校验 && 作业号校验
         if(userGroupId.equals(groupId) && studentService.existAssignment(assignmentId)){
             //如果已有<作业号，小组号>的作业，那么先删除该作业
             if(studentService.existGroupAssignment(assignmentId,groupId)){
                 studentService.deleteGroupAssignment(assignmentId,groupId);
             }
-            String rootPath = "D:/assignments/"+ groupId + "-" + assignmentId + "-" + title  + "/";
+            String rootPath = "assignments/"+ groupId + "-" + assignmentId + "-" + title  + "/";
             //上传(学生)作业
             String filename = file.getOriginalFilename();
             try {
@@ -478,9 +492,7 @@ public class StudentController {
         //获取小组所属课程
         Course course = teacherService.getCurrentCourse(group.getCourseId());
         if(user.getUserId().equals(group.getLeaderId())) {//如果是组长:
-            if(studentService.getCountGroupMember(groupId) > course.getGroupCapacityMin()){ //小组人数 > 小组最小人数:
-                studentService.deleteGroupMember(groupId,studentId);
-            }
+            studentService.deleteGroupMember(groupId,studentId);
         }
 
         String urlParam = groupId.toString();

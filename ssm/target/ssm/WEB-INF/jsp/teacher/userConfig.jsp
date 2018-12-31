@@ -137,7 +137,7 @@
 
                     <div class="formRow">
                         <label style="width:10%">Email</label>
-                        <input type="text" name="email"  value="${sessionScope.currentUser.email}" id="email" style="width:60%;"/>
+                        <input type="text" name="email"  value="${sessionScope.currentUser.email}"  id="email" style="width:60%;"/>
                         <div class="clear"></div>
                     </div>
 

@@ -88,14 +88,20 @@
 
                     <div class="formRow">
                         <label style="width:10%">性别</label>
-                        <c:if test="${updateUser.gender=='男' || updateUser.gender=='male'}">
-                            <label><input type="radio" name="gender" value="男" checked/>男</label>
-                            <label><input type="radio" name="gender" value="女"/>女</label>
-                        </c:if>
-                        <c:if test="${updateUser.gender=='女' || updateUser.gender=='female'}">
-                            <label><input type="radio" name="gender" value="男" />男</label>
-                            <label><input type="radio" name="gender" value="女" checked/>女</label>
-                        </c:if>
+                        <c:choose>
+                            <c:when test="${updateUser.gender=='男' || updateUser.gender=='male'}">
+                                <label><input type="radio" name="gender" value="男" checked/>男</label>
+                                <label><input type="radio" name="gender" value="女"/>女</label>
+                            </c:when>
+                            <c:when test="${updateUser.gender=='女' || updateUser.gender=='female'}">
+                                <label><input type="radio" name="gender" value="男" />男</label>
+                                <label><input type="radio" name="gender" value="女" checked/>女</label>
+                            </c:when>
+                            <c:otherwise>
+                                <label><input type="radio" name="gender" value="男" checked/>男</label>
+                                <label><input type="radio" name="gender" value="女"/>女</label>
+                            </c:otherwise>
+                        </c:choose>
                         <div class="clear"></div>
                     </div>
 
@@ -153,14 +159,20 @@
 
                     <div class="formRow">
                         <label style="width:10%">性别</label>
-                        <c:if test="${updateUser.gender=='男' || updateUser.gender=='male'}">
-                            <label><input type="radio" name="gender" value="男" checked/>男</label>
-                            <label><input type="radio" name="gender" value="女"/>女</label>
-                        </c:if>
-                        <c:if test="${updateUser.gender=='女' || updateUser.gender=='female'}">
-                            <label><input type="radio" name="gender" value="男" />男</label>
-                            <label><input type="radio" name="gender" value="女" checked/>女</label>
-                        </c:if>
+                        <c:choose>
+                            <c:when test="${updateUser.gender=='男' || updateUser.gender=='male'}">
+                                <label><input type="radio" name="gender" value="男" checked/>男</label>
+                                <label><input type="radio" name="gender" value="女"/>女</label>
+                            </c:when>
+                            <c:when test="${updateUser.gender=='女' || updateUser.gender=='female'}">
+                                <label><input type="radio" name="gender" value="男" />男</label>
+                                <label><input type="radio" name="gender" value="女" checked/>女</label>
+                            </c:when>
+                            <c:otherwise>
+                                <label><input type="radio" name="gender" value="男" checked/>男</label>
+                                <label><input type="radio" name="gender" value="女"/>女</label>
+                            </c:otherwise>
+                        </c:choose>
                         <div class="clear"></div>
                     </div>
 

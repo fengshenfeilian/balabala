@@ -86,6 +86,7 @@
 				</div>
 
 				<div class="loginControl">
+					<div class="rememberMe"><p style="color: darkred"">${param.message}</p></div>
 					<%--<div class="rememberMe"><input type="checkbox" id="remMe" name="remMe" /><label for="remMe">记住我</label></div>--%>
 					<input type="submit" value="登录" class="dredB logMeIn" />
 					<div class="clear"></div>

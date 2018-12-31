@@ -59,11 +59,13 @@ public class ReadExcel {
 
         //把spring文件上传的MultipartFile转换成CommonsMultipartFile类型
         CommonsMultipartFile cf= (CommonsMultipartFile)Mfile; //获取本地存储路径
-        File file = new  File("D:\\ruangong");
+        //File file = new  File("D:\\ruangong");
+        File file = new  File("temp");
         //创建一个目录 （它的路径名由当前 File 对象指定，包括任一必须的父路径。）
         if (!file.exists()) file.mkdirs();
         //新建一个文件
-        File file1 = new File("D:\\ruangong" + new Date().getTime() + ".xlsx");
+        //File file1 = new File("D:\\ruangong\\" + new Date().getTime() + ".xlsx");
+        File file1 = new File("temp/" + new Date().getTime() + ".xlsx");
         //将上传的文件写入新建的文件中
         try {
             cf.getFileItem().write(file1);
@@ -171,26 +173,37 @@ public class ReadExcel {
                     if(c==0){
                         String id = cell.getStringCellValue();
 //                        if(existID.contains(id)) continue;
+                        if(id!=null)
                         User.setUserId(id);
                     }else if(c==1){
                         String name = cell.getStringCellValue();
+                        if(name!=null)
                         User.setUserName(name);
                     }else if(c==2){
-                        User.setDepartment(cell.getStringCellValue());//客户简称
+                        String department = cell.getStringCellValue();
+                        if(department!=null)
+                        User.setDepartment(department);//客户简称
                     }else if(c==3){
-                        User.setMajor(cell.getStringCellValue());//行业
+                        String major = cell.getStringCellValue();
+                        if(major!=null)
+                        User.setMajor(major);//行业
                     }else if(c==4){
-                        User.setGender(cell.getStringCellValue());//客户来源
+                        String gender = cell.getStringCellValue();
+                        if(gender!=null)
+                        User.setGender(gender);//客户来源
                     }else if(c==5){
-                        User.setClasses(cell.getStringCellValue());//地址
+                        String classes = cell.getStringCellValue();
+                        if(classes!=null)
+                        User.setClasses(classes);//地址
                     }else if(c==6){
-                        User.setEmail(cell.getStringCellValue());//备注信息
+                        String email = cell.getStringCellValue();
+                        if(email!=null)
+                        User.setEmail(email);//备注信息
                     }
                 }
             }
             User.setPassword(User.getUserId());
             User.setRoleId("3");
-            User.setPwdDefault(0);
             //添加客户
             UserList.add(User);
         }
@@ -206,11 +219,13 @@ public class ReadExcel {
 
         //把spring文件上传的MultipartFile转换成CommonsMultipartFile类型
         CommonsMultipartFile cf= (CommonsMultipartFile)Mfile; //获取本地存储路径
-        File file = new  File("D:\\ruangong");
+        //File file = new  File("D:\\ruangong");
+        File file = new  File("temp");
         //创建一个目录 （它的路径名由当前 File 对象指定，包括任一必须的父路径。）
         if (!file.exists()) file.mkdirs();
         //新建一个文件
-        File file1 = new File("D:\\ruangong" + new Date().getTime() + ".xlsx");
+        //File file1 = new File("D:\\ruangong\\" + new Date().getTime() + ".xlsx");
+        File file1 = new File("temp/" + new Date().getTime() + ".xlsx");
         //将上传的文件写入新建的文件中
         try {
             cf.getFileItem().write(file1);
@@ -329,11 +344,13 @@ public class ReadExcel {
 
         //把spring文件上传的MultipartFile转换成CommonsMultipartFile类型
         CommonsMultipartFile cf= (CommonsMultipartFile)Mfile; //获取本地存储路径
-        File file = new  File("D:\\ruangong");
+        //File file = new  File("D:\\ruangong");
+        File file = new  File("temp");
         //创建一个目录 （它的路径名由当前 File 对象指定，包括任一必须的父路径。）
         if (!file.exists()) file.mkdirs();
         //新建一个文件
-        File file1 = new File("D:\\ruangong" + new Date().getTime() + ".xlsx");
+        //File file1 = new File("D:\\ruangong\\" + new Date().getTime() + ".xlsx");
+        File file1 = new File("temp/" + new Date().getTime() + ".xlsx");
         //将上传的文件写入新建的文件中
         try {
             cf.getFileItem().write(file1);

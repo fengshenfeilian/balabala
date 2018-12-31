@@ -31,7 +31,7 @@ public interface Group_StudentMapper {
 
 /*  marco  */
     //groupId
-    String selectGroupIdByStudentId(String studentId);
+    String selectGroupIdByStudentIdAndCourseId(String studentId,Integer courseId);
     Boolean existStudent(String studentId);
     //groupId
     Integer getStudentCountByGroupId(String groupId);
